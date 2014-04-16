@@ -1,0 +1,43 @@
+{
+  "name": "jRadio",
+  "version": "0.0.1",
+  "description": "Unsolicited redesign of the various Triple J websites",
+  "author": "Alex Duckmanton",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexduckmanton/jRadio.git"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "~4.0.0",
+    "handlebars-runtime": "~1.0.12",
+    "express3-handlebars": "~0.5.0"
+  },
+  "devDependencies": {
+    "bower": "~1.3.2",
+    "grunt": "~0.4.4",
+    "grunt-contrib-concat": "~0.4.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-bower-task": "~0.3.4",
+    "grunt-nodemon": "~0.2.1",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "browserify": "3.43.1",
+    "grunt-browserify": "~2.0.7",
+    "load-grunt-tasks": "~0.4.0",
+    "time-grunt": "~0.3.1",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-concurrent": "~0.5.0",
+    "grunt-contrib-compass": "~0.7.2",
+    "grunt-contrib-handlebars": "~0.8.0",
+    "grunt-contrib-cssmin": "~0.9.0",
+    "hbsfy": "~1.3.2"
+  }
+}

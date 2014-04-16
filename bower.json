@@ -1,0 +1,26 @@
+{
+  "name": "jRadio",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "backbone.marionette": "~1.8.1",
+    "jquery": "~2.1.0",
+    "underscore": "~1.6.0",
+    "backbone": "~1.1.2"
+  },
+  "exportsOverride": {
+    "jquery": {
+      "js": "jquery.js"
+    },
+    "underscore": {
+      "js": "underscore.js"
+    },
+    "backbone": {
+      "js": "backbone.js"
+    },
+    "backbone.marionette": {
+      "js": "lib/backbone.marionette.js"
+    },
+    "jasmine": {}
+  }
+}
