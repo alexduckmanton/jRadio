@@ -10,7 +10,7 @@
   },
   "exportsOverride": {
     "jquery": {
-      "js": "jquery.js"
+      "js": "dist/jquery.js"
     },
     "underscore": {
       "js": "underscore.js"
@@ -20,7 +20,6 @@
     },
     "backbone.marionette": {
       "js": "lib/backbone.marionette.js"
-    },
-    "jasmine": {}
+    }
   }
 }
