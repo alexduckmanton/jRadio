@@ -132,7 +132,7 @@ module.exports = function(grunt) {
                 tasks: ['clean:dev', 'browserify:app', 'concat', 'copy:dev']
             },
             compass: {
-                files: ['client/styles/**/*.scss'],
+                files: ['client/styles/main.scss'],
                 tasks: ['compass:transpile', 'copy:dev']
             }
         },
@@ -140,10 +140,10 @@ module.exports = function(grunt) {
         // for changes to the node code
         nodemon: {
             dev: {
+                script: 'server.js',
                 options: {
-                    file: 'server.js',
                     nodeArgs: ['--debug'],
-                    watchedFolders: ['controllers', 'app'],
+                    watch: ['controllers', 'app'],
                     env: {
                         PORT: '3300'
                     }
@@ -153,7 +153,7 @@ module.exports = function(grunt) {
 
         concurrent: {
             dev: {
-                tasks: ['nodemon:dev', 'watch:scripts', 'watch:less', 'watch:test'],
+                tasks: ['nodemon:dev', 'watch:scripts', 'watch:compass'],
                 options: {
                     logConcurrentOutput: true
                 }
@@ -162,8 +162,7 @@ module.exports = function(grunt) {
 
         jshint: {
             all: ['Gruntfile.js', 'client/src/**/*.js', 'client/spec/**/*.js'],
-            dev: ['client/src/**/*.js'],
-            test: ['client/spec/**/*.js']
+            dev: ['client/src/**/*.js']
         }
     });
 
@@ -175,5 +174,5 @@ module.exports = function(grunt) {
     grunt.registerTask('heroku', ['init:dev', 'build:dev']);
 
     grunt.registerTask('server', ['build:dev', 'concurrent:dev']);
-    
+
 };

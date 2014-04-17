@@ -16,6 +16,11 @@
   },
   "dependencies": {
     "express": "~4.0.0",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "method-override": "~1.0.0",
+    "body-parser": "~1.0.2",
+    "errorhandler": "~1.0.0",
     "handlebars-runtime": "~1.0.12",
     "express3-handlebars": "~0.5.0"
   },
