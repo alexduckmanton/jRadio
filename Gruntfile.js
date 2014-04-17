@@ -52,6 +52,24 @@ module.exports = function(grunt) {
                                 backbone: 'Backbone',
                                 underscore: '_'
                             }
+                        },
+                        'backbone.babysitter': {
+                            path: 'client/requires/backbone.babysitter/js/backbone.babysitter.js',
+                            exports: 'Babysitter',
+                            depends: {
+                                jquery: '$',
+                                backbone: 'Backbone',
+                                underscore: '_'
+                            }
+                        },
+                        'backbone.wreqr': {
+                            path: 'client/requires/backbone.wreqr/js/backbone.wreqr.js',
+                            exports: 'Wreqr',
+                            depends: {
+                                jquery: '$',
+                                backbone: 'Backbone',
+                                underscore: '_'
+                            }
                         }
                     }
                 }

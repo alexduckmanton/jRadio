@@ -1,4 +1,9 @@
-require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"8gCNUQ":[function(require,module,exports){
+var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
+
+; global.$ = require("jquery");
+global.Backbone = require("backbone");
+global._ = require("underscore");
 // Backbone.BabySitter
 // -------------------
 // v0.1.0
@@ -159,9 +164,14 @@ Backbone.ChildViewContainer = (function(Backbone, _){
   return Container;
 })(Backbone, _);
 
-},{}],"02y4I+":[function(require,module,exports){
-(function (global){
-(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
+; browserify_shim__define__module__export__(typeof Babysitter != "undefined" ? Babysitter : window.Babysitter);
+
+}).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
+
+},{"backbone":"kvd4GK","jquery":"Ewfsiz","underscore":"P+7e+f"}],"backbone.babysitter":[function(require,module,exports){
+module.exports=require('8gCNUQ');
+},{}],"D0JZpm":[function(require,module,exports){
+var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 
 ; global.$ = require("jquery");
 global.Backbone = require("backbone");
@@ -174,592 +184,6 @@ global._ = require("underscore");
 // Distributed under MIT license
 //
 // http://marionettejs.com
-
-
-/*!
- * Includes BabySitter
- * https://github.com/marionettejs/backbone.babysitter/
- *
- * Includes Wreqr
- * https://github.com/marionettejs/backbone.wreqr/
- */
-
-
-// Backbone.BabySitter
-// -------------------
-// v0.1.0
-//
-// Copyright (c)2014 Derick Bailey, Muted Solutions, LLC.
-// Distributed under MIT license
-//
-// http://github.com/marionettejs/backbone.babysitter
-
-// Backbone.ChildViewContainer
-// ---------------------------
-//
-// Provide a container to store, retrieve and
-// shut down child views.
-
-Backbone.ChildViewContainer = (function(Backbone, _){
-  
-  // Container Constructor
-  // ---------------------
-
-  var Container = function(views){
-    this._views = {};
-    this._indexByModel = {};
-    this._indexByCustom = {};
-    this._updateLength();
-
-    _.each(views, this.add, this);
-  };
-
-  // Container Methods
-  // -----------------
-
-  _.extend(Container.prototype, {
-
-    // Add a view to this container. Stores the view
-    // by `cid` and makes it searchable by the model
-    // cid (and model itself). Optionally specify
-    // a custom key to store an retrieve the view.
-    add: function(view, customIndex){
-      var viewCid = view.cid;
-
-      // store the view
-      this._views[viewCid] = view;
-
-      // index it by model
-      if (view.model){
-        this._indexByModel[view.model.cid] = viewCid;
-      }
-
-      // index by custom
-      if (customIndex){
-        this._indexByCustom[customIndex] = viewCid;
-      }
-
-      this._updateLength();
-      return this;
-    },
-
-    // Find a view by the model that was attached to
-    // it. Uses the model's `cid` to find it.
-    findByModel: function(model){
-      return this.findByModelCid(model.cid);
-    },
-
-    // Find a view by the `cid` of the model that was attached to
-    // it. Uses the model's `cid` to find the view `cid` and
-    // retrieve the view using it.
-    findByModelCid: function(modelCid){
-      var viewCid = this._indexByModel[modelCid];
-      return this.findByCid(viewCid);
-    },
-
-    // Find a view by a custom indexer.
-    findByCustom: function(index){
-      var viewCid = this._indexByCustom[index];
-      return this.findByCid(viewCid);
-    },
-
-    // Find by index. This is not guaranteed to be a
-    // stable index.
-    findByIndex: function(index){
-      return _.values(this._views)[index];
-    },
-
-    // retrieve a view by its `cid` directly
-    findByCid: function(cid){
-      return this._views[cid];
-    },
-
-    // Remove a view
-    remove: function(view){
-      var viewCid = view.cid;
-
-      // delete model index
-      if (view.model){
-        delete this._indexByModel[view.model.cid];
-      }
-
-      // delete custom index
-      _.any(this._indexByCustom, function(cid, key) {
-        if (cid === viewCid) {
-          delete this._indexByCustom[key];
-          return true;
-        }
-      }, this);
-
-      // remove the view from the container
-      delete this._views[viewCid];
-
-      // update the length
-      this._updateLength();
-      return this;
-    },
-
-    // Call a method on every view in the container,
-    // passing parameters to the call method one at a
-    // time, like `function.call`.
-    call: function(method){
-      this.apply(method, _.tail(arguments));
-    },
-
-    // Apply a method on every view in the container,
-    // passing parameters to the call method one at a
-    // time, like `function.apply`.
-    apply: function(method, args){
-      _.each(this._views, function(view){
-        if (_.isFunction(view[method])){
-          view[method].apply(view, args || []);
-        }
-      });
-    },
-
-    // Update the `.length` attribute on this container
-    _updateLength: function(){
-      this.length = _.size(this._views);
-    }
-  });
-
-  // Borrowing this code from Backbone.Collection:
-  // http://backbonejs.org/docs/backbone.html#section-106
-  //
-  // Mix in methods from Underscore, for iteration, and other
-  // collection related features.
-  var methods = ['forEach', 'each', 'map', 'find', 'detect', 'filter', 
-    'select', 'reject', 'every', 'all', 'some', 'any', 'include', 
-    'contains', 'invoke', 'toArray', 'first', 'initial', 'rest', 
-    'last', 'without', 'isEmpty', 'pluck'];
-
-  _.each(methods, function(method) {
-    Container.prototype[method] = function() {
-      var views = _.values(this._views);
-      var args = [views].concat(_.toArray(arguments));
-      return _[method].apply(_, args);
-    };
-  });
-
-  // return the public API
-  return Container;
-})(Backbone, _);
-
-// Backbone.Wreqr (Backbone.Marionette)
-// ----------------------------------
-// v1.1.0
-//
-// Copyright (c)2014 Derick Bailey, Muted Solutions, LLC.
-// Distributed under MIT license
-//
-// http://github.com/marionettejs/backbone.wreqr
-
-
-Backbone.Wreqr = (function(Backbone, Marionette, _){
-  "use strict";
-  var Wreqr = {};
-
-  // Handlers
-// --------
-// A registry of functions to call, given a name
-
-Wreqr.Handlers = (function(Backbone, _){
-  "use strict";
-  
-  // Constructor
-  // -----------
-
-  var Handlers = function(options){
-    this.options = options;
-    this._wreqrHandlers = {};
-    
-    if (_.isFunction(this.initialize)){
-      this.initialize(options);
-    }
-  };
-
-  Handlers.extend = Backbone.Model.extend;
-
-  // Instance Members
-  // ----------------
-
-  _.extend(Handlers.prototype, Backbone.Events, {
-
-    // Add multiple handlers using an object literal configuration
-    setHandlers: function(handlers){
-      _.each(handlers, function(handler, name){
-        var context = null;
-
-        if (_.isObject(handler) && !_.isFunction(handler)){
-          context = handler.context;
-          handler = handler.callback;
-        }
-
-        this.setHandler(name, handler, context);
-      }, this);
-    },
-
-    // Add a handler for the given name, with an
-    // optional context to run the handler within
-    setHandler: function(name, handler, context){
-      var config = {
-        callback: handler,
-        context: context
-      };
-
-      this._wreqrHandlers[name] = config;
-
-      this.trigger("handler:add", name, handler, context);
-    },
-
-    // Determine whether or not a handler is registered
-    hasHandler: function(name){
-      return !! this._wreqrHandlers[name];
-    },
-
-    // Get the currently registered handler for
-    // the specified name. Throws an exception if
-    // no handler is found.
-    getHandler: function(name){
-      var config = this._wreqrHandlers[name];
-
-      if (!config){
-        return;
-      }
-
-      return function(){
-        var args = Array.prototype.slice.apply(arguments);
-        return config.callback.apply(config.context, args);
-      };
-    },
-
-    // Remove a handler for the specified name
-    removeHandler: function(name){
-      delete this._wreqrHandlers[name];
-    },
-
-    // Remove all handlers from this registry
-    removeAllHandlers: function(){
-      this._wreqrHandlers = {};
-    }
-  });
-
-  return Handlers;
-})(Backbone, _);
-
-  // Wreqr.CommandStorage
-// --------------------
-//
-// Store and retrieve commands for execution.
-Wreqr.CommandStorage = (function(){
-  "use strict";
-
-  // Constructor function
-  var CommandStorage = function(options){
-    this.options = options;
-    this._commands = {};
-
-    if (_.isFunction(this.initialize)){
-      this.initialize(options);
-    }
-  };
-
-  // Instance methods
-  _.extend(CommandStorage.prototype, Backbone.Events, {
-
-    // Get an object literal by command name, that contains
-    // the `commandName` and the `instances` of all commands
-    // represented as an array of arguments to process
-    getCommands: function(commandName){
-      var commands = this._commands[commandName];
-
-      // we don't have it, so add it
-      if (!commands){
-
-        // build the configuration
-        commands = {
-          command: commandName, 
-          instances: []
-        };
-
-        // store it
-        this._commands[commandName] = commands;
-      }
-
-      return commands;
-    },
-
-    // Add a command by name, to the storage and store the
-    // args for the command
-    addCommand: function(commandName, args){
-      var command = this.getCommands(commandName);
-      command.instances.push(args);
-    },
-
-    // Clear all commands for the given `commandName`
-    clearCommands: function(commandName){
-      var command = this.getCommands(commandName);
-      command.instances = [];
-    }
-  });
-
-  return CommandStorage;
-})();
-
-  // Wreqr.Commands
-// --------------
-//
-// A simple command pattern implementation. Register a command
-// handler and execute it.
-Wreqr.Commands = (function(Wreqr){
-  "use strict";
-
-  return Wreqr.Handlers.extend({
-    // default storage type
-    storageType: Wreqr.CommandStorage,
-
-    constructor: function(options){
-      this.options = options || {};
-
-      this._initializeStorage(this.options);
-      this.on("handler:add", this._executeCommands, this);
-
-      var args = Array.prototype.slice.call(arguments);
-      Wreqr.Handlers.prototype.constructor.apply(this, args);
-    },
-
-    // Execute a named command with the supplied args
-    execute: function(name, args){
-      name = arguments[0];
-      args = Array.prototype.slice.call(arguments, 1);
-
-      if (this.hasHandler(name)){
-        this.getHandler(name).apply(this, args);
-      } else {
-        this.storage.addCommand(name, args);
-      }
-
-    },
-
-    // Internal method to handle bulk execution of stored commands
-    _executeCommands: function(name, handler, context){
-      var command = this.storage.getCommands(name);
-
-      // loop through and execute all the stored command instances
-      _.each(command.instances, function(args){
-        handler.apply(context, args);
-      });
-
-      this.storage.clearCommands(name);
-    },
-
-    // Internal method to initialize storage either from the type's
-    // `storageType` or the instance `options.storageType`.
-    _initializeStorage: function(options){
-      var storage;
-
-      var StorageType = options.storageType || this.storageType;
-      if (_.isFunction(StorageType)){
-        storage = new StorageType();
-      } else {
-        storage = StorageType;
-      }
-
-      this.storage = storage;
-    }
-  });
-
-})(Wreqr);
-
-  // Wreqr.RequestResponse
-// ---------------------
-//
-// A simple request/response implementation. Register a
-// request handler, and return a response from it
-Wreqr.RequestResponse = (function(Wreqr){
-  "use strict";
-
-  return Wreqr.Handlers.extend({
-    request: function(){
-      var name = arguments[0];
-      var args = Array.prototype.slice.call(arguments, 1);
-      if (this.hasHandler(name)) {
-        return this.getHandler(name).apply(this, args);
-      }
-    }
-  });
-
-})(Wreqr);
-
-  // Event Aggregator
-// ----------------
-// A pub-sub object that can be used to decouple various parts
-// of an application through event-driven architecture.
-
-Wreqr.EventAggregator = (function(Backbone, _){
-  "use strict";
-  var EA = function(){};
-
-  // Copy the `extend` function used by Backbone's classes
-  EA.extend = Backbone.Model.extend;
-
-  // Copy the basic Backbone.Events on to the event aggregator
-  _.extend(EA.prototype, Backbone.Events);
-
-  return EA;
-})(Backbone, _);
-
-  // Wreqr.Channel
-// --------------
-//
-// An object that wraps the three messaging systems:
-// EventAggregator, RequestResponse, Commands
-Wreqr.Channel = (function(Wreqr){
-  "use strict";
-
-  var Channel = function(channelName) {
-    this.vent        = new Backbone.Wreqr.EventAggregator();
-    this.reqres      = new Backbone.Wreqr.RequestResponse();
-    this.commands    = new Backbone.Wreqr.Commands();
-    this.channelName = channelName;
-  };
-
-  _.extend(Channel.prototype, {
-
-    // Remove all handlers from the messaging systems of this channel
-    reset: function() {
-      this.vent.off();
-      this.vent.stopListening();
-      this.reqres.removeAllHandlers();
-      this.commands.removeAllHandlers();
-      return this;
-    },
-
-    // Connect a hash of events; one for each messaging system
-    connectEvents: function(hash, context) {
-      this._connect('vent', hash, context);
-      return this;
-    },
-
-    connectCommands: function(hash, context) {
-      this._connect('commands', hash, context);
-      return this;
-    },
-
-    connectRequests: function(hash, context) {
-      this._connect('reqres', hash, context);
-      return this;
-    },
-
-    // Attach the handlers to a given message system `type`
-    _connect: function(type, hash, context) {
-      if (!hash) {
-        return;
-      }
-
-      context = context || this;
-      var method = (type === 'vent') ? 'on' : 'setHandler';
-
-      _.each(hash, function(fn, eventName) {
-        this[type][method](eventName, _.bind(fn, context));
-      }, this);
-    }
-  });
-
-
-  return Channel;
-})(Wreqr);
-
-  // Wreqr.Radio
-// --------------
-//
-// An object that lets you communicate with many channels.
-Wreqr.radio = (function(Wreqr){
-  "use strict";
-
-  var Radio = function() {
-    this._channels = {};
-    this.vent = {};
-    this.commands = {};
-    this.reqres = {};
-    this._proxyMethods();
-  };
-
-  _.extend(Radio.prototype, {
-
-    channel: function(channelName) {
-      if (!channelName) {
-        throw new Error('Channel must receive a name');
-      }
-
-      return this._getChannel( channelName );
-    },
-
-    _getChannel: function(channelName) {
-      var channel = this._channels[channelName];
-
-      if(!channel) {
-        channel = new Wreqr.Channel(channelName);
-        this._channels[channelName] = channel;
-      }
-
-      return channel;
-    },
-
-    _proxyMethods: function() {
-      _.each(['vent', 'commands', 'reqres'], function(system) {
-        _.each( messageSystems[system], function(method) {
-          this[system][method] = proxyMethod(this, system, method);
-        }, this);
-      }, this);
-    }
-  });
-
-
-  var messageSystems = {
-    vent: [
-      'on',
-      'off',
-      'trigger',
-      'once',
-      'stopListening',
-      'listenTo',
-      'listenToOnce'
-    ],
-
-    commands: [
-      'execute',
-      'setHandler',
-      'setHandlers',
-      'removeHandler',
-      'removeAllHandlers'
-    ],
-
-    reqres: [
-      'request',
-      'setHandler',
-      'setHandlers',
-      'removeHandler',
-      'removeAllHandlers'
-    ]
-  };
-
-  var proxyMethod = function(radio, system, method) {
-    return function(channelName) {
-      var messageSystem = radio._getChannel(channelName)[system];
-      var args = Array.prototype.slice.call(arguments, 1);
-
-      messageSystem[method].apply(messageSystem, args);
-    };
-  };
-
-  return new Radio();
-
-})(Wreqr);
-
-
-  return Wreqr;
-})(Backbone, Backbone.Marionette, _);
 
 var Marionette = (function(global, Backbone, _){
   "use strict";
@@ -3193,10 +2617,16 @@ _.extend(Marionette.Module, {
 
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
-}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"backbone":"2wk3Ip","jquery":"bPlB9m","underscore":"AwvwkI"}],"backbone.marionette":[function(require,module,exports){
-module.exports=require('02y4I+');
-},{}],4:[function(require,module,exports){
+},{"backbone":"kvd4GK","jquery":"Ewfsiz","underscore":"P+7e+f"}],"backbone.marionette":[function(require,module,exports){
+module.exports=require('D0JZpm');
+},{}],"backbone.wreqr":[function(require,module,exports){
+module.exports=require('8gCVIr');
+},{}],"8gCVIr":[function(require,module,exports){
+var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
+
+; global.$ = require("jquery");
+global.Backbone = require("backbone");
+global._ = require("underscore");
 // Backbone.Wreqr (Backbone.Marionette)
 // ----------------------------------
 // v1.1.0
@@ -3613,9 +3043,12 @@ Wreqr.radio = (function(Wreqr){
   return Wreqr;
 })(Backbone, Backbone.Marionette, _);
 
-},{}],"2wk3Ip":[function(require,module,exports){
-(function (global){
-(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
+; browserify_shim__define__module__export__(typeof Wreqr != "undefined" ? Wreqr : window.Wreqr);
+
+}).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
+
+},{"backbone":"kvd4GK","jquery":"Ewfsiz","underscore":"P+7e+f"}],"kvd4GK":[function(require,module,exports){
+var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 
 ; global.underscore = require("underscore");
 //     Backbone.js 1.1.2
@@ -5231,12 +4664,12 @@ Wreqr.radio = (function(Wreqr){
 
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
-}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"underscore":"AwvwkI"}],"backbone":[function(require,module,exports){
-module.exports=require('2wk3Ip');
-},{}],"bPlB9m":[function(require,module,exports){
-(function (global){
-(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
+},{"underscore":"P+7e+f"}],"backbone":[function(require,module,exports){
+module.exports=require('kvd4GK');
+},{}],"jquery":[function(require,module,exports){
+module.exports=require('Ewfsiz');
+},{}],"Ewfsiz":[function(require,module,exports){
+var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 /*!
  * jQuery JavaScript Library v2.1.0
  * http://jquery.com/
@@ -14353,15 +13786,13 @@ return jQuery;
 
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
-}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],"jquery":[function(require,module,exports){
-module.exports=require('bPlB9m');
-},{}],"AwvwkI":[function(require,module,exports){
-(function (global){
-(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
-//     Underscore.js 1.6.0
+},{}],"underscore":[function(require,module,exports){
+module.exports=require('P+7e+f');
+},{}],"P+7e+f":[function(require,module,exports){
+var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
+//     Underscore.js 1.5.2
 //     http://underscorejs.org
-//     (c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+//     (c) 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 //     Underscore may be freely distributed under the MIT license.
 
 (function() {
@@ -14426,7 +13857,7 @@ module.exports=require('bPlB9m');
   }
 
   // Current version.
-  _.VERSION = '1.6.0';
+  _.VERSION = '1.5.2';
 
   // Collection Functions
   // --------------------
@@ -14435,7 +13866,7 @@ module.exports=require('bPlB9m');
   // Handles objects with the built-in `forEach`, arrays, and raw objects.
   // Delegates to **ECMAScript 5**'s native `forEach` if available.
   var each = _.each = _.forEach = function(obj, iterator, context) {
-    if (obj == null) return obj;
+    if (obj == null) return;
     if (nativeForEach && obj.forEach === nativeForEach) {
       obj.forEach(iterator, context);
     } else if (obj.length === +obj.length) {
@@ -14448,7 +13879,6 @@ module.exports=require('bPlB9m');
         if (iterator.call(context, obj[keys[i]], keys[i], obj) === breaker) return;
       }
     }
-    return obj;
   };
 
   // Return the results of applying the iterator to each element.
@@ -14514,10 +13944,10 @@ module.exports=require('bPlB9m');
   };
 
   // Return the first value which passes a truth test. Aliased as `detect`.
-  _.find = _.detect = function(obj, predicate, context) {
+  _.find = _.detect = function(obj, iterator, context) {
     var result;
     any(obj, function(value, index, list) {
-      if (predicate.call(context, value, index, list)) {
+      if (iterator.call(context, value, index, list)) {
         result = value;
         return true;
       }
@@ -14528,33 +13958,33 @@ module.exports=require('bPlB9m');
   // Return all the elements that pass a truth test.
   // Delegates to **ECMAScript 5**'s native `filter` if available.
   // Aliased as `select`.
-  _.filter = _.select = function(obj, predicate, context) {
+  _.filter = _.select = function(obj, iterator, context) {
     var results = [];
     if (obj == null) return results;
-    if (nativeFilter && obj.filter === nativeFilter) return obj.filter(predicate, context);
+    if (nativeFilter && obj.filter === nativeFilter) return obj.filter(iterator, context);
     each(obj, function(value, index, list) {
-      if (predicate.call(context, value, index, list)) results.push(value);
+      if (iterator.call(context, value, index, list)) results.push(value);
     });
     return results;
   };
 
   // Return all the elements for which a truth test fails.
-  _.reject = function(obj, predicate, context) {
+  _.reject = function(obj, iterator, context) {
     return _.filter(obj, function(value, index, list) {
-      return !predicate.call(context, value, index, list);
+      return !iterator.call(context, value, index, list);
     }, context);
   };
 
   // Determine whether all of the elements match a truth test.
   // Delegates to **ECMAScript 5**'s native `every` if available.
   // Aliased as `all`.
-  _.every = _.all = function(obj, predicate, context) {
-    predicate || (predicate = _.identity);
+  _.every = _.all = function(obj, iterator, context) {
+    iterator || (iterator = _.identity);
     var result = true;
     if (obj == null) return result;
-    if (nativeEvery && obj.every === nativeEvery) return obj.every(predicate, context);
+    if (nativeEvery && obj.every === nativeEvery) return obj.every(iterator, context);
     each(obj, function(value, index, list) {
-      if (!(result = result && predicate.call(context, value, index, list))) return breaker;
+      if (!(result = result && iterator.call(context, value, index, list))) return breaker;
     });
     return !!result;
   };
@@ -14562,13 +13992,13 @@ module.exports=require('bPlB9m');
   // Determine if at least one element in the object matches a truth test.
   // Delegates to **ECMAScript 5**'s native `some` if available.
   // Aliased as `any`.
-  var any = _.some = _.any = function(obj, predicate, context) {
-    predicate || (predicate = _.identity);
+  var any = _.some = _.any = function(obj, iterator, context) {
+    iterator || (iterator = _.identity);
     var result = false;
     if (obj == null) return result;
-    if (nativeSome && obj.some === nativeSome) return obj.some(predicate, context);
+    if (nativeSome && obj.some === nativeSome) return obj.some(iterator, context);
     each(obj, function(value, index, list) {
-      if (result || (result = predicate.call(context, value, index, list))) return breaker;
+      if (result || (result = iterator.call(context, value, index, list))) return breaker;
     });
     return !!result;
   };
@@ -14594,19 +14024,25 @@ module.exports=require('bPlB9m');
 
   // Convenience version of a common use case of `map`: fetching a property.
   _.pluck = function(obj, key) {
-    return _.map(obj, _.property(key));
+    return _.map(obj, function(value){ return value[key]; });
   };
 
   // Convenience version of a common use case of `filter`: selecting only objects
   // containing specific `key:value` pairs.
-  _.where = function(obj, attrs) {
-    return _.filter(obj, _.matches(attrs));
+  _.where = function(obj, attrs, first) {
+    if (_.isEmpty(attrs)) return first ? void 0 : [];
+    return _[first ? 'find' : 'filter'](obj, function(value) {
+      for (var key in attrs) {
+        if (attrs[key] !== value[key]) return false;
+      }
+      return true;
+    });
   };
 
   // Convenience version of a common use case of `find`: getting the first object
   // containing specific `key:value` pairs.
   _.findWhere = function(obj, attrs) {
-    return _.find(obj, _.matches(attrs));
+    return _.where(obj, attrs, true);
   };
 
   // Return the maximum element or (element-based computation).
@@ -14616,15 +14052,13 @@ module.exports=require('bPlB9m');
     if (!iterator && _.isArray(obj) && obj[0] === +obj[0] && obj.length < 65535) {
       return Math.max.apply(Math, obj);
     }
-    var result = -Infinity, lastComputed = -Infinity;
+    if (!iterator && _.isEmpty(obj)) return -Infinity;
+    var result = {computed : -Infinity, value: -Infinity};
     each(obj, function(value, index, list) {
       var computed = iterator ? iterator.call(context, value, index, list) : value;
-      if (computed > lastComputed) {
-        result = value;
-        lastComputed = computed;
-      }
+      computed > result.computed && (result = {value : value, computed : computed});
     });
-    return result;
+    return result.value;
   };
 
   // Return the minimum element (or element-based computation).
@@ -14632,18 +14066,16 @@ module.exports=require('bPlB9m');
     if (!iterator && _.isArray(obj) && obj[0] === +obj[0] && obj.length < 65535) {
       return Math.min.apply(Math, obj);
     }
-    var result = Infinity, lastComputed = Infinity;
+    if (!iterator && _.isEmpty(obj)) return Infinity;
+    var result = {computed : Infinity, value: Infinity};
     each(obj, function(value, index, list) {
       var computed = iterator ? iterator.call(context, value, index, list) : value;
-      if (computed < lastComputed) {
-        result = value;
-        lastComputed = computed;
-      }
+      computed < result.computed && (result = {value : value, computed : computed});
     });
-    return result;
+    return result.value;
   };
 
-  // Shuffle an array, using the modern version of the
+  // Shuffle an array, using the modern version of the 
   // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher–Yates_shuffle).
   _.shuffle = function(obj) {
     var rand;
@@ -14657,12 +14089,11 @@ module.exports=require('bPlB9m');
     return shuffled;
   };
 
-  // Sample **n** random values from a collection.
-  // If **n** is not specified, returns a single random element.
+  // Sample **n** random values from an array.
+  // If **n** is not specified, returns a single random element from the array.
   // The internal `guard` argument allows it to work with `map`.
   _.sample = function(obj, n, guard) {
-    if (n == null || guard) {
-      if (obj.length !== +obj.length) obj = _.values(obj);
+    if (arguments.length < 2 || guard) {
       return obj[_.random(obj.length - 1)];
     }
     return _.shuffle(obj).slice(0, Math.max(0, n));
@@ -14670,14 +14101,12 @@ module.exports=require('bPlB9m');
 
   // An internal function to generate lookup iterators.
   var lookupIterator = function(value) {
-    if (value == null) return _.identity;
-    if (_.isFunction(value)) return value;
-    return _.property(value);
+    return _.isFunction(value) ? value : function(obj){ return obj[value]; };
   };
 
   // Sort the object's values by a criterion produced by an iterator.
-  _.sortBy = function(obj, iterator, context) {
-    iterator = lookupIterator(iterator);
+  _.sortBy = function(obj, value, context) {
+    var iterator = lookupIterator(value);
     return _.pluck(_.map(obj, function(value, index, list) {
       return {
         value: value,
@@ -14697,9 +14126,9 @@ module.exports=require('bPlB9m');
 
   // An internal function used for aggregate "group by" operations.
   var group = function(behavior) {
-    return function(obj, iterator, context) {
+    return function(obj, value, context) {
       var result = {};
-      iterator = lookupIterator(iterator);
+      var iterator = value == null ? _.identity : lookupIterator(value);
       each(obj, function(value, index) {
         var key = iterator.call(context, value, index, obj);
         behavior(result, key, value);
@@ -14711,7 +14140,7 @@ module.exports=require('bPlB9m');
   // Groups the object's values by a criterion. Pass either a string attribute
   // to group by, or a function that returns the criterion.
   _.groupBy = group(function(result, key, value) {
-    _.has(result, key) ? result[key].push(value) : result[key] = [value];
+    (_.has(result, key) ? result[key] : (result[key] = [])).push(value);
   });
 
   // Indexes the object's values by a criterion, similar to `groupBy`, but for
@@ -14730,7 +14159,7 @@ module.exports=require('bPlB9m');
   // Use a comparator function to figure out the smallest index at which
   // an object should be inserted so as to maintain order. Uses binary search.
   _.sortedIndex = function(array, obj, iterator, context) {
-    iterator = lookupIterator(iterator);
+    iterator = iterator == null ? _.identity : lookupIterator(iterator);
     var value = iterator.call(context, obj);
     var low = 0, high = array.length;
     while (low < high) {
@@ -14762,9 +14191,7 @@ module.exports=require('bPlB9m');
   // allows it to work with `_.map`.
   _.first = _.head = _.take = function(array, n, guard) {
     if (array == null) return void 0;
-    if ((n == null) || guard) return array[0];
-    if (n < 0) return [];
-    return slice.call(array, 0, n);
+    return (n == null) || guard ? array[0] : slice.call(array, 0, n);
   };
 
   // Returns everything but the last entry of the array. Especially useful on
@@ -14779,8 +14206,11 @@ module.exports=require('bPlB9m');
   // values in the array. The **guard** check allows it to work with `_.map`.
   _.last = function(array, n, guard) {
     if (array == null) return void 0;
-    if ((n == null) || guard) return array[array.length - 1];
-    return slice.call(array, Math.max(array.length - n, 0));
+    if ((n == null) || guard) {
+      return array[array.length - 1];
+    } else {
+      return slice.call(array, Math.max(array.length - n, 0));
+    }
   };
 
   // Returns everything but the first entry of the array. Aliased as `tail` and `drop`.
@@ -14821,16 +14251,6 @@ module.exports=require('bPlB9m');
     return _.difference(array, slice.call(arguments, 1));
   };
 
-  // Split an array into two arrays: one whose elements all satisfy the given
-  // predicate, and one whose elements all do not satisfy the predicate.
-  _.partition = function(array, predicate) {
-    var pass = [], fail = [];
-    each(array, function(elem) {
-      (predicate(elem) ? pass : fail).push(elem);
-    });
-    return [pass, fail];
-  };
-
   // Produce a duplicate-free version of the array. If the array has already
   // been sorted, you have the option of using a faster algorithm.
   // Aliased as `unique`.
@@ -14864,7 +14284,7 @@ module.exports=require('bPlB9m');
     var rest = slice.call(arguments, 1);
     return _.filter(_.uniq(array), function(item) {
       return _.every(rest, function(other) {
-        return _.contains(other, item);
+        return _.indexOf(other, item) >= 0;
       });
     });
   };
@@ -14879,7 +14299,7 @@ module.exports=require('bPlB9m');
   // Zip together multiple lists into a single array -- elements that share
   // an index go together.
   _.zip = function() {
-    var length = _.max(_.pluck(arguments, 'length').concat(0));
+    var length = _.max(_.pluck(arguments, "length").concat(0));
     var results = new Array(length);
     for (var i = 0; i < length; i++) {
       results[i] = _.pluck(arguments, '' + i);
@@ -14985,27 +14405,19 @@ module.exports=require('bPlB9m');
   };
 
   // Partially apply a function by creating a version that has had some of its
-  // arguments pre-filled, without changing its dynamic `this` context. _ acts
-  // as a placeholder, allowing any combination of arguments to be pre-filled.
+  // arguments pre-filled, without changing its dynamic `this` context.
   _.partial = function(func) {
-    var boundArgs = slice.call(arguments, 1);
+    var args = slice.call(arguments, 1);
     return function() {
-      var position = 0;
-      var args = boundArgs.slice();
-      for (var i = 0, length = args.length; i < length; i++) {
-        if (args[i] === _) args[i] = arguments[position++];
-      }
-      while (position < arguments.length) args.push(arguments[position++]);
-      return func.apply(this, args);
+      return func.apply(this, args.concat(slice.call(arguments)));
     };
   };
 
-  // Bind a number of an object's methods to that object. Remaining arguments
-  // are the method names to be bound. Useful for ensuring that all callbacks
-  // defined on an object belong to it.
+  // Bind all of an object's methods to that object. Useful for ensuring that
+  // all callbacks defined on an object belong to it.
   _.bindAll = function(obj) {
     var funcs = slice.call(arguments, 1);
-    if (funcs.length === 0) throw new Error('bindAll must be passed function names');
+    if (funcs.length === 0) throw new Error("bindAll must be passed function names");
     each(funcs, function(f) { obj[f] = _.bind(obj[f], obj); });
     return obj;
   };
@@ -15044,13 +14456,12 @@ module.exports=require('bPlB9m');
     var previous = 0;
     options || (options = {});
     var later = function() {
-      previous = options.leading === false ? 0 : _.now();
+      previous = options.leading === false ? 0 : new Date;
       timeout = null;
       result = func.apply(context, args);
-      context = args = null;
     };
     return function() {
-      var now = _.now();
+      var now = new Date;
       if (!previous && options.leading === false) previous = now;
       var remaining = wait - (now - previous);
       context = this;
@@ -15060,7 +14471,6 @@ module.exports=require('bPlB9m');
         timeout = null;
         previous = now;
         result = func.apply(context, args);
-        context = args = null;
       } else if (!timeout && options.trailing !== false) {
         timeout = setTimeout(later, remaining);
       }
@@ -15074,33 +14484,24 @@ module.exports=require('bPlB9m');
   // leading edge, instead of the trailing.
   _.debounce = function(func, wait, immediate) {
     var timeout, args, context, timestamp, result;
-
-    var later = function() {
-      var last = _.now() - timestamp;
-      if (last < wait) {
-        timeout = setTimeout(later, wait - last);
-      } else {
-        timeout = null;
-        if (!immediate) {
-          result = func.apply(context, args);
-          context = args = null;
-        }
-      }
-    };
-
     return function() {
       context = this;
       args = arguments;
-      timestamp = _.now();
+      timestamp = new Date();
+      var later = function() {
+        var last = (new Date()) - timestamp;
+        if (last < wait) {
+          timeout = setTimeout(later, wait - last);
+        } else {
+          timeout = null;
+          if (!immediate) result = func.apply(context, args);
+        }
+      };
       var callNow = immediate && !timeout;
       if (!timeout) {
         timeout = setTimeout(later, wait);
       }
-      if (callNow) {
-        result = func.apply(context, args);
-        context = args = null;
-      }
-
+      if (callNow) result = func.apply(context, args);
       return result;
     };
   };
@@ -15122,7 +14523,11 @@ module.exports=require('bPlB9m');
   // allowing you to adjust arguments, run code before and after, and
   // conditionally execute the original function.
   _.wrap = function(func, wrapper) {
-    return _.partial(wrapper, func);
+    return function() {
+      var args = [func];
+      push.apply(args, arguments);
+      return wrapper.apply(this, args);
+    };
   };
 
   // Returns a function that is the composition of a list of functions, each
@@ -15152,9 +14557,8 @@ module.exports=require('bPlB9m');
 
   // Retrieve the names of an object's properties.
   // Delegates to **ECMAScript 5**'s native `Object.keys`
-  _.keys = function(obj) {
-    if (!_.isObject(obj)) return [];
-    if (nativeKeys) return nativeKeys(obj);
+  _.keys = nativeKeys || function(obj) {
+    if (obj !== Object(obj)) throw new TypeError('Invalid object');
     var keys = [];
     for (var key in obj) if (_.has(obj, key)) keys.push(key);
     return keys;
@@ -15309,8 +14713,7 @@ module.exports=require('bPlB9m');
     // from different frames are.
     var aCtor = a.constructor, bCtor = b.constructor;
     if (aCtor !== bCtor && !(_.isFunction(aCtor) && (aCtor instanceof aCtor) &&
-                             _.isFunction(bCtor) && (bCtor instanceof bCtor))
-                        && ('constructor' in a && 'constructor' in b)) {
+                             _.isFunction(bCtor) && (bCtor instanceof bCtor))) {
       return false;
     }
     // Add the first object to the stack of traversed objects.
@@ -15450,30 +14853,6 @@ module.exports=require('bPlB9m');
     return value;
   };
 
-  _.constant = function(value) {
-    return function () {
-      return value;
-    };
-  };
-
-  _.property = function(key) {
-    return function(obj) {
-      return obj[key];
-    };
-  };
-
-  // Returns a predicate for checking whether an object has a given set of `key:value` pairs.
-  _.matches = function(attrs) {
-    return function(obj) {
-      if (obj === attrs) return true; //avoid comparing an object to itself.
-      for (var key in attrs) {
-        if (attrs[key] !== obj[key])
-          return false;
-      }
-      return true;
-    }
-  };
-
   // Run a function **n** times.
   _.times = function(n, iterator, context) {
     var accum = Array(Math.max(0, n));
@@ -15489,9 +14868,6 @@ module.exports=require('bPlB9m');
     }
     return min + Math.floor(Math.random() * (max - min + 1));
   };
-
-  // A (possibly faster) way to get the current timestamp as an integer.
-  _.now = Date.now || function() { return new Date().getTime(); };
 
   // List of HTML entities for escaping.
   var entityMap = {
@@ -15689,26 +15065,85 @@ module.exports=require('bPlB9m');
 
   });
 
-  // AMD registration happens at the end for compatibility with AMD loaders
-  // that may not enforce next-turn semantics on modules. Even though general
-  // practice for AMD registration is to be anonymous, underscore registers
-  // as a named module because, like jQuery, it is a base library that is
-  // popular enough to be bundled in a third party lib, but not be part of
-  // an AMD load request. Those cases could generate an error when an
-  // anonymous define() is called outside of a loader request.
-  if (typeof define === 'function' && define.amd) {
-    define('underscore', [], function() {
-      return _;
-    });
-  }
 }).call(this);
 
 ; browserify_shim__define__module__export__(typeof _ != "undefined" ? _ : window._);
 
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
-}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],"underscore":[function(require,module,exports){
-module.exports=require('AwvwkI');
-},{}]},{},[1,"02y4I+",4,"2wk3Ip","bPlB9m","AwvwkI"])
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[])
+},{}]},{},["8gCNUQ","D0JZpm","8gCVIr","kvd4GK","Ewfsiz","P+7e+f"])
+;
+;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var Marionette = require('backbone.marionette'),
+    Controller = require('./controller'),
+    Router = require('./router');
+
+module.exports = App = function App() {};
+
+App.prototype.start = function(){
+    App.core = new Marionette.Application();
+
+    App.core.on("initialize:before", function (options) {
+
+        App.views = {};
+        App.data = {};
+
+        App.core.vent.trigger('app:start');
+    });
+
+    App.core.vent.bind('app:start', function(options){
+        if (Backbone.history) {
+            App.controller = new Controller();
+            App.router = new Router({ controller: App.controller });
+            Backbone.history.start();
+        }
+    });
+
+    App.core.start();
+};
+
+},{"./controller":2,"./router":4}],2:[function(require,module,exports){
+var Marionette = require('backbone.marionette');
+
+module.exports = Controller = Marionette.Controller.extend({
+    initialize: function() {
+        // window.App.views.contactsView = new ContactsView({ collection: window.App.data.contacts });
+        console.log('init');
+    },
+
+    home: function() {
+        // var view = window.App.views.contactsView;
+        // this.renderView(view);
+        // window.App.router.navigate('#');
+        console.log('at home');
+    },
+
+    renderView: function(view) {
+        this.destroyCurrentView(view);
+        $('#content').html(view.render().el);
+    },
+
+    destroyCurrentView: function(view) {
+        if (!_.isUndefined(window.App.views.currentView)) {
+            window.App.views.currentView.close();
+        }
+        window.App.views.currentView = view;
+    }
+});
+
+},{}],3:[function(require,module,exports){
+var App = require('./app');
+var jr = new App();
+jr.start();
+
+},{"./app":1}],4:[function(require,module,exports){
+var Marionette = require('backbone.marionette');
+
+module.exports = Router = Marionette.AppRouter.extend({
+    appRoutes: {
+        ''  : 'home'
+    }
+});
+
+},{}]},{},[3])
+;
