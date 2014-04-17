@@ -68,12 +68,19 @@ module.exports = function(grunt) {
         },
 
         compass: {
-            transpile: {
-                files: {
-                    'build/<%= pkg.name %>.css': [
-                        'client/requires/*/css/*',
-                        'client/styles/main.scss'
-                    ]
+            dev: {
+                options: {
+                  sassDir: 'client/styles',
+                  cssDir: 'build',
+                  outputStyle: 'expanded'
+                }
+            },
+            prod: {
+                options: {
+                  sassDir: 'client/styles',
+                  cssDir: 'build',
+                  outputStyle: 'compressed',
+                  force: true
                 }
             }
         },
@@ -88,7 +95,7 @@ module.exports = function(grunt) {
                     src: 'build/<%= pkg.name %>.js',
                     dest: 'public/js/<%= pkg.name %>.js'
                 }, {
-                    src: 'build/<%= pkg.name %>.css',
+                    src: 'build/main.css',
                     dest: 'public/css/<%= pkg.name %>.css'
                 }, {
                     src: 'client/img/*',
@@ -133,7 +140,7 @@ module.exports = function(grunt) {
             },
             compass: {
                 files: ['client/styles/main.scss'],
-                tasks: ['compass:transpile', 'copy:dev']
+                tasks: ['compass:dev', 'copy:dev']
             }
         },
 
@@ -168,8 +175,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('init:dev', ['clean', 'bower', 'browserify:vendor']);
 
-    grunt.registerTask('build:dev', ['clean:dev', 'browserify:app', 'jshint:dev', 'compass:transpile', 'concat', 'copy:dev']);
-    grunt.registerTask('build:prod', ['clean:prod', 'browserify:vendor', 'browserify:app', 'jshint:all', 'compass:transpile', 'concat', 'cssmin', 'uglify', 'copy:prod']);
+    grunt.registerTask('build:dev', ['clean:dev', 'browserify:app', 'jshint:dev', 'compass:dev', 'concat', 'copy:dev']);
+    grunt.registerTask('build:prod', ['clean:prod', 'browserify:vendor', 'browserify:app', 'jshint:all', 'compass:prod', 'concat', 'cssmin', 'uglify', 'copy:prod']);
 
     grunt.registerTask('heroku', ['init:dev', 'build:dev']);
 
