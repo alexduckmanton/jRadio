@@ -15088,7 +15088,12 @@ App.prototype.start = function(){
         App.views = {};
         App.data = {};
 
-        App.core.vent.trigger('app:start');
+        // load up some initial data:
+        $.getJSON('/api/unearthed')
+            .success(function(data) {
+                App.data.unearthed = data;
+                App.core.vent.trigger('app:start');
+            });
     });
 
     App.core.vent.bind('app:start', function(options){
@@ -15108,7 +15113,7 @@ var Marionette = require('backbone.marionette');
 module.exports = Controller = Marionette.Controller.extend({
     initialize: function() {
         // window.App.views.contactsView = new ContactsView({ collection: window.App.data.contacts });
-        console.log('init');
+        console.log(App.data.unearthed);
     },
 
     home: function() {

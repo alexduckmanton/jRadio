@@ -12,7 +12,12 @@ App.prototype.start = function(){
         App.views = {};
         App.data = {};
 
-        App.core.vent.trigger('app:start');
+        // load up some initial data:
+        $.getJSON('/api/unearthed')
+            .success(function(data) {
+                App.data.unearthed = data;
+                App.core.vent.trigger('app:start');
+            });
     });
 
     App.core.vent.bind('app:start', function(options){

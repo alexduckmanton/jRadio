@@ -3,7 +3,7 @@ var Marionette = require('backbone.marionette');
 module.exports = Controller = Marionette.Controller.extend({
     initialize: function() {
         // window.App.views.contactsView = new ContactsView({ collection: window.App.data.contacts });
-        console.log('init');
+        console.log(App.data.unearthed);
     },
 
     home: function() {
