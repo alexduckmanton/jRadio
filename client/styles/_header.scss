@@ -1,4 +1,5 @@
 header {
+    padding: .4em 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -10,11 +11,14 @@ header {
     background: url(/images/unearthed_bg.jpg) top left no-repeat;
     background-size: cover;
 
+    @include box-sizing(border-box);
+
     h1 {
+        margin: 0;
         font-family: 'Chomp', sans-serif;
+        text-transform: lowercase;
         letter-spacing: 0.15em;
-        font-size: 2.5em;
-        margin: 0.45em 0 0 0;
+        font-size: 2em;
         font-weight: normal;
     }
 }
