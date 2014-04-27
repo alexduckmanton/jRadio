@@ -1,6 +1,8 @@
 var Marionette = require('backbone.marionette'),
     Controller = require('./controller'),
-    Router = require('./router');
+    Router = require('./router'),
+    TrackModel = require('./models/track'),
+    TracksCollection = require('./collections/tracks');
 
 module.exports = App = function App() {};
 
@@ -12,12 +14,13 @@ App.prototype.start = function(){
         App.views = {};
         App.data = {};
 
-        // load up some initial data:
-        $.getJSON('/api/unearthed')
-            .success(function(data) {
-                App.data.unearthed = data;
+        var tracks = new TracksCollection();
+        tracks.fetch({
+            success: function() {
+                App.data.tracks = tracks;
                 App.core.vent.trigger('app:start');
-            });
+            }
+        });
     });
 
     App.core.vent.bind('app:start', function(options){

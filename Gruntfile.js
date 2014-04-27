@@ -90,7 +90,8 @@ module.exports = function(grunt) {
                 options: {
                   sassDir: 'client/styles',
                   cssDir: 'build',
-                  outputStyle: 'expanded'
+                  outputStyle: 'expanded',
+                  raw: "require 'compass-normalize'"
                 }
             },
             prod: {
@@ -98,6 +99,7 @@ module.exports = function(grunt) {
                   sassDir: 'client/styles',
                   cssDir: 'build',
                   outputStyle: 'compressed',
+                  raw: "require 'compass-normalize'",
                   force: true
                 }
             }
@@ -157,7 +159,7 @@ module.exports = function(grunt) {
                 tasks: ['clean:dev', 'browserify:app', 'concat', 'copy:dev']
             },
             compass: {
-                files: ['client/styles/main.scss'],
+                files: ['client/styles/*.scss'],
                 tasks: ['compass:dev', 'copy:dev']
             }
         },

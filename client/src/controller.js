@@ -1,15 +1,16 @@
-var Marionette = require('backbone.marionette');
+var Marionette = require('backbone.marionette'),
+    TracksView = require('./views/tracks');
 
 module.exports = Controller = Marionette.Controller.extend({
     initialize: function() {
-        // window.App.views.contactsView = new ContactsView({ collection: window.App.data.contacts });
-        console.log(App.data.unearthed);
+        window.App.views.tracksView = new TracksView({ collection: window.App.data.tracks });
+        console.log(App.data.tracks);
     },
 
     home: function() {
-        // var view = window.App.views.contactsView;
-        // this.renderView(view);
-        // window.App.router.navigate('#');
+        var view = window.App.views.tracksView;
+        this.renderView(view);
+        window.App.router.navigate('#');
         console.log('at home');
     },
 
