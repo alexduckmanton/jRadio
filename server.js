@@ -8,6 +8,7 @@ var express = require('express'),
     path = require('path'),
     routes = require('./app/routes'),
     exphbs = require('express3-handlebars'),
+    compress = require('compression'),
     app = express();
 
 app.set('port', process.env.PORT || 3300);
@@ -18,6 +19,7 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
+app.use(compress());
 app.use(morgan('dev')); // was logger
 app.use(bodyParser());
 app.use(methodOverride());
