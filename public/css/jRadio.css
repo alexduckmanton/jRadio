@@ -357,8 +357,33 @@ header h1 {
   top: 0.375em;
   left: 0.75em;
 }
+/* line 59, ../client/styles/_track.scss */
+.track.playing a:after {
+  border: none;
+  width: 0.333em;
+  height: 50%;
+  box-shadow: #fff .6667em 0;
+  background: #fff;
+  left: 30%;
+  top: 25%;
+}
 
-/* line 11, ../client/styles/main.scss */
+/* line 1, ../client/styles/_player.scss */
+.player {
+  position: fixed;
+  top: -3em;
+  left: 0;
+  width: 100%;
+  height: 3em;
+  background: #f00;
+  z-index: 999;
+}
+/* line 11, ../client/styles/_player.scss */
+.player.playing {
+  top: 0;
+}
+
+/* line 12, ../client/styles/main.scss */
 body {
   margin-top: 3em;
   padding-top: 1px;

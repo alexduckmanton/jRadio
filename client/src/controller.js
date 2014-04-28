@@ -1,8 +1,14 @@
 var Marionette = require('backbone.marionette'),
-    TracksView = require('./views/tracks');
+    TracksView = require('./views/tracks'),
+    PlayerModel = require('./models/player'),
+    PlayerView = require('./views/player');
 
 module.exports = Controller = Marionette.Controller.extend({
     initialize: function() {
+        // add the player to the page. only needs to be done once on initialization
+        window.App.views.playerView = new PlayerView({ model: new PlayerModel() });
+        $('header').append( window.App.views.playerView.render().el );
+
         window.App.views.tracksView = new TracksView({ collection: window.App.data.tracks });
         console.log(App.data.tracks);
     },

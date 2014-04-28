@@ -54,4 +54,16 @@
             left: 0.75em;
         }
     }
+
+    &.playing {
+        a:after {
+            border: none;
+            width: 0.333em;
+            height: 50%;
+            box-shadow: #fff .6667em 0;
+            background: #fff;
+            left: 30%;
+            top: 25%;
+        }
+    }
 }
