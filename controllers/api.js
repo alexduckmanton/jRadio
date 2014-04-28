@@ -2,7 +2,7 @@ var request = require('request');
 
 module.exports = {
     unearthed: function(req, res) {
-        request("http://www.kimonolabs.com/api/c0g9h0re?apikey=01269db6385d23351cd7f152819e9550", function(err, response, body) {
+        request("http://www.kimonolabs.com/api/4i2op28c?apikey=01269db6385d23351cd7f152819e9550", function(err, response, body) {
             res.json(JSON.parse(body).results.tracks);
         });
     },
