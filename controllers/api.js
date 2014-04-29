@@ -23,5 +23,10 @@ module.exports = {
         }, function(err, response, body) {
             res.json(JSON.parse(body));
         });
+    },
+    unearthed_featured: function(req, res) {
+        request("http://www.kimonolabs.com/api/2kgevg1u?apikey=01269db6385d23351cd7f152819e9550", function(err, response, body) {
+            res.json(JSON.parse(body).results.featured);
+        });
     }
 }
