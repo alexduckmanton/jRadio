@@ -18,14 +18,7 @@ App.prototype.start = function(){
         App.data = {};
 
         App.core.vent.trigger('app:start');
-
-        // var tracks = new TracksCollection();
-        // tracks.fetch({
-        //     url: '/api/unearthed',
-        //     success: function() {
-        //         App.data.tracks = tracks;
-        //     }
-        // });
+        
     });
 
     App.core.vent.bind('app:start', function(options){
