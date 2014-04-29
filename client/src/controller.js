@@ -1,13 +1,25 @@
 var Marionette = require('backbone.marionette'),
     TracksView = require('./views/tracks'),
+    TracksCollection = require('./collections/tracks'),
     PlayerModel = require('./models/player'),
-    PlayerView = require('./views/player');
+    PlayerView = require('./views/player'),
+    NavModel = require('./models/nav'),
+    NavView = require('./views/nav'),
+    NavCollection = require('./collections/nav');
 
 module.exports = Controller = Marionette.Controller.extend({
     initialize: function() {
         // add the player to the page. only needs to be done once on initialization
         window.App.views.playerView = new PlayerView({ model: new PlayerModel() });
         $('header').prepend( window.App.views.playerView.render().el );
+
+        // add footer navigation
+        var nav_collection = new NavCollection([
+            new NavModel({ link: '#unearthed/new', label: 'new' }),
+            new NavModel({ link: '#unearthed/featured', label: 'featured' })
+        ]);
+        window.App.views.navView = new NavView({ collection: nav_collection });
+        $('nav').append( window.App.views.navView.render().el );
     },
 
     unearthed_new: function() {
@@ -54,6 +66,7 @@ module.exports = Controller = Marionette.Controller.extend({
                 url: options.data_url,
                 success: function() {
                     // create the new view with fresh data
+                    console.log(data);
                     var view = new options.ViewType({ collection: data });
 
                     // update App data

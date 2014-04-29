@@ -15077,9 +15077,7 @@ var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? 
 var Marionette = require('backbone.marionette'),
     Helpers = require('./helpers'),
     Controller = require('./controller'),
-    Router = require('./router'),
-    TrackModel = require('./models/track'),
-    TracksCollection = require('./collections/tracks');
+    Router = require('./router');
 
 module.exports = App = function App() {};
 
@@ -15094,7 +15092,7 @@ App.prototype.start = function(){
         App.data = {};
 
         App.core.vent.trigger('app:start');
-        
+
     });
 
     App.core.vent.bind('app:start', function(options){
@@ -15108,7 +15106,15 @@ App.prototype.start = function(){
     App.core.start();
 };
 
-},{"./collections/tracks":2,"./controller":3,"./helpers":4,"./models/track":7,"./router":8}],2:[function(require,module,exports){
+},{"./controller":4,"./helpers":5,"./router":10}],2:[function(require,module,exports){
+var Backbone = require('backbone'),
+    NavModel = require('../models/nav');
+
+module.exports = NavCollection = Backbone.Collection.extend({
+    model:  NavModel
+});
+
+},{"../models/nav":7}],3:[function(require,module,exports){
 var Backbone = require('backbone'),
     TrackModel = require('../models/track');
 
@@ -15116,17 +15122,29 @@ module.exports = TracksCollection = Backbone.Collection.extend({
     model:  TrackModel
 });
 
-},{"../models/track":7}],3:[function(require,module,exports){
+},{"../models/track":9}],4:[function(require,module,exports){
 var Marionette = require('backbone.marionette'),
     TracksView = require('./views/tracks'),
+    TracksCollection = require('./collections/tracks'),
     PlayerModel = require('./models/player'),
-    PlayerView = require('./views/player');
+    PlayerView = require('./views/player'),
+    NavModel = require('./models/nav'),
+    NavView = require('./views/nav'),
+    NavCollection = require('./collections/nav');
 
 module.exports = Controller = Marionette.Controller.extend({
     initialize: function() {
         // add the player to the page. only needs to be done once on initialization
         window.App.views.playerView = new PlayerView({ model: new PlayerModel() });
         $('header').prepend( window.App.views.playerView.render().el );
+
+        // add footer navigation
+        var nav_collection = new NavCollection([
+            new NavModel({ link: '#unearthed/new', label: 'new' }),
+            new NavModel({ link: '#unearthed/featured', label: 'featured' })
+        ]);
+        window.App.views.navView = new NavView({ collection: nav_collection });
+        $('nav').append( window.App.views.navView.render().el );
     },
 
     unearthed_new: function() {
@@ -15173,6 +15191,7 @@ module.exports = Controller = Marionette.Controller.extend({
                 url: options.data_url,
                 success: function() {
                     // create the new view with fresh data
+                    console.log(data);
                     var view = new options.ViewType({ collection: data });
 
                     // update App data
@@ -15198,19 +15217,33 @@ module.exports = Controller = Marionette.Controller.extend({
     }
 });
 
-},{"./models/player":6,"./views/player":9,"./views/tracks":10}],4:[function(require,module,exports){
+},{"./collections/nav":2,"./collections/tracks":3,"./models/nav":7,"./models/player":8,"./views/nav":11,"./views/player":12,"./views/tracks":13}],5:[function(require,module,exports){
 var Handlebars = require('hbsfy/runtime');
 
 module.exports = Helpers = function Helpers() {
     Handlebars.registerHelper('track_info', require('../templates/info.hbs'));
 };
 
-},{"../templates/info.hbs":11,"hbsfy/runtime":21}],5:[function(require,module,exports){
+},{"../templates/info.hbs":14,"hbsfy/runtime":25}],6:[function(require,module,exports){
 var App = require('./app');
 var jr = new App();
 jr.start();
 
-},{"./app":1}],6:[function(require,module,exports){
+},{"./app":1}],7:[function(require,module,exports){
+var Backbone = require('backbone');
+
+module.exports = TrackModel = Backbone.Model.extend({
+    defaults: {
+        active: false,
+        link: '#',
+        label: 'hello'
+    },
+
+    initialize: function() {
+    }
+});
+
+},{}],8:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = PlayerModel = Backbone.Model.extend({
@@ -15250,7 +15283,7 @@ module.exports = PlayerModel = Backbone.Model.extend({
     }
 });
 
-},{}],7:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = TrackModel = Backbone.Model.extend({
@@ -15293,7 +15326,7 @@ module.exports = TrackModel = Backbone.Model.extend({
     }
 });
 
-},{}],8:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 var Marionette = require('backbone.marionette');
 
 module.exports = Router = Marionette.AppRouter.extend({
@@ -15308,7 +15341,32 @@ module.exports = Router = Marionette.AppRouter.extend({
     }
 });
 
-},{}],9:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
+var Marionette = require('backbone.marionette');
+
+var itemView = Marionette.ItemView.extend({
+    tagName: 'li',
+    template: require('../../templates/nav.hbs'),
+
+    initialize: function() {
+        this.listenTo(this.model, 'change', this.render);
+    },
+
+    events: {
+
+    }
+});
+
+module.exports = CollectionView = Marionette.CollectionView.extend({
+    tagName: 'ul',
+    
+    initialize: function() {
+        // this.listenTo(this.collection, 'change', this.render);
+    },
+    itemView: itemView
+});
+
+},{"../../templates/nav.hbs":15}],12:[function(require,module,exports){
 var Marionette = require('backbone.marionette');
 
 module.exports = itemView = Marionette.ItemView.extend({
@@ -15340,7 +15398,7 @@ module.exports = itemView = Marionette.ItemView.extend({
     }
 });
 
-},{"../../templates/player.hbs":12}],10:[function(require,module,exports){
+},{"../../templates/player.hbs":16}],13:[function(require,module,exports){
 var Marionette = require('backbone.marionette');
 
 var itemView = Marionette.ItemView.extend({
@@ -15415,7 +15473,7 @@ module.exports = CollectionView = Marionette.CollectionView.extend({
     }
 });
 
-},{"../../templates/track.hbs":13}],11:[function(require,module,exports){
+},{"../../templates/track.hbs":17}],14:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -15432,7 +15490,28 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   return buffer;
   });
 
-},{"hbsfy/runtime":21}],12:[function(require,module,exports){
+},{"hbsfy/runtime":25}],15:[function(require,module,exports){
+// hbsfy compiled Handlebars template
+var Handlebars = require('hbsfy/runtime');
+module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += "<a href=\"";
+  if (helper = helpers.link) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.link); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\">";
+  if (helper = helpers.label) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.label); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</a>\n";
+  return buffer;
+  });
+
+},{"hbsfy/runtime":25}],16:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -15450,7 +15529,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   return buffer;
   });
 
-},{"hbsfy/runtime":21}],13:[function(require,module,exports){
+},{"hbsfy/runtime":25}],17:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -15471,7 +15550,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   return buffer;
   });
 
-},{"hbsfy/runtime":21}],14:[function(require,module,exports){
+},{"hbsfy/runtime":25}],18:[function(require,module,exports){
 "use strict";
 /*globals Handlebars: true */
 var base = require("./handlebars/base");
@@ -15504,7 +15583,7 @@ var Handlebars = create();
 Handlebars.create = create;
 
 exports["default"] = Handlebars;
-},{"./handlebars/base":15,"./handlebars/exception":16,"./handlebars/runtime":17,"./handlebars/safe-string":18,"./handlebars/utils":19}],15:[function(require,module,exports){
+},{"./handlebars/base":19,"./handlebars/exception":20,"./handlebars/runtime":21,"./handlebars/safe-string":22,"./handlebars/utils":23}],19:[function(require,module,exports){
 "use strict";
 var Utils = require("./utils");
 var Exception = require("./exception")["default"];
@@ -15685,7 +15764,7 @@ exports.log = log;var createFrame = function(object) {
   return obj;
 };
 exports.createFrame = createFrame;
-},{"./exception":16,"./utils":19}],16:[function(require,module,exports){
+},{"./exception":20,"./utils":23}],20:[function(require,module,exports){
 "use strict";
 
 var errorProps = ['description', 'fileName', 'lineNumber', 'message', 'name', 'number', 'stack'];
@@ -15714,7 +15793,7 @@ function Exception(message, node) {
 Exception.prototype = new Error();
 
 exports["default"] = Exception;
-},{}],17:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 "use strict";
 var Utils = require("./utils");
 var Exception = require("./exception")["default"];
@@ -15852,7 +15931,7 @@ exports.program = program;function invokePartial(partial, name, context, helpers
 exports.invokePartial = invokePartial;function noop() { return ""; }
 
 exports.noop = noop;
-},{"./base":15,"./exception":16,"./utils":19}],18:[function(require,module,exports){
+},{"./base":19,"./exception":20,"./utils":23}],22:[function(require,module,exports){
 "use strict";
 // Build out our basic SafeString type
 function SafeString(string) {
@@ -15864,7 +15943,7 @@ SafeString.prototype.toString = function() {
 };
 
 exports["default"] = SafeString;
-},{}],19:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 "use strict";
 /*jshint -W004 */
 var SafeString = require("./safe-string")["default"];
@@ -15941,13 +16020,13 @@ exports.escapeExpression = escapeExpression;function isEmpty(value) {
 }
 
 exports.isEmpty = isEmpty;
-},{"./safe-string":18}],20:[function(require,module,exports){
+},{"./safe-string":22}],24:[function(require,module,exports){
 // Create a simple path alias to allow browserify to resolve
 // the runtime on a supported path.
 module.exports = require('./dist/cjs/handlebars.runtime');
 
-},{"./dist/cjs/handlebars.runtime":14}],21:[function(require,module,exports){
+},{"./dist/cjs/handlebars.runtime":18}],25:[function(require,module,exports){
 module.exports = require("handlebars/runtime")["default"];
 
-},{"handlebars/runtime":20}]},{},[5])
+},{"handlebars/runtime":24}]},{},[6])
 ;

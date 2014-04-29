@@ -410,12 +410,45 @@ header .playing + h1 {
   height: inherit;
 }
 
-/* line 60, ../client/styles/_theme_mixins.scss */
+/* line 1, ../client/styles/_nav.scss */
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: top left no-repeat;
+  background-size: cover;
+}
+/* line 9, ../client/styles/_nav.scss */
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+/* line 22, ../client/styles/_nav.scss */
+nav li {
+  width: 100%;
+}
+/* line 26, ../client/styles/_nav.scss */
+nav a {
+  padding: 1em 0;
+  width: 100%;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+}
+
+/* line 69, ../client/styles/_theme_mixins.scss */
 #content {
   background: #e6e6e6;
 }
 
-/* line 64, ../client/styles/_theme_mixins.scss */
+/* line 73, ../client/styles/_theme_mixins.scss */
 header {
   color: white;
   background-color: #4a7f2b;
@@ -447,7 +480,7 @@ header .player.playing a:after {
   background: white;
 }
 
-/* line 73, ../client/styles/_theme_mixins.scss */
+/* line 82, ../client/styles/_theme_mixins.scss */
 .track {
   background: white;
   box-shadow: rgba(0, 0, 0, 0.05) 0 1px 0;
@@ -494,7 +527,17 @@ header .player.playing a:after {
   background-color: #fff59d;
 }
 
-/* line 14, ../client/styles/main.scss */
+/* line 99, ../client/styles/_theme_mixins.scss */
+nav {
+  background-color: #4a7f2b;
+  background-image: url(/images/unearthed_bg.jpg);
+}
+/* line 54, ../client/styles/_theme_mixins.scss */
+nav a {
+  color: white;
+}
+
+/* line 16, ../client/styles/main.scss */
 body {
   margin-top: 3.25em;
 }

@@ -1,9 +1,7 @@
 var Marionette = require('backbone.marionette'),
     Helpers = require('./helpers'),
     Controller = require('./controller'),
-    Router = require('./router'),
-    TrackModel = require('./models/track'),
-    TracksCollection = require('./collections/tracks');
+    Router = require('./router');
 
 module.exports = App = function App() {};
 
@@ -18,7 +16,7 @@ App.prototype.start = function(){
         App.data = {};
 
         App.core.vent.trigger('app:start');
-        
+
     });
 
     App.core.vent.bind('app:start', function(options){

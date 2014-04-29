@@ -1,0 +1,33 @@
+nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: top left no-repeat;
+    background-size: cover;
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+
+    }
+
+    li {
+        width: 100%;
+    }
+
+    a {
+        padding: 1em 0;
+        width: 100%;
+        text-align: center;
+        display: block;
+        text-decoration: none;
+    }
+}

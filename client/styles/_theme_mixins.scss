@@ -47,6 +47,15 @@
     }
 }
 
+@mixin nav($bg, $img, $color) {
+    background-color: $bg;
+    background-image: url(/images/#{$img});
+
+    a {
+        color: $color;
+    }
+}
+
 @mixin theme(
         $header_text: #fff,
         $header_bg: #000,
@@ -86,4 +95,12 @@
         #7fd1e5,
         #fff59d
     );
+
+    nav {
+        @include nav(
+            $header_bg,
+            $header_img,
+            $header_text
+        );
+    }
 }
