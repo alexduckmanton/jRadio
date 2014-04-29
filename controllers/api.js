@@ -28,5 +28,14 @@ module.exports = {
         request("http://www.kimonolabs.com/api/2kgevg1u?apikey=01269db6385d23351cd7f152819e9550", function(err, response, body) {
             res.json(JSON.parse(body).results.featured);
         });
-    }
+    },
+    unearthed_recent: function(req, res) {
+        var count = req.query.count || 10;
+        request({
+            uri: "https://triplejgizmo.abc.net.au/unearthed/pav-proxy/unearthed-tracks.php",
+            qs: { 'count': count }
+        }, function(err, response, body) {
+            res.json(JSON.parse(body));
+        });
+    },
 }

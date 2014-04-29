@@ -7,4 +7,5 @@ module.exports.initialize = function(app) {
     app.get('/api/unearthed/artist', api.unearthed_artist);
     app.get('/api/unearthed/track', api.unearthed_track);
     app.get('/api/unearthed/featured', api.unearthed_featured);
+    app.get('/api/unearthed/recent', api.unearthed_recent);
 };
