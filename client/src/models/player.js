@@ -12,13 +12,21 @@ module.exports = PlayerModel = Backbone.Model.extend({
         this.listenTo(App.core.vent, 'track:play', this.play);
     },
 
-    change_track: function(src) {
-        if ( this.get('track').getAttribute('src') === src ) return;
+    change_track: function(track) {
+        // don't update if it's the same track
+        if ( this.get('track').getAttribute('src') === track.src ) return;
 
-        this.get('track').setAttribute('src', src);
+        // mp3 source for the track
+        this.get('track').setAttribute('src', track.src);
+
+        // set info to be displayed in the player
+        this.set({
+            'title': track.title,
+            'artist': track.artist
+        });
     },
 
-    play: function(src) {
+    play: function() {
         this.get('track').play();
         this.set('is_playing', true);
     },

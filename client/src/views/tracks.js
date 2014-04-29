@@ -39,8 +39,7 @@ var itemView = Marionette.ItemView.extend({
     },
 
     play: function() {
-        var src = this.model.get('src');
-        App.core.vent.trigger('track:play', src);
+        App.core.vent.trigger('track:play', this.model.attributes);
     },
 
     stop: function() {

@@ -5,10 +5,7 @@
     .track:nth-child(4n) .img_container:before { background-color: $color4 }
 }
 
-@mixin track_theme($primary, $secondary, $bg) {
-    background: $bg;
-    box-shadow: rgba(#000,0.05) 0 1px 0;
-
+@mixin track_theme($primary, $secondary) {
     h3 {
         color: $primary;
     }
@@ -41,6 +38,13 @@
     h1 {
         font-family: $font;
     }
+
+    .player {
+        @include track_theme(
+            $primary: $color,
+            $secondary: rgba($color, .75)
+        );
+    }
 }
 
 @mixin theme(
@@ -67,10 +71,12 @@
     }
 
     .track {
+        background: $bg;
+        box-shadow: rgba(#000,0.05) 0 1px 0;
+
         @include track_theme(
             $primary,
-            $secondary,
-            $bg
+            $secondary
         );
     }
 

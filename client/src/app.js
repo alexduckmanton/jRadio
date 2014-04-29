@@ -1,4 +1,5 @@
 var Marionette = require('backbone.marionette'),
+    Helpers = require('./helpers'),
     Controller = require('./controller'),
     Router = require('./router'),
     TrackModel = require('./models/track'),
@@ -8,6 +9,8 @@ module.exports = App = function App() {};
 
 App.prototype.start = function(){
     App.core = new Marionette.Application();
+
+    App.helpers = new Helpers();
 
     App.core.on("initialize:before", function (options) {
 

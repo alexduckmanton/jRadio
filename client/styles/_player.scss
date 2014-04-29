@@ -1,18 +1,13 @@
 .player {
-    position: fixed;
-    top: - $header_height;
-    left: 0;
+    position: relative;
     width: 100%;
-    height: $header_height;
-    background: #f00;
 
-    z-index: 999;
+    // hide
+    top: - $header_height;
+    height: 0;
 
     &.playing {
         top: 0;
-    }
-
-    iframe {
-        // display: none;
+        height: inherit;
     }
 }

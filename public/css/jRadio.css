@@ -278,13 +278,13 @@ th {
 
 /* line 1, ../client/styles/_header.scss */
 header {
-  padding: .4em 0;
+  padding: 0;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
   width: 100%;
-  height: 3em;
+  min-height: 3.25em;
   text-align: center;
   background: top left no-repeat;
   background-size: cover;
@@ -294,11 +294,15 @@ header {
 }
 /* line 15, ../client/styles/_header.scss */
 header h1 {
-  margin: 0;
+  margin: .25em 0 0 0;
   text-transform: lowercase;
   letter-spacing: 0.15em;
   font-size: 2em;
   font-weight: normal;
+}
+/* line 23, ../client/styles/_header.scss */
+header .playing + h1 {
+  display: none;
 }
 
 /* line 1, ../client/styles/_track.scss */
@@ -322,35 +326,44 @@ header h1 {
   position: absolute;
   width: 100%;
   height: 100%;
-  opacity: 0.3;
+  opacity: 0.2;
 }
 /* line 22, ../client/styles/_track.scss */
 .track img {
   width: 100%;
   display: block;
 }
-/* line 27, ../client/styles/_track.scss */
-.track .info {
-  padding: .5em;
+
+/* line 28, ../client/styles/_track.scss */
+.track_info {
+  padding: 0 .5em;
   padding-left: 3.5em;
   position: relative;
-  bottom: 0;
-  left: 0;
   width: 100%;
+  min-height: 3.25em;
+  text-align: left;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 42, ../client/styles/_track.scss */
-.track h3 {
-  margin: 0 0 .107em 0;
+/* line 38, ../client/styles/_track.scss */
+.track_info .text {
+  padding: 2% 0;
 }
-/* line 46, ../client/styles/_track.scss */
-.track h4 {
+/* line 42, ../client/styles/_track.scss */
+.track_info h3, .track_info h4 {
   margin: 0;
 }
+/* line 46, ../client/styles/_track.scss */
+.track_info h3 {
+  line-height: 1.3em;
+}
 /* line 50, ../client/styles/_track.scss */
-.track a {
+.track_info h4 {
+  line-height: 1em;
+}
+/* line 54, ../client/styles/_track.scss */
+.track_info a {
   border: 0.15em solid;
   border-radius: 100%;
   color: rgba(0, 0, 0, 0);
@@ -360,8 +373,8 @@ header h1 {
   width: 2.25em;
   height: 2.25em;
 }
-/* line 61, ../client/styles/_track.scss */
-.track a:after {
+/* line 65, ../client/styles/_track.scss */
+.track_info a:after {
   content: '';
   position: absolute;
   border: .75em solid transparent;
@@ -369,12 +382,14 @@ header h1 {
   top: 0.375em;
   left: 0.75em;
 }
-/* line 72, ../client/styles/_track.scss */
-.track.loading a {
+
+/* line 77, ../client/styles/_track.scss */
+.loading .track_info a {
   opacity: .5;
 }
-/* line 78, ../client/styles/_track.scss */
-.track.playing a:after {
+
+/* line 83, ../client/styles/_track.scss */
+.playing .track_info a:after {
   border: none;
   width: 0.333em;
   height: 50%;
@@ -384,57 +399,76 @@ header h1 {
 
 /* line 1, ../client/styles/_player.scss */
 .player {
-  position: fixed;
-  top: -3em;
-  left: 0;
+  position: relative;
   width: 100%;
-  height: 3em;
-  background: #f00;
-  z-index: 999;
+  top: -3.25em;
+  height: 0;
 }
-/* line 11, ../client/styles/_player.scss */
+/* line 9, ../client/styles/_player.scss */
 .player.playing {
   top: 0;
+  height: inherit;
 }
 
-/* line 56, ../client/styles/_theme_mixins.scss */
+/* line 60, ../client/styles/_theme_mixins.scss */
 #content {
   background: #e6e6e6;
 }
 
-/* line 60, ../client/styles/_theme_mixins.scss */
+/* line 64, ../client/styles/_theme_mixins.scss */
 header {
   color: white;
   background-color: #4a7f2b;
   background-image: url(/images/unearthed_bg.jpg);
 }
-/* line 41, ../client/styles/_theme_mixins.scss */
+/* line 38, ../client/styles/_theme_mixins.scss */
 header h1 {
   font-family: "Chomp";
 }
+/* line 9, ../client/styles/_theme_mixins.scss */
+header .player h3 {
+  color: white;
+}
+/* line 13, ../client/styles/_theme_mixins.scss */
+header .player h4 {
+  color: rgba(255, 255, 255, 0.75);
+}
+/* line 17, ../client/styles/_theme_mixins.scss */
+header .player a {
+  border-color: white;
+}
+/* line 20, ../client/styles/_theme_mixins.scss */
+header .player a:after {
+  border-left-color: white;
+}
+/* line 26, ../client/styles/_theme_mixins.scss */
+header .player.playing a:after {
+  box-shadow: white 0.6667em 0;
+  background: white;
+}
 
-/* line 69, ../client/styles/_theme_mixins.scss */
+/* line 73, ../client/styles/_theme_mixins.scss */
 .track {
   background: white;
   box-shadow: rgba(0, 0, 0, 0.05) 0 1px 0;
 }
-/* line 12, ../client/styles/_theme_mixins.scss */
+/* line 9, ../client/styles/_theme_mixins.scss */
 .track h3 {
   color: #4ba119;
 }
-/* line 16, ../client/styles/_theme_mixins.scss */
+/* line 13, ../client/styles/_theme_mixins.scss */
 .track h4 {
   color: #e47f90;
 }
-/* line 20, ../client/styles/_theme_mixins.scss */
+/* line 17, ../client/styles/_theme_mixins.scss */
 .track a {
   border-color: #4ba119;
 }
-/* line 23, ../client/styles/_theme_mixins.scss */
+/* line 20, ../client/styles/_theme_mixins.scss */
 .track a:after {
   border-left-color: #4ba119;
 }
-/* line 29, ../client/styles/_theme_mixins.scss */
+/* line 26, ../client/styles/_theme_mixins.scss */
 .track.playing a:after {
   box-shadow: #4ba119 0.6667em 0;
   background: #4ba119;
@@ -462,5 +496,5 @@ header h1 {
 
 /* line 14, ../client/styles/main.scss */
 body {
-  margin-top: 3em;
+  margin-top: 3.25em;
 }

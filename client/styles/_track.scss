@@ -15,7 +15,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            opacity: 0.3;
+            opacity: 0.2;
         }
     }
 
@@ -23,28 +23,32 @@
         width: 100%;
         display: block;
     }
+}
 
-    .info {
-        padding: .5em;
-        padding-left: 3.5em;
-        position: relative;
-        bottom: 0;
-        left: 0;
-        width: 100%;
+.track_info {
+    padding: 0 .5em;
+    padding-left: 3.5em;
+    position: relative;
+    width: 100%;
+    min-height: $header_height;
+    text-align: left;
 
-        @include box-sizing(border-box);
+    @include box-sizing(border-box);
+
+    .text {
+        padding: 2% 0;
     }
 
     h3, h4 {
-
+        margin: 0;
     }
 
     h3 {
-        margin: 0 0 .107em 0;
+        line-height: 1.3em;
     }
 
     h4 {
-        margin: 0;
+        line-height: 1em;
     }
 
     a {
@@ -67,20 +71,20 @@
             left: 0.75em;
         }
     }
+}
 
-    &.loading {
-        a {
-            opacity: .5;
-        }
+.loading .track_info {
+    a {
+        opacity: .5;
     }
+}
 
-    &.playing {
-        a:after {
-            border: none;
-            width: 0.333em;
-            height: 50%;
-            left: 30%;
-            top: 25%;
-        }
+.playing .track_info {
+    a:after {
+        border: none;
+        width: 0.333em;
+        height: 50%;
+        left: 30%;
+        top: 25%;
     }
 }

@@ -15075,6 +15075,7 @@ var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? 
 ;
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var Marionette = require('backbone.marionette'),
+    Helpers = require('./helpers'),
     Controller = require('./controller'),
     Router = require('./router'),
     TrackModel = require('./models/track'),
@@ -15084,6 +15085,8 @@ module.exports = App = function App() {};
 
 App.prototype.start = function(){
     App.core = new Marionette.Application();
+
+    App.helpers = new Helpers();
 
     App.core.on("initialize:before", function (options) {
 
@@ -15110,7 +15113,7 @@ App.prototype.start = function(){
     App.core.start();
 };
 
-},{"./collections/tracks":2,"./controller":3,"./models/track":6,"./router":7}],2:[function(require,module,exports){
+},{"./collections/tracks":2,"./controller":3,"./helpers":4,"./models/track":7,"./router":8}],2:[function(require,module,exports){
 var Backbone = require('backbone'),
     TrackModel = require('../models/track');
 
@@ -15119,7 +15122,7 @@ module.exports = TracksCollection = Backbone.Collection.extend({
     url: '/api/unearthed'
 });
 
-},{"../models/track":6}],3:[function(require,module,exports){
+},{"../models/track":7}],3:[function(require,module,exports){
 var Marionette = require('backbone.marionette'),
     TracksView = require('./views/tracks'),
     PlayerModel = require('./models/player'),
@@ -15129,7 +15132,7 @@ module.exports = Controller = Marionette.Controller.extend({
     initialize: function() {
         // add the player to the page. only needs to be done once on initialization
         window.App.views.playerView = new PlayerView({ model: new PlayerModel() });
-        $('header').append( window.App.views.playerView.render().el );
+        $('header').prepend( window.App.views.playerView.render().el );
 
         window.App.views.tracksView = new TracksView({ collection: window.App.data.tracks });
         console.log(App.data.tracks);
@@ -15155,12 +15158,19 @@ module.exports = Controller = Marionette.Controller.extend({
     }
 });
 
-},{"./models/player":5,"./views/player":8,"./views/tracks":9}],4:[function(require,module,exports){
+},{"./models/player":6,"./views/player":9,"./views/tracks":10}],4:[function(require,module,exports){
+var Handlebars = require('hbsfy/runtime');
+
+module.exports = Helpers = function Helpers() {
+    Handlebars.registerHelper('track_info', require('../templates/info.hbs'));
+};
+
+},{"../templates/info.hbs":11,"hbsfy/runtime":21}],5:[function(require,module,exports){
 var App = require('./app');
 var jr = new App();
 jr.start();
 
-},{"./app":1}],5:[function(require,module,exports){
+},{"./app":1}],6:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = PlayerModel = Backbone.Model.extend({
@@ -15175,13 +15185,21 @@ module.exports = PlayerModel = Backbone.Model.extend({
         this.listenTo(App.core.vent, 'track:play', this.play);
     },
 
-    change_track: function(src) {
-        if ( this.get('track').getAttribute('src') === src ) return;
+    change_track: function(track) {
+        // don't update if it's the same track
+        if ( this.get('track').getAttribute('src') === track.src ) return;
 
-        this.get('track').setAttribute('src', src);
+        // mp3 source for the track
+        this.get('track').setAttribute('src', track.src);
+
+        // set info to be displayed in the player
+        this.set({
+            'title': track.title,
+            'artist': track.artist
+        });
     },
 
-    play: function(src) {
+    play: function() {
         this.get('track').play();
         this.set('is_playing', true);
     },
@@ -15192,7 +15210,7 @@ module.exports = PlayerModel = Backbone.Model.extend({
     }
 });
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = TrackModel = Backbone.Model.extend({
@@ -15237,7 +15255,7 @@ module.exports = TrackModel = Backbone.Model.extend({
     }
 });
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 var Marionette = require('backbone.marionette');
 
 module.exports = Router = Marionette.AppRouter.extend({
@@ -15246,7 +15264,7 @@ module.exports = Router = Marionette.AppRouter.extend({
     }
 });
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 var Marionette = require('backbone.marionette');
 
 module.exports = itemView = Marionette.ItemView.extend({
@@ -15278,7 +15296,7 @@ module.exports = itemView = Marionette.ItemView.extend({
     }
 });
 
-},{"../../templates/player.hbs":10}],9:[function(require,module,exports){
+},{"../../templates/player.hbs":12}],10:[function(require,module,exports){
 var Marionette = require('backbone.marionette');
 
 var itemView = Marionette.ItemView.extend({
@@ -15320,8 +15338,7 @@ var itemView = Marionette.ItemView.extend({
     },
 
     play: function() {
-        var src = this.model.get('src');
-        App.core.vent.trigger('track:play', src);
+        App.core.vent.trigger('track:play', this.model.attributes);
     },
 
     stop: function() {
@@ -15354,40 +15371,63 @@ module.exports = CollectionView = Marionette.CollectionView.extend({
     }
 });
 
-},{"../../templates/track.hbs":11}],10:[function(require,module,exports){
+},{"../../templates/track.hbs":13}],11:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  
+  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  return "<p>PLAYING STUFF</p>\n";
+  buffer += "<div class=\"track_info\">\n    <div class=\"text\">\n        <h3 class=\"title\">"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.title)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</h3>\n        <h4 class=\"artist\">"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.artist)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</h4>\n    </div>\n    <a href=\"javascript:void(0)\" target=\"_blank\">Play</a>\n</div>\n";
+  return buffer;
   });
 
-},{"hbsfy/runtime":19}],11:[function(require,module,exports){
+},{"hbsfy/runtime":21}],12:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
+  var buffer = "", stack1, helper, options, helperMissing=helpers.helperMissing;
+
+
+  stack1 = (helper = helpers.track_info || (depth0 && depth0.track_info),options={hash:{
+    'title': ((depth0 && depth0.title)),
+    'artist': (((stack1 = (depth0 && depth0.artist)),stack1 == null || stack1 === false ? stack1 : stack1.text))
+  },data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "track_info", options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n";
+  return buffer;
+  });
+
+},{"hbsfy/runtime":21}],13:[function(require,module,exports){
+// hbsfy compiled Handlebars template
+var Handlebars = require('hbsfy/runtime');
+module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, options, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
 
 
   buffer += "<div class=\"img_container\"><img src=\""
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.image)),stack1 == null || stack1 === false ? stack1 : stack1.src)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" alt=\"image.alt\" /></div>\n<div class=\"info\">\n    <h3 class=\"title\">";
-  if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "</h3>\n    <h4 class=\"artist\">"
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.artist)),stack1 == null || stack1 === false ? stack1 : stack1.text)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</h4>\n    <a href=\"javascript:void(0)\" target=\"_blank\">Play</a>\n</div>\n";
+    + "\" alt=\"image.alt\" /></div>\n";
+  stack1 = (helper = helpers.track_info || (depth0 && depth0.track_info),options={hash:{
+    'title': ((depth0 && depth0.title)),
+    'artist': (((stack1 = (depth0 && depth0.artist)),stack1 == null || stack1 === false ? stack1 : stack1.text))
+  },data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "track_info", options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n";
   return buffer;
   });
 
-},{"hbsfy/runtime":19}],12:[function(require,module,exports){
+},{"hbsfy/runtime":21}],14:[function(require,module,exports){
 "use strict";
 /*globals Handlebars: true */
 var base = require("./handlebars/base");
@@ -15420,7 +15460,7 @@ var Handlebars = create();
 Handlebars.create = create;
 
 exports["default"] = Handlebars;
-},{"./handlebars/base":13,"./handlebars/exception":14,"./handlebars/runtime":15,"./handlebars/safe-string":16,"./handlebars/utils":17}],13:[function(require,module,exports){
+},{"./handlebars/base":15,"./handlebars/exception":16,"./handlebars/runtime":17,"./handlebars/safe-string":18,"./handlebars/utils":19}],15:[function(require,module,exports){
 "use strict";
 var Utils = require("./utils");
 var Exception = require("./exception")["default"];
@@ -15601,7 +15641,7 @@ exports.log = log;var createFrame = function(object) {
   return obj;
 };
 exports.createFrame = createFrame;
-},{"./exception":14,"./utils":17}],14:[function(require,module,exports){
+},{"./exception":16,"./utils":19}],16:[function(require,module,exports){
 "use strict";
 
 var errorProps = ['description', 'fileName', 'lineNumber', 'message', 'name', 'number', 'stack'];
@@ -15630,7 +15670,7 @@ function Exception(message, node) {
 Exception.prototype = new Error();
 
 exports["default"] = Exception;
-},{}],15:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 "use strict";
 var Utils = require("./utils");
 var Exception = require("./exception")["default"];
@@ -15768,7 +15808,7 @@ exports.program = program;function invokePartial(partial, name, context, helpers
 exports.invokePartial = invokePartial;function noop() { return ""; }
 
 exports.noop = noop;
-},{"./base":13,"./exception":14,"./utils":17}],16:[function(require,module,exports){
+},{"./base":15,"./exception":16,"./utils":19}],18:[function(require,module,exports){
 "use strict";
 // Build out our basic SafeString type
 function SafeString(string) {
@@ -15780,7 +15820,7 @@ SafeString.prototype.toString = function() {
 };
 
 exports["default"] = SafeString;
-},{}],17:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 "use strict";
 /*jshint -W004 */
 var SafeString = require("./safe-string")["default"];
@@ -15857,13 +15897,13 @@ exports.escapeExpression = escapeExpression;function isEmpty(value) {
 }
 
 exports.isEmpty = isEmpty;
-},{"./safe-string":16}],18:[function(require,module,exports){
+},{"./safe-string":18}],20:[function(require,module,exports){
 // Create a simple path alias to allow browserify to resolve
 // the runtime on a supported path.
 module.exports = require('./dist/cjs/handlebars.runtime');
 
-},{"./dist/cjs/handlebars.runtime":12}],19:[function(require,module,exports){
+},{"./dist/cjs/handlebars.runtime":14}],21:[function(require,module,exports){
 module.exports = require("handlebars/runtime")["default"];
 
-},{"handlebars/runtime":18}]},{},[4])
+},{"handlebars/runtime":20}]},{},[5])
 ;
