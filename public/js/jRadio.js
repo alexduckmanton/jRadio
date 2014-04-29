@@ -15093,13 +15093,15 @@ App.prototype.start = function(){
         App.views = {};
         App.data = {};
 
-        var tracks = new TracksCollection();
-        tracks.fetch({
-            success: function() {
-                App.data.tracks = tracks;
-                App.core.vent.trigger('app:start');
-            }
-        });
+        App.core.vent.trigger('app:start');
+
+        // var tracks = new TracksCollection();
+        // tracks.fetch({
+        //     url: '/api/unearthed',
+        //     success: function() {
+        //         App.data.tracks = tracks;
+        //     }
+        // });
     });
 
     App.core.vent.bind('app:start', function(options){
@@ -15118,8 +15120,7 @@ var Backbone = require('backbone'),
     TrackModel = require('../models/track');
 
 module.exports = TracksCollection = Backbone.Collection.extend({
-    model:  TrackModel,
-    url: '/api/unearthed'
+    model:  TrackModel
 });
 
 },{"../models/track":7}],3:[function(require,module,exports){
@@ -15133,17 +15134,49 @@ module.exports = Controller = Marionette.Controller.extend({
         // add the player to the page. only needs to be done once on initialization
         window.App.views.playerView = new PlayerView({ model: new PlayerModel() });
         $('header').prepend( window.App.views.playerView.render().el );
-
-        window.App.views.tracksView = new TracksView({ collection: window.App.data.tracks });
-        console.log(App.data.tracks);
     },
 
-    home: function() {
-        var view = window.App.views.tracksView;
-        this.renderView(view);
-        window.App.router.navigate('#');
-        console.log('at home');
+    unearthed_new: function() {
+        var self = this,
+            tracks = new TracksCollection();
+
+        window.App.router.navigate('unearthed/new');
+
+        tracks.fetch({
+            url: '/api/unearthed/new',
+            success: function() {
+                App.data.tracks = tracks;
+                window.App.views.tracksView = new TracksView({ collection: window.App.data.tracks });
+                var view = window.App.views.tracksView;
+                self.renderView(view);
+            }
+        });
     },
+
+    unearthed_featured: function() {
+        var self = this,
+            tracks = new TracksCollection();
+
+        window.App.router.navigate('unearthed/featured');
+
+        tracks.fetch({
+            url: '/api/unearthed/featured',
+            success: function() {
+                App.data.featured = tracks;
+                window.App.views.featuredView = new TracksView({ collection: window.App.data.featured });
+                var view = window.App.views.featuredView;
+                self.renderView(view);
+            }
+        });
+    },
+
+    // unearthed_featured: function() {
+    //     window.App.views.featuredView = new TracksView({ collection: window.App.data.tracks });
+    //
+    //     var view = window.App.views.featuredView;
+    //     this.renderView(view);
+    //     window.App.router.navigate('unearthed/new');
+    // },
 
     renderView: function(view) {
         this.destroyCurrentView(view);
@@ -15214,8 +15247,6 @@ module.exports = PlayerModel = Backbone.Model.extend({
 var Backbone = require('backbone');
 
 module.exports = TrackModel = Backbone.Model.extend({
-    urlRoot: '/api/unearthed',
-
     defaults: {
         is_playing: false,
         is_loading: true
@@ -15260,7 +15291,13 @@ var Marionette = require('backbone.marionette');
 
 module.exports = Router = Marionette.AppRouter.extend({
     appRoutes: {
-        ''  : 'home'
+        '': 'unearthed_new',
+        'unearthed': 'unearthed_new',
+        // 'unearthed/': 'unearthed_new',
+        'unearthed/new': 'unearthed_new',
+        // 'unearthed/new/': 'unearthed_new',
+        'unearthed/featured': 'unearthed_featured'
+        // 'unearthed/featured/': 'unearthed_featured'
     }
 });
 

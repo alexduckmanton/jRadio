@@ -1,8 +1,6 @@
 var Backbone = require('backbone');
 
 module.exports = TrackModel = Backbone.Model.extend({
-    urlRoot: '/api/unearthed',
-
     defaults: {
         is_playing: false,
         is_loading: true
