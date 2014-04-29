@@ -55,6 +55,12 @@
         }
     }
 
+    &.loading {
+        a {
+            opacity: .5;
+        }
+    }
+
     &.playing {
         a:after {
             border: none;

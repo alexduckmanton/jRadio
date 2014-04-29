@@ -15165,7 +15165,30 @@ var Backbone = require('backbone');
 
 module.exports = PlayerModel = Backbone.Model.extend({
     defaults: {
-        is_playing: false
+        is_playing: false,
+        track_api: '/api/unearthed/track',
+        track: new Audio()
+    },
+
+    initialize: function() {
+        this.listenTo(App.core.vent, 'track:play', this.change_track);
+        this.listenTo(App.core.vent, 'track:play', this.play);
+    },
+
+    change_track: function(src) {
+        if ( this.get('track').getAttribute('src') === src ) return;
+
+        this.get('track').setAttribute('src', src);
+    },
+
+    play: function(src) {
+        this.get('track').play();
+        this.set('is_playing', true);
+    },
+
+    stop: function() {
+        this.get('track').pause();
+        this.set('is_playing', false);
     }
 });
 
@@ -15176,7 +15199,33 @@ module.exports = TrackModel = Backbone.Model.extend({
     urlRoot: '/api/unearthed',
 
     defaults: {
-        is_playing: false
+        is_playing: false,
+        is_loading: true
+    },
+
+    initialize: function() {
+        var id = this.parse_url(this.get('play').href);
+        this.get_track(id);
+
+        this.listenTo(this, 'change:src', this.loaded);
+    },
+
+    parse_url: function(url) {
+        var regex = /[0-9]+/;
+        return regex.exec(url)[0];
+    },
+
+    get_track: function(track_id) {
+        var self = this,
+            api = '/api/unearthed/track';
+
+        $.getJSON(api, {'id': track_id}, function(data) {
+            self.set('src', data[0].track_url);
+        });
+    },
+
+    loaded: function() {
+        this.set('is_loading', false);
     },
 
     play: function() {
@@ -15206,7 +15255,6 @@ module.exports = itemView = Marionette.ItemView.extend({
 
     initialize: function() {
         this.listenTo(this.model, 'change', this.render);
-        this.listenTo(App.core.vent, 'track:play', this.on_play);
         this.listenTo(App.core.vent, 'tracks:stop', this.on_stop);
     },
 
@@ -15218,15 +15266,11 @@ module.exports = itemView = Marionette.ItemView.extend({
         this.$el.toggleClass('playing', this.model.get('is_playing'));
     },
 
-    on_play: function() {
-        this.model.set('is_playing', true);
-    },
-
     on_stop: function() {
         var playing = App.data.tracks.where({is_playing: true});
         if (playing.length) return;
 
-        this.model.set('is_playing', false);
+        this.model.stop();
     },
 
     stop: function() {
@@ -15249,6 +15293,9 @@ var itemView = Marionette.ItemView.extend({
     onRender: function() {
         var is_playing = this.model.get('is_playing');
         this.$el.toggleClass('playing', is_playing);
+
+        var is_loading = this.model.get('is_loading');
+        this.$el.toggleClass('loading', is_loading);
     },
 
     events: {
@@ -15257,6 +15304,8 @@ var itemView = Marionette.ItemView.extend({
 
     toggle_playing: function(e) {
         e.preventDefault();
+        if (this.model.get('is_loading')) return;
+
         var is_playing = this.model.get('is_playing');
 
         if (is_playing) this.model.stop();
@@ -15271,7 +15320,8 @@ var itemView = Marionette.ItemView.extend({
     },
 
     play: function() {
-        App.core.vent.trigger('track:play');
+        var src = this.model.get('src');
+        App.core.vent.trigger('track:play', src);
     },
 
     stop: function() {
@@ -15313,7 +15363,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<p>hi</p>\n";
+  return "<p>PLAYING STUFF</p>\n";
   });
 
 },{"hbsfy/runtime":19}],11:[function(require,module,exports){
@@ -15333,9 +15383,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   buffer += escapeExpression(stack1)
     + "</h3>\n    <h4 class=\"artist\">"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.artist)),stack1 == null || stack1 === false ? stack1 : stack1.text)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</h4>\n    <a href=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.play)),stack1 == null || stack1 === false ? stack1 : stack1.href)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" target=\"_blank\">Play</a>\n</div>\n";
+    + "</h4>\n    <a href=\"javascript:void(0)\" target=\"_blank\">Play</a>\n</div>\n";
   return buffer;
   });
 

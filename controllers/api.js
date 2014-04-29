@@ -14,5 +14,14 @@ module.exports = {
         }, function(err, response, body) {
             res.json(JSON.parse(body));
         });
+    },
+    unearthed_track: function(req, res) {
+        var id = req.query.id;
+        request({
+            uri: "https://www.triplejunearthed.com/api/jukebox/rest/views/jukebox_track",
+            qs: { 'args': id }
+        }, function(err, response, body) {
+            res.json(JSON.parse(body));
+        });
     }
 }

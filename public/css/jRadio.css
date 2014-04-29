@@ -358,6 +358,10 @@ header h1 {
   left: 0.75em;
 }
 /* line 59, ../client/styles/_track.scss */
+.track.loading a {
+  opacity: .5;
+}
+/* line 65, ../client/styles/_track.scss */
 .track.playing a:after {
   border: none;
   width: 0.333em;

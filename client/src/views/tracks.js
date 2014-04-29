@@ -12,6 +12,9 @@ var itemView = Marionette.ItemView.extend({
     onRender: function() {
         var is_playing = this.model.get('is_playing');
         this.$el.toggleClass('playing', is_playing);
+
+        var is_loading = this.model.get('is_loading');
+        this.$el.toggleClass('loading', is_loading);
     },
 
     events: {
@@ -20,6 +23,8 @@ var itemView = Marionette.ItemView.extend({
 
     toggle_playing: function(e) {
         e.preventDefault();
+        if (this.model.get('is_loading')) return;
+
         var is_playing = this.model.get('is_playing');
 
         if (is_playing) this.model.stop();
@@ -34,7 +39,8 @@ var itemView = Marionette.ItemView.extend({
     },
 
     play: function() {
-        App.core.vent.trigger('track:play');
+        var src = this.model.get('src');
+        App.core.vent.trigger('track:play', src);
     },
 
     stop: function() {
