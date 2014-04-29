@@ -286,17 +286,15 @@ header {
   width: 100%;
   height: 3em;
   text-align: center;
-  color: #fff;
-  background: url(/images/unearthed_bg.jpg) top left no-repeat;
+  background: top left no-repeat;
   background-size: cover;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 16, ../client/styles/_header.scss */
+/* line 15, ../client/styles/_header.scss */
 header h1 {
   margin: 0;
-  font-family: 'Chomp', sans-serif;
   text-transform: lowercase;
   letter-spacing: 0.15em;
   font-size: 2em;
@@ -304,41 +302,56 @@ header h1 {
 }
 
 /* line 1, ../client/styles/_track.scss */
+.tracks {
+  padding: .5em;
+}
+
+/* line 5, ../client/styles/_track.scss */
 .track {
-  margin: 0 0 1px 0;
+  margin: 0 0 .5em 0;
+  position: relative;
+  border-radius: 2px;
+}
+/* line 10, ../client/styles/_track.scss */
+.track .img_container {
   position: relative;
 }
-/* line 5, ../client/styles/_track.scss */
+/* line 13, ../client/styles/_track.scss */
+.track .img_container:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+}
+/* line 22, ../client/styles/_track.scss */
 .track img {
   width: 100%;
   display: block;
 }
-/* line 10, ../client/styles/_track.scss */
+/* line 27, ../client/styles/_track.scss */
 .track .info {
   padding: .5em;
-  padding-left: 3.75em;
-  position: absolute;
+  padding-left: 3.5em;
+  position: relative;
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.5);
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 26, ../client/styles/_track.scss */
+/* line 42, ../client/styles/_track.scss */
 .track h3 {
-  margin: 0 0 .25em 0;
-  color: #fff;
+  margin: 0 0 .107em 0;
 }
-/* line 31, ../client/styles/_track.scss */
+/* line 46, ../client/styles/_track.scss */
 .track h4 {
   margin: 0;
-  color: rgba(255, 255, 255, 0.5);
 }
-/* line 36, ../client/styles/_track.scss */
+/* line 50, ../client/styles/_track.scss */
 .track a {
-  border: 0.15em solid #fff;
+  border: 0.15em solid;
   border-radius: 100%;
   color: rgba(0, 0, 0, 0);
   position: absolute;
@@ -347,27 +360,24 @@ header h1 {
   width: 2.25em;
   height: 2.25em;
 }
-/* line 47, ../client/styles/_track.scss */
+/* line 61, ../client/styles/_track.scss */
 .track a:after {
   content: '';
   position: absolute;
   border: .75em solid transparent;
-  border-left-color: #fff;
   border-left-width: 1.1em;
   top: 0.375em;
   left: 0.75em;
 }
-/* line 59, ../client/styles/_track.scss */
+/* line 72, ../client/styles/_track.scss */
 .track.loading a {
   opacity: .5;
 }
-/* line 65, ../client/styles/_track.scss */
+/* line 78, ../client/styles/_track.scss */
 .track.playing a:after {
   border: none;
   width: 0.333em;
   height: 50%;
-  box-shadow: #fff .6667em 0;
-  background: #fff;
   left: 30%;
   top: 25%;
 }
@@ -387,8 +397,70 @@ header h1 {
   top: 0;
 }
 
-/* line 12, ../client/styles/main.scss */
+/* line 56, ../client/styles/_theme_mixins.scss */
+#content {
+  background: #e6e6e6;
+}
+
+/* line 60, ../client/styles/_theme_mixins.scss */
+header {
+  color: white;
+  background-color: #4a7f2b;
+  background-image: url(/images/unearthed_bg.jpg);
+}
+/* line 41, ../client/styles/_theme_mixins.scss */
+header h1 {
+  font-family: "Chomp";
+}
+
+/* line 69, ../client/styles/_theme_mixins.scss */
+.track {
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 1px 0;
+}
+/* line 12, ../client/styles/_theme_mixins.scss */
+.track h3 {
+  color: #4ba119;
+}
+/* line 16, ../client/styles/_theme_mixins.scss */
+.track h4 {
+  color: #e47f90;
+}
+/* line 20, ../client/styles/_theme_mixins.scss */
+.track a {
+  border-color: #4ba119;
+}
+/* line 23, ../client/styles/_theme_mixins.scss */
+.track a:after {
+  border-left-color: #4ba119;
+}
+/* line 29, ../client/styles/_theme_mixins.scss */
+.track.playing a:after {
+  box-shadow: #4ba119 0.6667em 0;
+  background: #4ba119;
+}
+
+/* line 2, ../client/styles/_theme_mixins.scss */
+.track .img_container:before {
+  background-color: #b7ef97;
+}
+
+/* line 3, ../client/styles/_theme_mixins.scss */
+.track:nth-child(2n) .img_container:before {
+  background-color: #eda9b5;
+}
+
+/* line 4, ../client/styles/_theme_mixins.scss */
+.track:nth-child(3n) .img_container:before {
+  background-color: #7fd1e5;
+}
+
+/* line 5, ../client/styles/_theme_mixins.scss */
+.track:nth-child(4n) .img_container:before {
+  background-color: #fff59d;
+}
+
+/* line 14, ../client/styles/main.scss */
 body {
   margin-top: 3em;
-  padding-top: 1px;
 }

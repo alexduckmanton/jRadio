@@ -1,0 +1,83 @@
+@mixin img_theme($color1, $color2, $color3, $color4) {
+    .track .img_container:before { background-color: $color1 }
+    .track:nth-child(2n) .img_container:before { background-color: $color2 }
+    .track:nth-child(3n) .img_container:before { background-color: $color3 }
+    .track:nth-child(4n) .img_container:before { background-color: $color4 }
+}
+
+@mixin track_theme($primary, $secondary, $bg) {
+    background: $bg;
+    box-shadow: rgba(#000,0.05) 0 1px 0;
+
+    h3 {
+        color: $primary;
+    }
+
+    h4 {
+        color: $secondary;
+    }
+
+    a {
+        border-color: $primary;
+
+        &:after {
+            border-left-color: $primary;
+        }
+    }
+
+    &.playing {
+        a:after {
+            box-shadow: $primary .6667em 0;
+            background: $primary;
+        }
+    }
+}
+
+@mixin header_theme($color, $bg, $img, $font) {
+    color: $color;
+    background-color: $bg;
+    background-image: url(/images/#{$img});
+
+    h1 {
+        font-family: $font;
+    }
+}
+
+@mixin theme(
+        $header_text: #fff,
+        $header_bg: #000,
+        $header_img: '',
+        $header_font: 'sans-serif',
+        $primary: #333,
+        $secondary: #aaa,
+        $bg: #fff
+    ) {
+
+    #content {
+        background: darken($bg, 10%);
+    }
+
+    header {
+        @include header_theme(
+            $header_text,
+            $header_bg,
+            $header_img,
+            $header_font
+        );
+    }
+
+    .track {
+        @include track_theme(
+            $primary,
+            $secondary,
+            $bg
+        );
+    }
+
+    @include img_theme(
+        lighten($primary, 40%),
+        lighten($secondary, 10%),
+        #7fd1e5,
+        #fff59d
+    );
+}

@@ -8,8 +8,9 @@ $header_height: 3em;
 @import 'header';
 @import 'track';
 @import 'player';
+@import 'theme_mixins';
+@import 'themes';
 
 body {
     margin-top: $header_height;
-    padding-top: 1px;
 }

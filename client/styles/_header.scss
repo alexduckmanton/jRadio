@@ -7,15 +7,13 @@ header {
     width: 100%;
     height: $header_height;
     text-align: center;
-    color: #fff;
-    background: url(/images/unearthed_bg.jpg) top left no-repeat;
+    background: top left no-repeat;
     background-size: cover;
 
     @include box-sizing(border-box);
 
     h1 {
         margin: 0;
-        font-family: 'Chomp', sans-serif;
         text-transform: lowercase;
         letter-spacing: 0.15em;
         font-size: 2em;

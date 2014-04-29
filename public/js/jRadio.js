@@ -15375,9 +15375,9 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<img src=\""
+  buffer += "<div class=\"img_container\"><img src=\""
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.image)),stack1 == null || stack1 === false ? stack1 : stack1.src)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" alt=\"image.alt\" />\n<div class=\"info\">\n    <h3 class=\"title\">";
+    + "\" alt=\"image.alt\" /></div>\n<div class=\"info\">\n    <h3 class=\"title\">";
   if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)

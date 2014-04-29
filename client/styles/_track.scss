@@ -1,6 +1,23 @@
+.tracks {
+    padding: .5em;
+}
+
 .track {
-    margin: 0 0 1px 0;
+    margin: 0 0 .5em 0;
     position: relative;
+    border-radius: 2px;
+
+    .img_container {
+        position: relative;
+
+        &:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+        }
+    }
 
     img {
         width: 100%;
@@ -9,12 +26,11 @@
 
     .info {
         padding: .5em;
-        padding-left: 3.75em;
-        position: absolute;
+        padding-left: 3.5em;
+        position: relative;
         bottom: 0;
         left: 0;
         width: 100%;
-        background: rgba(#000, 0.5);
 
         @include box-sizing(border-box);
     }
@@ -24,17 +40,15 @@
     }
 
     h3 {
-        margin: 0 0 .25em 0;
-        color: #fff;
+        margin: 0 0 .107em 0;
     }
 
     h4 {
         margin: 0;
-        color: rgba(#fff, 0.5);
     }
 
     a {
-        border: 0.15em solid #fff;
+        border: 0.15em solid;
         border-radius: 100%;
         color: rgba(0,0,0,0);
 
@@ -48,7 +62,6 @@
             content: '';
             position: absolute;
             border: .75em solid transparent;
-            border-left-color: #fff;
             border-left-width: 1.1em;
             top: 0.375em;
             left: 0.75em;
@@ -66,8 +79,6 @@
             border: none;
             width: 0.333em;
             height: 50%;
-            box-shadow: #fff .6667em 0;
-            background: #fff;
             left: 30%;
             top: 25%;
         }
