@@ -11,46 +11,60 @@ module.exports = Controller = Marionette.Controller.extend({
     },
 
     unearthed_new: function() {
-        var self = this,
-            tracks = new TracksCollection();
-
-        window.App.router.navigate('unearthed/new');
-
-        tracks.fetch({
-            url: '/api/unearthed/new',
-            success: function() {
-                App.data.tracks = tracks;
-                window.App.views.tracksView = new TracksView({ collection: window.App.data.tracks });
-                var view = window.App.views.tracksView;
-                self.renderView(view);
-            }
+        this.load_view({
+            route: 'unearthed/new',
+            collection: new TracksCollection(),
+            data_url: '/api/unearthed/new',
+            view: window.App.views.tracksView,
+            ViewType: TracksView
+        }, function(data, view) {
+            window.App.data.tracks = data;
+            window.App.views.tracksView = view;
         });
     },
 
     unearthed_featured: function() {
-        var self = this,
-            tracks = new TracksCollection();
-
-        window.App.router.navigate('unearthed/featured');
-
-        tracks.fetch({
-            url: '/api/unearthed/featured',
-            success: function() {
-                App.data.featured = tracks;
-                window.App.views.featuredView = new TracksView({ collection: window.App.data.featured });
-                var view = window.App.views.featuredView;
-                self.renderView(view);
-            }
+        this.load_view({
+            route: 'unearthed/featured',
+            collection: new TracksCollection(),
+            data_url: '/api/unearthed/featured',
+            view: window.App.views.featuredView,
+            ViewType: TracksView
+        }, function(data, view) {
+            window.App.data.featured = data;
+            window.App.views.featuredView = view;
         });
     },
 
-    // unearthed_featured: function() {
-    //     window.App.views.featuredView = new TracksView({ collection: window.App.data.tracks });
-    //
-    //     var view = window.App.views.featuredView;
-    //     this.renderView(view);
-    //     window.App.router.navigate('unearthed/new');
-    // },
+    load_view: function(options, callback) {
+        var self = this,
+            data = options.collection;
+
+        window.App.router.navigate(options.route);
+
+        // check if the view already exists. if so, render existing rather than loading again
+        if (options.view) {
+            console.log('cached');
+            this.renderView( options.view );
+
+        // view doesn't exist, so go get it with the supplied url
+        } else {
+            console.log('loading');
+            data.fetch({
+                url: options.data_url,
+                success: function() {
+                    // create the new view with fresh data
+                    var view = new options.ViewType({ collection: data });
+
+                    // update App data
+                    callback(data, view);
+
+                    // render the view
+                    self.renderView(view);
+                }
+            });
+        }
+    },
 
     renderView: function(view) {
         this.destroyCurrentView(view);
