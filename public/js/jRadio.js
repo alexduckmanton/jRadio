@@ -15349,7 +15349,7 @@ module.exports = Router = Marionette.AppRouter.extend({
         // 'unearthed/featured/': 'unearthed_featured'
     },
 
-    onRoute: function(name, path, arguments) {
+    onRoute: function(name, path, options) {
         App.core.vent.trigger('route', path);
     }
 });
