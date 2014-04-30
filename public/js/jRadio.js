@@ -15140,8 +15140,8 @@ module.exports = Controller = Marionette.Controller.extend({
 
         // add footer navigation
         var nav_collection = new NavCollection([
-            new NavModel({ link: '#unearthed/new', label: 'new' }),
-            new NavModel({ link: '#unearthed/featured', label: 'featured' })
+            new NavModel({ link: 'unearthed/new', label: 'new' }),
+            new NavModel({ link: 'unearthed/featured', label: 'featured' })
         ]);
         window.App.views.navView = new NavView({ collection: nav_collection });
         $('nav').append( window.App.views.navView.render().el );
@@ -15177,7 +15177,8 @@ module.exports = Controller = Marionette.Controller.extend({
         var self = this,
             data = options.collection;
 
-        window.App.router.navigate(options.route);
+        App.router.navigate(options.route);
+        // console.log(App.router);
 
         // check if the view already exists. if so, render existing rather than loading again
         if (options.view) {
@@ -15240,6 +15241,14 @@ module.exports = TrackModel = Backbone.Model.extend({
     },
 
     initialize: function() {
+    },
+
+    activate: function() {
+        this.set('active', true);
+    },
+
+    deactivate: function() {
+        this.set('active', false);
     }
 });
 
@@ -15338,6 +15347,10 @@ module.exports = Router = Marionette.AppRouter.extend({
         // 'unearthed/new/': 'unearthed_new',
         'unearthed/featured': 'unearthed_featured'
         // 'unearthed/featured/': 'unearthed_featured'
+    },
+
+    onRoute: function(name, path, arguments) {
+        App.core.vent.trigger('route', path);
     }
 });
 
@@ -15348,22 +15361,46 @@ var itemView = Marionette.ItemView.extend({
     tagName: 'li',
     template: require('../../templates/nav.hbs'),
 
+    events: {
+        'touchstart a': 'on_tap'
+    },
+
     initialize: function() {
         this.listenTo(this.model, 'change', this.render);
     },
 
-    events: {
+    onRender: function() {
+        this.$el.toggleClass('active', this.model.get('active'));
+    },
 
+    on_tap: function(e) {
+        e.preventDefault();
+        var route = this.model.get('link');
+
+        location.href = '#' + route;
     }
 });
 
 module.exports = CollectionView = Marionette.CollectionView.extend({
     tagName: 'ul',
-    
+
     initialize: function() {
         // this.listenTo(this.collection, 'change', this.render);
+        this.listenTo(App.core.vent, 'route', this.update_active);
     },
-    itemView: itemView
+    itemView: itemView,
+
+    get_active: function() {
+        return this.collection.findWhere({active: true});
+    },
+
+    update_active: function(path) {
+        var active = this.get_active();
+        if (active) active.deactivate();
+
+        var new_active = this.collection.findWhere({link: path});
+        new_active.activate();
+    }
 });
 
 },{"../../templates/nav.hbs":15}],12:[function(require,module,exports){
@@ -15499,7 +15536,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<a href=\"";
+  buffer += "<a href=\"#";
   if (helper = helpers.link) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.link); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)

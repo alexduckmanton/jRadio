@@ -8,5 +8,13 @@ module.exports = TrackModel = Backbone.Model.extend({
     },
 
     initialize: function() {
+    },
+
+    activate: function() {
+        this.set('active', true);
+    },
+
+    deactivate: function() {
+        this.set('active', false);
     }
 });

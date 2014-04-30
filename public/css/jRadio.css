@@ -433,8 +433,26 @@ nav ul {
 /* line 22, ../client/styles/_nav.scss */
 nav li {
   width: 100%;
+  position: relative;
 }
 /* line 26, ../client/styles/_nav.scss */
+nav li:after {
+  content: '';
+  position: absolute;
+  border: 1em solid transparent;
+  z-index: -1;
+  left: calc(50% - 1em);
+  top: 0em;
+  -webkit-transition: top 0.25s;
+  -moz-transition: top 0.25s;
+  -o-transition: top 0.25s;
+  transition: top 0.25s;
+}
+/* line 38, ../client/styles/_nav.scss */
+nav li.active:after {
+  top: -2em;
+}
+/* line 43, ../client/styles/_nav.scss */
 nav a {
   padding: 1em 0;
   width: 100%;
@@ -443,12 +461,12 @@ nav a {
   text-decoration: none;
 }
 
-/* line 69, ../client/styles/_theme_mixins.scss */
+/* line 73, ../client/styles/_theme_mixins.scss */
 #content {
   background: #e6e6e6;
 }
 
-/* line 73, ../client/styles/_theme_mixins.scss */
+/* line 77, ../client/styles/_theme_mixins.scss */
 header {
   color: white;
   background-color: #4a7f2b;
@@ -480,7 +498,7 @@ header .player.playing a:after {
   background: white;
 }
 
-/* line 82, ../client/styles/_theme_mixins.scss */
+/* line 86, ../client/styles/_theme_mixins.scss */
 .track {
   background: white;
   box-shadow: rgba(0, 0, 0, 0.05) 0 1px 0;
@@ -527,17 +545,20 @@ header .player.playing a:after {
   background-color: #fff59d;
 }
 
-/* line 99, ../client/styles/_theme_mixins.scss */
+/* line 103, ../client/styles/_theme_mixins.scss */
 nav {
   background-color: #4a7f2b;
-  background-image: url(/images/unearthed_bg.jpg);
 }
 /* line 54, ../client/styles/_theme_mixins.scss */
+nav li:after {
+  border-bottom-color: #4a7f2b;
+}
+/* line 58, ../client/styles/_theme_mixins.scss */
 nav a {
   color: white;
 }
 
-/* line 16, ../client/styles/main.scss */
+/* line 18, ../client/styles/main.scss */
 body {
   margin-top: 3.25em;
 }

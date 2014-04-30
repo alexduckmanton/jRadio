@@ -15,8 +15,8 @@ module.exports = Controller = Marionette.Controller.extend({
 
         // add footer navigation
         var nav_collection = new NavCollection([
-            new NavModel({ link: '#unearthed/new', label: 'new' }),
-            new NavModel({ link: '#unearthed/featured', label: 'featured' })
+            new NavModel({ link: 'unearthed/new', label: 'new' }),
+            new NavModel({ link: 'unearthed/featured', label: 'featured' })
         ]);
         window.App.views.navView = new NavView({ collection: nav_collection });
         $('nav').append( window.App.views.navView.render().el );
@@ -52,7 +52,8 @@ module.exports = Controller = Marionette.Controller.extend({
         var self = this,
             data = options.collection;
 
-        window.App.router.navigate(options.route);
+        App.router.navigate(options.route);
+        // console.log(App.router);
 
         // check if the view already exists. if so, render existing rather than loading again
         if (options.view) {

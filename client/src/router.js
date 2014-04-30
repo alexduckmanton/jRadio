@@ -9,5 +9,9 @@ module.exports = Router = Marionette.AppRouter.extend({
         // 'unearthed/new/': 'unearthed_new',
         'unearthed/featured': 'unearthed_featured'
         // 'unearthed/featured/': 'unearthed_featured'
+    },
+
+    onRoute: function(name, path, arguments) {
+        App.core.vent.trigger('route', path);
     }
 });

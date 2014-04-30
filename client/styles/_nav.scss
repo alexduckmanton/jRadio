@@ -21,6 +21,23 @@ nav {
 
     li {
         width: 100%;
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            border: 1em solid transparent;
+            z-index: -1;
+            left: calc(50% - 1em);
+
+            // animate hide
+            top: 0em;
+            @include single-transition(top);
+        }
+
+        &.active:after {
+            top: -2em;
+        }
     }
 
     a {

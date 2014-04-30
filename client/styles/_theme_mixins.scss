@@ -49,7 +49,11 @@
 
 @mixin nav($bg, $img, $color) {
     background-color: $bg;
-    background-image: url(/images/#{$img});
+    // background-image: url(/images/#{$img});
+
+    li:after {
+        border-bottom-color: $bg;
+    }
 
     a {
         color: $color;
