@@ -6,8 +6,7 @@ var Marionette = require('backbone.marionette'),
     NavModel = require('./models/nav'),
     NavView = require('./views/nav'),
     NavCollection = require('./collections/nav'),
-    UnearthedView = require('./views/unearthed'),
-    SiteModel = require('./models/site');
+    UnearthedLayout = require('./layouts/unearthed');
 
 module.exports = Controller = Marionette.Controller.extend({
     initialize: function() {
@@ -25,10 +24,10 @@ module.exports = Controller = Marionette.Controller.extend({
     },
 
     unearthed: function() {
-        App.views.unearthedView = new UnearthedView ({ model: new SiteModel() });
+        App.views.unearthedLayout = new UnearthedLayout();
 
         App.router.navigate('unearthed');
-        this.renderView(App.views.unearthedView);
+        $('#content').append( App.views.unearthedLayout.render().el );
     },
 
     unearthed_featured: function() {

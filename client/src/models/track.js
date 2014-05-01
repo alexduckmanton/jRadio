@@ -8,6 +8,8 @@ module.exports = TrackModel = Backbone.Model.extend({
     },
 
     initialize: function() {
+        if (!this.get('play')) return;
+
         var id = this.parse_url(this.get('play').href);
         this.get_track(id);
 
