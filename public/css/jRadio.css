@@ -488,10 +488,10 @@ header h1 {
   font-weight: normal;
   position: relative;
   top: 0;
-  -webkit-transition: top 0.5s;
-  -moz-transition: top 0.5s;
-  -o-transition: top 0.5s;
-  transition: top 0.5s;
+  -webkit-transition: top 0.3s;
+  -moz-transition: top 0.3s;
+  -o-transition: top 0.3s;
+  transition: top 0.3s;
 }
 /* line 29, ../client/styles/_header.scss */
 header .playing + h1 {
@@ -501,11 +501,11 @@ header .playing + h1 {
   -moz-animation-name: jiggle_down;
   -webkit-animation-name: jiggle_down;
   animation-name: jiggle_down;
-  -o-animation-duration: 0.5s;
-  -ms-animation-duration: 0.5s;
-  -moz-animation-duration: 0.5s;
-  -webkit-animation-duration: 0.5s;
-  animation-duration: 0.5s;
+  -o-animation-duration: 0.3s;
+  -ms-animation-duration: 0.3s;
+  -moz-animation-duration: 0.3s;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
   -o-animation-timing-function: false;
   -ms-animation-timing-function: false;
   -moz-animation-timing-function: false;
@@ -526,10 +526,10 @@ header .playing + h1 {
   -moz-animation-direction: reverse;
   -webkit-animation-direction: reverse;
   animation-direction: reverse;
-  -webkit-transition-delay: 0.075s;
-  -moz-transition-delay: 0.075s;
-  -o-transition-delay: 0.075s;
-  transition-delay: 0.075s;
+  -webkit-transition-delay: 0.045s;
+  -moz-transition-delay: 0.045s;
+  -o-transition-delay: 0.045s;
+  transition-delay: 0.045s;
 }
 
 /* line 1, ../client/styles/_track.scss */
@@ -971,18 +971,18 @@ header .playing + h1 {
   z-index: 1;
   height: 0;
   overflow: hidden;
-  -webkit-transition: height 0.5s;
-  -moz-transition: height 0.5s;
-  -o-transition: height 0.5s;
-  transition: height 0.5s;
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  -o-transition: height 0.3s;
+  transition: height 0.3s;
 }
 /* line 14, ../client/styles/_player.scss */
 .player .track_info {
   top: -6.5em;
-  -webkit-transition: top 0.5s;
-  -moz-transition: top 0.5s;
-  -o-transition: top 0.5s;
-  transition: top 0.5s;
+  -webkit-transition: top 0.3s;
+  -moz-transition: top 0.3s;
+  -o-transition: top 0.3s;
+  transition: top 0.3s;
 }
 /* line 20, ../client/styles/_player.scss */
 .player h3, .player h4 {
@@ -1005,21 +1005,21 @@ header .playing + h1 {
   -moz-animation-name: jiggle_down;
   -webkit-animation-name: jiggle_down;
   animation-name: jiggle_down;
-  -o-animation-duration: 0.5s;
-  -ms-animation-duration: 0.5s;
-  -moz-animation-duration: 0.5s;
-  -webkit-animation-duration: 0.5s;
-  animation-duration: 0.5s;
+  -o-animation-duration: 0.3s;
+  -ms-animation-duration: 0.3s;
+  -moz-animation-duration: 0.3s;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
   -o-animation-timing-function: false;
   -ms-animation-timing-function: false;
   -moz-animation-timing-function: false;
   -webkit-animation-timing-function: false;
   animation-timing-function: false;
-  -o-animation-delay: 0.25s;
-  -ms-animation-delay: 0.25s;
-  -moz-animation-delay: 0.25s;
-  -webkit-animation-delay: 0.25s;
-  animation-delay: 0.25s;
+  -o-animation-delay: 0.15s;
+  -ms-animation-delay: 0.15s;
+  -moz-animation-delay: 0.15s;
+  -webkit-animation-delay: 0.15s;
+  animation-delay: 0.15s;
   -o-animation-iteration-count: 1;
   -ms-animation-iteration-count: 1;
   -moz-animation-iteration-count: 1;
@@ -1033,19 +1033,19 @@ header .playing + h1 {
 }
 /* line 37, ../client/styles/_player.scss */
 .player.playing h3 {
-  -o-animation-duration: 0.45s;
-  -ms-animation-duration: 0.45s;
-  -moz-animation-duration: 0.45s;
-  -webkit-animation-duration: 0.45s;
-  animation-duration: 0.45s;
+  -o-animation-duration: 0.27s;
+  -ms-animation-duration: 0.27s;
+  -moz-animation-duration: 0.27s;
+  -webkit-animation-duration: 0.27s;
+  animation-duration: 0.27s;
 }
 /* line 38, ../client/styles/_player.scss */
 .player.playing h4 {
-  -o-animation-duration: 0.4s;
-  -ms-animation-duration: 0.4s;
-  -moz-animation-duration: 0.4s;
-  -webkit-animation-duration: 0.4s;
-  animation-duration: 0.4s;
+  -o-animation-duration: 0.24s;
+  -ms-animation-duration: 0.24s;
+  -moz-animation-duration: 0.24s;
+  -webkit-animation-duration: 0.24s;
+  animation-duration: 0.24s;
 }
 
 /* line 76, ../client/styles/_theme_mixins.scss */
