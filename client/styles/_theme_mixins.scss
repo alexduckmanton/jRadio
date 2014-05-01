@@ -11,7 +11,7 @@
     }
 
     h4 {
-        color: $secondary;
+        color: lighten($secondary, 15%);
     }
 
     a {
@@ -28,6 +28,10 @@
             background: $primary;
         }
     }
+
+    &.featured:after {
+        background: $secondary;
+    }
 }
 
 @mixin header_theme($color, $bg, $img, $font) {
@@ -42,7 +46,7 @@
     .player {
         background-color: $bg;
         background-image: url(/images/#{$img});
-        
+
         @include track_theme(
             $primary: $color,
             $secondary: rgba($color, .75)

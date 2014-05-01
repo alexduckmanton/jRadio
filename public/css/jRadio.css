@@ -893,13 +893,12 @@ header .playing + h1 {
   position: absolute;
   width: 4em;
   height: 4em;
-  background: #f00;
   border-radius: 100%;
   top: -.625em;
   left: -.625em;
 }
 
-/* line 54, ../client/styles/_track.scss */
+/* line 53, ../client/styles/_track.scss */
 .track_info {
   padding: 0 .5em;
   padding-left: 3.5em;
@@ -911,23 +910,23 @@ header .playing + h1 {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 64, ../client/styles/_track.scss */
+/* line 63, ../client/styles/_track.scss */
 .track_info .text {
   padding: 2% 0;
 }
-/* line 68, ../client/styles/_track.scss */
+/* line 67, ../client/styles/_track.scss */
 .track_info h3, .track_info h4 {
   margin: 0;
 }
-/* line 72, ../client/styles/_track.scss */
+/* line 71, ../client/styles/_track.scss */
 .track_info h3 {
   line-height: 1.3em;
 }
-/* line 76, ../client/styles/_track.scss */
+/* line 75, ../client/styles/_track.scss */
 .track_info h4 {
   line-height: 1em;
 }
-/* line 80, ../client/styles/_track.scss */
+/* line 79, ../client/styles/_track.scss */
 .track_info a {
   border: 0.15em solid;
   border-radius: 100%;
@@ -938,7 +937,7 @@ header .playing + h1 {
   width: 2.25em;
   height: 2.25em;
 }
-/* line 91, ../client/styles/_track.scss */
+/* line 90, ../client/styles/_track.scss */
 .track_info a:after {
   content: '';
   position: absolute;
@@ -948,12 +947,12 @@ header .playing + h1 {
   left: 0.75em;
 }
 
-/* line 103, ../client/styles/_track.scss */
+/* line 102, ../client/styles/_track.scss */
 .loading .track_info a {
   opacity: .5;
 }
 
-/* line 109, ../client/styles/_track.scss */
+/* line 108, ../client/styles/_track.scss */
 .playing .track_info a:after {
   border: none;
   width: 0.333em;
@@ -1048,22 +1047,22 @@ header .playing + h1 {
   animation-duration: 0.24s;
 }
 
-/* line 76, ../client/styles/_theme_mixins.scss */
+/* line 80, ../client/styles/_theme_mixins.scss */
 #content {
   background: #e6e6e6;
 }
 
-/* line 80, ../client/styles/_theme_mixins.scss */
+/* line 84, ../client/styles/_theme_mixins.scss */
 header {
   color: white;
   background-color: #4a7f2b;
   background-image: url(/images/unearthed_bg.jpg);
 }
-/* line 38, ../client/styles/_theme_mixins.scss */
+/* line 42, ../client/styles/_theme_mixins.scss */
 header h1 {
   font-family: "Chomp";
 }
-/* line 42, ../client/styles/_theme_mixins.scss */
+/* line 46, ../client/styles/_theme_mixins.scss */
 header .player {
   background-color: #4a7f2b;
   background-image: url(/images/unearthed_bg.jpg);
@@ -1089,8 +1088,12 @@ header .player.playing a:after {
   box-shadow: white 0.6667em 0;
   background: white;
 }
+/* line 32, ../client/styles/_theme_mixins.scss */
+header .player.featured:after {
+  background: rgba(255, 255, 255, 0.75);
+}
 
-/* line 89, ../client/styles/_theme_mixins.scss */
+/* line 93, ../client/styles/_theme_mixins.scss */
 .track {
   background: white;
   box-shadow: rgba(0, 0, 0, 0.05) 0 1px 0;
@@ -1101,7 +1104,7 @@ header .player.playing a:after {
 }
 /* line 13, ../client/styles/_theme_mixins.scss */
 .track h4 {
-  color: #e47f90;
+  color: #ff8292;
 }
 /* line 17, ../client/styles/_theme_mixins.scss */
 .track a {
@@ -1116,6 +1119,10 @@ header .player.playing a:after {
   box-shadow: #4ba119 0.6667em 0;
   background: #4ba119;
 }
+/* line 32, ../client/styles/_theme_mixins.scss */
+.track.featured:after {
+  background: #ff354f;
+}
 
 /* line 2, ../client/styles/_theme_mixins.scss */
 .track .img_container:before {
@@ -1124,7 +1131,7 @@ header .player.playing a:after {
 
 /* line 3, ../client/styles/_theme_mixins.scss */
 .track:nth-child(2n) .img_container:before {
-  background-color: #eda9b5;
+  background-color: #ff687b;
 }
 
 /* line 4, ../client/styles/_theme_mixins.scss */
@@ -1137,15 +1144,15 @@ header .player.playing a:after {
   background-color: #fff59d;
 }
 
-/* line 106, ../client/styles/_theme_mixins.scss */
+/* line 110, ../client/styles/_theme_mixins.scss */
 nav {
   background-color: #4a7f2b;
 }
-/* line 57, ../client/styles/_theme_mixins.scss */
+/* line 61, ../client/styles/_theme_mixins.scss */
 nav li:after {
   border-bottom-color: #4a7f2b;
 }
-/* line 61, ../client/styles/_theme_mixins.scss */
+/* line 65, ../client/styles/_theme_mixins.scss */
 nav a {
   color: white;
 }
