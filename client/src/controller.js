@@ -5,13 +5,15 @@ var Marionette = require('backbone.marionette'),
     PlayerView = require('./views/player'),
     NavModel = require('./models/nav'),
     NavView = require('./views/nav'),
-    NavCollection = require('./collections/nav');
+    NavCollection = require('./collections/nav'),
+    UnearthedView = require('./views/unearthed'),
+    SiteModel = require('./models/site');
 
 module.exports = Controller = Marionette.Controller.extend({
     initialize: function() {
         // add the player to the page. only needs to be done once on initialization
         window.App.views.playerView = new PlayerView({ model: new PlayerModel() });
-        $('header').prepend( window.App.views.playerView.render().el );
+        $('#content').append( window.App.views.playerView.render().el );
 
         // add footer navigation
         // var nav_collection = new NavCollection([
@@ -23,16 +25,10 @@ module.exports = Controller = Marionette.Controller.extend({
     },
 
     unearthed: function() {
-        this.load_view({
-            route: 'unearthed',
-            collection: new TracksCollection(),
-            data_url: '/api/unearthed',
-            view: window.App.views.tracksView,
-            ViewType: TracksView
-        }, function(data, view) {
-            window.App.data.tracks = data;
-            window.App.views.tracksView = view;
-        });
+        App.views.unearthedView = new UnearthedView ({ model: new SiteModel() });
+
+        App.router.navigate('unearthed');
+        this.renderView(App.views.unearthedView);
     },
 
     unearthed_featured: function() {

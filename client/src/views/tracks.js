@@ -47,6 +47,7 @@ var itemView = Marionette.ItemView.extend({
 });
 
 module.exports = CollectionView = Marionette.CollectionView.extend({
+    tagName: 'section',
     className: 'tracks',
 
     initialize: function() {
