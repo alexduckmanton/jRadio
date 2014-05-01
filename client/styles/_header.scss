@@ -1,26 +1,35 @@
-header {
-    padding: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    min-height: $header_height;
-    text-align: center;
+@mixin header_bg() {
     background: top left no-repeat;
     background-size: cover;
+}
 
+header {
+    min-height: $header_height;
+    text-align: center;
+    overflow: hidden;
+
+    @include header_bg();
     @include box-sizing(border-box);
 
     h1 {
-        margin: .25em 0 0 0;
+        margin: 0;
+        padding: .25em 0 0 0;
         text-transform: lowercase;
         letter-spacing: 0.15em;
         font-size: 2em;
         font-weight: normal;
+
+        // for hiding
+        position: relative;
+        top: 0;
+
+        @include single-transition(top);
     }
 
     .playing + h1 {
-        display: none;
+        top: $header_height;
+
+        @include jiggle(down, $delay: 0, $direction: reverse);
+        @include transition-delay($default-transition-duration * .15);
     }
 }

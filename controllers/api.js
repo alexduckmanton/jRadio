@@ -1,7 +1,35 @@
 var request = require('request');
 
 module.exports = {
+
+    // wow this is ugly
     unearthed: function(req, res) {
+        var new_tracks,
+            featured_tracks,
+            combined,
+            num_new = 15,
+            num_featured = 5;
+
+        // get new
+        request("http://www.kimonolabs.com/api/4i2op28c?apikey=01269db6385d23351cd7f152819e9550", function(err, response, body) {
+            new_tracks = JSON.parse(body).results.tracks;
+            new_tracks = new_tracks.slice(0,num_new);
+
+            // get featured
+            request("http://www.kimonolabs.com/api/2kgevg1u?apikey=01269db6385d23351cd7f152819e9550", function(err, response, body) {
+                featured_tracks = JSON.parse(body).results.featured;
+                featured_tracks = featured_tracks.slice(0,num_featured);
+                featured_tracks.forEach(function(val, i, tracks) {
+                    tracks[i].featured = 'true';
+                });
+
+                combined = new_tracks.concat(featured_tracks);
+                res.json(combined);
+            });
+        });
+    },
+
+    unearthed_new: function(req, res) {
         request("http://www.kimonolabs.com/api/4i2op28c?apikey=01269db6385d23351cd7f152819e9550", function(err, response, body) {
             res.json(JSON.parse(body).results.tracks);
         });

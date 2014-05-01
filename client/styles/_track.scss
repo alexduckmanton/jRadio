@@ -1,10 +1,11 @@
 .tracks {
     padding: .5em;
+    @include flex();
+    @include flex-direction(column);
 }
 
 .track {
     margin: 0 0 .5em 0;
-    position: relative;
     border-radius: 2px;
 
     .img_container {
@@ -22,6 +23,31 @@
     img {
         width: 100%;
         display: block;
+    }
+
+    // ordering
+    @for $i from 1 through 20 {
+        &:nth-child(#{$i}) { @include order($i); }
+    }
+
+    &.featured {
+        position: relative;
+
+        // scatter featured tracks among the new ones
+        @for $i from 15 through 20 {
+            &:nth-child(#{$i}) { @include order( ($i - 16) * 3 ); }
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: 4em;
+            height: 4em;
+            background: #f00;
+            border-radius: 100%;
+            top: -.625em;
+            left: -.625em;
+        }
     }
 }
 

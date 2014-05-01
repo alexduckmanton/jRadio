@@ -15139,19 +15139,19 @@ module.exports = Controller = Marionette.Controller.extend({
         $('header').prepend( window.App.views.playerView.render().el );
 
         // add footer navigation
-        var nav_collection = new NavCollection([
-            new NavModel({ link: 'unearthed/new', label: 'new' }),
-            new NavModel({ link: 'unearthed/featured', label: 'featured' })
-        ]);
-        window.App.views.navView = new NavView({ collection: nav_collection });
-        $('nav').append( window.App.views.navView.render().el );
+        // var nav_collection = new NavCollection([
+        //     new NavModel({ link: 'unearthed/new', label: 'new' }),
+        //     new NavModel({ link: 'unearthed/featured', label: 'featured' })
+        // ]);
+        // window.App.views.navView = new NavView({ collection: nav_collection });
+        // $('nav').append( window.App.views.navView.render().el );
     },
 
-    unearthed_new: function() {
+    unearthed: function() {
         this.load_view({
-            route: 'unearthed/new',
+            route: 'unearthed',
             collection: new TracksCollection(),
-            data_url: '/api/unearthed/new',
+            data_url: '/api/unearthed',
             view: window.App.views.tracksView,
             ViewType: TracksView
         }, function(data, view) {
@@ -15298,7 +15298,8 @@ var Backbone = require('backbone');
 module.exports = TrackModel = Backbone.Model.extend({
     defaults: {
         is_playing: false,
-        is_loading: true
+        is_loading: true,
+        featured: false
     },
 
     initialize: function() {
@@ -15340,12 +15341,12 @@ var Marionette = require('backbone.marionette');
 
 module.exports = Router = Marionette.AppRouter.extend({
     appRoutes: {
-        '': 'unearthed_new',
-        'unearthed': 'unearthed_new',
+        '': 'unearthed',
+        'unearthed': 'unearthed',
         // 'unearthed/': 'unearthed_new',
-        'unearthed/new': 'unearthed_new',
+        // 'unearthed/new': 'unearthed_new',
         // 'unearthed/new/': 'unearthed_new',
-        'unearthed/featured': 'unearthed_featured'
+        // 'unearthed/featured': 'unearthed_featured'
         // 'unearthed/featured/': 'unearthed_featured'
     },
 
@@ -15411,7 +15412,8 @@ module.exports = itemView = Marionette.ItemView.extend({
     template: require('../../templates/player.hbs'),
 
     initialize: function() {
-        this.listenTo(this.model, 'change', this.render);
+        this.listenTo(this.model, 'change', this.update_content);
+        this.listenTo(this.model, 'change:is_playing', this.toggle_classes);
         this.listenTo(App.core.vent, 'tracks:stop', this.on_stop);
     },
 
@@ -15419,7 +15421,15 @@ module.exports = itemView = Marionette.ItemView.extend({
         'click': 'stop'
     },
 
-    onRender: function() {
+    update_content: function(e) {
+        var title = this.model.get('title'),
+            artist = this.model.get('artist').text;
+
+        this.$el.find('.title').html(title);
+        this.$el.find('.artist').html(artist);
+    },
+
+    toggle_classes: function() {
         this.$el.toggleClass('playing', this.model.get('is_playing'));
     },
 
@@ -15442,21 +15452,20 @@ var itemView = Marionette.ItemView.extend({
     className: 'track',
     template: require('../../templates/track.hbs'),
 
-    initialize: function() {
-        this.listenTo(this.model, 'change', this.render);
-        this.listenTo(this.model, 'change:is_playing', this.trigger_playing);
-    },
-
-    onRender: function() {
-        var is_playing = this.model.get('is_playing');
-        this.$el.toggleClass('playing', is_playing);
-
-        var is_loading = this.model.get('is_loading');
-        this.$el.toggleClass('loading', is_loading);
-    },
-
     events: {
         'click a': 'toggle_playing'
+    },
+
+    initialize: function() {
+        this.listenTo(this.model, 'change', this.toggle_classes);
+        this.listenTo(this.model, 'change:is_playing', this.trigger_playing);
+
+        this.$el.toggleClass('featured', this.model.get('featured'));
+    },
+
+    toggle_classes: function() {
+        this.$el.toggleClass('playing', this.model.get('is_playing'));
+        this.$el.toggleClass('loading', this.model.get('is_loading'));
     },
 
     toggle_playing: function(e) {

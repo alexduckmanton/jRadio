@@ -14,19 +14,19 @@ module.exports = Controller = Marionette.Controller.extend({
         $('header').prepend( window.App.views.playerView.render().el );
 
         // add footer navigation
-        var nav_collection = new NavCollection([
-            new NavModel({ link: 'unearthed/new', label: 'new' }),
-            new NavModel({ link: 'unearthed/featured', label: 'featured' })
-        ]);
-        window.App.views.navView = new NavView({ collection: nav_collection });
-        $('nav').append( window.App.views.navView.render().el );
+        // var nav_collection = new NavCollection([
+        //     new NavModel({ link: 'unearthed/new', label: 'new' }),
+        //     new NavModel({ link: 'unearthed/featured', label: 'featured' })
+        // ]);
+        // window.App.views.navView = new NavView({ collection: nav_collection });
+        // $('nav').append( window.App.views.navView.render().el );
     },
 
-    unearthed_new: function() {
+    unearthed: function() {
         this.load_view({
-            route: 'unearthed/new',
+            route: 'unearthed',
             collection: new TracksCollection(),
-            data_url: '/api/unearthed/new',
+            data_url: '/api/unearthed',
             view: window.App.views.tracksView,
             ViewType: TracksView
         }, function(data, view) {

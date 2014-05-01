@@ -4,21 +4,20 @@ var itemView = Marionette.ItemView.extend({
     className: 'track',
     template: require('../../templates/track.hbs'),
 
-    initialize: function() {
-        this.listenTo(this.model, 'change', this.render);
-        this.listenTo(this.model, 'change:is_playing', this.trigger_playing);
-    },
-
-    onRender: function() {
-        var is_playing = this.model.get('is_playing');
-        this.$el.toggleClass('playing', is_playing);
-
-        var is_loading = this.model.get('is_loading');
-        this.$el.toggleClass('loading', is_loading);
-    },
-
     events: {
         'click a': 'toggle_playing'
+    },
+
+    initialize: function() {
+        this.listenTo(this.model, 'change', this.toggle_classes);
+        this.listenTo(this.model, 'change:is_playing', this.trigger_playing);
+
+        this.$el.toggleClass('featured', this.model.get('featured'));
+    },
+
+    toggle_classes: function() {
+        this.$el.toggleClass('playing', this.model.get('is_playing'));
+        this.$el.toggleClass('loading', this.model.get('is_loading'));
     },
 
     toggle_playing: function(e) {

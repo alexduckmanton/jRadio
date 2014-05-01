@@ -1,13 +1,40 @@
 .player {
-    position: relative;
+    @include header_bg();
+
     width: 100%;
+    position: fixed;
+    z-index: 1;
 
     // hide
-    top: - $header_height;
     height: 0;
+    overflow: hidden;
+
+    @include single-transition(height);
+
+    .track_info {
+        top: $header_height * -2;
+
+        @include single-transition(top);
+    }
+
+    h3, h4 {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
 
     &.playing {
-        top: 0;
-        height: inherit;
+        height: $header_height;
+
+        .track_info {
+            top: 0;
+        }
+
+        a, h3, h4 {
+            @include jiggle(down);
+        }
+
+        h3 { @include animationDuration($default-transition-duration * .9) }
+        h4 { @include animationDuration($default-transition-duration * .8) }
     }
 }

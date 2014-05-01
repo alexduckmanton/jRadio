@@ -1,0 +1,9 @@
+@mixin media($width, $boundary: 'max') {
+	@media screen and (#{$boundary}-width: $width) {
+		@content;
+	}
+}
+
+@mixin x_small	{ @include media(500px)		{ @content; } }
+@mixin small	{ @include media(800px)		{ @content; } }
+@mixin large	{ @include media(801px, 'min')	{ @content; } }

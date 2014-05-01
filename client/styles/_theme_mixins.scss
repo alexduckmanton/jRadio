@@ -40,6 +40,9 @@
     }
 
     .player {
+        background-color: $bg;
+        background-image: url(/images/#{$img});
+        
         @include track_theme(
             $primary: $color,
             $secondary: rgba($color, .75)

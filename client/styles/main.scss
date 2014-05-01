@@ -1,20 +1,31 @@
-$default-transition-duration: .25s;
+$default-transition-duration: .5s;
 $default-transition-timing: ease-in-out;
 $header_height: 3.25em;
 
+// third party util
 @import "normalize";
+
+// compass utils
 @import "compass/css3";
 
+// bespoke utils
+@import "mixins";
+@import "media";
+@import "animations";
+
+// fonts
 @import "chomp";
 
+// styling
 @import 'header';
 @import 'track';
 @import 'player';
-@import 'nav';
+//@import 'nav';
 
+// themes
 @import 'theme_mixins';
 @import 'themes';
 
 body {
-    margin-top: $header_height;
+
 }

@@ -1,0 +1,25 @@
+@mixin jiggle_vert($name, $amount) {
+    @include keyframes(#{'jiggle_' + $name}) {
+        0% {
+            @include translateY(0);
+        }
+
+        50% {
+            @include translateY( $amount );
+        }
+
+        90% {
+            @include translateY( floor($amount / -2) );
+        }
+
+        100% {
+            @include translateY(0);
+        }
+    }
+}
+
+@mixin jiggle($name, $delay: $default-transition-duration * .5, $direction: normal) {
+    @include animation(#{'jiggle_' + $name}, $delay: $delay, $direction: $direction);
+}
+
+@include jiggle_vert(down, 3px);

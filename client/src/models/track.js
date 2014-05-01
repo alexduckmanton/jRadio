@@ -3,7 +3,8 @@ var Backbone = require('backbone');
 module.exports = TrackModel = Backbone.Model.extend({
     defaults: {
         is_playing: false,
-        is_loading: true
+        is_loading: true,
+        featured: false
     },
 
     initialize: function() {
