@@ -18,9 +18,10 @@ $header_height: 3.25em;
 
 // styling
 @import 'header';
-@import 'track';
+@import 'track_base';
+@import 'track_tracks';
+@import 'track_played';
 @import 'player';
-@import 'played';
 //@import 'nav';
 
 // themes

@@ -27,13 +27,6 @@ header {
         @include single-transition(top);
     }
 
-    .playing + h1 {
-        top: $header_height;
-
-        @include jiggle(down, $delay: 0, $direction: reverse);
-        @include transition-delay($default-transition-duration * .15);
-    }
-
     .toggle_played {
         position: relative;
         float: right;
@@ -41,6 +34,7 @@ header {
         width: $header_height;
         height: $header_height;
         border-left: 1px solid #fff;
+        z-index: 1;
 
         &:after {
             content: '';
@@ -53,4 +47,12 @@ header {
             border-radius: 100%;
         }
     }
+}
+
+
+.playing ~ .site header h1 {
+    top: $header_height;
+
+    @include jiggle(down, $delay: 0, $direction: reverse);
+    @include transition-delay($default-transition-duration * .15);
 }

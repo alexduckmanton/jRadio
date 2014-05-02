@@ -15605,22 +15605,22 @@ var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression, self=this;
+  var buffer = "", stack1, self=this, functionType="function", escapeExpression=this.escapeExpression;
 
 function program1(depth0,data) {
   
   
-  return "<a href=\"javascript:void(0)\" target=\"_blank\">Play</a>";
+  return "<a href=\"javascript:void(0)\" target=\"_blank\" class=\"play\">Play</a>";
   }
 
-  buffer += "<div class=\"track_info\">\n    <div class=\"text\">\n        <h3 class=\"title\">"
+  buffer += "<div class=\"track_info\">\n    ";
+  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.play), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    <div class=\"text\">\n        <h3 class=\"title\">"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.title)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "</h3>\n        <h4 class=\"artist\">"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.artist)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</h4>\n    </div>\n    ";
-  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.play), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n</div>\n";
+    + "</h4>\n    </div>\n</div>\n";
   return buffer;
   });
 
@@ -15656,7 +15656,8 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 
   stack1 = (helper = helpers.track_info || (depth0 && depth0.track_info),options={hash:{
     'title': ((depth0 && depth0.title)),
-    'artist': (((stack1 = (depth0 && depth0.artist)),stack1 == null || stack1 === false ? stack1 : stack1.text))
+    'artist': (((stack1 = (depth0 && depth0.artist)),stack1 == null || stack1 === false ? stack1 : stack1.text)),
+    'play': (true)
   },data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "track_info", options));
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n";

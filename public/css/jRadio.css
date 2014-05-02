@@ -495,7 +495,29 @@ header h1 {
   transition: top 0.3s;
 }
 /* line 30, ../client/styles/_header.scss */
-header .playing + h1 {
+header .toggle_played {
+  position: relative;
+  float: right;
+  color: transparent;
+  width: 3.25em;
+  height: 3.25em;
+  border-left: 1px solid #fff;
+  z-index: 1;
+}
+/* line 39, ../client/styles/_header.scss */
+header .toggle_played:after {
+  content: '';
+  position: absolute;
+  top: calc(50% - 1em);
+  right: calc(50% - 1em);
+  background: #fff;
+  width: 2em;
+  height: 2em;
+  border-radius: 100%;
+}
+
+/* line 53, ../client/styles/_header.scss */
+.playing ~ .site header h1 {
   top: 3.25em;
   -o-animation-name: jiggle_down;
   -ms-animation-name: jiggle_down;
@@ -532,28 +554,97 @@ header .playing + h1 {
   -o-transition-delay: 0.045s;
   transition-delay: 0.045s;
 }
-/* line 37, ../client/styles/_header.scss */
-header .toggle_played {
-  position: relative;
-  float: right;
-  color: transparent;
-  width: 3.25em;
-  height: 3.25em;
-  border-left: 1px solid #fff;
+
+/* line 1, ../client/styles/_track_base.scss */
+.track {
+  margin: 0;
 }
-/* line 45, ../client/styles/_header.scss */
-header .toggle_played:after {
+/* line 4, ../client/styles/_track_base.scss */
+.track .img_container {
+  position: relative;
+}
+/* line 7, ../client/styles/_track_base.scss */
+.track .img_container:before {
   content: '';
   position: absolute;
-  top: calc(50% - 1em);
-  right: calc(50% - 1em);
-  background: #fff;
-  width: 2em;
-  height: 2em;
-  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+}
+/* line 16, ../client/styles/_track_base.scss */
+.track img {
+  width: 100%;
+  display: block;
 }
 
-/* line 1, ../client/styles/_track.scss */
+/* line 22, ../client/styles/_track_base.scss */
+.track_info {
+  padding: 0 .5em;
+  position: relative;
+  width: 100%;
+  min-height: 3.25em;
+  text-align: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 31, ../client/styles/_track_base.scss */
+.track_info .text {
+  padding: 2% 0;
+}
+/* line 35, ../client/styles/_track_base.scss */
+.track_info .play + .text {
+  padding-left: 3em;
+}
+/* line 39, ../client/styles/_track_base.scss */
+.track_info h3, .track_info h4 {
+  margin: 0;
+  font-weight: normal;
+}
+/* line 44, ../client/styles/_track_base.scss */
+.track_info h3 {
+  line-height: 1.3em;
+}
+/* line 48, ../client/styles/_track_base.scss */
+.track_info h4 {
+  line-height: 1em;
+}
+/* line 52, ../client/styles/_track_base.scss */
+.track_info .play {
+  border: 0.15em solid;
+  border-radius: 100%;
+  color: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: calc(50% - 2.55em/2);
+  left: .5em;
+  width: 2.25em;
+  height: 2.25em;
+}
+/* line 63, ../client/styles/_track_base.scss */
+.track_info .play:after {
+  content: '';
+  position: absolute;
+  border: .75em solid transparent;
+  border-left-width: 1.1em;
+  top: 0.375em;
+  left: 0.75em;
+}
+
+/* line 75, ../client/styles/_track_base.scss */
+.loading .track_info .play {
+  opacity: .5;
+}
+
+/* line 81, ../client/styles/_track_base.scss */
+.playing .track_info a:after {
+  border: none;
+  width: 0.333em;
+  height: 50%;
+  left: 30%;
+  top: 25%;
+}
+
+/* line 1, ../client/styles/_track_tracks.scss */
 .tracks {
   padding: .5em;
   display: -webkit-box;
@@ -569,31 +660,13 @@ header .toggle_played:after {
   -webkit-flex-direction: column;
   flex-direction: column;
 }
-
-/* line 7, ../client/styles/_track.scss */
-.track {
-  margin: 0 0 .5em 0;
+/* line 6, ../client/styles/_track_tracks.scss */
+.tracks .track {
+  margin-bottom: .5em;
   border-radius: 2px;
 }
-/* line 11, ../client/styles/_track.scss */
-.track .img_container {
-  position: relative;
-}
-/* line 14, ../client/styles/_track.scss */
-.track .img_container:before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0.2;
-}
-/* line 23, ../client/styles/_track.scss */
-.track img {
-  width: 100%;
-  display: block;
-}
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(1) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(1) {
   -webkit-box-ordinal-group: 1;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 1;
@@ -604,8 +677,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 1;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(2) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(2) {
   -webkit-box-ordinal-group: 2;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 2;
@@ -616,8 +689,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 2;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(3) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(3) {
   -webkit-box-ordinal-group: 3;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 3;
@@ -628,8 +701,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 3;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(4) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(4) {
   -webkit-box-ordinal-group: 4;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 4;
@@ -640,8 +713,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 4;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(5) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(5) {
   -webkit-box-ordinal-group: 5;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 5;
@@ -652,8 +725,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 5;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(6) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(6) {
   -webkit-box-ordinal-group: 6;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 6;
@@ -664,8 +737,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 6;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(7) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(7) {
   -webkit-box-ordinal-group: 7;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 7;
@@ -676,8 +749,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 7;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(8) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(8) {
   -webkit-box-ordinal-group: 8;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 8;
@@ -688,8 +761,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 8;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(9) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(9) {
   -webkit-box-ordinal-group: 9;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 9;
@@ -700,8 +773,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 9;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(10) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(10) {
   -webkit-box-ordinal-group: 10;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 10;
@@ -712,8 +785,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 10;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(11) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(11) {
   -webkit-box-ordinal-group: 11;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 11;
@@ -724,8 +797,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 11;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(12) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(12) {
   -webkit-box-ordinal-group: 12;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 12;
@@ -736,8 +809,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 12;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(13) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(13) {
   -webkit-box-ordinal-group: 13;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 13;
@@ -748,8 +821,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 13;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(14) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(14) {
   -webkit-box-ordinal-group: 14;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 14;
@@ -760,8 +833,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 14;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(15) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(15) {
   -webkit-box-ordinal-group: 15;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 15;
@@ -772,8 +845,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 15;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(16) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(16) {
   -webkit-box-ordinal-group: 16;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 16;
@@ -784,8 +857,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 16;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(17) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(17) {
   -webkit-box-ordinal-group: 17;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 17;
@@ -796,8 +869,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 17;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(18) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(18) {
   -webkit-box-ordinal-group: 18;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 18;
@@ -808,8 +881,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 18;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(19) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(19) {
   -webkit-box-ordinal-group: 19;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 19;
@@ -820,8 +893,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 19;
 }
-/* line 30, ../client/styles/_track.scss */
-.track:nth-child(20) {
+/* line 12, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(20) {
   -webkit-box-ordinal-group: 20;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 20;
@@ -832,12 +905,12 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 20;
 }
-/* line 33, ../client/styles/_track.scss */
-.track.featured {
+/* line 15, ../client/styles/_track_tracks.scss */
+.tracks .track.featured {
   position: relative;
 }
-/* line 38, ../client/styles/_track.scss */
-.track.featured:nth-child(15) {
+/* line 20, ../client/styles/_track_tracks.scss */
+.tracks .track.featured:nth-child(15) {
   -webkit-box-ordinal-group: -3;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: -3;
@@ -848,8 +921,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: -3;
 }
-/* line 38, ../client/styles/_track.scss */
-.track.featured:nth-child(16) {
+/* line 20, ../client/styles/_track_tracks.scss */
+.tracks .track.featured:nth-child(16) {
   -webkit-box-ordinal-group: 0;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 0;
@@ -860,8 +933,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 0;
 }
-/* line 38, ../client/styles/_track.scss */
-.track.featured:nth-child(17) {
+/* line 20, ../client/styles/_track_tracks.scss */
+.tracks .track.featured:nth-child(17) {
   -webkit-box-ordinal-group: 3;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 3;
@@ -872,8 +945,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 3;
 }
-/* line 38, ../client/styles/_track.scss */
-.track.featured:nth-child(18) {
+/* line 20, ../client/styles/_track_tracks.scss */
+.tracks .track.featured:nth-child(18) {
   -webkit-box-ordinal-group: 6;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 6;
@@ -884,8 +957,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 6;
 }
-/* line 38, ../client/styles/_track.scss */
-.track.featured:nth-child(19) {
+/* line 20, ../client/styles/_track_tracks.scss */
+.tracks .track.featured:nth-child(19) {
   -webkit-box-ordinal-group: 9;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 9;
@@ -896,8 +969,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 9;
 }
-/* line 38, ../client/styles/_track.scss */
-.track.featured:nth-child(20) {
+/* line 20, ../client/styles/_track_tracks.scss */
+.tracks .track.featured:nth-child(20) {
   -webkit-box-ordinal-group: 12;
   /* OLD - iOS 6-, Safari 3.1-6 */
   -moz-box-ordinal-group: 12;
@@ -908,8 +981,8 @@ header .toggle_played:after {
   /* NEW - Chrome */
   order: 12;
 }
-/* line 41, ../client/styles/_track.scss */
-.track.featured:after {
+/* line 23, ../client/styles/_track_tracks.scss */
+.tracks .track.featured:after {
   content: '';
   position: absolute;
   width: 4em;
@@ -919,67 +992,31 @@ header .toggle_played:after {
   left: -.625em;
 }
 
-/* line 53, ../client/styles/_track.scss */
-.track_info {
-  padding: 0 .5em;
-  padding-left: 3.5em;
-  position: relative;
-  width: 100%;
-  min-height: 3.25em;
-  text-align: left;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+/* line 1, ../client/styles/_track_played.scss */
+.played {
+  background-size: cover;
+  display: none;
 }
-/* line 63, ../client/styles/_track.scss */
-.track_info .text {
-  padding: 2% 0;
+/* line 7, ../client/styles/_track_played.scss */
+.played .track {
+  padding: .25em 0;
+  border-bottom: 1px solid;
 }
-/* line 67, ../client/styles/_track.scss */
-.track_info h3, .track_info h4 {
-  margin: 0;
-}
-/* line 71, ../client/styles/_track.scss */
-.track_info h3 {
-  line-height: 1.3em;
-}
-/* line 75, ../client/styles/_track.scss */
-.track_info h4 {
-  line-height: 1em;
-}
-/* line 79, ../client/styles/_track.scss */
-.track_info a {
-  border: 0.15em solid;
-  border-radius: 100%;
-  color: rgba(0, 0, 0, 0);
-  position: absolute;
-  top: calc(50% - 2.55em/2);
-  left: .5em;
-  width: 2.25em;
-  height: 2.25em;
-}
-/* line 90, ../client/styles/_track.scss */
-.track_info a:after {
-  content: '';
-  position: absolute;
-  border: .75em solid transparent;
-  border-left-width: 1.1em;
-  top: 0.375em;
-  left: 0.75em;
-}
-
-/* line 102, ../client/styles/_track.scss */
-.loading .track_info a {
-  opacity: .5;
-}
-
-/* line 108, ../client/styles/_track.scss */
-.playing .track_info a:after {
+/* line 11, ../client/styles/_track_played.scss */
+.played .track:last-child {
   border: none;
-  width: 0.333em;
-  height: 50%;
-  left: 30%;
-  top: 25%;
+}
+/* line 16, ../client/styles/_track_played.scss */
+.played.active {
+  display: block;
+}
+/* line 20, ../client/styles/_track_played.scss */
+.played.active .track, .played.active + header .toggle_played {
+  background: rgba(0, 0, 0, 0.2);
+}
+/* line 24, ../client/styles/_track_played.scss */
+.played.active + header .toggle_played {
+  border-left-color: transparent;
 }
 
 /* line 1, ../client/styles/_player.scss */
@@ -1068,93 +1105,120 @@ header .toggle_played:after {
   animation-duration: 0.24s;
 }
 
-/* line 1, ../client/styles/_played.scss */
-.played {
-  display: none;
-}
-/* line 4, ../client/styles/_played.scss */
-.played.active {
-  display: block;
-}
-
-/* line 84, ../client/styles/_theme_mixins.scss */
+/* line 76, ../client/styles/_theme_mixins.scss */
 #content {
   background: #e6e6e6;
 }
 
-/* line 88, ../client/styles/_theme_mixins.scss */
+/* line 80, ../client/styles/_theme_mixins.scss */
 header {
   color: white;
-  background-color: #4a7f2b;
+  background-color: #588d3f;
   background-image: url(/images/unearthed_bg.jpg);
 }
-/* line 42, ../client/styles/_theme_mixins.scss */
+/* line 44, ../client/styles/_theme_mixins.scss */
 header h1 {
   font-family: "Chomp";
 }
-/* line 46, ../client/styles/_theme_mixins.scss */
+/* line 48, ../client/styles/_theme_mixins.scss */
 header .toggle_played {
-  border-left-color: #6bb83e;
+  border-left-color: #68a74b;
 }
-/* line 50, ../client/styles/_theme_mixins.scss */
-header .player {
-  background-color: #4a7f2b;
+
+/* line 89, ../client/styles/_theme_mixins.scss */
+.player {
   background-image: url(/images/unearthed_bg.jpg);
+  background: "unearthed_bg.jpg";
 }
-/* line 9, ../client/styles/_theme_mixins.scss */
-header .player h3 {
+/* line 11, ../client/styles/_theme_mixins.scss */
+.player h3 {
   color: white;
 }
-/* line 13, ../client/styles/_theme_mixins.scss */
-header .player h4 {
+/* line 15, ../client/styles/_theme_mixins.scss */
+.player h4 {
   color: rgba(255, 255, 255, 0.75);
 }
-/* line 17, ../client/styles/_theme_mixins.scss */
-header .player a {
+/* line 19, ../client/styles/_theme_mixins.scss */
+.player .play {
   border-color: white;
 }
-/* line 20, ../client/styles/_theme_mixins.scss */
-header .player a:after {
+/* line 22, ../client/styles/_theme_mixins.scss */
+.player .play:after {
   border-left-color: white;
 }
-/* line 26, ../client/styles/_theme_mixins.scss */
-header .player.playing a:after {
+/* line 28, ../client/styles/_theme_mixins.scss */
+.player.playing a:after {
   box-shadow: white 0.6667em 0;
   background: white;
 }
-/* line 32, ../client/styles/_theme_mixins.scss */
-header .player.featured:after {
+/* line 34, ../client/styles/_theme_mixins.scss */
+.player.featured:after {
   background: rgba(255, 255, 255, 0.75);
 }
 
-/* line 97, ../client/styles/_theme_mixins.scss */
-.track {
-  background: white;
-  box-shadow: rgba(0, 0, 0, 0.05) 0 1px 0;
+/* line 102, ../client/styles/_theme_mixins.scss */
+.played {
+  background-image: url(/images/unearthed_bg.jpg);
 }
-/* line 9, ../client/styles/_theme_mixins.scss */
-.track h3 {
-  color: #4ba119;
+/* line 105, ../client/styles/_theme_mixins.scss */
+.played .track {
+  border-bottom-color: #588d3f;
+  background: none;
 }
-/* line 13, ../client/styles/_theme_mixins.scss */
-.track h4 {
+/* line 11, ../client/styles/_theme_mixins.scss */
+.played .track h3 {
+  color: white;
+}
+/* line 15, ../client/styles/_theme_mixins.scss */
+.played .track h4 {
   color: #ff8292;
 }
-/* line 17, ../client/styles/_theme_mixins.scss */
-.track a {
+/* line 19, ../client/styles/_theme_mixins.scss */
+.played .track .play {
+  border-color: white;
+}
+/* line 22, ../client/styles/_theme_mixins.scss */
+.played .track .play:after {
+  border-left-color: white;
+}
+/* line 28, ../client/styles/_theme_mixins.scss */
+.played .track.playing a:after {
+  box-shadow: white 0.6667em 0;
+  background: white;
+}
+/* line 34, ../client/styles/_theme_mixins.scss */
+.played .track.featured:after {
+  background: #ff354f;
+}
+
+/* line 115, ../client/styles/_theme_mixins.scss */
+.tracks .track {
+  box-shadow: rgba(0, 0, 0, 0.05) 0 1px 0;
+  background: white;
+}
+/* line 11, ../client/styles/_theme_mixins.scss */
+.tracks .track h3 {
+  color: #4ba119;
+}
+/* line 15, ../client/styles/_theme_mixins.scss */
+.tracks .track h4 {
+  color: #ff8292;
+}
+/* line 19, ../client/styles/_theme_mixins.scss */
+.tracks .track .play {
   border-color: #4ba119;
 }
-/* line 20, ../client/styles/_theme_mixins.scss */
-.track a:after {
+/* line 22, ../client/styles/_theme_mixins.scss */
+.tracks .track .play:after {
   border-left-color: #4ba119;
 }
-/* line 26, ../client/styles/_theme_mixins.scss */
-.track.playing a:after {
+/* line 28, ../client/styles/_theme_mixins.scss */
+.tracks .track.playing a:after {
   box-shadow: #4ba119 0.6667em 0;
   background: #4ba119;
 }
-/* line 32, ../client/styles/_theme_mixins.scss */
-.track.featured:after {
+/* line 34, ../client/styles/_theme_mixins.scss */
+.tracks .track.featured:after {
   background: #ff354f;
 }
 
@@ -1178,15 +1242,15 @@ header .player.featured:after {
   background-color: #fff59d;
 }
 
-/* line 114, ../client/styles/_theme_mixins.scss */
+/* line 132, ../client/styles/_theme_mixins.scss */
 nav {
-  background-color: #4a7f2b;
+  background-color: #588d3f;
 }
-/* line 65, ../client/styles/_theme_mixins.scss */
+/* line 57, ../client/styles/_theme_mixins.scss */
 nav li:after {
-  border-bottom-color: #4a7f2b;
+  border-bottom-color: #588d3f;
 }
-/* line 69, ../client/styles/_theme_mixins.scss */
+/* line 61, ../client/styles/_theme_mixins.scss */
 nav a {
   color: white;
 }

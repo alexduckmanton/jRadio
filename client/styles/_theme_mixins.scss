@@ -5,7 +5,9 @@
     .track:nth-child(4n) .img_container:before { background-color: $color4 }
 }
 
-@mixin track_theme($primary, $secondary) {
+@mixin track_theme($primary, $secondary, $bg: none) {
+    background: $bg;
+
     h3 {
         color: $primary;
     }
@@ -14,7 +16,7 @@
         color: lighten($secondary, 15%);
     }
 
-    a {
+    .play {
         border-color: $primary;
 
         &:after {
@@ -44,17 +46,7 @@
     }
 
     .toggle_played {
-        border-left-color: lighten($bg, 15%);
-    }
-
-    .player {
-        background-color: $bg;
-        background-image: url(/images/#{$img});
-
-        @include track_theme(
-            $primary: $color,
-            $secondary: rgba($color, .75)
-        );
+        border-left-color: lighten($bg, 7.5%);
     }
 }
 
@@ -94,13 +86,39 @@
         );
     }
 
+    .player {
+        background-image: url(/images/#{$header_img});
+
+        @include track_theme(
+            $header_text,
+            rgba($header_text, .75),
+            $header_img
+        );
+    }
+
     .track {
-        background: $bg;
+    }
+
+    .played {
+        background-image: url(/images/#{$header_img});
+
+        .track {
+            border-bottom-color: $header_bg;
+
+            @include track_theme(
+                $header_text,
+                $secondary
+            );
+        }
+    }
+
+    .tracks .track {
         box-shadow: rgba(#000,0.05) 0 1px 0;
 
         @include track_theme(
             $primary,
-            $secondary
+            $secondary,
+            $bg
         );
     }
 
