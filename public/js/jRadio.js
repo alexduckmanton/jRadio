@@ -15653,14 +15653,14 @@ function program3(depth0,data) {
   buffer += "<div class=\"track_info\">\n    ";
   stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.play), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n    <div class=\"text\">\n        <h3 class=\"title\">"
+  buffer += "\n    <div class=\"text\">\n        ";
+  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.time), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n        <h3 class=\"title\">"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.title)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "</h3>\n        <h4 class=\"artist\">"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.artist)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</h4>\n        ";
-  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.time), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n    </div>\n</div>\n";
+    + "</h4>\n    </div>\n</div>\n";
   return buffer;
   });
 

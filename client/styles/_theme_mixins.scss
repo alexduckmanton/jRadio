@@ -111,6 +111,10 @@
                 $secondary
             );
         }
+
+        .time {
+            color: lighten($header_bg, 5%);
+        }
     }
 
     .tracks .track {
