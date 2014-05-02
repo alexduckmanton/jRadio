@@ -15092,7 +15092,6 @@ App.prototype.start = function(){
         App.data = {};
 
         App.core.vent.trigger('app:start');
-
     });
 
     App.core.vent.bind('app:start', function(options){
@@ -15220,9 +15219,12 @@ module.exports = Helpers = function Helpers() {
     Handlebars.registerHelper('track_info', require('../templates/info.hbs'));
 
     Handlebars.registerHelper('time', function(options) {
-        var timestamp = options.hash.timestamp;
-        var regex = /\d+:\d+/g;
-        return regex.exec(timestamp)[0];
+        var current = new Date();
+        var track = new Date(options.hash.timestamp);
+        var diff = current.getTime() - track.getTime() - 10*60*60*1000;
+        diff = diff / 1000 / 60;
+
+        return Math.floor(diff) + ' minutes ago';
     });
 };
 
@@ -15647,7 +15649,7 @@ function program3(depth0,data) {
     + "</h3>\n        <h4 class=\"artist\">"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.artist)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "</h4>\n        ";
-  stack1 = helpers['if'].call(depth0, false, {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
+  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.time), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n    </div>\n</div>\n";
   return buffer;
