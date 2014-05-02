@@ -1,7 +1,7 @@
 <div class="track_info">
     {{#if hash.play}}<a href="javascript:void(0)" target="_blank" class="play">Play</a>{{/if}}
+    {{#if hash.time}}<span class="time">{{ time timestamp=hash.time }}</span>{{/if}}
     <div class="text">
-        {{#if hash.time}}<span class="time">{{ time timestamp=hash.time }}</span>{{/if}}
         <h3 class="title">{{hash.title}}</h3>
         <h4 class="artist">{{hash.artist}}</h4>
     </div>

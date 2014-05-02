@@ -18,6 +18,6 @@ module.exports = Helpers = function Helpers() {
         // don't show "1 mins ago" like an idiot
         if (diff == 1) text = 'min ago'
 
-        return diff + ' ' + text;
+        return new Handlebars.SafeString('<strong>' + diff + '</strong>' + ' ' + text);
     });
 };

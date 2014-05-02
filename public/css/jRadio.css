@@ -592,24 +592,25 @@ header .toggle_played:after {
 .track_info .text {
   padding: 2% 0;
 }
-/* line 35, ../client/styles/_track_base.scss */
-.track_info .play + .text {
+/* line 36, ../client/styles/_track_base.scss */
+.track_info .play + .text,
+.track_info .time + .text {
   padding-left: 3em;
 }
-/* line 39, ../client/styles/_track_base.scss */
+/* line 40, ../client/styles/_track_base.scss */
 .track_info h3, .track_info h4 {
   margin: 0;
   font-weight: normal;
 }
-/* line 44, ../client/styles/_track_base.scss */
+/* line 45, ../client/styles/_track_base.scss */
 .track_info h3 {
   line-height: 1.3em;
 }
-/* line 48, ../client/styles/_track_base.scss */
+/* line 49, ../client/styles/_track_base.scss */
 .track_info h4 {
   line-height: 1em;
 }
-/* line 52, ../client/styles/_track_base.scss */
+/* line 53, ../client/styles/_track_base.scss */
 .track_info .play {
   border: 0.15em solid;
   border-radius: 100%;
@@ -620,7 +621,7 @@ header .toggle_played:after {
   width: 2.25em;
   height: 2.25em;
 }
-/* line 63, ../client/styles/_track_base.scss */
+/* line 64, ../client/styles/_track_base.scss */
 .track_info .play:after {
   content: '';
   position: absolute;
@@ -630,12 +631,12 @@ header .toggle_played:after {
   left: 0.75em;
 }
 
-/* line 75, ../client/styles/_track_base.scss */
+/* line 76, ../client/styles/_track_base.scss */
 .loading .track_info .play {
   opacity: .5;
 }
 
-/* line 81, ../client/styles/_track_base.scss */
+/* line 82, ../client/styles/_track_base.scss */
 .playing .track_info a:after {
   border: none;
   width: 0.333em;
@@ -1008,18 +1009,28 @@ header .toggle_played:after {
 }
 /* line 16, ../client/styles/_track_played.scss */
 .played .time {
-  margin-top: 0.625em;
-  float: right;
+  position: absolute;
+  width: 3em;
+  text-align: center;
+  font-size: 0.75em;
+  line-height: 1em;
+  top: calc(50% - 1.583em);
 }
-/* line 21, ../client/styles/_track_played.scss */
+/* line 24, ../client/styles/_track_played.scss */
+.played .time strong {
+  display: block;
+  font-size: 2em;
+  margin-bottom: 0.25em;
+}
+/* line 31, ../client/styles/_track_played.scss */
 .played.active {
   display: block;
 }
-/* line 25, ../client/styles/_track_played.scss */
+/* line 35, ../client/styles/_track_played.scss */
 .played.active .track, .played.active + header .toggle_played {
   background: rgba(0, 0, 0, 0.2);
 }
-/* line 29, ../client/styles/_track_played.scss */
+/* line 39, ../client/styles/_track_played.scss */
 .played.active + header .toggle_played {
   border-left-color: transparent;
 }
