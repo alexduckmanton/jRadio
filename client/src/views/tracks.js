@@ -49,13 +49,22 @@ var itemView = Marionette.ItemView.extend({
 module.exports = CollectionView = Marionette.CollectionView.extend({
     tagName: 'section',
     className: 'tracks',
+    itemView: itemView,
 
     initialize: function() {
-        // this.listenTo(this.collection, 'change', this.render);
         this.listenTo(this.collection, 'change:is_playing', this.stop_previous);
         this.listenTo(App.core.vent, 'tracks:stop', this.stop);
+
+        if (this.className == 'played') {
+            this.listenTo(App.core.vent, 'played:toggle', this.toggle_active);
+            this.$el.toggleClass('active', this.collection.active);
+        }
     },
-    itemView: itemView,
+
+    toggle_active: function() {
+        this.collection.active = !this.collection.active;
+        this.$el.toggleClass('active', this.collection.active);
+    },
 
     stop_previous: function(new_track) {
         var playing = this.collection.where({is_playing: true}),

@@ -482,6 +482,7 @@ header {
 header h1 {
   margin: 0;
   padding: .25em 0 0 0;
+  display: inline-block;
   text-transform: lowercase;
   letter-spacing: 0.15em;
   font-size: 2em;
@@ -493,7 +494,7 @@ header h1 {
   -o-transition: top 0.3s;
   transition: top 0.3s;
 }
-/* line 29, ../client/styles/_header.scss */
+/* line 30, ../client/styles/_header.scss */
 header .playing + h1 {
   top: 3.25em;
   -o-animation-name: jiggle_down;
@@ -530,6 +531,26 @@ header .playing + h1 {
   -moz-transition-delay: 0.045s;
   -o-transition-delay: 0.045s;
   transition-delay: 0.045s;
+}
+/* line 37, ../client/styles/_header.scss */
+header .toggle_played {
+  position: relative;
+  float: right;
+  color: transparent;
+  width: 3.25em;
+  height: 3.25em;
+  border-left: 1px solid #fff;
+}
+/* line 45, ../client/styles/_header.scss */
+header .toggle_played:after {
+  content: '';
+  position: absolute;
+  top: calc(50% - 1em);
+  right: calc(50% - 1em);
+  background: #fff;
+  width: 2em;
+  height: 2em;
+  border-radius: 100%;
 }
 
 /* line 1, ../client/styles/_track.scss */
@@ -1047,12 +1068,21 @@ header .playing + h1 {
   animation-duration: 0.24s;
 }
 
-/* line 80, ../client/styles/_theme_mixins.scss */
+/* line 1, ../client/styles/_played.scss */
+.played {
+  display: none;
+}
+/* line 4, ../client/styles/_played.scss */
+.played.active {
+  display: block;
+}
+
+/* line 84, ../client/styles/_theme_mixins.scss */
 #content {
   background: #e6e6e6;
 }
 
-/* line 84, ../client/styles/_theme_mixins.scss */
+/* line 88, ../client/styles/_theme_mixins.scss */
 header {
   color: white;
   background-color: #4a7f2b;
@@ -1063,6 +1093,10 @@ header h1 {
   font-family: "Chomp";
 }
 /* line 46, ../client/styles/_theme_mixins.scss */
+header .toggle_played {
+  border-left-color: #6bb83e;
+}
+/* line 50, ../client/styles/_theme_mixins.scss */
 header .player {
   background-color: #4a7f2b;
   background-image: url(/images/unearthed_bg.jpg);
@@ -1093,7 +1127,7 @@ header .player.featured:after {
   background: rgba(255, 255, 255, 0.75);
 }
 
-/* line 93, ../client/styles/_theme_mixins.scss */
+/* line 97, ../client/styles/_theme_mixins.scss */
 .track {
   background: white;
   box-shadow: rgba(0, 0, 0, 0.05) 0 1px 0;
@@ -1144,15 +1178,15 @@ header .player.featured:after {
   background-color: #fff59d;
 }
 
-/* line 110, ../client/styles/_theme_mixins.scss */
+/* line 114, ../client/styles/_theme_mixins.scss */
 nav {
   background-color: #4a7f2b;
 }
-/* line 61, ../client/styles/_theme_mixins.scss */
+/* line 65, ../client/styles/_theme_mixins.scss */
 nav li:after {
   border-bottom-color: #4a7f2b;
 }
-/* line 65, ../client/styles/_theme_mixins.scss */
+/* line 69, ../client/styles/_theme_mixins.scss */
 nav a {
   color: white;
 }

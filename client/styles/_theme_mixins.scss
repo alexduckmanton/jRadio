@@ -43,6 +43,10 @@
         font-family: $font;
     }
 
+    .toggle_played {
+        border-left-color: lighten($bg, 15%);
+    }
+
     .player {
         background-color: $bg;
         background-image: url(/images/#{$img});

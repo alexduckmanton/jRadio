@@ -1,20 +1,18 @@
 var Marionette = require('backbone.marionette'),
     TracksView = require('../views/tracks'),
-    TracksCollection = require('../collections/tracks'),
-    PlayedView = require('../views/played');
+    TracksCollection = require('../collections/tracks');
 
 module.exports = layout = Marionette.Layout.extend({
     className: 'site',
     tagName: 'section',
     template: require('../../templates/site.hbs'),
 
-    initialize: function() {
-        this.get_tracks();
-        this.init_played();
+    events: {
+        'click .toggle_played': 'toggle_played'
     },
 
-    onRender: function() {
-        this.$el.prepend(App.views.playedView.render().el);
+    initialize: function() {
+        this.get_tracks();
     },
 
     get_tracks: function() {
@@ -34,8 +32,40 @@ module.exports = layout = Marionette.Layout.extend({
         });
     },
 
-    init_played: function() {
-        App.views.playedView = new PlayedView();
+    get_played: function() {
+        var self = this,
+            played = new TracksCollection();
+
+        played.fetch({
+            url: '/api/unearthed/recent',
+            success: function() {
+                // modify data to match kimono APIs
+                played.forEach(function(val, i, tracks) {
+                    var artist = tracks[i].attributes.artistname;
+                    tracks[i].set('artist', { 'text': artist });
+                });
+
+                // set initial active value
+                played.active = true;
+
+                // store data and views in the app
+                App.data.played = played;
+                App.views.playedView = new TracksView({ collection: played, className: 'played' });
+
+                // render
+                self.$el.prepend(App.views.playedView.render().el);
+            }
+        });
+    },
+
+    toggle_played: function() {
+        var played = App.views.playedView;
+
+        if (!played) {
+            this.get_played();
+        } else if (played) {
+            App.core.vent.trigger('played:toggle');
+        }
     }
 
 });
