@@ -2,10 +2,19 @@ var Marionette = require('backbone.marionette');
 
 var itemView = Marionette.ItemView.extend({
     className: 'track',
-    template: require('../../templates/track.hbs'),
 
     events: {
         'click a': 'toggle_playing'
+    },
+
+    getTemplate: function() {
+        var type = this.model.collection.type;
+
+        if (type == 'played') {
+            return require('../../templates/played.hbs');
+        } else {
+            return require('../../templates/track.hbs');
+        }
     },
 
     initialize: function() {

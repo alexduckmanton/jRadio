@@ -101,6 +101,7 @@
 
     .played {
         background-image: url(/images/#{$header_img});
+        background-color: $header_bg;
 
         .track {
             border-bottom-color: $header_bg;

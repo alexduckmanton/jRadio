@@ -1159,8 +1159,9 @@ header .toggle_played {
 /* line 102, ../client/styles/_theme_mixins.scss */
 .played {
   background-image: url(/images/unearthed_bg.jpg);
+  background-color: #588d3f;
 }
-/* line 105, ../client/styles/_theme_mixins.scss */
+/* line 106, ../client/styles/_theme_mixins.scss */
 .played .track {
   border-bottom-color: #588d3f;
   background: none;
@@ -1191,7 +1192,7 @@ header .toggle_played {
   background: #ff354f;
 }
 
-/* line 115, ../client/styles/_theme_mixins.scss */
+/* line 116, ../client/styles/_theme_mixins.scss */
 .tracks .track {
   box-shadow: rgba(0, 0, 0, 0.05) 0 1px 0;
   background: white;
@@ -1242,7 +1243,7 @@ header .toggle_played {
   background-color: #fff59d;
 }
 
-/* line 132, ../client/styles/_theme_mixins.scss */
+/* line 133, ../client/styles/_theme_mixins.scss */
 nav {
   background-color: #588d3f;
 }

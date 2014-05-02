@@ -39,18 +39,18 @@ module.exports = layout = Marionette.Layout.extend({
         played.fetch({
             url: '/api/unearthed/recent',
             success: function() {
-                // modify data to match kimono APIs
-                played.forEach(function(val, i, tracks) {
-                    var artist = tracks[i].attributes.artistname;
-                    tracks[i].set('artist', { 'text': artist });
-                });
+                console.log(played);
 
                 // set initial active value
                 played.active = true;
+                played.type = 'played';
 
                 // store data and views in the app
                 App.data.played = played;
-                App.views.playedView = new TracksView({ collection: played, className: 'played' });
+                App.views.playedView = new TracksView({
+                    collection: played,
+                    className: 'played'
+                });
 
                 // render
                 self.$el.prepend(App.views.playedView.render().el);
