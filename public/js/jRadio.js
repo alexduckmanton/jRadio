@@ -15135,8 +15135,11 @@ var Marionette = require('backbone.marionette'),
 module.exports = Controller = Marionette.Controller.extend({
     initialize: function() {
         // add the player to the page. only needs to be done once on initialization
-        window.App.views.playerView = new PlayerView({ model: new PlayerModel() });
+        App.views.playerView = new PlayerView({ model: new PlayerModel() });
         $('#content').append( window.App.views.playerView.render().el );
+
+        this.listenTo(App.core.vent, 'scroll:pos', this.scroll);
+        this.listenTo(App.core.vent, 'scroll:elem', this.scroll_elem);
 
         // add footer navigation
         // var nav_collection = new NavCollection([
@@ -15145,6 +15148,35 @@ module.exports = Controller = Marionette.Controller.extend({
         // ]);
         // window.App.views.navView = new NavView({ collection: nav_collection });
         // $('nav').append( window.App.views.navView.render().el );
+    },
+
+    scroll: function(options) {
+        var options = options || {},
+            pos = options.pos || 0,
+            elem = options.elem || $('html,body'),
+            timing;
+
+        if (typeof(options.timing) === 'number') timing = options.timing;
+        else timing = 300;
+
+        if (typeof(options) === 'number') pos = options;
+
+        elem.animate({
+            scrollTop: pos
+        }, timing);
+    },
+
+    scroll_elem: function(options) {
+        var diff = options.diff || 0,
+            animate = options.anim || false;
+            elem = options.elem || options,
+            pos = elem.offset().top;
+
+        App.core.vent.trigger('scroll:pos', pos + diff, animate);
+    },
+
+    scroll_event: function(event, scroll_pos) {
+        this.listenTo(App.core.vent, event, _.bind(this.scroll, this, scroll_pos));
     },
 
     unearthed: function() {
@@ -15255,6 +15287,11 @@ module.exports = layout = Marionette.Layout.extend({
         this.get_tracks();
     },
 
+    onRender: function() {
+        this.$header = this.$el.children('header');
+        this.init_played();
+    },
+
     get_tracks: function() {
         var self = this,
             tracks = new TracksCollection();
@@ -15272,29 +15309,32 @@ module.exports = layout = Marionette.Layout.extend({
         });
     },
 
+    init_played: function() {
+        App.views.playedView = new TracksView({
+            collection: new TracksCollection(),
+            className: 'played'
+        });
+        this.$el.prepend(App.views.playedView.render().el);
+    },
+
     get_played: function() {
         var self = this,
-            played = new TracksCollection();
+            played = App.views.playedView.collection;
 
         played.fetch({
             url: '/api/unearthed/recent',
             success: function() {
-                console.log(played);
-
-                // set initial active value
-                played.active = true;
                 played.type = 'played';
                 played.models.reverse();
 
                 // store data and views in the app
                 App.data.played = played;
-                App.views.playedView = new TracksView({
-                    collection: played,
-                    className: 'played'
-                });
+                App.views.playedView.collection = App.data.played;
 
                 // render
-                self.$el.prepend(App.views.playedView.render().el);
+                App.views.playedView.render();
+                self.bind_played_events();
+                App.core.vent.trigger('played:show');
             }
         });
     },
@@ -15302,11 +15342,31 @@ module.exports = layout = Marionette.Layout.extend({
     toggle_played: function() {
         var played = App.views.playedView;
 
-        if (!played) {
+        if (!played.collection.length) {
             this.get_played();
-        } else if (played) {
-            App.core.vent.trigger('played:toggle');
+        } else if (played.collection.active) {
+            App.core.vent.trigger('played:hide');
+        } else if (!played.collection.active) {
+            App.core.vent.trigger('played:show');
         }
+    },
+
+    bind_played_events: function() {
+        this.listenTo(App.core.vent, 'played:show', this.scroll_played);
+    },
+
+    scroll_played: function() {
+        var $played = this.$el.children('.played'),
+            $tracks = $played.children('.track'),
+            track_height = $tracks.first().outerHeight(),
+            played_height = $tracks.length * track_height;
+
+        // snap scroll played tracks to bottom
+        App.core.vent.trigger('scroll:pos', {
+            pos: played_height,
+            timing: 0,
+            elem: $played
+        });
     }
 
 });
@@ -15407,6 +15467,7 @@ module.exports = TrackModel = Backbone.Model.extend({
             api = '/api/unearthed/track';
 
         $.getJSON(api, {'id': track_id}, function(data) {
+            if (!data.length) return;
             self.set('src', data[0].track_url);
         });
     },
@@ -15601,8 +15662,8 @@ module.exports = CollectionView = Marionette.CollectionView.extend({
         this.listenTo(App.core.vent, 'tracks:stop', this.stop);
 
         if (this.className == 'played') {
-            this.listenTo(App.core.vent, 'played:toggle', this.toggle_active);
-            this.$el.toggleClass('active', this.collection.active);
+            this.listenTo(App.core.vent, 'played:show', this.toggle_active);
+            this.listenTo(App.core.vent, 'played:hide', this.toggle_active);
         }
     },
 

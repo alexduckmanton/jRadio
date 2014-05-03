@@ -15,6 +15,11 @@ module.exports = layout = Marionette.Layout.extend({
         this.get_tracks();
     },
 
+    onRender: function() {
+        this.$header = this.$el.children('header');
+        this.init_played();
+    },
+
     get_tracks: function() {
         var self = this,
             tracks = new TracksCollection();
@@ -32,29 +37,32 @@ module.exports = layout = Marionette.Layout.extend({
         });
     },
 
+    init_played: function() {
+        App.views.playedView = new TracksView({
+            collection: new TracksCollection(),
+            className: 'played'
+        });
+        this.$el.prepend(App.views.playedView.render().el);
+    },
+
     get_played: function() {
         var self = this,
-            played = new TracksCollection();
+            played = App.views.playedView.collection;
 
         played.fetch({
             url: '/api/unearthed/recent',
             success: function() {
-                console.log(played);
-
-                // set initial active value
-                played.active = true;
                 played.type = 'played';
                 played.models.reverse();
 
                 // store data and views in the app
                 App.data.played = played;
-                App.views.playedView = new TracksView({
-                    collection: played,
-                    className: 'played'
-                });
+                App.views.playedView.collection = App.data.played;
 
                 // render
-                self.$el.prepend(App.views.playedView.render().el);
+                App.views.playedView.render();
+                self.bind_played_events();
+                App.core.vent.trigger('played:show');
             }
         });
     },
@@ -62,11 +70,31 @@ module.exports = layout = Marionette.Layout.extend({
     toggle_played: function() {
         var played = App.views.playedView;
 
-        if (!played) {
+        if (!played.collection.length) {
             this.get_played();
-        } else if (played) {
-            App.core.vent.trigger('played:toggle');
+        } else if (played.collection.active) {
+            App.core.vent.trigger('played:hide');
+        } else if (!played.collection.active) {
+            App.core.vent.trigger('played:show');
         }
+    },
+
+    bind_played_events: function() {
+        this.listenTo(App.core.vent, 'played:show', this.scroll_played);
+    },
+
+    scroll_played: function() {
+        var $played = this.$el.children('.played'),
+            $tracks = $played.children('.track'),
+            track_height = $tracks.first().outerHeight(),
+            played_height = $tracks.length * track_height;
+
+        // snap scroll played tracks to bottom
+        App.core.vent.trigger('scroll:pos', {
+            pos: played_height,
+            timing: 0,
+            elem: $played
+        });
     }
 
 });

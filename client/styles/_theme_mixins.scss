@@ -5,7 +5,7 @@
     .track:nth-child(4n) .img_container:before { background-color: $color4 }
 }
 
-@mixin track_theme($primary, $secondary, $bg: none) {
+@mixin track_theme($primary, $secondary, $bg: false) {
     background: $bg;
 
     h3 {

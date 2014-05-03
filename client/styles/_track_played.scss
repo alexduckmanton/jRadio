@@ -1,8 +1,10 @@
 .played {
-    background-size: cover;
+    background-size: 2000px;
+    overflow: auto;
 
     // hide when not active
-    display: none;
+    height: 0;
+    @include single-transition(height);
 
     .track {
         padding: .25em 0;
@@ -29,10 +31,13 @@
         }
     }
 
-    &.active {
-        display: block;
+    .track {
+        background: rgba(0,0,0,0.2);
+    }
 
-        .track,
+    &.active {
+        height: 10em;
+
         & + header .toggle_played {
             background: rgba(0,0,0,0.2);
         }

@@ -11,8 +11,11 @@ var Marionette = require('backbone.marionette'),
 module.exports = Controller = Marionette.Controller.extend({
     initialize: function() {
         // add the player to the page. only needs to be done once on initialization
-        window.App.views.playerView = new PlayerView({ model: new PlayerModel() });
+        App.views.playerView = new PlayerView({ model: new PlayerModel() });
         $('#content').append( window.App.views.playerView.render().el );
+
+        this.listenTo(App.core.vent, 'scroll:pos', this.scroll);
+        this.listenTo(App.core.vent, 'scroll:elem', this.scroll_elem);
 
         // add footer navigation
         // var nav_collection = new NavCollection([
@@ -21,6 +24,35 @@ module.exports = Controller = Marionette.Controller.extend({
         // ]);
         // window.App.views.navView = new NavView({ collection: nav_collection });
         // $('nav').append( window.App.views.navView.render().el );
+    },
+
+    scroll: function(options) {
+        var options = options || {},
+            pos = options.pos || 0,
+            elem = options.elem || $('html,body'),
+            timing;
+
+        if (typeof(options.timing) === 'number') timing = options.timing;
+        else timing = 300;
+
+        if (typeof(options) === 'number') pos = options;
+
+        elem.animate({
+            scrollTop: pos
+        }, timing);
+    },
+
+    scroll_elem: function(options) {
+        var diff = options.diff || 0,
+            animate = options.anim || false;
+            elem = options.elem || options,
+            pos = elem.offset().top;
+
+        App.core.vent.trigger('scroll:pos', pos + diff, animate);
+    },
+
+    scroll_event: function(event, scroll_pos) {
+        this.listenTo(App.core.vent, event, _.bind(this.scroll, this, scroll_pos));
     },
 
     unearthed: function() {

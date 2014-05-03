@@ -26,6 +26,7 @@ module.exports = TrackModel = Backbone.Model.extend({
             api = '/api/unearthed/track';
 
         $.getJSON(api, {'id': track_id}, function(data) {
+            if (!data.length) return;
             self.set('src', data[0].track_url);
         });
     },

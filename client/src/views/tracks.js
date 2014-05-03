@@ -65,8 +65,8 @@ module.exports = CollectionView = Marionette.CollectionView.extend({
         this.listenTo(App.core.vent, 'tracks:stop', this.stop);
 
         if (this.className == 'played') {
-            this.listenTo(App.core.vent, 'played:toggle', this.toggle_active);
-            this.$el.toggleClass('active', this.collection.active);
+            this.listenTo(App.core.vent, 'played:show', this.toggle_active);
+            this.listenTo(App.core.vent, 'played:hide', this.toggle_active);
         }
     },
 

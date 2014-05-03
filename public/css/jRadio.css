@@ -994,19 +994,24 @@ header .toggle_played:after {
 
 /* line 1, ../client/styles/_track_played.scss */
 .played {
-  background-size: cover;
-  display: none;
+  background-size: 2000px;
+  overflow: auto;
+  height: 0;
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  -o-transition: height 0.3s;
+  transition: height 0.3s;
 }
-/* line 7, ../client/styles/_track_played.scss */
+/* line 9, ../client/styles/_track_played.scss */
 .played .track {
   padding: .25em 0;
   border-bottom: 1px solid;
 }
-/* line 11, ../client/styles/_track_played.scss */
+/* line 13, ../client/styles/_track_played.scss */
 .played .track:last-child {
   border: none;
 }
-/* line 16, ../client/styles/_track_played.scss */
+/* line 18, ../client/styles/_track_played.scss */
 .played .time {
   position: absolute;
   width: 3em;
@@ -1016,21 +1021,25 @@ header .toggle_played:after {
   top: calc(50% - 1.5em);
   right: .5em;
 }
-/* line 25, ../client/styles/_track_played.scss */
+/* line 27, ../client/styles/_track_played.scss */
 .played .time strong {
   display: block;
   font-size: 2.5em;
   margin-bottom: 0.2em;
 }
-/* line 32, ../client/styles/_track_played.scss */
-.played.active {
-  display: block;
-}
-/* line 36, ../client/styles/_track_played.scss */
-.played.active .track, .played.active + header .toggle_played {
+/* line 34, ../client/styles/_track_played.scss */
+.played .track {
   background: rgba(0, 0, 0, 0.2);
 }
-/* line 40, ../client/styles/_track_played.scss */
+/* line 38, ../client/styles/_track_played.scss */
+.played.active {
+  height: 10em;
+}
+/* line 41, ../client/styles/_track_played.scss */
+.played.active + header .toggle_played {
+  background: rgba(0, 0, 0, 0.2);
+}
+/* line 45, ../client/styles/_track_played.scss */
 .played.active + header .toggle_played {
   border-left-color: transparent;
 }
@@ -1180,7 +1189,7 @@ header .toggle_played {
 /* line 106, ../client/styles/_theme_mixins.scss */
 .played .track {
   border-bottom-color: #588d3f;
-  background: none;
+  background: false;
 }
 /* line 11, ../client/styles/_theme_mixins.scss */
 .played .track h3 {
