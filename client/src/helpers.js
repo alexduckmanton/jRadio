@@ -16,7 +16,7 @@ module.exports = Helpers = function Helpers() {
         diff = Math.floor( diff / 1000 / 60 );
 
         // don't show "1 mins ago" like an idiot
-        if (diff == 1) text = 'min ago'
+        if (diff == 1) text = 'min ago';
 
         return new Handlebars.SafeString('<strong>' + diff + '</strong>' + ' ' + text);
     });

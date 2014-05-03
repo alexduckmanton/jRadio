@@ -24,8 +24,20 @@ module.exports = function(grunt) {
         },
 
         browserify: {
+            util: {
+                src: ['client/requires/**/util/*.js'],
+                dest: 'build/util.js',
+                options: {
+                    shim: {
+                        modernizr: {
+                            path: 'client/requires/modernizr/util/modernizr.js',
+                            exports: 'Modernizr'
+                        }
+                    }
+                }
+            },
             vendor: {
-                src: ['client/requires/**/*.js'],
+                src: ['client/requires/**/js/*.js'],
                 dest: 'build/vendor.js',
                 options: {
                     shim: {
@@ -115,6 +127,9 @@ module.exports = function(grunt) {
                     src: 'build/<%= pkg.name %>.js',
                     dest: 'public/js/<%= pkg.name %>.js'
                 }, {
+                    src: 'build/util.js',
+                    dest: 'public/js/util.js'
+                }, {
                     src: 'build/main.css',
                     dest: 'public/css/<%= pkg.name %>.css'
                 }, {
@@ -193,10 +208,10 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('init:dev', ['clean', 'bower', 'browserify:vendor']);
+    grunt.registerTask('init:dev', ['clean', 'bower', 'browserify:vendor', 'browserify:util']);
 
     grunt.registerTask('build:dev', ['clean:dev', 'browserify:app', 'jshint:dev', 'compass:dev', 'concat', 'copy:dev']);
-    grunt.registerTask('build:prod', ['clean:prod', 'browserify:vendor', 'browserify:app', 'jshint:all', 'compass:prod', 'concat', 'cssmin', 'uglify', 'copy:prod']);
+    grunt.registerTask('build:prod', ['clean:prod', 'browserify:vendor', 'browserify:util', 'browserify:app', 'jshint:all', 'compass:prod', 'concat', 'cssmin', 'uglify', 'copy:prod']);
 
     grunt.registerTask('heroku', ['init:dev', 'build:dev']);
 

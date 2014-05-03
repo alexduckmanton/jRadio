@@ -170,6 +170,8 @@ Backbone.ChildViewContainer = (function(Backbone, _){
 
 },{"backbone":"kvd4GK","jquery":"Ewfsiz","underscore":"P+7e+f"}],"backbone.babysitter":[function(require,module,exports){
 module.exports=require('8gCNUQ');
+},{}],"backbone.marionette":[function(require,module,exports){
+module.exports=require('D0JZpm');
 },{}],"D0JZpm":[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 
@@ -2617,11 +2619,7 @@ _.extend(Marionette.Module, {
 
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
-},{"backbone":"kvd4GK","jquery":"Ewfsiz","underscore":"P+7e+f"}],"backbone.marionette":[function(require,module,exports){
-module.exports=require('D0JZpm');
-},{}],"backbone.wreqr":[function(require,module,exports){
-module.exports=require('8gCVIr');
-},{}],"8gCVIr":[function(require,module,exports){
+},{"backbone":"kvd4GK","jquery":"Ewfsiz","underscore":"P+7e+f"}],"8gCVIr":[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 
 ; global.$ = require("jquery");
@@ -3047,7 +3045,9 @@ Wreqr.radio = (function(Wreqr){
 
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
-},{"backbone":"kvd4GK","jquery":"Ewfsiz","underscore":"P+7e+f"}],"kvd4GK":[function(require,module,exports){
+},{"backbone":"kvd4GK","jquery":"Ewfsiz","underscore":"P+7e+f"}],"backbone.wreqr":[function(require,module,exports){
+module.exports=require('8gCVIr');
+},{}],"kvd4GK":[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 
 ; global.underscore = require("underscore");
@@ -15071,7 +15071,7 @@ var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? 
 
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
-},{}]},{},["8gCNUQ","D0JZpm","8gCVIr","kvd4GK","Ewfsiz","P+7e+f"])
+},{}]},{},["8gCNUQ","D0JZpm","8gCVIr","Ewfsiz","kvd4GK","P+7e+f"])
 ;
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var Marionette = require('backbone.marionette'),
@@ -15151,8 +15151,7 @@ module.exports = Controller = Marionette.Controller.extend({
     },
 
     scroll: function(options) {
-        var options = options || {},
-            pos = options.pos || 0,
+        var pos = options.pos || 0,
             elem = options.elem || $('html,body'),
             timing;
 
@@ -15168,7 +15167,7 @@ module.exports = Controller = Marionette.Controller.extend({
 
     scroll_elem: function(options) {
         var diff = options.diff || 0,
-            animate = options.anim || false;
+            animate = options.anim || false,
             elem = options.elem || options,
             pos = elem.offset().top;
 
@@ -15263,7 +15262,7 @@ module.exports = Helpers = function Helpers() {
         diff = Math.floor( diff / 1000 / 60 );
 
         // don't show "1 mins ago" like an idiot
-        if (diff == 1) text = 'min ago'
+        if (diff == 1) text = 'min ago';
 
         return new Handlebars.SafeString('<strong>' + diff + '</strong>' + ' ' + text);
     });

@@ -27,8 +27,7 @@ module.exports = Controller = Marionette.Controller.extend({
     },
 
     scroll: function(options) {
-        var options = options || {},
-            pos = options.pos || 0,
+        var pos = options.pos || 0,
             elem = options.elem || $('html,body'),
             timing;
 
@@ -44,7 +43,7 @@ module.exports = Controller = Marionette.Controller.extend({
 
     scroll_elem: function(options) {
         var diff = options.diff || 0,
-            animate = options.anim || false;
+            animate = options.anim || false,
             elem = options.elem || options,
             pos = elem.offset().top;
 
