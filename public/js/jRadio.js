@@ -15284,6 +15284,7 @@ module.exports = layout = Marionette.Layout.extend({
                 // set initial active value
                 played.active = true;
                 played.type = 'played';
+                played.models.reverse();
 
                 // store data and views in the app
                 App.data.played = played;
