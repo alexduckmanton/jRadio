@@ -6,7 +6,8 @@ var Marionette = require('backbone.marionette'),
     NavModel = require('./models/nav'),
     NavView = require('./views/nav'),
     NavCollection = require('./collections/nav'),
-    UnearthedLayout = require('./layouts/unearthed');
+    UnearthedLayout = require('./layouts/unearthed'),
+    SiteModel = require('./models/site');
 
 module.exports = Controller = Marionette.Controller.extend({
     initialize: function() {
@@ -55,7 +56,11 @@ module.exports = Controller = Marionette.Controller.extend({
     },
 
     unearthed: function() {
-        App.views.unearthedLayout = new UnearthedLayout();
+        App.views.unearthedLayout = new UnearthedLayout({ model: new SiteModel({
+            page_title: 'Unearthed',
+            radio_title: 'Triple J Unearthed',
+            src: 'http://shoutmedia.abc.net.au:10464/;*.mp3'
+        }) });
 
         App.router.navigate('unearthed');
         $('#content').append( App.views.unearthedLayout.render().el );

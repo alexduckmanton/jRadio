@@ -8,6 +8,7 @@ module.exports = layout = Marionette.Layout.extend({
     template: require('../../templates/site.hbs'),
 
     events: {
+        'click .radio': 'play_radio',
         'click .toggle_played': 'toggle_played'
     },
 
@@ -95,6 +96,10 @@ module.exports = layout = Marionette.Layout.extend({
             timing: 0,
             elem: $played
         });
+    },
+
+    play_radio: function() {
+        App.core.vent.trigger('track:play', this.model.attributes);
     }
 
 });

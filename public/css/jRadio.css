@@ -494,17 +494,21 @@ header h1 {
   -o-transition: top 0.3s;
   transition: top 0.3s;
 }
-/* line 30, ../client/styles/_header.scss */
+/* line 31, ../client/styles/_header.scss */
+header .radio,
 header .toggle_played {
   position: relative;
-  float: right;
+  top: 0;
   color: transparent;
   width: 3.25em;
   height: 3.25em;
-  border-left: 1px solid #fff;
-  z-index: 1;
+  -webkit-transition: top 0.3s;
+  -moz-transition: top 0.3s;
+  -o-transition: top 0.3s;
+  transition: top 0.3s;
 }
-/* line 39, ../client/styles/_header.scss */
+/* line 40, ../client/styles/_header.scss */
+header .radio:after,
 header .toggle_played:after {
   content: '';
   position: absolute;
@@ -515,9 +519,28 @@ header .toggle_played:after {
   height: 2em;
   border-radius: 100%;
 }
+/* line 52, ../client/styles/_header.scss */
+header .radio {
+  float: left;
+}
+/* line 56, ../client/styles/_header.scss */
+header .toggle_played {
+  float: right;
+}
+/* line 60, ../client/styles/_header.scss */
+header iframe {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
 
-/* line 53, ../client/styles/_header.scss */
-.playing ~ .site header h1 {
+/* line 73, ../client/styles/_header.scss */
+.playing ~ .site header h1,
+.playing ~ .site header .radio,
+.playing ~ .site header .toggle_played {
   top: 3.25em;
   -o-animation-name: jiggle_down;
   -ms-animation-name: jiggle_down;
@@ -549,10 +572,33 @@ header .toggle_played:after {
   -moz-animation-direction: reverse;
   -webkit-animation-direction: reverse;
   animation-direction: reverse;
+}
+/* line 77, ../client/styles/_header.scss */
+.playing ~ .site header h1:nth-child(1),
+.playing ~ .site header .radio:nth-child(1),
+.playing ~ .site header .toggle_played:nth-child(1) {
+  -webkit-transition-delay: 0.015s;
+  -moz-transition-delay: 0.015s;
+  -o-transition-delay: 0.015s;
+  transition-delay: 0.015s;
+}
+/* line 78, ../client/styles/_header.scss */
+.playing ~ .site header h1:nth-child(2),
+.playing ~ .site header .radio:nth-child(2),
+.playing ~ .site header .toggle_played:nth-child(2) {
   -webkit-transition-delay: 0.045s;
   -moz-transition-delay: 0.045s;
   -o-transition-delay: 0.045s;
   transition-delay: 0.045s;
+}
+/* line 79, ../client/styles/_header.scss */
+.playing ~ .site header h1:nth-child(3),
+.playing ~ .site header .radio:nth-child(3),
+.playing ~ .site header .toggle_played:nth-child(3) {
+  -webkit-transition-delay: 0.015s;
+  -moz-transition-delay: 0.015s;
+  -o-transition-delay: 0.015s;
+  transition-delay: 0.015s;
 }
 
 /* line 1, ../client/styles/_track_base.scss */
@@ -1130,12 +1176,12 @@ header .toggle_played:after {
   animation-duration: 0.24s;
 }
 
-/* line 76, ../client/styles/_theme_mixins.scss */
+/* line 72, ../client/styles/_theme_mixins.scss */
 #content {
   background: #e6e6e6;
 }
 
-/* line 80, ../client/styles/_theme_mixins.scss */
+/* line 76, ../client/styles/_theme_mixins.scss */
 header {
   color: white;
   background-color: #588d3f;
@@ -1145,12 +1191,8 @@ header {
 header h1 {
   font-family: "Chomp";
 }
-/* line 48, ../client/styles/_theme_mixins.scss */
-header .toggle_played {
-  border-left-color: #68a74b;
-}
 
-/* line 89, ../client/styles/_theme_mixins.scss */
+/* line 85, ../client/styles/_theme_mixins.scss */
 .player {
   background-image: url(/images/unearthed_bg.jpg);
   background: "unearthed_bg.jpg";
@@ -1181,12 +1223,12 @@ header .toggle_played {
   background: rgba(255, 255, 255, 0.75);
 }
 
-/* line 102, ../client/styles/_theme_mixins.scss */
+/* line 98, ../client/styles/_theme_mixins.scss */
 .played {
   background-image: url(/images/unearthed_bg.jpg);
   background-color: #588d3f;
 }
-/* line 106, ../client/styles/_theme_mixins.scss */
+/* line 102, ../client/styles/_theme_mixins.scss */
 .played .track {
   border-bottom-color: #588d3f;
   background: false;
@@ -1216,12 +1258,12 @@ header .toggle_played {
 .played .track.featured:after {
   background: #ff354f;
 }
-/* line 115, ../client/styles/_theme_mixins.scss */
+/* line 111, ../client/styles/_theme_mixins.scss */
 .played .time {
   color: #639f47;
 }
 
-/* line 120, ../client/styles/_theme_mixins.scss */
+/* line 116, ../client/styles/_theme_mixins.scss */
 .tracks .track {
   box-shadow: rgba(0, 0, 0, 0.05) 0 1px 0;
   background: white;
@@ -1272,15 +1314,15 @@ header .toggle_played {
   background-color: #fff59d;
 }
 
-/* line 137, ../client/styles/_theme_mixins.scss */
+/* line 133, ../client/styles/_theme_mixins.scss */
 nav {
   background-color: #588d3f;
 }
-/* line 57, ../client/styles/_theme_mixins.scss */
+/* line 53, ../client/styles/_theme_mixins.scss */
 nav li:after {
   border-bottom-color: #588d3f;
 }
-/* line 61, ../client/styles/_theme_mixins.scss */
+/* line 57, ../client/styles/_theme_mixins.scss */
 nav a {
   color: white;
 }

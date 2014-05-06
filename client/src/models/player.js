@@ -9,6 +9,7 @@ module.exports = PlayerModel = Backbone.Model.extend({
 
     initialize: function() {
         this.listenTo(App.core.vent, 'track:play', this.change_track);
+        this.listenTo(App.core.vent, 'track:play', this.update_info);
         this.listenTo(App.core.vent, 'track:play', this.play);
     },
 
@@ -18,7 +19,9 @@ module.exports = PlayerModel = Backbone.Model.extend({
 
         // mp3 source for the track
         this.get('track').setAttribute('src', track.src);
+    },
 
+    update_info: function(track) {
         // set info to be displayed in the player
         this.set({
             'title': track.title,

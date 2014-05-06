@@ -27,14 +27,15 @@ header {
         @include single-transition(top);
     }
 
+    .radio,
     .toggle_played {
         position: relative;
-        float: right;
+        top: 0;
         color: transparent;
         width: $header_height;
         height: $header_height;
-        border-left: 1px solid #fff;
-        z-index: 1;
+
+        @include single-transition(top);
 
         &:after {
             content: '';
@@ -47,12 +48,33 @@ header {
             border-radius: 100%;
         }
     }
+
+    .radio {
+        float: left;
+    }
+
+    .toggle_played {
+        float: right;
+    }
+
+    iframe {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
 }
 
 
-.playing ~ .site header h1 {
+.playing ~ .site header h1,
+.playing ~ .site header .radio,
+.playing ~ .site header .toggle_played {
     top: $header_height;
-
     @include jiggle(down, $delay: 0, $direction: reverse);
-    @include transition-delay($default-transition-duration * .15);
+
+    &:nth-child(1) { @include transition-delay($default-transition-duration * .05); }
+    &:nth-child(2) { @include transition-delay($default-transition-duration * .15); }
+    &:nth-child(3) { @include transition-delay($default-transition-duration * .05); }
 }

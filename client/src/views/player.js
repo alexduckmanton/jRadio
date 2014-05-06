@@ -35,5 +35,6 @@ module.exports = itemView = Marionette.ItemView.extend({
 
     stop: function() {
         App.core.vent.trigger('tracks:stop');
+        App.core.vent.trigger('radio:stop');
     }
 });

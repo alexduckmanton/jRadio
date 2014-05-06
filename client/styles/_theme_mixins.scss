@@ -44,10 +44,6 @@
     h1 {
         font-family: $font;
     }
-
-    .toggle_played {
-        border-left-color: lighten($bg, 7.5%);
-    }
 }
 
 @mixin nav($bg, $img, $color) {
