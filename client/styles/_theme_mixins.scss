@@ -92,20 +92,23 @@
         );
     }
 
-    .track {
-    }
-
     .played {
+        $track_bg: saturate(darken($header_bg, 25%), 30%);
         background-image: url(/images/#{$header_img});
         background-color: $header_bg;
 
         .track {
-            border-bottom-color: $header_bg;
+            border-bottom-color: lighten($track_bg, 1%);
+            background: rgba($track_bg, .8);
 
             @include track_theme(
                 $header_text,
                 $secondary
             );
+        }
+
+        &.active + header .toggle_played {
+            background: rgba($track_bg, .8);
         }
 
         .time {

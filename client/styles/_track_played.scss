@@ -1,5 +1,6 @@
 .played {
-    background-size: 2000px;
+    background-size: 500px;
+    background-position: center center;
     overflow: auto;
 
     // enable inertial scrolling for ios and maybe android?
@@ -34,19 +35,7 @@
         }
     }
 
-    .track {
-        background: rgba(0,0,0,0.2);
-    }
-
     &.active {
         height: 10em;
-
-        & + header .toggle_played {
-            background: rgba(0,0,0,0.2);
-        }
-
-        & + header .toggle_played {
-            border-left-color: transparent;
-        }
     }
 }
