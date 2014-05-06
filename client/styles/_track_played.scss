@@ -2,6 +2,9 @@
     background-size: 2000px;
     overflow: auto;
 
+    // enable inertial scrolling for ios and maybe android?
+    -webkit-overflow-scrolling: touch;
+
     // hide when not active
     height: 0;
     @include single-transition(height);
