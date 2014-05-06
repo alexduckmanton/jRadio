@@ -469,7 +469,7 @@ th {
 
 /* line 6, ../client/styles/_header.scss */
 header {
-  min-height: 3.25em;
+  height: 3.25em;
   text-align: center;
   overflow: hidden;
   background: top left no-repeat;
@@ -649,11 +649,11 @@ header iframe {
 }
 /* line 44, ../client/styles/_track_base.scss */
 .track_info h3 {
-  line-height: 1.3em;
+  line-height: 21px;
 }
 /* line 48, ../client/styles/_track_base.scss */
 .track_info h4 {
-  line-height: 1em;
+  line-height: 18px;
 }
 /* line 52, ../client/styles/_track_base.scss */
 .track_info .play {
