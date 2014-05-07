@@ -469,7 +469,7 @@ th {
 
 /* line 6, ../client/styles/_header.scss */
 header {
-  height: 3.25em;
+  height: 3em;
   text-align: center;
   overflow: hidden;
   background: top left no-repeat;
@@ -481,12 +481,13 @@ header {
 /* line 14, ../client/styles/_header.scss */
 header h1 {
   margin: 0;
-  padding: .25em 0 0 0;
+  padding: 0;
   display: inline-block;
   text-transform: lowercase;
   letter-spacing: 0.15em;
   font-size: 2em;
   font-weight: normal;
+  line-height: 1.5em;
   position: relative;
   top: 0;
   -webkit-transition: top 0.3s;
@@ -494,20 +495,20 @@ header h1 {
   -o-transition: top 0.3s;
   transition: top 0.3s;
 }
-/* line 31, ../client/styles/_header.scss */
+/* line 32, ../client/styles/_header.scss */
 header .radio,
 header .toggle_played {
   position: relative;
   top: 0;
   color: transparent;
-  width: 3.25em;
-  height: 3.25em;
+  width: 3em;
+  height: 3em;
   -webkit-transition: top 0.3s;
   -moz-transition: top 0.3s;
   -o-transition: top 0.3s;
   transition: top 0.3s;
 }
-/* line 40, ../client/styles/_header.scss */
+/* line 41, ../client/styles/_header.scss */
 header .radio:after,
 header .toggle_played:after {
   content: '';
@@ -519,15 +520,15 @@ header .toggle_played:after {
   height: 2em;
   border-radius: 100%;
 }
-/* line 52, ../client/styles/_header.scss */
+/* line 53, ../client/styles/_header.scss */
 header .radio {
   float: left;
 }
-/* line 56, ../client/styles/_header.scss */
+/* line 57, ../client/styles/_header.scss */
 header .toggle_played {
   float: right;
 }
-/* line 60, ../client/styles/_header.scss */
+/* line 61, ../client/styles/_header.scss */
 header iframe {
   position: absolute;
   top: -9999px;
@@ -537,11 +538,11 @@ header iframe {
   opacity: 0;
 }
 
-/* line 73, ../client/styles/_header.scss */
+/* line 74, ../client/styles/_header.scss */
 .playing ~ .site header h1,
 .playing ~ .site header .radio,
 .playing ~ .site header .toggle_played {
-  top: 3.25em;
+  top: 3em;
   -o-animation-name: jiggle_down;
   -ms-animation-name: jiggle_down;
   -moz-animation-name: jiggle_down;
@@ -573,7 +574,7 @@ header iframe {
   -webkit-animation-direction: reverse;
   animation-direction: reverse;
 }
-/* line 77, ../client/styles/_header.scss */
+/* line 78, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(1),
 .playing ~ .site header .radio:nth-child(1),
 .playing ~ .site header .toggle_played:nth-child(1) {
@@ -582,7 +583,7 @@ header iframe {
   -o-transition-delay: 0.015s;
   transition-delay: 0.015s;
 }
-/* line 78, ../client/styles/_header.scss */
+/* line 79, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(2),
 .playing ~ .site header .radio:nth-child(2),
 .playing ~ .site header .toggle_played:nth-child(2) {
@@ -591,7 +592,7 @@ header iframe {
   -o-transition-delay: 0.045s;
   transition-delay: 0.045s;
 }
-/* line 79, ../client/styles/_header.scss */
+/* line 80, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(3),
 .playing ~ .site header .radio:nth-child(3),
 .playing ~ .site header .toggle_played:nth-child(3) {
@@ -628,7 +629,7 @@ header iframe {
   padding: 0 .5em;
   position: relative;
   width: 100%;
-  min-height: 3.25em;
+  min-height: 3em;
   text-align: left;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1096,7 +1097,7 @@ header iframe {
 }
 /* line 14, ../client/styles/_player.scss */
 .player .track_info {
-  top: -6.5em;
+  top: -6em;
   -webkit-transition: top 0.3s;
   -moz-transition: top 0.3s;
   -o-transition: top 0.3s;
@@ -1110,13 +1111,17 @@ header iframe {
 }
 /* line 26, ../client/styles/_player.scss */
 .player.playing {
-  height: 3.25em;
+  height: 3em;
 }
 /* line 29, ../client/styles/_player.scss */
 .player.playing .track_info {
   top: 0;
 }
 /* line 33, ../client/styles/_player.scss */
+.player.playing .text {
+  padding-top: .25em;
+}
+/* line 37, ../client/styles/_player.scss */
 .player.playing a, .player.playing h3, .player.playing h4 {
   -o-animation-name: jiggle_down;
   -ms-animation-name: jiggle_down;
@@ -1149,7 +1154,7 @@ header iframe {
   -webkit-animation-direction: normal;
   animation-direction: normal;
 }
-/* line 37, ../client/styles/_player.scss */
+/* line 41, ../client/styles/_player.scss */
 .player.playing h3 {
   -o-animation-duration: 0.27s;
   -ms-animation-duration: 0.27s;
@@ -1157,7 +1162,7 @@ header iframe {
   -webkit-animation-duration: 0.27s;
   animation-duration: 0.27s;
 }
-/* line 38, ../client/styles/_player.scss */
+/* line 42, ../client/styles/_player.scss */
 .player.playing h4 {
   -o-animation-duration: 0.24s;
   -ms-animation-duration: 0.24s;
