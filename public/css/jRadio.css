@@ -467,6 +467,81 @@ th {
   font-weight: 400;
 }
 
+@font-face {
+  font-family: "icon";
+  src: url("./icon-9766903adf25d87bc3a0b84884ed365d.eot");
+  src: url("./icon-9766903adf25d87bc3a0b84884ed365d.eot?#iefix") format("embedded-opentype"), url("./icon-9766903adf25d87bc3a0b84884ed365d.woff") format("woff"), url("./icon-9766903adf25d87bc3a0b84884ed365d.ttf") format("truetype"), url("./icon-9766903adf25d87bc3a0b84884ed365d.svg?#icon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 18, ../client/styles/_icon.scss */
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "icon";
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  font-weight: normal;
+  font-style: normal;
+  speak: none;
+  text-decoration: inherit;
+  text-transform: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 38, ../client/styles/_icon.scss */
+.icon-circle:before {
+  content: "\e001";
+}
+
+/* line 44, ../client/styles/_icon.scss */
+.icon-dots:before {
+  content: "\e002";
+}
+
+/* line 50, ../client/styles/_icon.scss */
+.icon-horizontal_lines:before {
+  content: "\e003";
+}
+
+/* line 56, ../client/styles/_icon.scss */
+.icon-plus:before {
+  content: "\e004";
+}
+
+/* line 62, ../client/styles/_icon.scss */
+.icon-s:before {
+  content: "\e005";
+}
+
+/* line 68, ../client/styles/_icon.scss */
+.icon-square:before {
+  content: "\e006";
+}
+
+/* line 74, ../client/styles/_icon.scss */
+.icon-squiggle:before {
+  content: "\e007";
+}
+
+/* line 80, ../client/styles/_icon.scss */
+.icon-thing:before {
+  content: "\e008";
+}
+
+/* line 86, ../client/styles/_icon.scss */
+.icon-vert_lines:before {
+  content: "\e009";
+}
+
+/* line 92, ../client/styles/_icon.scss */
+.icon-x:before {
+  content: "\e00a";
+}
+
 /* line 6, ../client/styles/_header.scss */
 header {
   height: 3em;

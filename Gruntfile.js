@@ -117,11 +117,37 @@ module.exports = function(grunt) {
             }
         },
 
+        webfont: {
+            icons: {
+                src: 'build/*.svg',
+                dest: 'public/css',
+                destCss: 'client/styles',
+                options: {
+                    font: 'icon',
+                    stylesheet: 'scss',
+                    relativeFontPath: './',
+                    htmlDemo: false,
+                    syntax: 'bootstrap'
+                }
+            }
+        },
+
         concat: {
             'build/<%= pkg.name %>.js': ['build/vendor.js', 'build/app.js']
         },
 
         copy: {
+            webfont: {
+                files: [{
+                    expand: true,
+                    src: 'client/icons/*.svg',
+                    dest: 'build',
+                    rename: function(dest, src) {
+                        src = src.substring(src.indexOf('icon_')+5);
+                        return dest + '/' + src;
+                    }
+                }]
+            },
             dev: {
                 files: [{
                     src: 'build/<%= pkg.name %>.js',
@@ -173,6 +199,10 @@ module.exports = function(grunt) {
                 files: ['client/templates/*.hbs', 'client/src/**/*.js'],
                 tasks: ['clean:dev', 'browserify:app', 'concat', 'copy:dev']
             },
+            webfont: {
+                files: ['client/icons/*.svg'],
+                tasks: ['copy:webfont', 'webfont']
+            },
             compass: {
                 files: ['client/styles/*.scss'],
                 tasks: ['compass:dev', 'copy:dev']
@@ -195,7 +225,7 @@ module.exports = function(grunt) {
 
         concurrent: {
             dev: {
-                tasks: ['nodemon:dev', 'watch:scripts', 'watch:compass'],
+                tasks: ['nodemon:dev', 'watch:scripts', 'watch:webfont', 'watch:compass'],
                 options: {
                     logConcurrentOutput: true
                 }
@@ -210,8 +240,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('init:dev', ['clean', 'bower', 'browserify:vendor', 'browserify:util']);
 
-    grunt.registerTask('build:dev', ['clean:dev', 'browserify:app', 'jshint:dev', 'compass:dev', 'concat', 'copy:dev']);
-    grunt.registerTask('build:prod', ['clean:prod', 'browserify:vendor', 'browserify:util', 'browserify:app', 'jshint:all', 'compass:prod', 'concat', 'cssmin', 'uglify', 'copy:prod']);
+    grunt.registerTask('build:dev', ['clean:dev', 'browserify:app', 'jshint:dev', 'copy:webfont', 'webfont', 'compass:dev', 'concat', 'copy:dev']);
+    grunt.registerTask('build:prod', ['clean:prod', 'browserify:vendor', 'browserify:util', 'browserify:app', 'jshint:all', 'copy:webfont', 'webfont', 'compass:prod', 'concat', 'cssmin', 'uglify', 'copy:prod']);
 
     grunt.registerTask('heroku', ['init:dev', 'build:dev']);
 
