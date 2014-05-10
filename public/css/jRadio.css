@@ -469,8 +469,8 @@ th {
 
 @font-face {
   font-family: "icon";
-  src: url("./icon-9766903adf25d87bc3a0b84884ed365d.eot");
-  src: url("./icon-9766903adf25d87bc3a0b84884ed365d.eot?#iefix") format("embedded-opentype"), url("./icon-9766903adf25d87bc3a0b84884ed365d.woff") format("woff"), url("./icon-9766903adf25d87bc3a0b84884ed365d.ttf") format("truetype"), url("./icon-9766903adf25d87bc3a0b84884ed365d.svg?#icon") format("svg");
+  src: url("./icon-98adf4a5c95bc0d9509ed0790fb4bd5a.eot");
+  src: url("./icon-98adf4a5c95bc0d9509ed0790fb4bd5a.eot?#iefix") format("embedded-opentype"), url("./icon-98adf4a5c95bc0d9509ed0790fb4bd5a.woff") format("woff"), url("./icon-98adf4a5c95bc0d9509ed0790fb4bd5a.ttf") format("truetype"), url("./icon-98adf4a5c95bc0d9509ed0790fb4bd5a.svg?#icon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -493,53 +493,23 @@ th {
 }
 
 /* line 38, ../client/styles/_icon.scss */
-.icon-circle:before {
+.icon-pause:before, .playing .track_info a:before {
   content: "\e001";
 }
 
 /* line 44, ../client/styles/_icon.scss */
-.icon-dots:before {
+.icon-play:before {
   content: "\e002";
 }
 
 /* line 50, ../client/styles/_icon.scss */
-.icon-horizontal_lines:before {
+.icon-played:before {
   content: "\e003";
 }
 
 /* line 56, ../client/styles/_icon.scss */
-.icon-plus:before {
+.icon-radio:before {
   content: "\e004";
-}
-
-/* line 62, ../client/styles/_icon.scss */
-.icon-s:before {
-  content: "\e005";
-}
-
-/* line 68, ../client/styles/_icon.scss */
-.icon-square:before {
-  content: "\e006";
-}
-
-/* line 74, ../client/styles/_icon.scss */
-.icon-squiggle:before {
-  content: "\e007";
-}
-
-/* line 80, ../client/styles/_icon.scss */
-.icon-thing:before {
-  content: "\e008";
-}
-
-/* line 86, ../client/styles/_icon.scss */
-.icon-vert_lines:before {
-  content: "\e009";
-}
-
-/* line 92, ../client/styles/_icon.scss */
-.icon-x:before {
-  content: "\e00a";
 }
 
 /* line 6, ../client/styles/_header.scss */
@@ -575,7 +545,6 @@ header .radio,
 header .toggle_played {
   position: relative;
   top: 0;
-  color: transparent;
   width: 3em;
   height: 3em;
   -webkit-transition: top 0.3s;
@@ -584,26 +553,20 @@ header .toggle_played {
   transition: top 0.3s;
 }
 /* line 41, ../client/styles/_header.scss */
-header .radio:after,
-header .toggle_played:after {
-  content: '';
-  position: absolute;
-  top: calc(50% - 1em);
-  right: calc(50% - 1em);
-  background: #fff;
-  width: 2em;
-  height: 2em;
-  border-radius: 100%;
+header .radio:before,
+header .toggle_played:before {
+  margin: 0.25em 0 0 0;
+  font-size: 2em;
 }
-/* line 53, ../client/styles/_header.scss */
+/* line 47, ../client/styles/_header.scss */
 header .radio {
   float: left;
 }
-/* line 57, ../client/styles/_header.scss */
+/* line 51, ../client/styles/_header.scss */
 header .toggle_played {
   float: right;
 }
-/* line 61, ../client/styles/_header.scss */
+/* line 55, ../client/styles/_header.scss */
 header iframe {
   position: absolute;
   top: -9999px;
@@ -613,7 +576,7 @@ header iframe {
   opacity: 0;
 }
 
-/* line 74, ../client/styles/_header.scss */
+/* line 68, ../client/styles/_header.scss */
 .playing ~ .site header h1,
 .playing ~ .site header .radio,
 .playing ~ .site header .toggle_played {
@@ -649,7 +612,7 @@ header iframe {
   -webkit-animation-direction: reverse;
   animation-direction: reverse;
 }
-/* line 78, ../client/styles/_header.scss */
+/* line 72, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(1),
 .playing ~ .site header .radio:nth-child(1),
 .playing ~ .site header .toggle_played:nth-child(1) {
@@ -658,7 +621,7 @@ header iframe {
   -o-transition-delay: 0.015s;
   transition-delay: 0.015s;
 }
-/* line 79, ../client/styles/_header.scss */
+/* line 73, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(2),
 .playing ~ .site header .radio:nth-child(2),
 .playing ~ .site header .toggle_played:nth-child(2) {
@@ -667,7 +630,7 @@ header iframe {
   -o-transition-delay: 0.045s;
   transition-delay: 0.045s;
 }
-/* line 80, ../client/styles/_header.scss */
+/* line 74, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(3),
 .playing ~ .site header .radio:nth-child(3),
 .playing ~ .site header .toggle_played:nth-child(3) {
@@ -735,7 +698,6 @@ header iframe {
 .track_info .play {
   border: 0.15em solid;
   border-radius: 100%;
-  color: rgba(0, 0, 0, 0);
   position: absolute;
   top: calc(50% - 2.55em/2);
   left: .5em;
@@ -743,27 +705,14 @@ header iframe {
   height: 2.25em;
 }
 /* line 63, ../client/styles/_track_base.scss */
-.track_info .play:after {
-  content: '';
-  position: absolute;
-  border: .75em solid transparent;
-  border-left-width: 1.1em;
-  top: 0.375em;
-  left: 0.75em;
+.track_info .play:before {
+  font-size: 1.5em;
+  margin: 0.25em 0 0 0.4em;
 }
 
-/* line 75, ../client/styles/_track_base.scss */
+/* line 71, ../client/styles/_track_base.scss */
 .loading .track_info .play {
   opacity: .5;
-}
-
-/* line 81, ../client/styles/_track_base.scss */
-.playing .track_info a:after {
-  border: none;
-  width: 0.333em;
-  height: 50%;
-  left: 30%;
-  top: 25%;
 }
 
 /* line 1, ../client/styles/_track_tracks.scss */
@@ -1246,23 +1195,27 @@ header iframe {
   animation-duration: 0.24s;
 }
 
-/* line 72, ../client/styles/_theme_mixins.scss */
+/* line 73, ../client/styles/_theme_mixins.scss */
 #content {
   background: #e6e6e6;
 }
 
-/* line 76, ../client/styles/_theme_mixins.scss */
+/* line 77, ../client/styles/_theme_mixins.scss */
 header {
   color: white;
   background-color: #588d3f;
   background-image: url(/images/unearthed_bg.jpg);
 }
-/* line 44, ../client/styles/_theme_mixins.scss */
+/* line 41, ../client/styles/_theme_mixins.scss */
 header h1 {
   font-family: "Chomp";
 }
+/* line 45, ../client/styles/_theme_mixins.scss */
+header a {
+  color: white;
+}
 
-/* line 85, ../client/styles/_theme_mixins.scss */
+/* line 86, ../client/styles/_theme_mixins.scss */
 .player {
   background-image: url(/images/unearthed_bg.jpg);
   background: "unearthed_bg.jpg";
@@ -1278,27 +1231,24 @@ header h1 {
 /* line 19, ../client/styles/_theme_mixins.scss */
 .player .play {
   border-color: white;
+  color: white;
 }
-/* line 22, ../client/styles/_theme_mixins.scss */
-.player .play:after {
-  border-left-color: white;
-}
-/* line 28, ../client/styles/_theme_mixins.scss */
+/* line 25, ../client/styles/_theme_mixins.scss */
 .player.playing a:after {
   box-shadow: white 0.6667em 0;
   background: white;
 }
-/* line 34, ../client/styles/_theme_mixins.scss */
+/* line 31, ../client/styles/_theme_mixins.scss */
 .player.featured:after {
   background: rgba(255, 255, 255, 0.75);
 }
 
-/* line 95, ../client/styles/_theme_mixins.scss */
+/* line 96, ../client/styles/_theme_mixins.scss */
 .played {
   background-image: url(/images/unearthed_bg.jpg);
   background-color: #588d3f;
 }
-/* line 100, ../client/styles/_theme_mixins.scss */
+/* line 101, ../client/styles/_theme_mixins.scss */
 .played .track {
   border-bottom-color: #1f450d;
   background: rgba(29, 64, 12, 0.8);
@@ -1315,30 +1265,27 @@ header h1 {
 /* line 19, ../client/styles/_theme_mixins.scss */
 .played .track .play {
   border-color: white;
+  color: white;
 }
-/* line 22, ../client/styles/_theme_mixins.scss */
-.played .track .play:after {
-  border-left-color: white;
-}
-/* line 28, ../client/styles/_theme_mixins.scss */
+/* line 25, ../client/styles/_theme_mixins.scss */
 .played .track.playing a:after {
   box-shadow: white 0.6667em 0;
   background: white;
 }
-/* line 34, ../client/styles/_theme_mixins.scss */
+/* line 31, ../client/styles/_theme_mixins.scss */
 .played .track.featured:after {
   background: #ff354f;
 }
-/* line 110, ../client/styles/_theme_mixins.scss */
+/* line 111, ../client/styles/_theme_mixins.scss */
 .played.active + header .toggle_played {
   background: rgba(29, 64, 12, 0.8);
 }
-/* line 114, ../client/styles/_theme_mixins.scss */
+/* line 115, ../client/styles/_theme_mixins.scss */
 .played .time {
   color: #639f47;
 }
 
-/* line 119, ../client/styles/_theme_mixins.scss */
+/* line 120, ../client/styles/_theme_mixins.scss */
 .tracks .track {
   box-shadow: rgba(0, 0, 0, 0.05) 0 1px 0;
   background: white;
@@ -1354,17 +1301,14 @@ header h1 {
 /* line 19, ../client/styles/_theme_mixins.scss */
 .tracks .track .play {
   border-color: #4ba119;
+  color: #4ba119;
 }
-/* line 22, ../client/styles/_theme_mixins.scss */
-.tracks .track .play:after {
-  border-left-color: #4ba119;
-}
-/* line 28, ../client/styles/_theme_mixins.scss */
+/* line 25, ../client/styles/_theme_mixins.scss */
 .tracks .track.playing a:after {
   box-shadow: #4ba119 0.6667em 0;
   background: #4ba119;
 }
-/* line 34, ../client/styles/_theme_mixins.scss */
+/* line 31, ../client/styles/_theme_mixins.scss */
 .tracks .track.featured:after {
   background: #ff354f;
 }
@@ -1389,15 +1333,20 @@ header h1 {
   background-color: #fff59d;
 }
 
-/* line 136, ../client/styles/_theme_mixins.scss */
+/* line 137, ../client/styles/_theme_mixins.scss */
 nav {
   background-color: #588d3f;
 }
-/* line 53, ../client/styles/_theme_mixins.scss */
+/* line 54, ../client/styles/_theme_mixins.scss */
 nav li:after {
   border-bottom-color: #588d3f;
 }
-/* line 57, ../client/styles/_theme_mixins.scss */
+/* line 58, ../client/styles/_theme_mixins.scss */
 nav a {
   color: white;
+}
+
+/* line 36, ../client/styles/main.scss */
+a {
+  text-decoration: none;
 }

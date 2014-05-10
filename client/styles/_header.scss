@@ -32,21 +32,15 @@ header {
     .toggle_played {
         position: relative;
         top: 0;
-        color: transparent;
         width: $header_height;
         height: $header_height;
 
         @include single-transition(top);
 
-        &:after {
-            content: '';
-            position: absolute;
-            top: calc(50% - 1em);
-            right: calc(50% - 1em);
-            background: #fff;
-            width: 2em;
-            height: 2em;
-            border-radius: 100%;
+        // icon
+        &:before {
+            margin: 0.25em 0 0 0;
+            font-size: 2em;
         }
     }
 

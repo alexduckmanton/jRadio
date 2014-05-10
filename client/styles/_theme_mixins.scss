@@ -18,10 +18,7 @@
 
     .play {
         border-color: $primary;
-
-        &:after {
-            border-left-color: $primary;
-        }
+        color: $primary;
     }
 
     &.playing {
@@ -43,6 +40,10 @@
 
     h1 {
         font-family: $font;
+    }
+
+    a {
+        color: $color;
     }
 }
 

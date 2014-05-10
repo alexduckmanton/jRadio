@@ -15730,7 +15730,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   
-  return "<a href=\"javascript:void(0)\" target=\"_blank\" class=\"play\">Play</a>";
+  return "<a href=\"javascript:void(0)\" target=\"_blank\" class=\"play icon-play\" title=\"Play\"></a>";
   }
 
 function program3(depth0,data) {
@@ -15826,11 +15826,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<header>\n    <a href=\"javascript:void(0)\" class=\"radio\" title=\"Listen live\">Listen live</a>\n    <h1>";
+  buffer += "<header>\n    <a href=\"javascript:void(0)\" class=\"radio icon-radio\" title=\"Listen live\"></a>\n    <h1>";
   if (helper = helpers.page_title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.page_title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</h1>\n    <a href=\"javascript:void(0)\" class=\"toggle_played\" title=\"Recent tracks\">Recent tracks</a>\n</header>\n";
+    + "</h1>\n    <a href=\"javascript:void(0)\" class=\"toggle_played icon-played\" title=\"Recent tracks\"></a>\n</header>\n";
   return buffer;
   });
 

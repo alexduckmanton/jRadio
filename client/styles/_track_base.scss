@@ -52,7 +52,6 @@
     .play {
         border: 0.15em solid;
         border-radius: 100%;
-        color: rgba(0,0,0,0);
 
         position: absolute;
         top: calc(50% - 2.55em/2);
@@ -60,13 +59,10 @@
         width: 2.25em;
         height: 2.25em;
 
-        &:after {
-            content: '';
-            position: absolute;
-            border: .75em solid transparent;
-            border-left-width: 1.1em;
-            top: 0.375em;
-            left: 0.75em;
+        // icon
+        &:before {
+            font-size: 1.5em;
+            margin: 0.25em 0 0 0.4em;
         }
     }
 }
@@ -78,11 +74,7 @@
 }
 
 .playing .track_info {
-    a:after {
-        border: none;
-        width: 0.333em;
-        height: 50%;
-        left: 30%;
-        top: 25%;
+    a:before {
+        @extend .icon-pause;
     }
 }
