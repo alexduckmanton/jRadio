@@ -548,6 +548,8 @@ header .toggle_played {
   height: 2.5em;
   border: .15em solid;
   border-radius: 100%;
+  position: relative;
+  top: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -556,25 +558,25 @@ header .toggle_played {
   -o-transition: top 0.3s;
   transition: top 0.3s;
 }
-/* line 43, ../client/styles/_header.scss */
+/* line 46, ../client/styles/_header.scss */
 header .radio:before,
 header .toggle_played:before {
   font-size: 1.25em;
   line-height: 1.75em;
 }
-/* line 49, ../client/styles/_header.scss */
+/* line 52, ../client/styles/_header.scss */
 header .radio {
   float: left;
 }
-/* line 53, ../client/styles/_header.scss */
+/* line 56, ../client/styles/_header.scss */
 header .toggle_played {
   float: right;
 }
-/* line 57, ../client/styles/_header.scss */
+/* line 60, ../client/styles/_header.scss */
 header .toggle_played:before {
   line-height: 1.7em;
 }
-/* line 62, ../client/styles/_header.scss */
+/* line 65, ../client/styles/_header.scss */
 header iframe {
   position: absolute;
   top: -9999px;
@@ -584,7 +586,7 @@ header iframe {
   opacity: 0;
 }
 
-/* line 75, ../client/styles/_header.scss */
+/* line 78, ../client/styles/_header.scss */
 .playing ~ .site header h1,
 .playing ~ .site header .radio,
 .playing ~ .site header .toggle_played {
@@ -620,7 +622,7 @@ header iframe {
   -webkit-animation-direction: reverse;
   animation-direction: reverse;
 }
-/* line 79, ../client/styles/_header.scss */
+/* line 82, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(1),
 .playing ~ .site header .radio:nth-child(1),
 .playing ~ .site header .toggle_played:nth-child(1) {
@@ -629,7 +631,7 @@ header iframe {
   -o-transition-delay: 0.015s;
   transition-delay: 0.015s;
 }
-/* line 80, ../client/styles/_header.scss */
+/* line 83, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(2),
 .playing ~ .site header .radio:nth-child(2),
 .playing ~ .site header .toggle_played:nth-child(2) {
@@ -638,7 +640,7 @@ header iframe {
   -o-transition-delay: 0.045s;
   transition-delay: 0.045s;
 }
-/* line 81, ../client/styles/_header.scss */
+/* line 84, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(3),
 .playing ~ .site header .radio:nth-child(3),
 .playing ~ .site header .toggle_played:nth-child(3) {

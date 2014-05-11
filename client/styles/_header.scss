@@ -36,6 +36,9 @@ header {
         border: .15em solid;
         border-radius: 100%;
 
+        position: relative;
+        top: 0;
+
         @include box-sizing(border-box);
         @include single-transition(top);
 
