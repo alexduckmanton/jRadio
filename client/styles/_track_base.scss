@@ -60,6 +60,8 @@
         height: 2.25em;
         text-align: center;
 
+        @include single-transition(background, $duration: $default-transition-duration/2);
+
         // icon
         &:before {
             font-size: 1.25em;

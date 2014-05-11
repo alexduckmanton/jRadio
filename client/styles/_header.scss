@@ -41,6 +41,7 @@ header {
 
         @include box-sizing(border-box);
         @include single-transition(top);
+        @include transition-property(top, background);
 
         // icon
         &:before {

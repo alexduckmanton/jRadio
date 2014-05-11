@@ -5,7 +5,7 @@
     .track:nth-child(4n) .img_container:before { background-color: $color4 }
 }
 
-@mixin track_theme($primary, $secondary, $bg: false) {
+@mixin track_theme($primary, $secondary, $bg: false, $bg_color: false) {
     background: $bg;
 
     h3 {
@@ -22,15 +22,19 @@
     }
 
     &.playing {
-        a:after {
-            box-shadow: $primary .6667em 0;
-            background: $primary;
+        a {
+            @if ($bg_color) { background: active_button_bg($bg_color); }
         }
     }
 
     &.featured:after {
         background: $secondary;
     }
+}
+
+@function active_button_bg($container_bg) {
+    $button_bg: saturate(darken($container_bg, 25%), 30%);
+    @return rgba($button_bg, .8);
 }
 
 @mixin header_theme($color, $bg, $img, $font) {
@@ -46,6 +50,8 @@
         color: $color;
         border-color: $color;
     }
+
+
 }
 
 @mixin nav($bg, $img, $color) {
@@ -90,7 +96,8 @@
         @include track_theme(
             $header_text,
             rgba($header_text, .75),
-            $header_img
+            $header_img,
+            $header_bg
         );
     }
 
@@ -101,7 +108,7 @@
 
         .track {
             border-bottom-color: lighten($track_bg, 1%);
-            background: rgba($track_bg, .8);
+            background: active_button_bg($header_bg);
 
             @include track_theme(
                 $header_text,
@@ -110,7 +117,7 @@
         }
 
         &.active + header .toggle_played {
-            background: rgba($track_bg, .8);
+            background: active_button_bg($header_bg);
         }
 
         .time {
@@ -126,6 +133,10 @@
             $secondary,
             $bg
         );
+
+        &.playing .play {
+            background: rgba($primary, 0.2);
+        }
     }
 
     @include img_theme(
