@@ -58,11 +58,14 @@
         left: .5em;
         width: 2.25em;
         height: 2.25em;
+        text-align: center;
 
         // icon
         &:before {
-            font-size: 1.5em;
-            margin: 0.25em 0 0 0.4em;
+            font-size: 1.25em;
+            line-height: 1.75em;
+            position: relative;
+            left: calc(1em / 10);
         }
     }
 }
@@ -76,5 +79,6 @@
 .playing .track_info {
     a:before {
         @extend .icon-pause;
+        left: 0;
     }
 }

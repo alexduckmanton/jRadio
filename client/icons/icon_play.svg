@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="120px" height="120px" viewBox="0 0 120 120" enable-background="new 0 0 120 120" xml:space="preserve">
-<g>
-	<g>
-		<path d="M24.21,119.671c28.009-22.508,56.047-45.017,84.057-67.526c1.908-1.532,2.676-5.012,0.015-6.376
-			c-18.44-9.456-36.331-20.03-54.934-29.148C41.759,10.94,30.007,5.608,18.216,0.399c-2.546-1.124-5.113,0.182-5.34,3.189
-			c-2.84,37.729-6.81,77.597,6.178,113.876L20.98,120L24.21,119.671z"/>
-	</g>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="120px"
+	 height="120px" viewBox="0 0 120 120" enable-background="new 0 0 120 120" xml:space="preserve">
+<g id="Layer_1">
+	<circle cx="20" cy="110" r="10"/>
+	<circle cx="20" cy="10" r="10"/>
+	<rect x="10" y="10" width="20" height="100"/>
+	<rect x="53.301" y="35" transform="matrix(-0.5 -0.866 0.866 -0.5 21.339 182.3194)" width="20.001" height="100"/>
+	<circle cx="106.604" cy="60" r="10"/>
+	<rect x="53.302" y="-15" transform="matrix(-0.5 0.866 -0.866 -0.5 125.2635 -2.321)" width="20" height="100.001"/>
+	<polygon points="25,20 25,100 95,60 	"/>
+</g>
+<g id="Layer_2">
 </g>
 </svg>

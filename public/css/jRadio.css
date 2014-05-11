@@ -469,8 +469,8 @@ th {
 
 @font-face {
   font-family: "icon";
-  src: url("./icon-98adf4a5c95bc0d9509ed0790fb4bd5a.eot");
-  src: url("./icon-98adf4a5c95bc0d9509ed0790fb4bd5a.eot?#iefix") format("embedded-opentype"), url("./icon-98adf4a5c95bc0d9509ed0790fb4bd5a.woff") format("woff"), url("./icon-98adf4a5c95bc0d9509ed0790fb4bd5a.ttf") format("truetype"), url("./icon-98adf4a5c95bc0d9509ed0790fb4bd5a.svg?#icon") format("svg");
+  src: url("./icon-9491537e43d076db0c9c481335d90bd7.eot");
+  src: url("./icon-9491537e43d076db0c9c481335d90bd7.eot?#iefix") format("embedded-opentype"), url("./icon-9491537e43d076db0c9c481335d90bd7.woff") format("woff"), url("./icon-9491537e43d076db0c9c481335d90bd7.ttf") format("truetype"), url("./icon-9491537e43d076db0c9c481335d90bd7.svg?#icon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -543,30 +543,38 @@ header h1 {
 /* line 32, ../client/styles/_header.scss */
 header .radio,
 header .toggle_played {
-  position: relative;
-  top: 0;
-  width: 3em;
-  height: 3em;
+  margin: .25em;
+  width: 2.5em;
+  height: 2.5em;
+  border: .15em solid;
+  border-radius: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   -webkit-transition: top 0.3s;
   -moz-transition: top 0.3s;
   -o-transition: top 0.3s;
   transition: top 0.3s;
 }
-/* line 41, ../client/styles/_header.scss */
+/* line 43, ../client/styles/_header.scss */
 header .radio:before,
 header .toggle_played:before {
-  margin: 0.25em 0 0 0;
-  font-size: 2em;
+  font-size: 1.25em;
+  line-height: 1.75em;
 }
-/* line 47, ../client/styles/_header.scss */
+/* line 49, ../client/styles/_header.scss */
 header .radio {
   float: left;
 }
-/* line 51, ../client/styles/_header.scss */
+/* line 53, ../client/styles/_header.scss */
 header .toggle_played {
   float: right;
 }
-/* line 55, ../client/styles/_header.scss */
+/* line 57, ../client/styles/_header.scss */
+header .toggle_played:before {
+  line-height: 1.7em;
+}
+/* line 62, ../client/styles/_header.scss */
 header iframe {
   position: absolute;
   top: -9999px;
@@ -576,7 +584,7 @@ header iframe {
   opacity: 0;
 }
 
-/* line 68, ../client/styles/_header.scss */
+/* line 75, ../client/styles/_header.scss */
 .playing ~ .site header h1,
 .playing ~ .site header .radio,
 .playing ~ .site header .toggle_played {
@@ -612,7 +620,7 @@ header iframe {
   -webkit-animation-direction: reverse;
   animation-direction: reverse;
 }
-/* line 72, ../client/styles/_header.scss */
+/* line 79, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(1),
 .playing ~ .site header .radio:nth-child(1),
 .playing ~ .site header .toggle_played:nth-child(1) {
@@ -621,7 +629,7 @@ header iframe {
   -o-transition-delay: 0.015s;
   transition-delay: 0.015s;
 }
-/* line 73, ../client/styles/_header.scss */
+/* line 80, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(2),
 .playing ~ .site header .radio:nth-child(2),
 .playing ~ .site header .toggle_played:nth-child(2) {
@@ -630,7 +638,7 @@ header iframe {
   -o-transition-delay: 0.045s;
   transition-delay: 0.045s;
 }
-/* line 74, ../client/styles/_header.scss */
+/* line 81, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(3),
 .playing ~ .site header .radio:nth-child(3),
 .playing ~ .site header .toggle_played:nth-child(3) {
@@ -703,16 +711,24 @@ header iframe {
   left: .5em;
   width: 2.25em;
   height: 2.25em;
+  text-align: center;
 }
-/* line 63, ../client/styles/_track_base.scss */
+/* line 64, ../client/styles/_track_base.scss */
 .track_info .play:before {
-  font-size: 1.5em;
-  margin: 0.25em 0 0 0.4em;
+  font-size: 1.25em;
+  line-height: 1.75em;
+  position: relative;
+  left: calc(1em / 10);
 }
 
-/* line 71, ../client/styles/_track_base.scss */
+/* line 74, ../client/styles/_track_base.scss */
 .loading .track_info .play {
   opacity: .5;
+}
+
+/* line 80, ../client/styles/_track_base.scss */
+.playing .track_info a:before {
+  left: 0;
 }
 
 /* line 1, ../client/styles/_track_tracks.scss */
@@ -1195,12 +1211,12 @@ header iframe {
   animation-duration: 0.24s;
 }
 
-/* line 73, ../client/styles/_theme_mixins.scss */
+/* line 74, ../client/styles/_theme_mixins.scss */
 #content {
   background: #e6e6e6;
 }
 
-/* line 77, ../client/styles/_theme_mixins.scss */
+/* line 78, ../client/styles/_theme_mixins.scss */
 header {
   color: white;
   background-color: #588d3f;
@@ -1213,9 +1229,10 @@ header h1 {
 /* line 45, ../client/styles/_theme_mixins.scss */
 header a {
   color: white;
+  border-color: white;
 }
 
-/* line 86, ../client/styles/_theme_mixins.scss */
+/* line 87, ../client/styles/_theme_mixins.scss */
 .player {
   background-image: url(/images/unearthed_bg.jpg);
   background: "unearthed_bg.jpg";
@@ -1243,12 +1260,12 @@ header a {
   background: rgba(255, 255, 255, 0.75);
 }
 
-/* line 96, ../client/styles/_theme_mixins.scss */
+/* line 97, ../client/styles/_theme_mixins.scss */
 .played {
   background-image: url(/images/unearthed_bg.jpg);
   background-color: #588d3f;
 }
-/* line 101, ../client/styles/_theme_mixins.scss */
+/* line 102, ../client/styles/_theme_mixins.scss */
 .played .track {
   border-bottom-color: #1f450d;
   background: rgba(29, 64, 12, 0.8);
@@ -1276,16 +1293,16 @@ header a {
 .played .track.featured:after {
   background: #ff354f;
 }
-/* line 111, ../client/styles/_theme_mixins.scss */
+/* line 112, ../client/styles/_theme_mixins.scss */
 .played.active + header .toggle_played {
   background: rgba(29, 64, 12, 0.8);
 }
-/* line 115, ../client/styles/_theme_mixins.scss */
+/* line 116, ../client/styles/_theme_mixins.scss */
 .played .time {
   color: #639f47;
 }
 
-/* line 120, ../client/styles/_theme_mixins.scss */
+/* line 121, ../client/styles/_theme_mixins.scss */
 .tracks .track {
   box-shadow: rgba(0, 0, 0, 0.05) 0 1px 0;
   background: white;
@@ -1333,15 +1350,15 @@ header a {
   background-color: #fff59d;
 }
 
-/* line 137, ../client/styles/_theme_mixins.scss */
+/* line 138, ../client/styles/_theme_mixins.scss */
 nav {
   background-color: #588d3f;
 }
-/* line 54, ../client/styles/_theme_mixins.scss */
+/* line 55, ../client/styles/_theme_mixins.scss */
 nav li:after {
   border-bottom-color: #588d3f;
 }
-/* line 58, ../client/styles/_theme_mixins.scss */
+/* line 59, ../client/styles/_theme_mixins.scss */
 nav a {
   color: white;
 }

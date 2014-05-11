@@ -30,17 +30,19 @@ header {
 
     .radio,
     .toggle_played {
-        position: relative;
-        top: 0;
-        width: $header_height;
-        height: $header_height;
+        margin: .25em;
+        width: $header_height - .5em;
+        height: $header_height - .5em;
+        border: .15em solid;
+        border-radius: 100%;
 
+        @include box-sizing(border-box);
         @include single-transition(top);
 
         // icon
         &:before {
-            margin: 0.25em 0 0 0;
-            font-size: 2em;
+            font-size: 1.25em;
+            line-height: 1.75em;
         }
     }
 
@@ -50,6 +52,11 @@ header {
 
     .toggle_played {
         float: right;
+
+        // icon
+        &:before {
+            line-height: 1.7em;
+        }
     }
 
     iframe {
