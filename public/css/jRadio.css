@@ -660,8 +660,9 @@ header iframe {
 /* line 4, ../client/styles/_track_base.scss */
 .track .img_container {
   position: relative;
+  height: 12.625em;
 }
-/* line 7, ../client/styles/_track_base.scss */
+/* line 8, ../client/styles/_track_base.scss */
 .track .img_container:before {
   content: '';
   position: absolute;
@@ -669,13 +670,13 @@ header iframe {
   height: 100%;
   opacity: 0.2;
 }
-/* line 16, ../client/styles/_track_base.scss */
+/* line 17, ../client/styles/_track_base.scss */
 .track img {
   width: 100%;
   display: block;
 }
 
-/* line 22, ../client/styles/_track_base.scss */
+/* line 23, ../client/styles/_track_base.scss */
 .track_info {
   padding: 0 .5em;
   position: relative;
@@ -686,28 +687,28 @@ header iframe {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 31, ../client/styles/_track_base.scss */
+/* line 32, ../client/styles/_track_base.scss */
 .track_info .text {
   padding: 2% 0;
 }
-/* line 35, ../client/styles/_track_base.scss */
+/* line 36, ../client/styles/_track_base.scss */
 .track_info .play + .text {
   padding-left: 3em;
 }
-/* line 39, ../client/styles/_track_base.scss */
+/* line 40, ../client/styles/_track_base.scss */
 .track_info h3, .track_info h4 {
   margin: 0;
   font-weight: normal;
 }
-/* line 44, ../client/styles/_track_base.scss */
+/* line 45, ../client/styles/_track_base.scss */
 .track_info h3 {
   line-height: 21px;
 }
-/* line 48, ../client/styles/_track_base.scss */
+/* line 49, ../client/styles/_track_base.scss */
 .track_info h4 {
   line-height: 18px;
 }
-/* line 52, ../client/styles/_track_base.scss */
+/* line 53, ../client/styles/_track_base.scss */
 .track_info .play {
   border: 0.15em solid;
   border-radius: 100%;
@@ -722,7 +723,7 @@ header iframe {
   -o-transition: background 0.15s;
   transition: background 0.15s;
 }
-/* line 66, ../client/styles/_track_base.scss */
+/* line 67, ../client/styles/_track_base.scss */
 .track_info .play:before {
   font-size: 1.25em;
   line-height: 1.75em;
@@ -730,12 +731,12 @@ header iframe {
   left: calc(1em / 10);
 }
 
-/* line 76, ../client/styles/_track_base.scss */
+/* line 77, ../client/styles/_track_base.scss */
 .loading .track_info .play {
   opacity: .5;
 }
 
-/* line 82, ../client/styles/_track_base.scss */
+/* line 83, ../client/styles/_track_base.scss */
 .playing .track_info a:before {
   left: 0;
 }
