@@ -1,7 +1,9 @@
 .tracks {
     padding: .5em;
     @include flex();
-    @include flex-direction(column);
+    // @include flex-direction(column);
+    @include flex-wrap(wrap);
+    @include flex-justify-space-between();
 
     // to cover played tracks
     @include translateY(-$played_height);
@@ -11,6 +13,25 @@
         margin-bottom: .5em;
         border-radius: 2px;
 
+        width: 48.85%;
+
+        .img_container {
+            position: relative;
+
+            &:before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                opacity: 0.2;
+            }
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
         // ordering
         @for $i from 1 through 20 {
             &:nth-child(#{$i}) { @include order($i); }
@@ -18,6 +39,8 @@
 
         &.featured {
             position: relative;
+
+            width: 100%;
 
             // icon
             &:after {
@@ -36,8 +59,23 @@
             }
 
             // scatter featured tracks among the new ones
-            @for $i from 15 through 20 {
-                &:nth-child(#{$i}) { @include order( ($i - 16) * 3 ); }
+            @for $i from 16 through 20 {
+                &:nth-child(#{$i}) { @include order( ($i - 17) * 4 ); }
+            }
+        }
+
+        &:not(.featured) {
+            .play {
+                top: -4.5em;
+                left: calc(50% - 1.275em);
+                color: #fff;
+                border-color: #fff;
+                opacity: 0.9;
+            }
+
+            .text {
+                padding-left: 0;
+                font-size: .75em;
             }
         }
     }

@@ -89,3 +89,17 @@
 	-webkit-flex-direction: $direction;
 	flex-direction: $direction;
 }
+
+@mixin flex-wrap($property) {
+	-webkit-flex-wrap: $property;
+    -ms-flex-wrap: $property;
+    flex-wrap: $property;
+}
+
+@mixin flex-justify-space-between() {
+	-webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
