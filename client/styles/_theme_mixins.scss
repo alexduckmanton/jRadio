@@ -74,11 +74,12 @@
         $header_font: 'sans-serif',
         $primary: #333,
         $secondary: #aaa,
-        $bg: #fff
+        $track_bg: #fff,
+        $bg: #eee
     ) {
 
     #content {
-        background: darken($bg, 10%);
+        background: $bg;
     }
 
     header {
@@ -102,12 +103,11 @@
     }
 
     .played {
-        $track_bg: saturate(darken($header_bg, 25%), 30%);
         background-image: url(/images/#{$header_img});
         background-color: $header_bg;
 
         .track {
-            border-bottom-color: lighten($track_bg, 1%);
+            border-bottom-color: lighten(active_button_bg($header_bg), 1%);
             background: active_button_bg($header_bg);
 
             @include track_theme(
@@ -131,7 +131,7 @@
         @include track_theme(
             $primary,
             $secondary,
-            $bg
+            $track_bg
         );
 
         &.playing .play {

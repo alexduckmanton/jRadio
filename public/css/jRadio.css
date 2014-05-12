@@ -517,13 +517,22 @@ header {
   height: 3em;
   text-align: center;
   overflow: hidden;
+  -webkit-transform: translateY(-10em);
+  -moz-transform: translateY(-10em);
+  -ms-transform: translateY(-10em);
+  -o-transform: translateY(-10em);
+  transform: translateY(-10em);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
   background: top left no-repeat;
   background-size: cover;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 14, ../client/styles/_header.scss */
+/* line 18, ../client/styles/_header.scss */
 header h1 {
   margin: 0;
   padding: 0;
@@ -543,7 +552,7 @@ header h1 {
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-/* line 30, ../client/styles/_header.scss */
+/* line 34, ../client/styles/_header.scss */
 header .radio,
 header .toggle_played {
   margin: .25em;
@@ -564,25 +573,25 @@ header .toggle_played {
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-/* line 43, ../client/styles/_header.scss */
+/* line 47, ../client/styles/_header.scss */
 header .radio:before,
 header .toggle_played:before {
   font-size: 1.25em;
   line-height: 1.75em;
 }
-/* line 49, ../client/styles/_header.scss */
+/* line 53, ../client/styles/_header.scss */
 header .radio {
   float: left;
 }
-/* line 53, ../client/styles/_header.scss */
+/* line 57, ../client/styles/_header.scss */
 header .toggle_played {
   float: right;
 }
-/* line 57, ../client/styles/_header.scss */
+/* line 61, ../client/styles/_header.scss */
 header .toggle_played:before {
   line-height: 1.7em;
 }
-/* line 62, ../client/styles/_header.scss */
+/* line 66, ../client/styles/_header.scss */
 header iframe {
   position: absolute;
   top: -9999px;
@@ -592,7 +601,7 @@ header iframe {
   opacity: 0;
 }
 
-/* line 75, ../client/styles/_header.scss */
+/* line 79, ../client/styles/_header.scss */
 .playing ~ .site header h1,
 .playing ~ .site header .radio,
 .playing ~ .site header .toggle_played {
@@ -602,7 +611,7 @@ header iframe {
   -o-transform: translateY(3em);
   transform: translateY(3em);
 }
-/* line 78, ../client/styles/_header.scss */
+/* line 82, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(1),
 .playing ~ .site header .radio:nth-child(1),
 .playing ~ .site header .toggle_played:nth-child(1) {
@@ -611,7 +620,7 @@ header iframe {
   -o-transition-delay: 0.015s;
   transition-delay: 0.015s;
 }
-/* line 79, ../client/styles/_header.scss */
+/* line 83, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(2),
 .playing ~ .site header .radio:nth-child(2),
 .playing ~ .site header .toggle_played:nth-child(2) {
@@ -620,7 +629,7 @@ header iframe {
   -o-transition-delay: 0.045s;
   transition-delay: 0.045s;
 }
-/* line 80, ../client/styles/_header.scss */
+/* line 84, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(3),
 .playing ~ .site header .radio:nth-child(3),
 .playing ~ .site header .toggle_played:nth-child(3) {
@@ -628,6 +637,15 @@ header iframe {
   -moz-transition-delay: 0.03s;
   -o-transition-delay: 0.03s;
   transition-delay: 0.03s;
+}
+
+/* line 88, ../client/styles/_header.scss */
+.played.active + header {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
 }
 
 /* line 1, ../client/styles/_track_base.scss */
@@ -732,13 +750,22 @@ header iframe {
   -ms-flex-direction: column;
   -webkit-flex-direction: column;
   flex-direction: column;
+  -webkit-transform: translateY(-10em);
+  -moz-transform: translateY(-10em);
+  -ms-transform: translateY(-10em);
+  -o-transform: translateY(-10em);
+  transform: translateY(-10em);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
-/* line 6, ../client/styles/_track_tracks.scss */
+/* line 10, ../client/styles/_track_tracks.scss */
 .tracks .track {
   margin-bottom: .5em;
   border-radius: 2px;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(1) {
   -webkit-box-ordinal-group: 1;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -750,7 +777,7 @@ header iframe {
   /* NEW - Chrome */
   order: 1;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(2) {
   -webkit-box-ordinal-group: 2;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -762,7 +789,7 @@ header iframe {
   /* NEW - Chrome */
   order: 2;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(3) {
   -webkit-box-ordinal-group: 3;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -774,7 +801,7 @@ header iframe {
   /* NEW - Chrome */
   order: 3;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(4) {
   -webkit-box-ordinal-group: 4;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -786,7 +813,7 @@ header iframe {
   /* NEW - Chrome */
   order: 4;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(5) {
   -webkit-box-ordinal-group: 5;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -798,7 +825,7 @@ header iframe {
   /* NEW - Chrome */
   order: 5;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(6) {
   -webkit-box-ordinal-group: 6;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -810,7 +837,7 @@ header iframe {
   /* NEW - Chrome */
   order: 6;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(7) {
   -webkit-box-ordinal-group: 7;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -822,7 +849,7 @@ header iframe {
   /* NEW - Chrome */
   order: 7;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(8) {
   -webkit-box-ordinal-group: 8;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -834,7 +861,7 @@ header iframe {
   /* NEW - Chrome */
   order: 8;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(9) {
   -webkit-box-ordinal-group: 9;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -846,7 +873,7 @@ header iframe {
   /* NEW - Chrome */
   order: 9;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(10) {
   -webkit-box-ordinal-group: 10;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -858,7 +885,7 @@ header iframe {
   /* NEW - Chrome */
   order: 10;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(11) {
   -webkit-box-ordinal-group: 11;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -870,7 +897,7 @@ header iframe {
   /* NEW - Chrome */
   order: 11;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(12) {
   -webkit-box-ordinal-group: 12;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -882,7 +909,7 @@ header iframe {
   /* NEW - Chrome */
   order: 12;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(13) {
   -webkit-box-ordinal-group: 13;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -894,7 +921,7 @@ header iframe {
   /* NEW - Chrome */
   order: 13;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(14) {
   -webkit-box-ordinal-group: 14;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -906,7 +933,7 @@ header iframe {
   /* NEW - Chrome */
   order: 14;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(15) {
   -webkit-box-ordinal-group: 15;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -918,7 +945,7 @@ header iframe {
   /* NEW - Chrome */
   order: 15;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(16) {
   -webkit-box-ordinal-group: 16;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -930,7 +957,7 @@ header iframe {
   /* NEW - Chrome */
   order: 16;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(17) {
   -webkit-box-ordinal-group: 17;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -942,7 +969,7 @@ header iframe {
   /* NEW - Chrome */
   order: 17;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(18) {
   -webkit-box-ordinal-group: 18;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -954,7 +981,7 @@ header iframe {
   /* NEW - Chrome */
   order: 18;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(19) {
   -webkit-box-ordinal-group: 19;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -966,7 +993,7 @@ header iframe {
   /* NEW - Chrome */
   order: 19;
 }
-/* line 12, ../client/styles/_track_tracks.scss */
+/* line 16, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(20) {
   -webkit-box-ordinal-group: 20;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -978,11 +1005,11 @@ header iframe {
   /* NEW - Chrome */
   order: 20;
 }
-/* line 15, ../client/styles/_track_tracks.scss */
+/* line 19, ../client/styles/_track_tracks.scss */
 .tracks .track.featured {
   position: relative;
 }
-/* line 20, ../client/styles/_track_tracks.scss */
+/* line 24, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(15) {
   -webkit-box-ordinal-group: -3;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -994,7 +1021,7 @@ header iframe {
   /* NEW - Chrome */
   order: -3;
 }
-/* line 20, ../client/styles/_track_tracks.scss */
+/* line 24, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(16) {
   -webkit-box-ordinal-group: 0;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1006,7 +1033,7 @@ header iframe {
   /* NEW - Chrome */
   order: 0;
 }
-/* line 20, ../client/styles/_track_tracks.scss */
+/* line 24, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(17) {
   -webkit-box-ordinal-group: 3;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1018,7 +1045,7 @@ header iframe {
   /* NEW - Chrome */
   order: 3;
 }
-/* line 20, ../client/styles/_track_tracks.scss */
+/* line 24, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(18) {
   -webkit-box-ordinal-group: 6;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1030,7 +1057,7 @@ header iframe {
   /* NEW - Chrome */
   order: 6;
 }
-/* line 20, ../client/styles/_track_tracks.scss */
+/* line 24, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(19) {
   -webkit-box-ordinal-group: 9;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1042,7 +1069,7 @@ header iframe {
   /* NEW - Chrome */
   order: 9;
 }
-/* line 20, ../client/styles/_track_tracks.scss */
+/* line 24, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(20) {
   -webkit-box-ordinal-group: 12;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1054,7 +1081,7 @@ header iframe {
   /* NEW - Chrome */
   order: 12;
 }
-/* line 23, ../client/styles/_track_tracks.scss */
+/* line 27, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:after {
   content: '';
   position: absolute;
@@ -1065,28 +1092,50 @@ header iframe {
   left: -.625em;
 }
 
+/* line 41, ../client/styles/_track_tracks.scss */
+.played.active ~ .tracks {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+}
+
 /* line 1, ../client/styles/_track_played.scss */
 .played {
   background-size: 500px;
   background-position: center center;
   overflow: auto;
+  height: 10em;
+  -webkit-transform: translateY(-10em);
+  -moz-transform: translateY(-10em);
+  -ms-transform: translateY(-10em);
+  -o-transform: translateY(-10em);
+  transform: translateY(-10em);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
   -webkit-overflow-scrolling: touch;
-  height: 0;
-  -webkit-transition: height 0.3s;
-  -moz-transition: height 0.3s;
-  -o-transition: height 0.3s;
-  transition: height 0.3s;
 }
 /* line 13, ../client/styles/_track_played.scss */
+.played.active {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+}
+/* line 17, ../client/styles/_track_played.scss */
 .played .track {
   padding: .25em 0;
   border-bottom: 1px solid;
 }
-/* line 17, ../client/styles/_track_played.scss */
+/* line 21, ../client/styles/_track_played.scss */
 .played .track:last-child {
   border: none;
 }
-/* line 22, ../client/styles/_track_played.scss */
+/* line 26, ../client/styles/_track_played.scss */
 .played .time {
   position: absolute;
   width: 3em;
@@ -1096,15 +1145,11 @@ header iframe {
   top: calc(50% - 1.5em);
   right: .5em;
 }
-/* line 31, ../client/styles/_track_played.scss */
+/* line 35, ../client/styles/_track_played.scss */
 .played .time strong {
   display: block;
   font-size: 2.5em;
   margin-bottom: 0.2em;
-}
-/* line 38, ../client/styles/_track_played.scss */
-.played.active {
-  height: 10em;
 }
 
 /* line 1, ../client/styles/_player.scss */
@@ -1193,12 +1238,12 @@ header iframe {
   animation-duration: 0.24s;
 }
 
-/* line 80, ../client/styles/_theme_mixins.scss */
+/* line 81, ../client/styles/_theme_mixins.scss */
 #content {
-  background: #e6e6e6;
+  background: #eeeeee;
 }
 
-/* line 84, ../client/styles/_theme_mixins.scss */
+/* line 85, ../client/styles/_theme_mixins.scss */
 header {
   color: white;
   background-color: #588d3f;
@@ -1214,7 +1259,7 @@ header a {
   border-color: white;
 }
 
-/* line 93, ../client/styles/_theme_mixins.scss */
+/* line 94, ../client/styles/_theme_mixins.scss */
 .player {
   background-image: url(/images/unearthed_bg.jpg);
   background: "unearthed_bg.jpg";
@@ -1241,14 +1286,14 @@ header a {
   background: rgba(255, 255, 255, 0.75);
 }
 
-/* line 104, ../client/styles/_theme_mixins.scss */
+/* line 105, ../client/styles/_theme_mixins.scss */
 .played {
   background-image: url(/images/unearthed_bg.jpg);
   background-color: #588d3f;
 }
 /* line 109, ../client/styles/_theme_mixins.scss */
 .played .track {
-  border-bottom-color: #1f450d;
+  border-bottom-color: rgba(31, 69, 13, 0.8);
   background: rgba(29, 64, 12, 0.8);
   background: false;
 }
@@ -1338,7 +1383,12 @@ nav a {
   color: white;
 }
 
-/* line 36, ../client/styles/main.scss */
+/* line 34, ../client/styles/main.scss */
+html {
+  background: #eee;
+}
+
+/* line 38, ../client/styles/main.scss */
 a {
   text-decoration: none;
 }

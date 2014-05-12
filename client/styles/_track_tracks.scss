@@ -3,6 +3,10 @@
     @include flex();
     @include flex-direction(column);
 
+    // to cover played tracks
+    @include translateY(-$played_height);
+    @include single-transition(all);
+
     .track {
         margin-bottom: .5em;
         border-radius: 2px;
@@ -31,4 +35,9 @@
             }
         }
     }
+}
+
+// reveal played tracks
+.played.active ~ .tracks {
+    @include translateY(0);
 }

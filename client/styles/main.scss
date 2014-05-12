@@ -1,12 +1,14 @@
 $default-transition-duration: .3s;
 $default-transition-timing: ease-in-out;
 $header_height: 3em;
+$played_height: 10em;
 
 // third party util
 @import "normalize";
 
 // compass utils
 @import "compass/css3";
+@import "compass/utilities/general/clearfix";
 
 // bespoke utils
 @import "mixins";
@@ -29,8 +31,8 @@ $header_height: 3em;
 @import 'theme_mixins';
 @import 'themes';
 
-body {
-
+html {
+    background: #eee;
 }
 
 a {

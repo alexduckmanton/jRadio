@@ -2,13 +2,17 @@
     background-size: 500px;
     background-position: center center;
     overflow: auto;
+    height: $played_height;
+
+    @include translateY(-$played_height);
+    @include single-transition(all);
 
     // enable inertial scrolling for ios and maybe android?
     -webkit-overflow-scrolling: touch;
 
-    // hide when not active
-    height: 0;
-    @include single-transition(height);
+    &.active {
+        @include translateY(0);
+    }
 
     .track {
         padding: .25em 0;
@@ -33,9 +37,5 @@
             font-size: 2.5em;
             margin-bottom: 0.2em;
         }
-    }
-
-    &.active {
-        height: 10em;
     }
 }

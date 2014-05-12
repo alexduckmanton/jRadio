@@ -8,6 +8,10 @@ header {
     text-align: center;
     overflow: hidden;
 
+    // to cover played tracks
+    @include translateY(-$played_height);
+    @include single-transition(all);
+
     @include header_bg();
     @include box-sizing(border-box);
 
@@ -69,7 +73,7 @@ header {
     }
 }
 
-
+// when a track is playing, hide header elements
 .playing ~ .site header h1,
 .playing ~ .site header .radio,
 .playing ~ .site header .toggle_played {
@@ -78,4 +82,9 @@ header {
     &:nth-child(1) { @include transition-delay($default-transition-duration * .05); }
     &:nth-child(2) { @include transition-delay($default-transition-duration * .15); }
     &:nth-child(3) { @include transition-delay($default-transition-duration * .1); }
+}
+
+// when played tracks are shown, moved header to reveal
+.played.active + header {
+    @include translateY(0);
 }
