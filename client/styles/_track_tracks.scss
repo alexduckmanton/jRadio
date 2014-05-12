@@ -17,7 +17,6 @@
 
         .img_container {
             position: relative;
-            height: 6.1875em;
 
             &:before {
                 content: '';
@@ -64,10 +63,6 @@
             // scatter featured tracks among the new ones
             @for $i from 16 through 20 {
                 &:nth-child(#{$i}) { @include order( ($i - 17) * 4 ); }
-            }
-
-            .img_container {
-                height: 12.625em;
             }
         }
 
