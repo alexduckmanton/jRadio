@@ -469,8 +469,8 @@ th {
 
 @font-face {
   font-family: "icon";
-  src: url("./icon-70820b0b943ecdb441ce13586050ff73.eot");
-  src: url("./icon-70820b0b943ecdb441ce13586050ff73.eot?#iefix") format("embedded-opentype"), url("./icon-70820b0b943ecdb441ce13586050ff73.woff") format("woff"), url("./icon-70820b0b943ecdb441ce13586050ff73.ttf") format("truetype"), url("./icon-70820b0b943ecdb441ce13586050ff73.svg?#icon") format("svg");
+  src: url("./icon-64fdd800f5a6c33e4b13a5f23f5b72b1.eot");
+  src: url("./icon-64fdd800f5a6c33e4b13a5f23f5b72b1.eot?#iefix") format("embedded-opentype"), url("./icon-64fdd800f5a6c33e4b13a5f23f5b72b1.woff") format("woff"), url("./icon-64fdd800f5a6c33e4b13a5f23f5b72b1.ttf") format("truetype"), url("./icon-64fdd800f5a6c33e4b13a5f23f5b72b1.svg?#icon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -493,53 +493,28 @@ th {
 }
 
 /* line 38, ../client/styles/_icon.scss */
-.icon-featured1:before, .tracks .track.featured:after, .tracks .track.featured:nth-child(16):after {
+.icon-featured:before, .tracks .track.featured:after {
   content: "\e001";
 }
 
 /* line 44, ../client/styles/_icon.scss */
-.icon-featured2:before, .tracks .track.featured:nth-child(17):after {
+.icon-pause:before, .playing .track_info a:before {
   content: "\e002";
 }
 
 /* line 50, ../client/styles/_icon.scss */
-.icon-featured3:before, .tracks .track.featured:nth-child(18):after {
+.icon-play:before {
   content: "\e003";
 }
 
 /* line 56, ../client/styles/_icon.scss */
-.icon-featured4:before, .tracks .track.featured:nth-child(19):after {
+.icon-played:before {
   content: "\e004";
 }
 
 /* line 62, ../client/styles/_icon.scss */
-.icon-featured5:before, .tracks .track.featured:nth-child(20):after {
-  content: "\e005";
-}
-
-/* line 68, ../client/styles/_icon.scss */
-.icon-featured6:before, .tracks .track.featured:nth-child(21):after {
-  content: "\e006";
-}
-
-/* line 74, ../client/styles/_icon.scss */
-.icon-pause:before, .playing .track_info a:before {
-  content: "\e007";
-}
-
-/* line 80, ../client/styles/_icon.scss */
-.icon-play:before {
-  content: "\e008";
-}
-
-/* line 86, ../client/styles/_icon.scss */
-.icon-played:before {
-  content: "\e009";
-}
-
-/* line 92, ../client/styles/_icon.scss */
 .icon-radio:before {
-  content: "\e00a";
+  content: "\e005";
 }
 
 /* line 6, ../client/styles/_header.scss */
@@ -1048,10 +1023,11 @@ header iframe {
   top: -6px;
   left: -6px;
   font-size: 2em;
+  line-height: 1.05em;
   padding: calc(1em / 16);
   text-align: center;
 }
-/* line 39, ../client/styles/_track_tracks.scss */
+/* line 40, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(15) {
   -webkit-box-ordinal-group: -3;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1063,7 +1039,7 @@ header iframe {
   /* NEW - Chrome */
   order: -3;
 }
-/* line 39, ../client/styles/_track_tracks.scss */
+/* line 40, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(16) {
   -webkit-box-ordinal-group: 0;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1075,7 +1051,7 @@ header iframe {
   /* NEW - Chrome */
   order: 0;
 }
-/* line 39, ../client/styles/_track_tracks.scss */
+/* line 40, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(17) {
   -webkit-box-ordinal-group: 3;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1087,7 +1063,7 @@ header iframe {
   /* NEW - Chrome */
   order: 3;
 }
-/* line 39, ../client/styles/_track_tracks.scss */
+/* line 40, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(18) {
   -webkit-box-ordinal-group: 6;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1099,7 +1075,7 @@ header iframe {
   /* NEW - Chrome */
   order: 6;
 }
-/* line 39, ../client/styles/_track_tracks.scss */
+/* line 40, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(19) {
   -webkit-box-ordinal-group: 9;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1111,7 +1087,7 @@ header iframe {
   /* NEW - Chrome */
   order: 9;
 }
-/* line 39, ../client/styles/_track_tracks.scss */
+/* line 40, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(20) {
   -webkit-box-ordinal-group: 12;
   /* OLD - iOS 6-, Safari 3.1-6 */
