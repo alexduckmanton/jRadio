@@ -3,7 +3,7 @@ var Marionette = require('backbone.marionette'),
     TracksCollection = require('../collections/tracks');
 
 module.exports = layout = Marionette.Layout.extend({
-    className: 'site',
+    className: 'site loading',
     tagName: 'section',
     template: require('../../templates/site.hbs'),
 
@@ -36,6 +36,7 @@ module.exports = layout = Marionette.Layout.extend({
 
                 // render
                 self.$el.append(App.views.tracksView.render().el);
+                self.$el.removeClass('loading');
             }
         });
     },

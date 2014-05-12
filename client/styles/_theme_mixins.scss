@@ -79,6 +79,10 @@
         $bg: #eee
     ) {
 
+    .site.loading:after {
+        color: darken($bg, 10%);
+    }
+
     #content {
         background: $bg;
     }

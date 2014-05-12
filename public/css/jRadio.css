@@ -469,14 +469,14 @@ th {
 
 @font-face {
   font-family: "icon";
-  src: url("./icon-64fdd800f5a6c33e4b13a5f23f5b72b1.eot");
-  src: url("./icon-64fdd800f5a6c33e4b13a5f23f5b72b1.eot?#iefix") format("embedded-opentype"), url("./icon-64fdd800f5a6c33e4b13a5f23f5b72b1.woff") format("woff"), url("./icon-64fdd800f5a6c33e4b13a5f23f5b72b1.ttf") format("truetype"), url("./icon-64fdd800f5a6c33e4b13a5f23f5b72b1.svg?#icon") format("svg");
+  src: url("./icon-46a6c9c27ffe0939c2f44ce17bc57e34.eot");
+  src: url("./icon-46a6c9c27ffe0939c2f44ce17bc57e34.eot?#iefix") format("embedded-opentype"), url("./icon-46a6c9c27ffe0939c2f44ce17bc57e34.woff") format("woff"), url("./icon-46a6c9c27ffe0939c2f44ce17bc57e34.ttf") format("truetype"), url("./icon-46a6c9c27ffe0939c2f44ce17bc57e34.svg?#icon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 /* line 18, ../client/styles/_icon.scss */
-[class^="icon-"]:before, .tracks .track.featured:after,
+[class^="icon-"]:before, .site.loading:after, .tracks .track.featured:after,
 [class*=" icon-"]:before {
   font-family: "icon";
   display: inline-block;
@@ -493,28 +493,43 @@ th {
 }
 
 /* line 38, ../client/styles/_icon.scss */
-.icon-featured:before, .tracks .track.featured:after {
+.icon-drum1:before, .site.loading:after {
   content: "\e001";
 }
 
 /* line 44, ../client/styles/_icon.scss */
-.icon-pause:before, .playing .track_info a:before {
+.icon-featured:before, .tracks .track.featured:after {
   content: "\e002";
 }
 
 /* line 50, ../client/styles/_icon.scss */
-.icon-play:before {
+.icon-pause:before, .playing .track_info a:before {
   content: "\e003";
 }
 
 /* line 56, ../client/styles/_icon.scss */
-.icon-played:before {
+.icon-play:before {
   content: "\e004";
 }
 
 /* line 62, ../client/styles/_icon.scss */
-.icon-radio:before {
+.icon-played:before {
   content: "\e005";
+}
+
+/* line 68, ../client/styles/_icon.scss */
+.icon-radio:before {
+  content: "\e006";
+}
+
+/* line 1, ../client/styles/_site.scss */
+.site {
+  text-align: center;
+}
+/* line 4, ../client/styles/_site.scss */
+.site.loading:after {
+  margin: 0 auto;
+  font-size: 5em;
 }
 
 /* line 6, ../client/styles/_header.scss */
@@ -1250,11 +1265,16 @@ header iframe {
 }
 
 /* line 82, ../client/styles/_theme_mixins.scss */
+.site.loading:after {
+  color: #d4d4d4;
+}
+
+/* line 86, ../client/styles/_theme_mixins.scss */
 #content {
   background: #eeeeee;
 }
 
-/* line 86, ../client/styles/_theme_mixins.scss */
+/* line 90, ../client/styles/_theme_mixins.scss */
 header {
   color: white;
   background-color: #588d3f;
@@ -1270,7 +1290,7 @@ header a {
   border-color: white;
 }
 
-/* line 95, ../client/styles/_theme_mixins.scss */
+/* line 99, ../client/styles/_theme_mixins.scss */
 .player {
   background-image: url(/images/unearthed_bg.jpg);
   background: "unearthed_bg.jpg";
@@ -1298,12 +1318,12 @@ header a {
   color: rgba(204, 204, 204, 0.75);
 }
 
-/* line 106, ../client/styles/_theme_mixins.scss */
+/* line 110, ../client/styles/_theme_mixins.scss */
 .played {
   background-image: url(/images/unearthed_bg.jpg);
   background-color: #588d3f;
 }
-/* line 110, ../client/styles/_theme_mixins.scss */
+/* line 114, ../client/styles/_theme_mixins.scss */
 .played .track {
   border-bottom-color: rgba(31, 69, 13, 0.8);
   background: rgba(29, 64, 12, 0.8);
@@ -1327,16 +1347,16 @@ header a {
   background: #ff354f;
   color: #ce001b;
 }
-/* line 120, ../client/styles/_theme_mixins.scss */
+/* line 124, ../client/styles/_theme_mixins.scss */
 .played.active + header .toggle_played {
   background: rgba(29, 64, 12, 0.8);
 }
-/* line 124, ../client/styles/_theme_mixins.scss */
+/* line 128, ../client/styles/_theme_mixins.scss */
 .played .time {
   color: #639f47;
 }
 
-/* line 129, ../client/styles/_theme_mixins.scss */
+/* line 133, ../client/styles/_theme_mixins.scss */
 .tracks .track {
   box-shadow: rgba(0, 0, 0, 0.05) 0 1px 0;
   background: white;
@@ -1359,7 +1379,7 @@ header a {
   background: #ff354f;
   color: #ce001b;
 }
-/* line 138, ../client/styles/_theme_mixins.scss */
+/* line 142, ../client/styles/_theme_mixins.scss */
 .tracks .track.playing .play {
   background: rgba(75, 161, 25, 0.2);
 }
@@ -1384,7 +1404,7 @@ header a {
   background-color: #fff59d;
 }
 
-/* line 150, ../client/styles/_theme_mixins.scss */
+/* line 154, ../client/styles/_theme_mixins.scss */
 nav {
   background-color: #588d3f;
 }
@@ -1397,12 +1417,12 @@ nav a {
   color: white;
 }
 
-/* line 34, ../client/styles/main.scss */
+/* line 35, ../client/styles/main.scss */
 html {
   background: #eee;
 }
 
-/* line 38, ../client/styles/main.scss */
+/* line 39, ../client/styles/main.scss */
 a {
   text-decoration: none;
 }

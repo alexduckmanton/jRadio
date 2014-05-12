@@ -3,11 +3,11 @@
 
 @font-face {
 	font-family:"icon";
-	src:url("./icon-64fdd800f5a6c33e4b13a5f23f5b72b1.eot");
-	src:url("./icon-64fdd800f5a6c33e4b13a5f23f5b72b1.eot?#iefix") format("embedded-opentype"),
-		url("./icon-64fdd800f5a6c33e4b13a5f23f5b72b1.woff") format("woff"),
-		url("./icon-64fdd800f5a6c33e4b13a5f23f5b72b1.ttf") format("truetype"),
-		url("./icon-64fdd800f5a6c33e4b13a5f23f5b72b1.svg?#icon") format("svg");
+	src:url("./icon-46a6c9c27ffe0939c2f44ce17bc57e34.eot");
+	src:url("./icon-46a6c9c27ffe0939c2f44ce17bc57e34.eot?#iefix") format("embedded-opentype"),
+		url("./icon-46a6c9c27ffe0939c2f44ce17bc57e34.woff") format("woff"),
+		url("./icon-46a6c9c27ffe0939c2f44ce17bc57e34.ttf") format("truetype"),
+		url("./icon-46a6c9c27ffe0939c2f44ce17bc57e34.svg?#icon") format("svg");
 	font-weight:normal;
 	font-style:normal;
 }
@@ -35,31 +35,37 @@
 // Icons
 
 
-.icon-featured:before {
+.icon-drum1:before {
 	content:"\e001";
 }
 
 
 
-.icon-pause:before {
+.icon-featured:before {
 	content:"\e002";
 }
 
 
 
-.icon-play:before {
+.icon-pause:before {
 	content:"\e003";
 }
 
 
 
-.icon-played:before {
+.icon-play:before {
 	content:"\e004";
 }
 
 
 
-.icon-radio:before {
+.icon-played:before {
 	content:"\e005";
+}
+
+
+
+.icon-radio:before {
+	content:"\e006";
 }
 
