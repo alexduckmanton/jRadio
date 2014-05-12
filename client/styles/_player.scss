@@ -2,19 +2,16 @@
     @include header_bg();
 
     width: 100%;
+    height: $header_height;
     position: fixed;
     z-index: 1;
 
     // hide
-    height: 0;
-    overflow: hidden;
+    @include translateY(-$header_height);
+    @include single-transition(all);
 
-    @include single-transition(height);
-
-    .track_info {
-        top: $header_height * -2;
-
-        @include single-transition(top);
+    .text {
+        padding-top: .25em;
     }
 
     h3, h4 {
@@ -24,15 +21,7 @@
     }
 
     &.playing {
-        height: $header_height;
-
-        .track_info {
-            top: 0;
-        }
-
-        .text {
-            padding-top: .25em;
-        }
+        @include translateY(0);
 
         a, h3, h4 {
             @include jiggle(down);

@@ -22,10 +22,8 @@ header {
         line-height: $header_height/2;
 
         // for hiding
-        position: relative;
-        top: 0;
-
-        @include single-transition(top);
+        @include translateY(0);
+        @include single-transition(all);
     }
 
     .radio,
@@ -36,12 +34,10 @@ header {
         border: .15em solid;
         border-radius: 100%;
 
-        position: relative;
-        top: 0;
+        @include translateY(0);
 
         @include box-sizing(border-box);
-        @include single-transition(top);
-        @include transition-property(top, background);
+        @include single-transition(all);
 
         // icon
         &:before {
@@ -77,10 +73,9 @@ header {
 .playing ~ .site header h1,
 .playing ~ .site header .radio,
 .playing ~ .site header .toggle_played {
-    top: $header_height;
-    @include jiggle(down, $delay: 0, $direction: reverse);
+    @include translateY($header_height);
 
     &:nth-child(1) { @include transition-delay($default-transition-duration * .05); }
     &:nth-child(2) { @include transition-delay($default-transition-duration * .15); }
-    &:nth-child(3) { @include transition-delay($default-transition-duration * .05); }
+    &:nth-child(3) { @include transition-delay($default-transition-duration * .1); }
 }
