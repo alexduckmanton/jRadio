@@ -14,6 +14,8 @@ module.exports = layout = Marionette.Layout.extend({
 
     initialize: function() {
         this.get_tracks();
+
+        this.listenTo(App.core.vent, 'track:play', this.update_ui_for_player);
     },
 
     onRender: function() {
@@ -100,6 +102,17 @@ module.exports = layout = Marionette.Layout.extend({
 
     play_radio: function() {
         App.core.vent.trigger('track:play', this.model.attributes);
+    },
+
+    update_ui_for_player: function(track) {
+        if (App.views.playedView.collection.active) {
+            this.toggle_played();
+            App.views.playedView.$el.one('transitionend', function() {
+                App.core.vent.trigger('player:play', track);
+            });
+        } else {
+            App.core.vent.trigger('player:play', track);
+        }
     }
 
 });

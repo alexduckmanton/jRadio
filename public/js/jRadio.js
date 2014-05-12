@@ -15290,6 +15290,8 @@ module.exports = layout = Marionette.Layout.extend({
 
     initialize: function() {
         this.get_tracks();
+
+        this.listenTo(App.core.vent, 'track:play', this.update_ui_for_player);
     },
 
     onRender: function() {
@@ -15376,6 +15378,17 @@ module.exports = layout = Marionette.Layout.extend({
 
     play_radio: function() {
         App.core.vent.trigger('track:play', this.model.attributes);
+    },
+
+    update_ui_for_player: function(track) {
+        if (App.views.playedView.collection.active) {
+            this.toggle_played();
+            App.views.playedView.$el.one('transitionend', function() {
+                App.core.vent.trigger('player:play', track);
+            });
+        } else {
+            App.core.vent.trigger('player:play', track);
+        }
     }
 
 });
@@ -15418,9 +15431,9 @@ module.exports = PlayerModel = Backbone.Model.extend({
     },
 
     initialize: function() {
-        this.listenTo(App.core.vent, 'track:play', this.change_track);
-        this.listenTo(App.core.vent, 'track:play', this.update_info);
-        this.listenTo(App.core.vent, 'track:play', this.play);
+        this.listenTo(App.core.vent, 'player:play', this.change_track);
+        this.listenTo(App.core.vent, 'player:play', this.update_info);
+        this.listenTo(App.core.vent, 'player:play', this.play);
     },
 
     change_track: function(track) {
