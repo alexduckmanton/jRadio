@@ -469,14 +469,14 @@ th {
 
 @font-face {
   font-family: "icon";
-  src: url("./icon-3365bf0dc8d58e51f368432670d753cf.eot");
-  src: url("./icon-3365bf0dc8d58e51f368432670d753cf.eot?#iefix") format("embedded-opentype"), url("./icon-3365bf0dc8d58e51f368432670d753cf.woff") format("woff"), url("./icon-3365bf0dc8d58e51f368432670d753cf.ttf") format("truetype"), url("./icon-3365bf0dc8d58e51f368432670d753cf.svg?#icon") format("svg");
+  src: url("./icon-70820b0b943ecdb441ce13586050ff73.eot");
+  src: url("./icon-70820b0b943ecdb441ce13586050ff73.eot?#iefix") format("embedded-opentype"), url("./icon-70820b0b943ecdb441ce13586050ff73.woff") format("woff"), url("./icon-70820b0b943ecdb441ce13586050ff73.ttf") format("truetype"), url("./icon-70820b0b943ecdb441ce13586050ff73.svg?#icon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 /* line 18, ../client/styles/_icon.scss */
-[class^="icon-"]:before,
+[class^="icon-"]:before, .tracks .track.featured:after,
 [class*=" icon-"]:before {
   font-family: "icon";
   display: inline-block;
@@ -493,23 +493,53 @@ th {
 }
 
 /* line 38, ../client/styles/_icon.scss */
-.icon-pause:before, .playing .track_info a:before {
+.icon-featured1:before, .tracks .track.featured:after, .tracks .track.featured:nth-child(16):after {
   content: "\e001";
 }
 
 /* line 44, ../client/styles/_icon.scss */
-.icon-play:before {
+.icon-featured2:before, .tracks .track.featured:nth-child(17):after {
   content: "\e002";
 }
 
 /* line 50, ../client/styles/_icon.scss */
-.icon-played:before {
+.icon-featured3:before, .tracks .track.featured:nth-child(18):after {
   content: "\e003";
 }
 
 /* line 56, ../client/styles/_icon.scss */
-.icon-radio:before {
+.icon-featured4:before, .tracks .track.featured:nth-child(19):after {
   content: "\e004";
+}
+
+/* line 62, ../client/styles/_icon.scss */
+.icon-featured5:before, .tracks .track.featured:nth-child(20):after {
+  content: "\e005";
+}
+
+/* line 68, ../client/styles/_icon.scss */
+.icon-featured6:before, .tracks .track.featured:nth-child(21):after {
+  content: "\e006";
+}
+
+/* line 74, ../client/styles/_icon.scss */
+.icon-pause:before, .playing .track_info a:before {
+  content: "\e007";
+}
+
+/* line 80, ../client/styles/_icon.scss */
+.icon-play:before {
+  content: "\e008";
+}
+
+/* line 86, ../client/styles/_icon.scss */
+.icon-played:before {
+  content: "\e009";
+}
+
+/* line 92, ../client/styles/_icon.scss */
+.icon-radio:before {
+  content: "\e00a";
 }
 
 /* line 6, ../client/styles/_header.scss */
@@ -1009,7 +1039,19 @@ header iframe {
 .tracks .track.featured {
   position: relative;
 }
-/* line 24, ../client/styles/_track_tracks.scss */
+/* line 23, ../client/styles/_track_tracks.scss */
+.tracks .track.featured:after {
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  top: -6px;
+  left: -6px;
+  font-size: 2em;
+  padding: calc(1em / 16);
+  text-align: center;
+}
+/* line 39, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(15) {
   -webkit-box-ordinal-group: -3;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1021,7 +1063,7 @@ header iframe {
   /* NEW - Chrome */
   order: -3;
 }
-/* line 24, ../client/styles/_track_tracks.scss */
+/* line 39, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(16) {
   -webkit-box-ordinal-group: 0;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1033,7 +1075,7 @@ header iframe {
   /* NEW - Chrome */
   order: 0;
 }
-/* line 24, ../client/styles/_track_tracks.scss */
+/* line 39, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(17) {
   -webkit-box-ordinal-group: 3;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1045,7 +1087,7 @@ header iframe {
   /* NEW - Chrome */
   order: 3;
 }
-/* line 24, ../client/styles/_track_tracks.scss */
+/* line 39, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(18) {
   -webkit-box-ordinal-group: 6;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1057,7 +1099,7 @@ header iframe {
   /* NEW - Chrome */
   order: 6;
 }
-/* line 24, ../client/styles/_track_tracks.scss */
+/* line 39, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(19) {
   -webkit-box-ordinal-group: 9;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1069,7 +1111,7 @@ header iframe {
   /* NEW - Chrome */
   order: 9;
 }
-/* line 24, ../client/styles/_track_tracks.scss */
+/* line 39, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(20) {
   -webkit-box-ordinal-group: 12;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1081,18 +1123,8 @@ header iframe {
   /* NEW - Chrome */
   order: 12;
 }
-/* line 27, ../client/styles/_track_tracks.scss */
-.tracks .track.featured:after {
-  content: '';
-  position: absolute;
-  width: 4em;
-  height: 4em;
-  border-radius: 100%;
-  top: -.625em;
-  left: -.625em;
-}
 
-/* line 41, ../client/styles/_track_tracks.scss */
+/* line 47, ../client/styles/_track_tracks.scss */
 .played.active ~ .tracks {
   -webkit-transform: translateY(0);
   -moz-transform: translateY(0);
@@ -1238,28 +1270,28 @@ header iframe {
   animation-duration: 0.24s;
 }
 
-/* line 81, ../client/styles/_theme_mixins.scss */
+/* line 82, ../client/styles/_theme_mixins.scss */
 #content {
   background: #eeeeee;
 }
 
-/* line 85, ../client/styles/_theme_mixins.scss */
+/* line 86, ../client/styles/_theme_mixins.scss */
 header {
   color: white;
   background-color: #588d3f;
   background-image: url(/images/unearthed_bg.jpg);
 }
-/* line 45, ../client/styles/_theme_mixins.scss */
+/* line 46, ../client/styles/_theme_mixins.scss */
 header h1 {
   font-family: "Chomp";
 }
-/* line 49, ../client/styles/_theme_mixins.scss */
+/* line 50, ../client/styles/_theme_mixins.scss */
 header a {
   color: white;
   border-color: white;
 }
 
-/* line 94, ../client/styles/_theme_mixins.scss */
+/* line 95, ../client/styles/_theme_mixins.scss */
 .player {
   background-image: url(/images/unearthed_bg.jpg);
   background: "unearthed_bg.jpg";
@@ -1284,14 +1316,15 @@ header a {
 /* line 30, ../client/styles/_theme_mixins.scss */
 .player.featured:after {
   background: rgba(255, 255, 255, 0.75);
+  color: rgba(204, 204, 204, 0.75);
 }
 
-/* line 105, ../client/styles/_theme_mixins.scss */
+/* line 106, ../client/styles/_theme_mixins.scss */
 .played {
   background-image: url(/images/unearthed_bg.jpg);
   background-color: #588d3f;
 }
-/* line 109, ../client/styles/_theme_mixins.scss */
+/* line 110, ../client/styles/_theme_mixins.scss */
 .played .track {
   border-bottom-color: rgba(31, 69, 13, 0.8);
   background: rgba(29, 64, 12, 0.8);
@@ -1313,17 +1346,18 @@ header a {
 /* line 30, ../client/styles/_theme_mixins.scss */
 .played .track.featured:after {
   background: #ff354f;
+  color: #ce001b;
 }
-/* line 119, ../client/styles/_theme_mixins.scss */
+/* line 120, ../client/styles/_theme_mixins.scss */
 .played.active + header .toggle_played {
   background: rgba(29, 64, 12, 0.8);
 }
-/* line 123, ../client/styles/_theme_mixins.scss */
+/* line 124, ../client/styles/_theme_mixins.scss */
 .played .time {
   color: #639f47;
 }
 
-/* line 128, ../client/styles/_theme_mixins.scss */
+/* line 129, ../client/styles/_theme_mixins.scss */
 .tracks .track {
   box-shadow: rgba(0, 0, 0, 0.05) 0 1px 0;
   background: white;
@@ -1344,8 +1378,9 @@ header a {
 /* line 30, ../client/styles/_theme_mixins.scss */
 .tracks .track.featured:after {
   background: #ff354f;
+  color: #ce001b;
 }
-/* line 137, ../client/styles/_theme_mixins.scss */
+/* line 138, ../client/styles/_theme_mixins.scss */
 .tracks .track.playing .play {
   background: rgba(75, 161, 25, 0.2);
 }
@@ -1370,15 +1405,15 @@ header a {
   background-color: #fff59d;
 }
 
-/* line 149, ../client/styles/_theme_mixins.scss */
+/* line 150, ../client/styles/_theme_mixins.scss */
 nav {
   background-color: #588d3f;
 }
-/* line 61, ../client/styles/_theme_mixins.scss */
+/* line 62, ../client/styles/_theme_mixins.scss */
 nav li:after {
   border-bottom-color: #588d3f;
 }
-/* line 65, ../client/styles/_theme_mixins.scss */
+/* line 66, ../client/styles/_theme_mixins.scss */
 nav a {
   color: white;
 }

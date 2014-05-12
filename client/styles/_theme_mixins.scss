@@ -29,6 +29,7 @@
 
     &.featured:after {
         background: $secondary;
+        color: darken($secondary, 20%);
     }
 }
 
