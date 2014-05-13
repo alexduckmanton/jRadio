@@ -1571,13 +1571,123 @@ header iframe {
   }
 }
 
-/* line 44, ../client/styles/_loading.scss */
+@-o-keyframes drum_exit {
+  /* line 45, ../client/styles/_loading.scss */
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    -moz-transform: scale3d(1, 1, 1);
+    -ms-transform: scale3d(1, 1, 1);
+    -o-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+
+  /* line 50, ../client/styles/_loading.scss */
+  100% {
+    -webkit-transform: scale3d(0.9, 0.9, 1);
+    -moz-transform: scale3d(0.9, 0.9, 1);
+    -ms-transform: scale3d(0.9, 0.9, 1);
+    -o-transform: scale3d(0.9, 0.9, 1);
+    transform: scale3d(0.9, 0.9, 1);
+    opacity: 0;
+  }
+}
+
+@-ms-keyframes drum_exit {
+  /* line 45, ../client/styles/_loading.scss */
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    -moz-transform: scale3d(1, 1, 1);
+    -ms-transform: scale3d(1, 1, 1);
+    -o-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+
+  /* line 50, ../client/styles/_loading.scss */
+  100% {
+    -webkit-transform: scale3d(0.9, 0.9, 1);
+    -moz-transform: scale3d(0.9, 0.9, 1);
+    -ms-transform: scale3d(0.9, 0.9, 1);
+    -o-transform: scale3d(0.9, 0.9, 1);
+    transform: scale3d(0.9, 0.9, 1);
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes drum_exit {
+  /* line 45, ../client/styles/_loading.scss */
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    -moz-transform: scale3d(1, 1, 1);
+    -ms-transform: scale3d(1, 1, 1);
+    -o-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+
+  /* line 50, ../client/styles/_loading.scss */
+  100% {
+    -webkit-transform: scale3d(0.9, 0.9, 1);
+    -moz-transform: scale3d(0.9, 0.9, 1);
+    -ms-transform: scale3d(0.9, 0.9, 1);
+    -o-transform: scale3d(0.9, 0.9, 1);
+    transform: scale3d(0.9, 0.9, 1);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes drum_exit {
+  /* line 45, ../client/styles/_loading.scss */
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    -moz-transform: scale3d(1, 1, 1);
+    -ms-transform: scale3d(1, 1, 1);
+    -o-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+
+  /* line 50, ../client/styles/_loading.scss */
+  100% {
+    -webkit-transform: scale3d(0.9, 0.9, 1);
+    -moz-transform: scale3d(0.9, 0.9, 1);
+    -ms-transform: scale3d(0.9, 0.9, 1);
+    -o-transform: scale3d(0.9, 0.9, 1);
+    transform: scale3d(0.9, 0.9, 1);
+    opacity: 0;
+  }
+}
+
+@keyframes drum_exit {
+  /* line 45, ../client/styles/_loading.scss */
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    -moz-transform: scale3d(1, 1, 1);
+    -ms-transform: scale3d(1, 1, 1);
+    -o-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+
+  /* line 50, ../client/styles/_loading.scss */
+  100% {
+    -webkit-transform: scale3d(0.9, 0.9, 1);
+    -moz-transform: scale3d(0.9, 0.9, 1);
+    -ms-transform: scale3d(0.9, 0.9, 1);
+    -o-transform: scale3d(0.9, 0.9, 1);
+    transform: scale3d(0.9, 0.9, 1);
+    opacity: 0;
+  }
+}
+
+/* line 56, ../client/styles/_loading.scss */
 .loading {
   font-size: 5em;
   position: relative;
   display: inline-block;
 }
-/* line 53, ../client/styles/_loading.scss */
+/* line 65, ../client/styles/_loading.scss */
 .loading .icon-drumstick {
   font-size: .45em;
   position: absolute;
@@ -1585,7 +1695,7 @@ header iframe {
   left: 0;
   overflow: hidden;
 }
-/* line 60, ../client/styles/_loading.scss */
+/* line 72, ../client/styles/_loading.scss */
 .loading .icon-drumstick, .loading .icon-drumstick:after {
   -o-animation-name: drumstick_middle;
   -ms-animation-name: drumstick_middle;
@@ -1618,7 +1728,7 @@ header iframe {
   -webkit-animation-direction: alternate;
   animation-direction: alternate;
 }
-/* line 64, ../client/styles/_loading.scss */
+/* line 76, ../client/styles/_loading.scss */
 .loading .icon-drumstick:after {
   content: '';
   position: absolute;
@@ -1627,7 +1737,7 @@ header iframe {
   height: 1em;
   background: #eee;
 }
-/* line 73, ../client/styles/_loading.scss */
+/* line 85, ../client/styles/_loading.scss */
 .loading .icon-drumstick.middle {
   -webkit-transform-origin: 0.333em 1em;
   -moz-transform-origin: 0.333em 1em;
@@ -1637,7 +1747,7 @@ header iframe {
   top: -.6667em;
   left: -.7778em;
 }
-/* line 79, ../client/styles/_loading.scss */
+/* line 91, ../client/styles/_loading.scss */
 .loading .icon-drumstick.middle:after {
   top: -0.4em;
   left: -1.2em;
@@ -1648,7 +1758,7 @@ header iframe {
   -webkit-animation-timing-function: cubic-bezier(0.9, 0.1, 0.9, 0.1);
   animation-timing-function: cubic-bezier(0.9, 0.1, 0.9, 0.1);
 }
-/* line 87, ../client/styles/_loading.scss */
+/* line 99, ../client/styles/_loading.scss */
 .loading .icon-drumstick.left {
   -webkit-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
   -moz-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
@@ -1656,7 +1766,7 @@ header iframe {
   -o-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
   transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
 }
-/* line 91, ../client/styles/_loading.scss */
+/* line 103, ../client/styles/_loading.scss */
 .loading .icon-drumstick.left, .loading .icon-drumstick.left:after {
   -webkit-transform-origin: 0;
   -moz-transform-origin: 0;
@@ -1674,7 +1784,7 @@ header iframe {
   -webkit-animation-delay: 0.03s;
   animation-delay: 0.03s;
 }
-/* line 97, ../client/styles/_loading.scss */
+/* line 109, ../client/styles/_loading.scss */
 .loading .icon-drumstick.left:after {
   top: -1.7778em;
   left: -.5em;
@@ -1684,7 +1794,7 @@ header iframe {
   -webkit-animation-timing-function: cubic-bezier(0.6, 0, 0.6, 0);
   animation-timing-function: cubic-bezier(0.6, 0, 0.6, 0);
 }
-/* line 104, ../client/styles/_loading.scss */
+/* line 116, ../client/styles/_loading.scss */
 .loading .icon-drumstick.right {
   -webkit-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
   -moz-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
@@ -1692,7 +1802,7 @@ header iframe {
   -o-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
   transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
 }
-/* line 108, ../client/styles/_loading.scss */
+/* line 120, ../client/styles/_loading.scss */
 .loading .icon-drumstick.right, .loading .icon-drumstick.right:after {
   -o-animation-name: drumstick_right;
   -ms-animation-name: drumstick_right;
@@ -1705,7 +1815,7 @@ header iframe {
   -webkit-animation-delay: 0.06s;
   animation-delay: 0.06s;
 }
-/* line 113, ../client/styles/_loading.scss */
+/* line 125, ../client/styles/_loading.scss */
 .loading .icon-drumstick.right:after {
   top: -0.5em;
   left: -1.4em;
@@ -1720,7 +1830,45 @@ header iframe {
   -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.4, 0);
   animation-timing-function: cubic-bezier(0.4, 0, 0.4, 0);
 }
-/* line 126, ../client/styles/_loading.scss */
+/* line 134, ../client/styles/_loading.scss */
+.loading.loaded {
+  -o-animation-name: drum_exit;
+  -ms-animation-name: drum_exit;
+  -moz-animation-name: drum_exit;
+  -webkit-animation-name: drum_exit;
+  animation-name: drum_exit;
+  -o-animation-duration: 0.3s;
+  -ms-animation-duration: 0.3s;
+  -moz-animation-duration: 0.3s;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -o-animation-timing-function: false;
+  -ms-animation-timing-function: false;
+  -moz-animation-timing-function: false;
+  -webkit-animation-timing-function: false;
+  animation-timing-function: false;
+  -o-animation-delay: 0.6s;
+  -ms-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  -webkit-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+  -o-animation-iteration-count: 1;
+  -ms-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -o-animation-direction: normal;
+  -ms-animation-direction: normal;
+  -moz-animation-direction: normal;
+  -webkit-animation-direction: normal;
+  animation-direction: normal;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -ms-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+/* line 141, ../client/styles/_loading.scss */
 .loading.loaded .icon-drumstick {
   display: none;
 }

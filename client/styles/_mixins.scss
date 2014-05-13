@@ -55,6 +55,14 @@
 	animation-direction: $direction;
 }
 
+@mixin animationFillMode($property) {
+	-webkit-animation-fill-mode: $property;
+	-moz-animation-fill-mode: $property;
+	-ms-animation-fill-mode: $property;
+	-o-animation-fill-mode: $property;
+	animation-fill-mode: $property;
+}
+
 @mixin animation($name, $duration: $default-transition-duration, $timing: $default-transition-function, $delay: 0, $count: 1, $direction: normal) {
 	@include animationName($name);
 	@include animationDuration($duration);

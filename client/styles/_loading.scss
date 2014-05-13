@@ -41,6 +41,18 @@ $loading_speed: $default-transition-duration / 5;
     }
 }
 
+@include keyframes(drum_exit) {
+    0% {
+        @include transform3d( scale3d(1, 1, 1) );
+        opacity: 1;
+    }
+
+    100% {
+        @include transform3d( scale3d(.9, .9, 1) );
+        opacity: 0;
+    }
+}
+
 .loading {
     font-size: 5em;
     position: relative;
@@ -120,6 +132,9 @@ $loading_speed: $default-transition-duration / 5;
     }
 
     &.loaded {
+        @include animation(drum_exit, $duration: $default-transition-duration, $delay: $default-transition-duration*2);
+        @include animationFillMode(forwards);
+
         &:after {
             @extend .icon-drum:before;
         }
