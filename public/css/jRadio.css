@@ -673,6 +673,26 @@ header iframe {
   transform: translateY(0);
 }
 
+/* line 1, ../client/styles/_footer.scss */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  z-index: -1;
+  background: #fff;
+  font-size: .75em;
+}
+/* line 10, ../client/styles/_footer.scss */
+footer p {
+  color: #666;
+}
+/* line 14, ../client/styles/_footer.scss */
+footer a {
+  color: #222;
+  border-bottom: 1px dotted #aaa;
+}
+
 /* line 1, ../client/styles/_track_base.scss */
 .track {
   margin: 0;
@@ -2483,12 +2503,17 @@ nav a {
   color: white;
 }
 
-/* line 36, ../client/styles/main.scss */
+/* line 37, ../client/styles/main.scss */
 html {
   background: #eee;
 }
 
-/* line 40, ../client/styles/main.scss */
+/* line 41, ../client/styles/main.scss */
 a {
   text-decoration: none;
+}
+
+/* line 45, ../client/styles/main.scss */
+#content {
+  margin-bottom: 3em;
 }
