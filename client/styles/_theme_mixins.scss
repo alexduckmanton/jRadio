@@ -79,7 +79,7 @@
         $bg: #eee
     ) {
 
-    .site.loading:after {
+    .loading {
         color: darken($bg, 10%);
     }
 

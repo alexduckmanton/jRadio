@@ -1,0 +1,96 @@
+@mixin icon($icon_name) {
+    @extend [class^="icon-"]:before;
+    @extend .icon-#{$icon_name}:before;
+}
+
+@include keyframes(drumstick_middle) {
+    0%,33% {
+    // 0% {
+        @include transform3d( rotateZ(90deg) translate3d(0em, -1.5em, 0) );
+    }
+
+    67%, 100% {
+    // 100% {
+        @include transform3d( rotateZ(160deg) translate3d(-.8333em, -.55em, 0) );
+    }
+}
+
+@include keyframes(drumstick_left) {
+    0%,33% {
+    // 0% {
+        @include transform3d( rotateZ(45deg) translate3d(.6em, .1em, 0) );
+    }
+
+    67%, 100% {
+    // 100% {
+        @include transform3d( rotateZ(90deg) translate3d(.85em, -.55em, 0) );
+    }
+}
+
+.loading {
+    font-size: 5em;
+    position: relative;
+    display: inline-block;
+
+    &:after {
+        @include icon(drumming);
+    }
+
+    .icon-drumstick {
+        font-size: .45em;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+
+        &, &:after {
+            @include animation(drumstick_middle, $count: infinite, $direction: alternate, $timing: ease-in, $duration: $default-transition-duration/4);
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            border-radius: 100%;
+            width: 1em;
+            height: 1em;
+            background: #eee;
+        }
+
+        &.middle {
+            @include apply-origin(.333em 1em, true);
+            top: -.6667em;
+            left: -.7778em;
+
+            &:after {
+                top: -.8333em;
+                left: -1.4444em;
+                @include animationTimingFunction(cubic-bezier(0.9, 0.1, 0.9, 0.1));
+            }
+        }
+
+        &.left {
+            @include apply-origin(0, true);
+            @include animationName(drumstick_left);
+            @include animationDirection(alternate-reverse);
+
+            &:after {
+                top: -1.7778em;
+                left: -.5em;
+                @include animationTimingFunction(cubic-bezier(0.6, 0, 0.6, 0));
+
+                @include apply-origin(0, true);
+                @include animationName(drumstick_left);
+                @include animationDirection(alternate-reverse);
+            }
+        }
+    }
+
+    &.loaded {
+        &:after {
+            @extend .icon-drum:before;
+        }
+        .icon-drumstick {
+            display: none;
+        }
+    }
+}

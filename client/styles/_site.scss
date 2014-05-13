@@ -1,11 +1,3 @@
 .site {
     text-align: center;
-
-    &.loading:after {
-        margin: 0 auto;
-        font-size: 5em;
-        
-        @extend [class^="icon-"]:before;
-        @extend .icon-drum1:before;
-    }
 }

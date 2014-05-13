@@ -20,12 +20,13 @@ $played_height: 10em;
 @import "icon";
 
 // styling
-@import "site";
+@import 'site';
 @import 'header';
 @import 'track_base';
 @import 'track_tracks';
 @import 'track_played';
 @import 'player';
+@import 'loading';
 //@import 'nav';
 
 // themes

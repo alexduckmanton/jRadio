@@ -3,7 +3,7 @@ var Marionette = require('backbone.marionette'),
     TracksCollection = require('../collections/tracks');
 
 module.exports = layout = Marionette.Layout.extend({
-    className: 'site loading',
+    className: 'site',
     tagName: 'section',
     template: require('../../templates/site.hbs'),
 
@@ -35,10 +35,23 @@ module.exports = layout = Marionette.Layout.extend({
                 App.views.tracksView = new TracksView({ collection: tracks });
 
                 // render
-                self.$el.append(App.views.tracksView.render().el);
-                self.$el.removeClass('loading');
+                self.show_tracks();
+                // self.$el.append(App.views.tracksView.render().el);
+                // self.$el.find('.loading').remove();
             }
         });
+    },
+
+    show_tracks: function() {
+        var self = this,
+            tracks = App.views.tracksView.render().el;
+
+        this.$el.find('.loading').addClass('loaded');
+
+        window.setTimeout(function() {
+            self.$el.append(tracks);
+            self.$el.find('.loading').remove();
+        }, 1000);
     },
 
     init_played: function() {
