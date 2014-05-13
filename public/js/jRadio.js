@@ -170,6 +170,8 @@ Backbone.ChildViewContainer = (function(Backbone, _){
 
 },{"backbone":"kvd4GK","jquery":"Ewfsiz","underscore":"P+7e+f"}],"backbone.babysitter":[function(require,module,exports){
 module.exports=require('8gCNUQ');
+},{}],"backbone.marionette":[function(require,module,exports){
+module.exports=require('D0JZpm');
 },{}],"D0JZpm":[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 
@@ -2617,9 +2619,143 @@ _.extend(Marionette.Module, {
 
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
-},{"backbone":"kvd4GK","jquery":"Ewfsiz","underscore":"P+7e+f"}],"backbone.marionette":[function(require,module,exports){
-module.exports=require('D0JZpm');
-},{}],"backbone.wreqr":[function(require,module,exports){
+},{"backbone":"kvd4GK","jquery":"Ewfsiz","underscore":"P+7e+f"}],"backbone.touch":[function(require,module,exports){
+module.exports=require('ewUdPL');
+},{}],"ewUdPL":[function(require,module,exports){
+var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
+
+; global.$ = require("jquery");
+global.Backbone = require("backbone");
+global._ = require("underscore");
+//     (c) 2012 Raymond Julin, Keyteq AS
+//     Backbone.touch may be freely distributed under the MIT license.
+(function (window, factory) {
+
+    "use strict";
+
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['underscore', 'backbone'], function(){
+            return factory.apply(window, arguments);
+        });
+    } else if (typeof module === 'object' && module.exports) {
+        // NodeJS.
+        module.exports = factory.call(window, require('underscore'), require('backbone'));
+    } else {
+        // Browser globals
+        factory.call(window, window._, window.Backbone);
+    }
+}(typeof global === 'object' ? global : this, function (_, Backbone) {
+
+    "use strict";
+
+    // The `getValue` and `delegateEventSplitter` is copied from 
+    // Backbones source, unfortunately these are not available
+    // in any form from Backbone itself
+    var getValue = function(object, prop) {
+        if (!(object && object[prop])) return null;
+        return _.isFunction(object[prop]) ? object[prop]() : object[prop];
+    };
+    var delegateEventSplitter = /^(\S+)\s*(.*)$/;
+
+    _.extend(Backbone.View.prototype, {
+        _touching : false,
+
+        touchPrevents : true,
+
+        touchThreshold : 10,
+
+        isTouch : this.document && 'ontouchstart' in this.document && !('callPhantom' in this),
+
+        // Drop in replacement for Backbone.View#delegateEvent
+        // Enables better touch support
+        // 
+        // If the users device is touch enabled it replace any `click`
+        // event with listening for touch(start|move|end) in order to
+        // quickly trigger touch taps
+        delegateEvents: function(events) {
+            if (!(events || (events = getValue(this, 'events')))) return;
+            this.undelegateEvents();
+            var suffix = '.delegateEvents' + this.cid;
+            _(events).each(function(method, key) {
+                if (!_.isFunction(method)) method = this[events[key]];
+                if (!method) throw new Error('Method "' + events[key] + '" does not exist');
+                var match = key.match(delegateEventSplitter);
+                var eventName = match[1], selector = match[2];
+                var boundHandler = _.bind(this._touchHandler,this);
+                method = _.bind(method, this);
+                if (this._useTouchHandlers(eventName, selector)) {
+                    this.$el.on('touchstart' + suffix, selector, boundHandler);
+                    this.$el.on('touchend' + suffix, selector,
+                        {method:method},
+                        boundHandler
+                    );
+                }
+                else {
+                    eventName += suffix;
+                    if (selector === '') {
+                        this.$el.bind(eventName, method);
+                    } else {
+                        this.$el.on(eventName, selector, method);
+                    }
+                }
+            }, this);
+        },
+
+        // Detect if touch handlers should be used over listening for click
+        // Allows custom detection implementations
+        _useTouchHandlers : function(eventName, selector)
+        {
+            return this.isTouch && eventName === 'click';
+        },
+
+        // At the first touchstart we register touchevents as ongoing
+        // and as soon as a touch move happens we set touching to false,
+        // thus implying that a fastclick will not happen when
+        // touchend occurs. If no touchmove happened
+        // inbetween touchstart and touchend we trigger the event
+        //
+        // The `touchPrevents` toggle decides if Backbone.touch
+        // will stop propagation and prevent default
+        // for *button* and *a* elements
+        _touchHandler : function(e) {
+            if (!('changedTouches' in e.originalEvent)) return;
+            var touch = e.originalEvent.changedTouches[0];
+            var x = touch.clientX;
+            var y = touch.clientY;
+            switch (e.type) {
+                case 'touchstart':
+                    this._touching = [x, y];
+                    break;
+                case 'touchend':
+                    var oldX = this._touching[0];
+                    var oldY = this._touching[1];
+                    var threshold = this.touchThreshold;
+                    if (x < (oldX + threshold) && x > (oldX - threshold) &&
+                        y < (oldY + threshold) && y > (oldY - threshold)) {
+                        this._touching = false;
+                        if (this.touchPrevents) {
+                            var tagName = e.currentTarget.tagName;
+                            if (tagName === 'BUTTON' ||
+                                tagName === 'A') {
+                                e.preventDefault();
+                                e.stopPropagation();
+                            }
+                        }
+                        e.data.method(e);
+                    }
+                    break;
+            }
+        }
+    });
+    return Backbone;
+}));
+
+; browserify_shim__define__module__export__(typeof Backbone != "undefined" ? Backbone : window.Backbone);
+
+}).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
+
+},{"backbone":"kvd4GK","jquery":"Ewfsiz","underscore":"P+7e+f"}],"backbone.wreqr":[function(require,module,exports){
 module.exports=require('8gCVIr');
 },{}],"8gCVIr":[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
@@ -15071,7 +15207,7 @@ var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? 
 
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
-},{}]},{},["8gCNUQ","D0JZpm","8gCVIr","kvd4GK","Ewfsiz","P+7e+f"])
+},{}]},{},["8gCNUQ","D0JZpm","ewUdPL","8gCVIr","kvd4GK","Ewfsiz","P+7e+f"])
 ;
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var Marionette = require('backbone.marionette'),

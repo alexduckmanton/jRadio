@@ -6,6 +6,7 @@
     "jquery": "~2.1.0",
     "underscore": "~1.5.0",
     "backbone": "~1.1.2",
+    "backbone.touch": "~0.4.0",
     "backbone.marionette": "~1.8.1",
     "modernizr": "~2.8.1"
   },
@@ -19,6 +20,9 @@
     "backbone": {
       "js": "backbone.js"
     },
+    "backbone.touch": {
+      "js": "backbone.touch.js"
+    },
     "backbone.marionette": {
       "js": "lib/core/backbone.marionette.js"
     },
@@ -31,5 +35,8 @@
     "modernizr": {
       "util": "modernizr.js"
     }
+  },
+  "resolutions": {
+    "backbone": "~1.1.2"
   }
 }
