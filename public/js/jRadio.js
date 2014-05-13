@@ -15492,9 +15492,9 @@ module.exports = layout = Marionette.Layout.extend({
                 App.views.playedView.collection = App.data.played;
 
                 // render
+                self.toggle_played_loading();
                 App.views.playedView.render();
                 self.bind_played_events();
-                self.toggle_played_loading();
                 App.core.vent.trigger('played:show');
             }
         });

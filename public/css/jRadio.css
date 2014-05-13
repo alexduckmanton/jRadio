@@ -2356,6 +2356,10 @@ footer a {
   position: absolute;
   border-radius: 2px;
   background: #fff;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
   -webkit-transition-duration: 0.9s;
   -moz-transition-duration: 0.9s;
   -o-transition-duration: 0.9s;
@@ -2386,19 +2390,19 @@ footer a {
 .clock .hour {
   margin-top: 20%;
   height: 30%;
-  -webkit-transform: rotate3d(0, 0, 1, 120deg);
-  -moz-transform: rotate3d(0, 0, 1, 120deg);
-  -ms-transform: rotate3d(0, 0, 1, 120deg);
-  -o-transform: rotate3d(0, 0, 1, 120deg);
-  transform: rotate3d(0, 0, 1, 120deg);
+  -webkit-transform: rotate(120deg);
+  -moz-transform: rotate(120deg);
+  -ms-transform: rotate(120deg);
+  -o-transform: rotate(120deg);
+  transform: rotate(120deg);
 }
 /* line 34, ../client/styles/_clock.scss */
 .clock .minute {
-  -webkit-transform: rotate3d(0, 0, 1, 0deg);
-  -moz-transform: rotate3d(0, 0, 1, 0deg);
-  -ms-transform: rotate3d(0, 0, 1, 0deg);
-  -o-transform: rotate3d(0, 0, 1, 0deg);
-  transform: rotate3d(0, 0, 1, 0deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
 }
 /* line 38, ../client/styles/_clock.scss */
 .clock .second {
@@ -2410,11 +2414,11 @@ footer a {
   -ms-transform-origin: 1px 100%;
   -o-transform-origin: 1px 100%;
   transform-origin: 1px 100%;
-  -webkit-transform: rotate3d(0, 0, 1, 225deg);
-  -moz-transform: rotate3d(0, 0, 1, 225deg);
-  -ms-transform: rotate3d(0, 0, 1, 225deg);
-  -o-transform: rotate3d(0, 0, 1, 225deg);
-  transform: rotate3d(0, 0, 1, 225deg);
+  -webkit-transform: rotate(225deg);
+  -moz-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  -o-transform: rotate(225deg);
+  transform: rotate(225deg);
 }
 /* line 47, ../client/styles/_clock.scss */
 .clock.loading span {
@@ -2429,27 +2433,27 @@ footer a {
 }
 /* line 52, ../client/styles/_clock.scss */
 .clock.loading .hour {
-  -webkit-transform: rotate3d(0, 0, 1, -36000deg);
-  -moz-transform: rotate3d(0, 0, 1, -36000deg);
-  -ms-transform: rotate3d(0, 0, 1, -36000deg);
-  -o-transform: rotate3d(0, 0, 1, -36000deg);
-  transform: rotate3d(0, 0, 1, -36000deg);
+  -webkit-transform: rotate(-36000deg);
+  -moz-transform: rotate(-36000deg);
+  -ms-transform: rotate(-36000deg);
+  -o-transform: rotate(-36000deg);
+  transform: rotate(-36000deg);
 }
 /* line 53, ../client/styles/_clock.scss */
 .clock.loading .minute {
-  -webkit-transform: rotate3d(0, 0, 1, -432000deg);
-  -moz-transform: rotate3d(0, 0, 1, -432000deg);
-  -ms-transform: rotate3d(0, 0, 1, -432000deg);
-  -o-transform: rotate3d(0, 0, 1, -432000deg);
-  transform: rotate3d(0, 0, 1, -432000deg);
+  -webkit-transform: rotate(-432000deg);
+  -moz-transform: rotate(-432000deg);
+  -ms-transform: rotate(-432000deg);
+  -o-transform: rotate(-432000deg);
+  transform: rotate(-432000deg);
 }
 /* line 54, ../client/styles/_clock.scss */
 .clock.loading .second {
-  -webkit-transform: rotate3d(0, 0, 1, -864000deg);
-  -moz-transform: rotate3d(0, 0, 1, -864000deg);
-  -ms-transform: rotate3d(0, 0, 1, -864000deg);
-  -o-transform: rotate3d(0, 0, 1, -864000deg);
-  transform: rotate3d(0, 0, 1, -864000deg);
+  -webkit-transform: rotate(-864000deg);
+  -moz-transform: rotate(-864000deg);
+  -ms-transform: rotate(-864000deg);
+  -o-transform: rotate(-864000deg);
+  transform: rotate(-864000deg);
 }
 
 /* line 82, ../client/styles/_theme_mixins.scss */
