@@ -15795,7 +15795,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<div class=\"loading\">\n    <span class=\"icon-drumstick left\"></span>\n    <span class=\"icon-drumstick middle\"></span>\n</div>\n";
+  return "<div class=\"loading\">\n    <span class=\"icon-drumstick left\"></span>\n    <span class=\"icon-drumstick middle\"></span>\n    <span class=\"icon-drumstick right\"></span>\n</div>\n";
   });
 
 },{"hbsfy/runtime":30}],18:[function(require,module,exports){

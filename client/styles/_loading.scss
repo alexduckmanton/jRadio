@@ -1,3 +1,5 @@
+$loading_speed: $default-transition-duration / 5;
+
 @mixin icon($icon_name) {
     @extend [class^="icon-"]:before;
     @extend .icon-#{$icon_name}:before;
@@ -6,7 +8,7 @@
 @include keyframes(drumstick_middle) {
     0%,33% {
     // 0% {
-        @include transform3d( rotateZ(90deg) translate3d(0em, -1.5em, 0) );
+        @include transform3d( rotateZ(115deg) translate3d(-0.2em, -1.2em, 0) );
     }
 
     67%, 100% {
@@ -27,6 +29,18 @@
     }
 }
 
+@include keyframes(drumstick_right) {
+    0%,33% {
+    // 0% {
+        @include transform3d( rotateZ(250deg) translate3d(-0.6em, 1.4em, 0) );
+    }
+
+    67%, 100% {
+    // 100% {
+        @include transform3d( rotateZ(225deg) translate3d(-1.5em, .92em, 0) );
+    }
+}
+
 .loading {
     font-size: 5em;
     position: relative;
@@ -44,7 +58,7 @@
         overflow: hidden;
 
         &, &:after {
-            @include animation(drumstick_middle, $count: infinite, $direction: alternate, $timing: ease-in, $duration: $default-transition-duration/4);
+            @include animation(drumstick_middle, $count: infinite, $direction: alternate, $timing: ease-in, $duration: $loading_speed);
         }
 
         &:after {
@@ -57,30 +71,50 @@
         }
 
         &.middle {
+
             @include apply-origin(.333em 1em, true);
             top: -.6667em;
             left: -.7778em;
 
             &:after {
-                top: -.8333em;
-                left: -1.4444em;
+                top: -0.4em;
+                left: -1.2em;
+                height: .5em;
                 @include animationTimingFunction(cubic-bezier(0.9, 0.1, 0.9, 0.1));
             }
         }
 
         &.left {
-            @include apply-origin(0, true);
-            @include animationName(drumstick_left);
-            @include animationDirection(alternate-reverse);
+            //initial position
+            @include transform3d( rotateZ(45deg) translate3d(.6em, .1em, 0) );
+
+            &, &:after {
+                @include apply-origin(0, true);
+                @include animationName(drumstick_left);
+                @include animationDelay($loading_speed/2);
+            }
 
             &:after {
                 top: -1.7778em;
                 left: -.5em;
                 @include animationTimingFunction(cubic-bezier(0.6, 0, 0.6, 0));
+            }
+        }
 
+        &.right {
+            // initial position
+            @include transform3d( rotateZ(250deg) translate3d(-0.6em, 1.4em, 0) );
+
+            &, &:after {
+                @include animationName(drumstick_right);
+                @include animationDelay($loading_speed);
+            }
+
+            &:after {
+                top: -0.5em;
+                left: -1.4em;
                 @include apply-origin(0, true);
-                @include animationName(drumstick_left);
-                @include animationDirection(alternate-reverse);
+                @include animationTimingFunction(cubic-bezier(0.4, 0, 0.4, 0));
             }
         }
     }
