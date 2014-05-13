@@ -36,22 +36,21 @@ module.exports = layout = Marionette.Layout.extend({
 
                 // render
                 self.show_tracks();
-                // self.$el.append(App.views.tracksView.render().el);
-                // self.$el.find('.loading').remove();
             }
         });
     },
 
     show_tracks: function() {
         var self = this,
-            tracks = App.views.tracksView.render().el;
+            tracks = App.views.tracksView.render().el,
+            loader = this.$el.find('.site_loading');
 
-        this.$el.find('.loading').addClass('loaded');
+        loader.addClass('loaded');
 
-        window.setTimeout(function() {
+        loader.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() {
             self.$el.append(tracks);
-            self.$el.find('.loading').remove();
-        }, 1000);
+            self.$el.find('.site_loading').remove();
+        });
     },
 
     init_played: function() {

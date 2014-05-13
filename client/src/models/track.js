@@ -3,7 +3,8 @@ var Backbone = require('backbone');
 module.exports = TrackModel = Backbone.Model.extend({
     defaults: {
         is_playing: false,
-        is_loading: true,
+        track_loading: true,
+        img_loading: true,
         featured: false
     },
 
@@ -12,6 +13,7 @@ module.exports = TrackModel = Backbone.Model.extend({
 
         var id = this.parse_url(this.get('play').href);
         this.get_track(id);
+        this.get_img();
 
         this.listenTo(this, 'change:src', this.loaded);
     },
@@ -31,8 +33,21 @@ module.exports = TrackModel = Backbone.Model.extend({
         });
     },
 
+    get_img: function() {
+        var self = this,
+            src = this.get('image').src,
+            img = new Image();
+
+        img.src = src;
+        $.when(
+			$(img).load()
+		).then(function() {
+            self.set('img_loading', false);
+		});
+    },
+
     loaded: function() {
-        this.set('is_loading', false);
+        this.set('track_loading', false);
     },
 
     play: function() {

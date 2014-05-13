@@ -54,12 +54,6 @@
     }
 }
 
-.loading .track_info {
-    .play {
-        opacity: .5;
-    }
-}
-
 .playing .track_info {
     a:before {
         @extend .icon-pause;

@@ -1,3 +1,25 @@
+@include keyframes(track_intro) {
+    0% {
+        @include transform3d( translate3d(0,2.5em,0) );
+        opacity: 0;
+    }
+
+    50% {
+        @include transform3d( translate3d(0,-.25em,0) );
+        opacity: .75;
+    }
+
+    75% {
+        @include transform3d( translate3d(0,.1em,0) );
+        opacity: 1;
+    }
+
+    100% {
+        @include transform3d( translate3d(0,0,0) );
+        opacity: 1;
+    }
+}
+
 .tracks {
     padding: .5em;
     @include flex();
@@ -61,7 +83,7 @@
             }
 
             // scatter featured tracks among the new ones
-            @for $i from 16 through 20 {
+            @for $i from 17 through 20 {
                 &:nth-child(#{$i}) { @include order( ($i - 17) * 4 ); }
             }
         }
@@ -79,6 +101,25 @@
                 padding-left: 0;
                 font-size: .75em;
             }
+        }
+
+        // intro animations
+        @for $i from 1 through 4 {
+            &:nth-child(#{$i}) { @include animation(track_intro); }
+        }
+
+        @for $i from 17 through 18 {
+            &.featured:nth-child(#{$i}) { @include animation(track_intro); }
+        }
+
+        &:nth-child(1) { @include animationDuration($default-transition-duration * 1.1); }
+        &:nth-child(2) { @include animationDuration($default-transition-duration * 1.2); }
+        &:nth-child(3) { @include animationDuration($default-transition-duration * .9); }
+        &:nth-child(4) { @include animationDuration($default-transition-duration * .8); }
+
+        &.loading {
+            opacity: 0;
+            @include animation(none);
         }
     }
 }

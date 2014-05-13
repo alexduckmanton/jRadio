@@ -26,7 +26,7 @@ var itemView = Marionette.ItemView.extend({
 
     toggle_classes: function() {
         this.$el.toggleClass('playing', this.model.get('is_playing'));
-        this.$el.toggleClass('loading', this.model.get('is_loading'));
+        this.$el.toggleClass('loading', (this.model.get('track_loading') || this.model.get('img_loading')));
     },
 
     toggle_playing: function(e) {

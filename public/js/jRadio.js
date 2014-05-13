@@ -15313,22 +15313,21 @@ module.exports = layout = Marionette.Layout.extend({
 
                 // render
                 self.show_tracks();
-                // self.$el.append(App.views.tracksView.render().el);
-                // self.$el.find('.loading').remove();
             }
         });
     },
 
     show_tracks: function() {
         var self = this,
-            tracks = App.views.tracksView.render().el;
+            tracks = App.views.tracksView.render().el,
+            loader = this.$el.find('.site_loading');
 
-        this.$el.find('.loading').addClass('loaded');
+        loader.addClass('loaded');
 
-        window.setTimeout(function() {
+        loader.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() {
             self.$el.append(tracks);
-            self.$el.find('.loading').remove();
-        }, 1000);
+            self.$el.find('.site_loading').remove();
+        });
     },
 
     init_played: function() {
@@ -15503,7 +15502,8 @@ var Backbone = require('backbone');
 module.exports = TrackModel = Backbone.Model.extend({
     defaults: {
         is_playing: false,
-        is_loading: true,
+        track_loading: true,
+        img_loading: true,
         featured: false
     },
 
@@ -15512,6 +15512,7 @@ module.exports = TrackModel = Backbone.Model.extend({
 
         var id = this.parse_url(this.get('play').href);
         this.get_track(id);
+        this.get_img();
 
         this.listenTo(this, 'change:src', this.loaded);
     },
@@ -15531,8 +15532,21 @@ module.exports = TrackModel = Backbone.Model.extend({
         });
     },
 
+    get_img: function() {
+        var self = this,
+            src = this.get('image').src,
+            img = new Image();
+
+        img.src = src;
+        $.when(
+			$(img).load()
+		).then(function() {
+            self.set('img_loading', false);
+		});
+    },
+
     loaded: function() {
-        this.set('is_loading', false);
+        this.set('track_loading', false);
     },
 
     play: function() {
@@ -15683,7 +15697,7 @@ var itemView = Marionette.ItemView.extend({
 
     toggle_classes: function() {
         this.$el.toggleClass('playing', this.model.get('is_playing'));
-        this.$el.toggleClass('loading', this.model.get('is_loading'));
+        this.$el.toggleClass('loading', (this.model.get('track_loading') || this.model.get('img_loading')));
     },
 
     toggle_playing: function(e) {
@@ -15795,7 +15809,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<div class=\"loading\">\n    <span class=\"icon-drumstick left\"></span>\n    <span class=\"icon-drumstick middle\"></span>\n    <span class=\"icon-drumstick right\"></span>\n</div>\n";
+  return "<div class=\"site_loading\">\n    <span class=\"icon-drumstick left\"></span>\n    <span class=\"icon-drumstick middle\"></span>\n    <span class=\"icon-drumstick right\"></span>\n</div>\n";
   });
 
 },{"hbsfy/runtime":30}],18:[function(require,module,exports){
