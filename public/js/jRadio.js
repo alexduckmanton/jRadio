@@ -15888,7 +15888,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.loading) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.loading); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n";
+  buffer += "\n\n<footer><p>Made by @<a href=\"https://twitter.com/alexduckmanton\" target=\"_blank\">alexduckmanton</a></p></footer>\n";
   return buffer;
   });
 

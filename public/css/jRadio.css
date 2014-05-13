@@ -693,6 +693,11 @@ footer a {
   border-bottom: 1px dotted #aaa;
 }
 
+/* line 20, ../client/styles/_footer.scss */
+.site_loading + footer {
+  display: none;
+}
+
 /* line 1, ../client/styles/_track_base.scss */
 .track {
   margin: 0;

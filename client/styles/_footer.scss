@@ -16,3 +16,7 @@ footer {
         border-bottom: 1px dotted #aaa;
     }
 }
+
+.site_loading + footer {
+    display: none;
+}
