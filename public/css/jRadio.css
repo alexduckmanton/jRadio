@@ -469,8 +469,8 @@ th {
 
 @font-face {
   font-family: "icon";
-  src: url("./icon-d94ffd3ffa67acbed6f982eded01dac0.eot");
-  src: url("./icon-d94ffd3ffa67acbed6f982eded01dac0.eot?#iefix") format("embedded-opentype"), url("./icon-d94ffd3ffa67acbed6f982eded01dac0.woff") format("woff"), url("./icon-d94ffd3ffa67acbed6f982eded01dac0.ttf") format("truetype"), url("./icon-d94ffd3ffa67acbed6f982eded01dac0.svg?#icon") format("svg");
+  src: url("./icon-4d6ea6dec15c9cfe4518cbe7c8ab3a9c.eot");
+  src: url("./icon-4d6ea6dec15c9cfe4518cbe7c8ab3a9c.eot?#iefix") format("embedded-opentype"), url("./icon-4d6ea6dec15c9cfe4518cbe7c8ab3a9c.woff") format("woff"), url("./icon-4d6ea6dec15c9cfe4518cbe7c8ab3a9c.ttf") format("truetype"), url("./icon-4d6ea6dec15c9cfe4518cbe7c8ab3a9c.svg?#icon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -523,13 +523,8 @@ th {
 }
 
 /* line 74, ../client/styles/_icon.scss */
-.icon-played:before {
-  content: "\e007";
-}
-
-/* line 80, ../client/styles/_icon.scss */
 .icon-radio:before {
-  content: "\e008";
+  content: "\e007";
 }
 
 /* line 1, ../client/styles/_site.scss */
@@ -613,10 +608,6 @@ header .toggle_played {
   float: right;
 }
 /* line 61, ../client/styles/_header.scss */
-header .toggle_played:before {
-  line-height: 1.7em;
-}
-/* line 66, ../client/styles/_header.scss */
 header iframe {
   position: absolute;
   top: -9999px;
@@ -626,7 +617,7 @@ header iframe {
   opacity: 0;
 }
 
-/* line 79, ../client/styles/_header.scss */
+/* line 74, ../client/styles/_header.scss */
 .playing ~ .site header h1,
 .playing ~ .site header .radio,
 .playing ~ .site header .toggle_played {
@@ -636,7 +627,7 @@ header iframe {
   -o-transform: translateY(3em);
   transform: translateY(3em);
 }
-/* line 82, ../client/styles/_header.scss */
+/* line 77, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(1),
 .playing ~ .site header .radio:nth-child(1),
 .playing ~ .site header .toggle_played:nth-child(1) {
@@ -645,7 +636,7 @@ header iframe {
   -o-transition-delay: 0.015s;
   transition-delay: 0.015s;
 }
-/* line 83, ../client/styles/_header.scss */
+/* line 78, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(2),
 .playing ~ .site header .radio:nth-child(2),
 .playing ~ .site header .toggle_played:nth-child(2) {
@@ -654,7 +645,7 @@ header iframe {
   -o-transition-delay: 0.045s;
   transition-delay: 0.045s;
 }
-/* line 84, ../client/styles/_header.scss */
+/* line 79, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(3),
 .playing ~ .site header .radio:nth-child(3),
 .playing ~ .site header .toggle_played:nth-child(3) {
@@ -664,7 +655,7 @@ header iframe {
   transition-delay: 0.03s;
 }
 
-/* line 88, ../client/styles/_header.scss */
+/* line 83, ../client/styles/_header.scss */
 .played.active + header {
   -webkit-transform: translateY(0);
   -moz-transform: translateY(0);
@@ -2355,6 +2346,112 @@ footer a {
   display: none;
 }
 
+/* line 1, ../client/styles/_clock.scss */
+.clock {
+  position: relative;
+  text-align: center;
+}
+/* line 5, ../client/styles/_clock.scss */
+.clock span {
+  position: absolute;
+  border-radius: 2px;
+  background: #fff;
+  -webkit-transition-duration: 0.9s;
+  -moz-transition-duration: 0.9s;
+  -o-transition-duration: 0.9s;
+  transition-duration: 0.9s;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+/* line 16, ../client/styles/_clock.scss */
+.clock .hour,
+.clock .minute {
+  margin-left: -1px;
+  width: 2px;
+  -webkit-transform-origin: 1px 100%;
+  -moz-transform-origin: 1px 100%;
+  -ms-transform-origin: 1px 100%;
+  -o-transform-origin: 1px 100%;
+  transform-origin: 1px 100%;
+}
+/* line 23, ../client/styles/_clock.scss */
+.clock .minute,
+.clock .second {
+  margin-top: 10%;
+  height: 40%;
+}
+/* line 28, ../client/styles/_clock.scss */
+.clock .hour {
+  margin-top: 20%;
+  height: 30%;
+  -webkit-transform: rotate3d(0, 0, 1, 120deg);
+  -moz-transform: rotate3d(0, 0, 1, 120deg);
+  -ms-transform: rotate3d(0, 0, 1, 120deg);
+  -o-transform: rotate3d(0, 0, 1, 120deg);
+  transform: rotate3d(0, 0, 1, 120deg);
+}
+/* line 34, ../client/styles/_clock.scss */
+.clock .minute {
+  -webkit-transform: rotate3d(0, 0, 1, 0deg);
+  -moz-transform: rotate3d(0, 0, 1, 0deg);
+  -ms-transform: rotate3d(0, 0, 1, 0deg);
+  -o-transform: rotate3d(0, 0, 1, 0deg);
+  transform: rotate3d(0, 0, 1, 0deg);
+}
+/* line 38, ../client/styles/_clock.scss */
+.clock .second {
+  margin-left: -1px;
+  width: 2px;
+  opacity: .75;
+  -webkit-transform-origin: 1px 100%;
+  -moz-transform-origin: 1px 100%;
+  -ms-transform-origin: 1px 100%;
+  -o-transform-origin: 1px 100%;
+  transform-origin: 1px 100%;
+  -webkit-transform: rotate3d(0, 0, 1, 225deg);
+  -moz-transform: rotate3d(0, 0, 1, 225deg);
+  -ms-transform: rotate3d(0, 0, 1, 225deg);
+  -o-transform: rotate3d(0, 0, 1, 225deg);
+  transform: rotate3d(0, 0, 1, 225deg);
+}
+/* line 47, ../client/styles/_clock.scss */
+.clock.loading span {
+  -webkit-transition-duration: 30s;
+  -moz-transition-duration: 30s;
+  -o-transition-duration: 30s;
+  transition-duration: 30s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+}
+/* line 52, ../client/styles/_clock.scss */
+.clock.loading .hour {
+  -webkit-transform: rotate3d(0, 0, 1, -36000deg);
+  -moz-transform: rotate3d(0, 0, 1, -36000deg);
+  -ms-transform: rotate3d(0, 0, 1, -36000deg);
+  -o-transform: rotate3d(0, 0, 1, -36000deg);
+  transform: rotate3d(0, 0, 1, -36000deg);
+}
+/* line 53, ../client/styles/_clock.scss */
+.clock.loading .minute {
+  -webkit-transform: rotate3d(0, 0, 1, -432000deg);
+  -moz-transform: rotate3d(0, 0, 1, -432000deg);
+  -ms-transform: rotate3d(0, 0, 1, -432000deg);
+  -o-transform: rotate3d(0, 0, 1, -432000deg);
+  transform: rotate3d(0, 0, 1, -432000deg);
+}
+/* line 54, ../client/styles/_clock.scss */
+.clock.loading .second {
+  -webkit-transform: rotate3d(0, 0, 1, -864000deg);
+  -moz-transform: rotate3d(0, 0, 1, -864000deg);
+  -ms-transform: rotate3d(0, 0, 1, -864000deg);
+  -o-transform: rotate3d(0, 0, 1, -864000deg);
+  transform: rotate3d(0, 0, 1, -864000deg);
+}
+
 /* line 82, ../client/styles/_theme_mixins.scss */
 .site_loading {
   color: #d4d4d4;
@@ -2508,17 +2605,17 @@ nav a {
   color: white;
 }
 
-/* line 37, ../client/styles/main.scss */
+/* line 38, ../client/styles/main.scss */
 html {
   background: #eee;
 }
 
-/* line 41, ../client/styles/main.scss */
+/* line 42, ../client/styles/main.scss */
 a {
   text-decoration: none;
 }
 
-/* line 45, ../client/styles/main.scss */
+/* line 46, ../client/styles/main.scss */
 #content {
   margin-bottom: 3em;
 }

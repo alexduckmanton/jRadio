@@ -3,6 +3,7 @@ var Handlebars = require('hbsfy/runtime');
 module.exports = Helpers = function Helpers() {
     Handlebars.registerHelper('track_info', require('../templates/info.hbs'));
     Handlebars.registerHelper('loading', require('../templates/loading.hbs'));
+    Handlebars.registerHelper('clock', require('../templates/clock.hbs'));
 
     Handlebars.registerHelper('time', function(options) {
         var current = new Date(),

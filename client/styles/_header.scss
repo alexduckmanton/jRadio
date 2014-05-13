@@ -56,11 +56,6 @@ header {
 
     .toggle_played {
         float: right;
-
-        // icon
-        &:before {
-            line-height: 1.7em;
-        }
     }
 
     iframe {

@@ -65,6 +65,8 @@ module.exports = layout = Marionette.Layout.extend({
         var self = this,
             played = App.views.playedView.collection;
 
+        this.toggle_played_loading();
+
         played.fetch({
             url: '/api/unearthed/recent',
             success: function() {
@@ -78,6 +80,7 @@ module.exports = layout = Marionette.Layout.extend({
                 // render
                 App.views.playedView.render();
                 self.bind_played_events();
+                self.toggle_played_loading();
                 App.core.vent.trigger('played:show');
             }
         });
@@ -93,6 +96,10 @@ module.exports = layout = Marionette.Layout.extend({
         } else if (!played.collection.active) {
             App.core.vent.trigger('played:show');
         }
+    },
+
+    toggle_played_loading: function() {
+        this.$el.find('.toggle_played').toggleClass('loading');
     },
 
     bind_played_events: function() {

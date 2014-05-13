@@ -1,0 +1,56 @@
+.clock {
+    position: relative;
+    text-align: center;
+
+    span {
+        position: absolute;
+        border-radius: 2px;
+        background: #fff;
+
+        // @include single-transition(all);
+        @include transition-duration($default-transition-duration * 3);
+        @include transition-timing-function(ease-in-out);
+    }
+
+    .hour,
+    .minute {
+        margin-left: -1px;
+        width: 2px;
+        @include apply-origin(1px 100%, true);
+    }
+
+    .minute,
+    .second {
+        margin-top: 10%;
+        height: 40%;
+    }
+
+    .hour {
+        margin-top: 20%;
+        height: 30%;
+        @include transform3d( rotate3d(0, 0, 1, 120deg) );
+    }
+
+    .minute {
+        @include transform3d( rotate3d(0, 0, 1, 0deg) );
+    }
+
+    .second {
+        margin-left: -1px;
+        width: 2px;
+        opacity: .75;
+        @include apply-origin(1px 100%, true);
+        @include transform3d( rotate3d(0, 0, 1, 225deg) );
+    }
+
+    &.loading {
+        span {
+            @include transition-duration($default-transition-duration * 100);
+            @include transition-timing-function(ease-in);
+        }
+
+        .hour   { @include transform3d( rotate3d(0, 0, 1, -36000deg) ); }
+        .minute { @include transform3d( rotate3d(0, 0, 1, -36000deg * 12) ); }
+        .second { @include transform3d( rotate3d(0, 0, 1, -36000deg * 12 * 2) ); }
+    }
+}
