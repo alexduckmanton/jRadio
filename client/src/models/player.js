@@ -8,9 +8,9 @@ module.exports = PlayerModel = Backbone.Model.extend({
     },
 
     initialize: function() {
-        this.listenTo(App.core.vent, 'player:play', this.change_track);
-        this.listenTo(App.core.vent, 'player:play', this.update_info);
-        this.listenTo(App.core.vent, 'player:play', this.play);
+        this.listenTo(App.core.vent, 'track:play', this.change_track);
+        this.listenTo(App.core.vent, 'track:play', this.update_info);
+        this.listenTo(App.core.vent, 'track:play', this.play);
     },
 
     change_track: function(track) {

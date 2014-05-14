@@ -15626,8 +15626,6 @@ module.exports = layout = Marionette.Layout.extend({
 
     update_ui_for_player: function(track) {
         if (App.views.playedView.collection.active) this.toggle_played();
-
-        App.core.vent.trigger('player:play', track);
     }
 
 });
@@ -15670,9 +15668,9 @@ module.exports = PlayerModel = Backbone.Model.extend({
     },
 
     initialize: function() {
-        this.listenTo(App.core.vent, 'player:play', this.change_track);
-        this.listenTo(App.core.vent, 'player:play', this.update_info);
-        this.listenTo(App.core.vent, 'player:play', this.play);
+        this.listenTo(App.core.vent, 'track:play', this.change_track);
+        this.listenTo(App.core.vent, 'track:play', this.update_info);
+        this.listenTo(App.core.vent, 'track:play', this.play);
     },
 
     change_track: function(track) {

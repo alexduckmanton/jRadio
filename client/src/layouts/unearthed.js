@@ -212,8 +212,6 @@ module.exports = layout = Marionette.Layout.extend({
 
     update_ui_for_player: function(track) {
         if (App.views.playedView.collection.active) this.toggle_played();
-
-        App.core.vent.trigger('player:play', track);
     }
 
 });
