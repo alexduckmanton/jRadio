@@ -10,9 +10,7 @@ module.exports = layout = Marionette.Layout.extend({
     events: {
         'click .radio': 'play_radio',
         'click .toggle_played': 'toggle_played',
-        'touchstart': 'init_touch',
-        'touchmove': 'drag',
-        'touchend': 'end_touch'
+        'touchstart .tracks': 'init_touch'
     },
 
     initialize: function() {
@@ -30,36 +28,48 @@ module.exports = layout = Marionette.Layout.extend({
 
     init_touch: function(e) {
         var scroll_pos = $(window).scrollTop(),
-            touch_pos = e.originalEvent.pageY;
+            touch_pos = e.originalEvent.pageY,
+            tracks = this.$el.find('.tracks');
 
-        this.model.set('init_touch', touch_pos);
+        if (!App.views.playedView.collection.active && !App.views.playerView.model.get('is_playing')) {
+            // do clock and get played tracks
+            this.model.set('init_touch', touch_pos);
+            tracks.on('touchmove', '', {context:this}, this.drag);
+            tracks.one('touchend', '', {context:this}, this.end_touch);
+        }
     },
 
     drag: function(e) {
-        var scroll_pos = $(window).scrollTop(),
-            init_touch = this.model.get('init_touch'),
+        var self = e.data.context,
+            scroll_pos = $(window).scrollTop(),
+            init_touch = self.model.get('init_touch'),
             new_touch = e.originalEvent.pageY,
             diff = init_touch - new_touch;
 
         // update the clock
-        if (scroll_pos <= 0 && new_touch > init_touch) this.rotate_clock(init_touch, new_touch)
+        if (scroll_pos <= 0 && new_touch > init_touch) self.rotate_clock(init_touch, new_touch)
         // if (diff < -100) $('.played').addClass('active');
 
-        this.model.set('prev_touch', new_touch);
+        self.model.set('prev_touch', new_touch);
     },
 
     end_touch: function(e) {
-        var clock = this.$el.find('.clock'),
-            init_touch = this.model.get('init_touch'),
-            prev_touch = this.model.get('prev_touch'),
+        var self = e.data.context,
+            tracks = self.$el.find('.tracks'),
+            clock = self.$el.find('.clock'),
+            init_touch = self.model.get('init_touch'),
+            prev_touch = self.model.get('prev_touch'),
             diff = init_touch - prev_touch;
 
         // clear styles from dragging
         clock.attr('style', '');
         clock.children().attr('style', '');
 
+        // unbind touch events
+        tracks.off('touchmove');
+
         // load played tracks if dragged far enough
-        if (diff < -100) this.toggle_played();
+        if (diff < -100) self.toggle_played();
     },
 
     rotate_clock: function(init_touch, new_touch) {
@@ -161,9 +171,8 @@ module.exports = layout = Marionette.Layout.extend({
     toggle_played: function() {
         var played = App.views.playedView;
 
-        this.$el.find('.toggle_played').toggleClass('active');
-
         if (!played.collection.active) {
+            this.$el.find('.toggle_played').addClass('active');
             this.get_played();
         } else {
             App.core.vent.trigger('played:hide');
@@ -172,6 +181,7 @@ module.exports = layout = Marionette.Layout.extend({
 
     toggle_tray: function() {
         this.$el.toggleClass('show_tray');
+        this.$el.find('.toggle_played').removeClass('active');
     },
 
     toggle_played_loading: function() {
@@ -201,14 +211,9 @@ module.exports = layout = Marionette.Layout.extend({
     },
 
     update_ui_for_player: function(track) {
-        if (App.views.playedView.collection.active) {
-            this.toggle_played();
-            App.views.playedView.$el.one('transitionend', function() {
-                App.core.vent.trigger('player:play', track);
-            });
-        } else {
-            App.core.vent.trigger('player:play', track);
-        }
+        if (App.views.playedView.collection.active) this.toggle_played();
+
+        App.core.vent.trigger('player:play', track);
     }
 
 });
