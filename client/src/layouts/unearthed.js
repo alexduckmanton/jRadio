@@ -163,12 +163,10 @@ module.exports = layout = Marionette.Layout.extend({
 
         this.$el.find('.toggle_played').toggleClass('active');
 
-        if (!played.collection.length) {
+        if (!played.collection.active) {
             this.get_played();
-        } else if (played.collection.active) {
+        } else {
             App.core.vent.trigger('played:hide');
-        } else if (!played.collection.active) {
-            App.core.vent.trigger('played:show');
         }
     },
 
