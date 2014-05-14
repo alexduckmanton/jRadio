@@ -4,15 +4,13 @@
     overflow: auto;
     height: $played_height;
 
-    @include translateY(-$played_height);
-    @include single-transition(all);
+    position: absolute;
+    top: -$played_height;
+    left: 0;
+    width: 100%;
 
     // enable inertial scrolling for ios and maybe android?
     -webkit-overflow-scrolling: touch;
-
-    &.active {
-        @include translateY(0);
-    }
 
     .track {
         padding: .25em 0;

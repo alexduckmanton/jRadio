@@ -1,3 +1,11 @@
 .site {
+    padding-bottom: 2em;
     text-align: center;
+
+    @include transform3d( translate3d(0,0,0) );
+    @include single-transition(all);
+
+    &.show_tray {
+        @include transform3d( translateY($played_height) );
+    }
 }

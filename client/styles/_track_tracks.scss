@@ -27,10 +27,6 @@
     @include flex-wrap(wrap);
     @include flex-justify-space-between();
 
-    // to cover played tracks
-    @include translateY(-$played_height);
-    @include single-transition(all);
-
     .track {
         margin-bottom: .5em;
         border-radius: 2px;
@@ -122,9 +118,4 @@
             @include animation(none);
         }
     }
-}
-
-// reveal played tracks
-.played.active ~ .tracks {
-    @include translateY(0);
 }

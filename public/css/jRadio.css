@@ -529,7 +529,25 @@ th {
 
 /* line 1, ../client/styles/_site.scss */
 .site {
+  padding-bottom: 2em;
   text-align: center;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+/* line 8, ../client/styles/_site.scss */
+.site.show_tray {
+  -webkit-transform: translateY(10em);
+  -moz-transform: translateY(10em);
+  -ms-transform: translateY(10em);
+  -o-transform: translateY(10em);
+  transform: translateY(10em);
 }
 
 /* line 6, ../client/styles/_header.scss */
@@ -537,22 +555,13 @@ header {
   height: 3em;
   text-align: center;
   overflow: hidden;
-  -webkit-transform: translateY(-10em);
-  -moz-transform: translateY(-10em);
-  -ms-transform: translateY(-10em);
-  -o-transform: translateY(-10em);
-  transform: translateY(-10em);
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
   background: top left no-repeat;
   background-size: cover;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 18, ../client/styles/_header.scss */
+/* line 14, ../client/styles/_header.scss */
 header h1 {
   margin: 0;
   padding: 0;
@@ -572,7 +581,7 @@ header h1 {
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-/* line 34, ../client/styles/_header.scss */
+/* line 30, ../client/styles/_header.scss */
 header .radio,
 header .toggle_played {
   margin: .25em;
@@ -593,21 +602,21 @@ header .toggle_played {
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-/* line 47, ../client/styles/_header.scss */
+/* line 43, ../client/styles/_header.scss */
 header .radio:before,
 header .toggle_played:before {
   font-size: 1.25em;
   line-height: 1.75em;
 }
-/* line 53, ../client/styles/_header.scss */
+/* line 49, ../client/styles/_header.scss */
 header .radio {
   float: left;
 }
-/* line 57, ../client/styles/_header.scss */
+/* line 53, ../client/styles/_header.scss */
 header .toggle_played {
   float: right;
 }
-/* line 61, ../client/styles/_header.scss */
+/* line 57, ../client/styles/_header.scss */
 header iframe {
   position: absolute;
   top: -9999px;
@@ -617,7 +626,7 @@ header iframe {
   opacity: 0;
 }
 
-/* line 74, ../client/styles/_header.scss */
+/* line 70, ../client/styles/_header.scss */
 .playing ~ .site header h1,
 .playing ~ .site header .radio,
 .playing ~ .site header .toggle_played {
@@ -627,7 +636,7 @@ header iframe {
   -o-transform: translateY(3em);
   transform: translateY(3em);
 }
-/* line 77, ../client/styles/_header.scss */
+/* line 73, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(1),
 .playing ~ .site header .radio:nth-child(1),
 .playing ~ .site header .toggle_played:nth-child(1) {
@@ -636,7 +645,7 @@ header iframe {
   -o-transition-delay: 0.015s;
   transition-delay: 0.015s;
 }
-/* line 78, ../client/styles/_header.scss */
+/* line 74, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(2),
 .playing ~ .site header .radio:nth-child(2),
 .playing ~ .site header .toggle_played:nth-child(2) {
@@ -645,7 +654,7 @@ header iframe {
   -o-transition-delay: 0.045s;
   transition-delay: 0.045s;
 }
-/* line 79, ../client/styles/_header.scss */
+/* line 75, ../client/styles/_header.scss */
 .playing ~ .site header h1:nth-child(3),
 .playing ~ .site header .radio:nth-child(3),
 .playing ~ .site header .toggle_played:nth-child(3) {
@@ -653,15 +662,6 @@ header iframe {
   -moz-transition-delay: 0.03s;
   -o-transition-delay: 0.03s;
   transition-delay: 0.03s;
-}
-
-/* line 83, ../client/styles/_header.scss */
-.played.active + header {
-  -webkit-transform: translateY(0);
-  -moz-transform: translateY(0);
-  -ms-transform: translateY(0);
-  -o-transform: translateY(0);
-  transform: translateY(0);
 }
 
 /* line 1, ../client/styles/_footer.scss */
@@ -979,27 +979,18 @@ footer a {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-transform: translateY(-10em);
-  -moz-transform: translateY(-10em);
-  -ms-transform: translateY(-10em);
-  -o-transform: translateY(-10em);
-  transform: translateY(-10em);
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
 }
-/* line 34, ../client/styles/_track_tracks.scss */
+/* line 30, ../client/styles/_track_tracks.scss */
 .tracks .track {
   margin-bottom: .5em;
   border-radius: 2px;
   width: 48.85%;
 }
-/* line 40, ../client/styles/_track_tracks.scss */
+/* line 36, ../client/styles/_track_tracks.scss */
 .tracks .track .img_container {
   position: relative;
 }
-/* line 43, ../client/styles/_track_tracks.scss */
+/* line 39, ../client/styles/_track_tracks.scss */
 .tracks .track .img_container:before {
   content: '';
   position: absolute;
@@ -1009,12 +1000,12 @@ footer a {
   height: 100%;
   opacity: 0.2;
 }
-/* line 54, ../client/styles/_track_tracks.scss */
+/* line 50, ../client/styles/_track_tracks.scss */
 .tracks .track img {
   width: 100%;
   display: block;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(1) {
   -webkit-box-ordinal-group: 1;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1026,7 +1017,7 @@ footer a {
   /* NEW - Chrome */
   order: 1;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(2) {
   -webkit-box-ordinal-group: 2;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1038,7 +1029,7 @@ footer a {
   /* NEW - Chrome */
   order: 2;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(3) {
   -webkit-box-ordinal-group: 3;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1050,7 +1041,7 @@ footer a {
   /* NEW - Chrome */
   order: 3;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(4) {
   -webkit-box-ordinal-group: 4;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1062,7 +1053,7 @@ footer a {
   /* NEW - Chrome */
   order: 4;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(5) {
   -webkit-box-ordinal-group: 5;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1074,7 +1065,7 @@ footer a {
   /* NEW - Chrome */
   order: 5;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(6) {
   -webkit-box-ordinal-group: 6;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1086,7 +1077,7 @@ footer a {
   /* NEW - Chrome */
   order: 6;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(7) {
   -webkit-box-ordinal-group: 7;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1098,7 +1089,7 @@ footer a {
   /* NEW - Chrome */
   order: 7;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(8) {
   -webkit-box-ordinal-group: 8;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1110,7 +1101,7 @@ footer a {
   /* NEW - Chrome */
   order: 8;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(9) {
   -webkit-box-ordinal-group: 9;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1122,7 +1113,7 @@ footer a {
   /* NEW - Chrome */
   order: 9;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(10) {
   -webkit-box-ordinal-group: 10;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1134,7 +1125,7 @@ footer a {
   /* NEW - Chrome */
   order: 10;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(11) {
   -webkit-box-ordinal-group: 11;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1146,7 +1137,7 @@ footer a {
   /* NEW - Chrome */
   order: 11;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(12) {
   -webkit-box-ordinal-group: 12;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1158,7 +1149,7 @@ footer a {
   /* NEW - Chrome */
   order: 12;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(13) {
   -webkit-box-ordinal-group: 13;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1170,7 +1161,7 @@ footer a {
   /* NEW - Chrome */
   order: 13;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(14) {
   -webkit-box-ordinal-group: 14;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1182,7 +1173,7 @@ footer a {
   /* NEW - Chrome */
   order: 14;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(15) {
   -webkit-box-ordinal-group: 15;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1194,7 +1185,7 @@ footer a {
   /* NEW - Chrome */
   order: 15;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(16) {
   -webkit-box-ordinal-group: 16;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1206,7 +1197,7 @@ footer a {
   /* NEW - Chrome */
   order: 16;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(17) {
   -webkit-box-ordinal-group: 17;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1218,7 +1209,7 @@ footer a {
   /* NEW - Chrome */
   order: 17;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(18) {
   -webkit-box-ordinal-group: 18;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1230,7 +1221,7 @@ footer a {
   /* NEW - Chrome */
   order: 18;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(19) {
   -webkit-box-ordinal-group: 19;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1242,7 +1233,7 @@ footer a {
   /* NEW - Chrome */
   order: 19;
 }
-/* line 61, ../client/styles/_track_tracks.scss */
+/* line 57, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(20) {
   -webkit-box-ordinal-group: 20;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1254,12 +1245,12 @@ footer a {
   /* NEW - Chrome */
   order: 20;
 }
-/* line 64, ../client/styles/_track_tracks.scss */
+/* line 60, ../client/styles/_track_tracks.scss */
 .tracks .track.featured {
   position: relative;
   width: 100%;
 }
-/* line 70, ../client/styles/_track_tracks.scss */
+/* line 66, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:after {
   position: absolute;
   width: 1em;
@@ -1272,7 +1263,7 @@ footer a {
   padding: calc(1em / 16);
   text-align: center;
 }
-/* line 87, ../client/styles/_track_tracks.scss */
+/* line 83, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(17) {
   -webkit-box-ordinal-group: 0;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1284,7 +1275,7 @@ footer a {
   /* NEW - Chrome */
   order: 0;
 }
-/* line 87, ../client/styles/_track_tracks.scss */
+/* line 83, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(18) {
   -webkit-box-ordinal-group: 4;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1296,7 +1287,7 @@ footer a {
   /* NEW - Chrome */
   order: 4;
 }
-/* line 87, ../client/styles/_track_tracks.scss */
+/* line 83, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(19) {
   -webkit-box-ordinal-group: 8;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1308,7 +1299,7 @@ footer a {
   /* NEW - Chrome */
   order: 8;
 }
-/* line 87, ../client/styles/_track_tracks.scss */
+/* line 83, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(20) {
   -webkit-box-ordinal-group: 12;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -1320,7 +1311,7 @@ footer a {
   /* NEW - Chrome */
   order: 12;
 }
-/* line 92, ../client/styles/_track_tracks.scss */
+/* line 88, ../client/styles/_track_tracks.scss */
 .tracks .track:not(.featured) .play {
   top: -4.5em;
   left: calc(50% - 1.275em);
@@ -1328,12 +1319,12 @@ footer a {
   border-color: #fff;
   opacity: 0.9;
 }
-/* line 100, ../client/styles/_track_tracks.scss */
+/* line 96, ../client/styles/_track_tracks.scss */
 .tracks .track:not(.featured) .text {
   padding-left: 0;
   font-size: .75em;
 }
-/* line 108, ../client/styles/_track_tracks.scss */
+/* line 104, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(1) {
   -o-animation-name: track_intro;
   -ms-animation-name: track_intro;
@@ -1366,7 +1357,7 @@ footer a {
   -webkit-animation-direction: normal;
   animation-direction: normal;
 }
-/* line 108, ../client/styles/_track_tracks.scss */
+/* line 104, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(2) {
   -o-animation-name: track_intro;
   -ms-animation-name: track_intro;
@@ -1399,7 +1390,7 @@ footer a {
   -webkit-animation-direction: normal;
   animation-direction: normal;
 }
-/* line 108, ../client/styles/_track_tracks.scss */
+/* line 104, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(3) {
   -o-animation-name: track_intro;
   -ms-animation-name: track_intro;
@@ -1432,7 +1423,7 @@ footer a {
   -webkit-animation-direction: normal;
   animation-direction: normal;
 }
-/* line 108, ../client/styles/_track_tracks.scss */
+/* line 104, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(4) {
   -o-animation-name: track_intro;
   -ms-animation-name: track_intro;
@@ -1465,7 +1456,7 @@ footer a {
   -webkit-animation-direction: normal;
   animation-direction: normal;
 }
-/* line 112, ../client/styles/_track_tracks.scss */
+/* line 108, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(17) {
   -o-animation-name: track_intro;
   -ms-animation-name: track_intro;
@@ -1498,7 +1489,7 @@ footer a {
   -webkit-animation-direction: normal;
   animation-direction: normal;
 }
-/* line 112, ../client/styles/_track_tracks.scss */
+/* line 108, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:nth-child(18) {
   -o-animation-name: track_intro;
   -ms-animation-name: track_intro;
@@ -1531,7 +1522,7 @@ footer a {
   -webkit-animation-direction: normal;
   animation-direction: normal;
 }
-/* line 115, ../client/styles/_track_tracks.scss */
+/* line 111, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(1) {
   -o-animation-duration: 0.33s;
   -ms-animation-duration: 0.33s;
@@ -1539,7 +1530,7 @@ footer a {
   -webkit-animation-duration: 0.33s;
   animation-duration: 0.33s;
 }
-/* line 116, ../client/styles/_track_tracks.scss */
+/* line 112, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(2) {
   -o-animation-duration: 0.36s;
   -ms-animation-duration: 0.36s;
@@ -1547,7 +1538,7 @@ footer a {
   -webkit-animation-duration: 0.36s;
   animation-duration: 0.36s;
 }
-/* line 117, ../client/styles/_track_tracks.scss */
+/* line 113, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(3) {
   -o-animation-duration: 0.27s;
   -ms-animation-duration: 0.27s;
@@ -1555,7 +1546,7 @@ footer a {
   -webkit-animation-duration: 0.27s;
   animation-duration: 0.27s;
 }
-/* line 118, ../client/styles/_track_tracks.scss */
+/* line 114, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(4) {
   -o-animation-duration: 0.24s;
   -ms-animation-duration: 0.24s;
@@ -1563,7 +1554,7 @@ footer a {
   -webkit-animation-duration: 0.24s;
   animation-duration: 0.24s;
 }
-/* line 120, ../client/styles/_track_tracks.scss */
+/* line 116, ../client/styles/_track_tracks.scss */
 .tracks .track.loading {
   opacity: 0;
   -o-animation-name: none;
@@ -1598,50 +1589,28 @@ footer a {
   animation-direction: normal;
 }
 
-/* line 128, ../client/styles/_track_tracks.scss */
-.played.active ~ .tracks {
-  -webkit-transform: translateY(0);
-  -moz-transform: translateY(0);
-  -ms-transform: translateY(0);
-  -o-transform: translateY(0);
-  transform: translateY(0);
-}
-
 /* line 1, ../client/styles/_track_played.scss */
 .played {
   background-size: 500px;
   background-position: center center;
   overflow: auto;
   height: 10em;
-  -webkit-transform: translateY(-10em);
-  -moz-transform: translateY(-10em);
-  -ms-transform: translateY(-10em);
-  -o-transform: translateY(-10em);
-  transform: translateY(-10em);
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
+  position: absolute;
+  top: -10em;
+  left: 0;
+  width: 100%;
   -webkit-overflow-scrolling: touch;
 }
-/* line 13, ../client/styles/_track_played.scss */
-.played.active {
-  -webkit-transform: translateY(0);
-  -moz-transform: translateY(0);
-  -ms-transform: translateY(0);
-  -o-transform: translateY(0);
-  transform: translateY(0);
-}
-/* line 17, ../client/styles/_track_played.scss */
+/* line 15, ../client/styles/_track_played.scss */
 .played .track {
   padding: .25em 0;
   border-bottom: 1px solid;
 }
-/* line 21, ../client/styles/_track_played.scss */
+/* line 19, ../client/styles/_track_played.scss */
 .played .track:last-child {
   border: none;
 }
-/* line 26, ../client/styles/_track_played.scss */
+/* line 24, ../client/styles/_track_played.scss */
 .played .time {
   position: absolute;
   width: 3em;
@@ -1651,7 +1620,7 @@ footer a {
   top: calc(50% - 1.5em);
   right: .5em;
 }
-/* line 35, ../client/styles/_track_played.scss */
+/* line 33, ../client/styles/_track_played.scss */
 .played .time strong {
   display: block;
   font-size: 2.5em;
@@ -2156,11 +2125,12 @@ footer a {
 
 /* line 56, ../client/styles/_loading.scss */
 .site_loading {
+  margin-top: 35%;
   font-size: 5em;
   position: relative;
   display: inline-block;
 }
-/* line 65, ../client/styles/_loading.scss */
+/* line 66, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick {
   font-size: .45em;
   position: absolute;
@@ -2168,7 +2138,7 @@ footer a {
   left: 0;
   overflow: hidden;
 }
-/* line 72, ../client/styles/_loading.scss */
+/* line 73, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick, .site_loading .icon-drumstick:after {
   -o-animation-name: drumstick_middle;
   -ms-animation-name: drumstick_middle;
@@ -2201,7 +2171,7 @@ footer a {
   -webkit-animation-direction: alternate;
   animation-direction: alternate;
 }
-/* line 76, ../client/styles/_loading.scss */
+/* line 77, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick:after {
   content: '';
   position: absolute;
@@ -2210,7 +2180,7 @@ footer a {
   height: 1em;
   background: #eee;
 }
-/* line 85, ../client/styles/_loading.scss */
+/* line 86, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.middle {
   -webkit-transform-origin: 0.333em 1em;
   -moz-transform-origin: 0.333em 1em;
@@ -2220,7 +2190,7 @@ footer a {
   top: -.6667em;
   left: -.7778em;
 }
-/* line 91, ../client/styles/_loading.scss */
+/* line 92, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.middle:after {
   top: -0.4em;
   left: -1.2em;
@@ -2231,7 +2201,7 @@ footer a {
   -webkit-animation-timing-function: cubic-bezier(0.9, 0.1, 0.9, 0.1);
   animation-timing-function: cubic-bezier(0.9, 0.1, 0.9, 0.1);
 }
-/* line 99, ../client/styles/_loading.scss */
+/* line 100, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.left {
   -webkit-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
   -moz-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
@@ -2239,7 +2209,7 @@ footer a {
   -o-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
   transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
 }
-/* line 103, ../client/styles/_loading.scss */
+/* line 104, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.left, .site_loading .icon-drumstick.left:after {
   -webkit-transform-origin: 0;
   -moz-transform-origin: 0;
@@ -2257,7 +2227,7 @@ footer a {
   -webkit-animation-delay: 0.03s;
   animation-delay: 0.03s;
 }
-/* line 109, ../client/styles/_loading.scss */
+/* line 110, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.left:after {
   top: -1.7778em;
   left: -.5em;
@@ -2267,7 +2237,7 @@ footer a {
   -webkit-animation-timing-function: cubic-bezier(0.6, 0, 0.6, 0);
   animation-timing-function: cubic-bezier(0.6, 0, 0.6, 0);
 }
-/* line 116, ../client/styles/_loading.scss */
+/* line 117, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.right {
   -webkit-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
   -moz-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
@@ -2275,7 +2245,7 @@ footer a {
   -o-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
   transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
 }
-/* line 120, ../client/styles/_loading.scss */
+/* line 121, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.right, .site_loading .icon-drumstick.right:after {
   -o-animation-name: drumstick_right;
   -ms-animation-name: drumstick_right;
@@ -2288,7 +2258,7 @@ footer a {
   -webkit-animation-delay: 0.06s;
   animation-delay: 0.06s;
 }
-/* line 125, ../client/styles/_loading.scss */
+/* line 126, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.right:after {
   top: -0.5em;
   left: -1.4em;
@@ -2303,7 +2273,7 @@ footer a {
   -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.4, 0);
   animation-timing-function: cubic-bezier(0.4, 0, 0.4, 0);
 }
-/* line 134, ../client/styles/_loading.scss */
+/* line 135, ../client/styles/_loading.scss */
 .site_loading.loaded {
   -o-animation-name: drum_exit;
   -ms-animation-name: drum_exit;
@@ -2341,7 +2311,7 @@ footer a {
   -o-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
-/* line 141, ../client/styles/_loading.scss */
+/* line 142, ../client/styles/_loading.scss */
 .site_loading.loaded .icon-drumstick {
   display: none;
 }
@@ -2617,9 +2587,4 @@ html {
 /* line 42, ../client/styles/main.scss */
 a {
   text-decoration: none;
-}
-
-/* line 46, ../client/styles/main.scss */
-#content {
-  margin-bottom: 3em;
 }

@@ -15430,6 +15430,8 @@ module.exports = layout = Marionette.Layout.extend({
         this.get_tracks();
 
         this.listenTo(App.core.vent, 'track:play', this.update_ui_for_player);
+        this.listenTo(App.core.vent, 'played:show', this.toggle_tray);
+        this.listenTo(App.core.vent, 'played:hide', this.toggle_tray);
     },
 
     onRender: function() {
@@ -15462,7 +15464,7 @@ module.exports = layout = Marionette.Layout.extend({
         loader.addClass('loaded');
 
         loader.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() {
-            self.$el.append(tracks);
+            self.$el.children('header').after(tracks);
             self.$el.find('.site_loading').remove();
         });
     },
@@ -15510,6 +15512,10 @@ module.exports = layout = Marionette.Layout.extend({
         } else if (!played.collection.active) {
             App.core.vent.trigger('played:show');
         }
+    },
+
+    toggle_tray: function() {
+        this.$el.toggleClass('show_tray');
     },
 
     toggle_played_loading: function() {
