@@ -121,6 +121,7 @@
             );
         }
 
+        & + header .toggle_played.active,
         &.active + header .toggle_played {
             background: active_button_bg($header_bg);
         }

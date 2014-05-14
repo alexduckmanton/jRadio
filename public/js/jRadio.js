@@ -15423,7 +15423,10 @@ module.exports = layout = Marionette.Layout.extend({
 
     events: {
         'click .radio': 'play_radio',
-        'click .toggle_played': 'toggle_played'
+        'click .toggle_played': 'toggle_played',
+        'touchstart': 'init_touch',
+        'touchmove': 'drag',
+        'touchend': 'end_touch'
     },
 
     initialize: function() {
@@ -15437,6 +15440,73 @@ module.exports = layout = Marionette.Layout.extend({
     onRender: function() {
         this.$header = this.$el.children('header');
         this.init_played();
+    },
+
+    init_touch: function(e) {
+        var scroll_pos = $(window).scrollTop(),
+            touch_pos = e.originalEvent.pageY;
+
+        this.model.set('init_touch', touch_pos);
+    },
+
+    drag: function(e) {
+        var scroll_pos = $(window).scrollTop(),
+            init_touch = this.model.get('init_touch'),
+            new_touch = e.originalEvent.pageY,
+            diff = init_touch - new_touch;
+
+        // update the clock
+        if (scroll_pos <= 0 && new_touch > init_touch) this.rotate_clock(init_touch, new_touch)
+        // if (diff < -100) $('.played').addClass('active');
+
+        this.model.set('prev_touch', new_touch);
+    },
+
+    end_touch: function(e) {
+        var clock = this.$el.find('.clock'),
+            init_touch = this.model.get('init_touch'),
+            prev_touch = this.model.get('prev_touch'),
+            diff = init_touch - prev_touch;
+
+        // clear styles from dragging
+        clock.attr('style', '');
+        clock.children().attr('style', '');
+
+        // load played tracks if dragged far enough
+        if (diff < -100) this.toggle_played();
+    },
+
+    rotate_clock: function(init_touch, new_touch) {
+        var diff = init_touch - new_touch,
+            clock = this.$el.find('.clock'),
+            hour = clock.children('.hour'),
+            minute = clock.children('.minute'),
+            second = clock.children('.second'),
+            hour_r = 120,
+            minute_r = 0,
+            second_r = 225,
+            hour_m = .5,
+            minute_m = hour_m * 12,
+            second_m = minute_m * 2,
+            clock_bg = Math.min( Math.abs(diff/100)/2 , .5 );
+
+        hour.css  ('-webkit-transform', 'rotate('+ (hour_r + diff) * hour_m +'deg)');
+        minute.css('-webkit-transform', 'rotate('+ (minute_r + diff) * minute_m +'deg)');
+        second.css('-webkit-transform', 'rotate('+ (second_r + diff) * second_m +'deg)');
+        clock.css('background', 'rgba(0,0,0,'+ clock_bg +')');
+
+        // need to force a repaint for ios while scrolling
+        this.repaint(hour[0]);
+        this.repaint(minute[0]);
+        this.repaint(second[0]);
+        this.repaint(clock[0]);
+    },
+
+    repaint: function(element) {
+        // weird hack to force a repaint in ios
+        element.style.display='none';
+        element.offsetHeight; // no need to store this anywhere, the reference is enough
+        element.style.display='inline-block';
     },
 
     get_tracks: function() {
@@ -15504,6 +15574,8 @@ module.exports = layout = Marionette.Layout.extend({
 
     toggle_played: function() {
         var played = App.views.playedView;
+
+        this.$el.find('.toggle_played').toggleClass('active');
 
         if (!played.collection.length) {
             this.get_played();

@@ -2509,16 +2509,16 @@ header a {
   background: #ff354f;
   color: #ce001b;
 }
-/* line 124, ../client/styles/_theme_mixins.scss */
-.played.active + header .toggle_played {
+/* line 125, ../client/styles/_theme_mixins.scss */
+.played + header .toggle_played.active, .played.active + header .toggle_played {
   background: rgba(29, 64, 12, 0.8);
 }
-/* line 128, ../client/styles/_theme_mixins.scss */
+/* line 129, ../client/styles/_theme_mixins.scss */
 .played .time {
   color: #639f47;
 }
 
-/* line 133, ../client/styles/_theme_mixins.scss */
+/* line 134, ../client/styles/_theme_mixins.scss */
 .tracks .track {
   box-shadow: rgba(0, 0, 0, 0.05) 0 1px 0;
   background: white;
@@ -2541,7 +2541,7 @@ header a {
   background: #ff354f;
   color: #ce001b;
 }
-/* line 142, ../client/styles/_theme_mixins.scss */
+/* line 143, ../client/styles/_theme_mixins.scss */
 .tracks .track.playing .play {
   background: rgba(75, 161, 25, 0.2);
 }
@@ -2566,7 +2566,7 @@ header a {
   background-color: #fff59d;
 }
 
-/* line 154, ../client/styles/_theme_mixins.scss */
+/* line 155, ../client/styles/_theme_mixins.scss */
 nav {
   background-color: #588d3f;
 }
