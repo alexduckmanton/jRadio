@@ -15911,7 +15911,7 @@ module.exports = itemView = Marionette.ItemView.extend({
 var Marionette = require('backbone.marionette');
 
 var itemView = Marionette.ItemView.extend({
-    className: 'track',
+    className: 'track loading',
 
     events: {
         'click a': 'toggle_playing'
@@ -15933,6 +15933,8 @@ var itemView = Marionette.ItemView.extend({
         this.listenTo(this.model, 'change:image', this.render);
 
         this.$el.toggleClass('featured', this.model.get('featured'));
+
+        if (this.model.collection.type) this.$el.removeClass('loading');
     },
 
     toggle_classes: function() {
