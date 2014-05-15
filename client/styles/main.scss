@@ -35,6 +35,9 @@ $played_height: 10em;
 @import 'theme_mixins';
 @import 'themes';
 
+// layouts
+@import 'small/module';
+
 html {
     background: #eee;
 }

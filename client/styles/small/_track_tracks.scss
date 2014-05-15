@@ -1,0 +1,9 @@
+@include small {
+
+    .tracks {
+        width: 66.6667%;
+        float: left;
+        @include box-sizing(border-box);
+    }
+
+}

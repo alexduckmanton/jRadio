@@ -1,0 +1,10 @@
+@include small {
+
+    .site {
+        margin-bottom: 3em;
+        
+        @include transform(none);
+        @include legacy-pie-clearfix;
+    }
+
+}

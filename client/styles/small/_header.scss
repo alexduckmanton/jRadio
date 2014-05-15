@@ -1,0 +1,54 @@
+@include small {
+    $header_height: 7em;
+
+    header,
+    .player {
+        margin: .5em;
+        position: fixed;
+        right: 0;
+        width: calc(33.333% - .5em);
+    }
+
+    .player {
+        top: $header_height;
+    }
+
+    header {
+        top: 0;
+        height: $header_height;
+        z-index: 2;
+
+        .radio,
+        .toggle_played {
+
+        }
+
+        h1,
+        .radio {
+            width: 50%;
+            height: 100%;
+        }
+
+        .radio {
+            margin: 0;
+            border: none;
+            background: #444;
+            border-radius: 0;
+            float: right;
+
+            &:before {
+                line-height: 5.25em;
+            }
+        }
+
+        .toggle_played {
+            display: none;
+        }
+
+        h1 {
+            float: left;
+            color: transparent;
+        }
+    }
+
+}

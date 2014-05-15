@@ -1,3 +1,7 @@
+@mixin track_shadow {
+    box-shadow: darken(#eee, 2.5%) 0 1px 0;
+}
+
 @mixin img_theme($color1, $color2, $color3, $color4) {
     .track .img_container:before { background-color: $color1 }
     .track:nth-child(2n) .img_container:before { background-color: $color2 }
@@ -24,6 +28,7 @@
     &.playing {
         a {
             @if ($bg_color) { background: active_button_bg($bg_color); }
+            @else { background: rgba($primary, 0.2); }
         }
     }
 
@@ -105,6 +110,16 @@
             $header_img,
             $header_bg
         );
+
+        @include small {
+            @include track_shadow;
+
+            @include track_theme(
+                $primary,
+                $secondary,
+                $track_bg
+            );
+        }
     }
 
     .played {
@@ -132,17 +147,13 @@
     }
 
     .tracks .track {
-        box-shadow: rgba(#000,0.05) 0 1px 0;
+        @include track_shadow;
 
         @include track_theme(
             $primary,
             $secondary,
             $track_bg
         );
-
-        &.playing .play {
-            background: rgba($primary, 0.2);
-        }
     }
 
     @include img_theme(

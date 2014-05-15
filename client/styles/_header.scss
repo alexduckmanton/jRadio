@@ -64,13 +64,15 @@ header {
     }
 }
 
-// when a track is playing, hide header elements
-.playing ~ .site header h1,
-.playing ~ .site header .radio,
-.playing ~ .site header .toggle_played {
-    @include translateY($header_height);
+@include base {
+    // when a track is playing, hide header elements
+    .playing ~ .site header h1,
+    .playing ~ .site header .radio,
+    .playing ~ .site header .toggle_played {
+        @include translateY($header_height);
 
-    &:nth-child(1) { @include transition-delay($default-transition-duration * .05); }
-    &:nth-child(2) { @include transition-delay($default-transition-duration * .15); }
-    &:nth-child(3) { @include transition-delay($default-transition-duration * .1); }
+        &:nth-child(1) { @include transition-delay($default-transition-duration * .05); }
+        &:nth-child(2) { @include transition-delay($default-transition-duration * .15); }
+        &:nth-child(3) { @include transition-delay($default-transition-duration * .1); }
+    }
 }
