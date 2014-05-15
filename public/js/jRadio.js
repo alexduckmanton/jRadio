@@ -15227,6 +15227,11 @@ App.prototype.start = function(){
         App.views = {};
         App.data = {};
 
+        App.data.window = {
+            width: $(window).width(),
+            height: $(window).height()
+        }
+
         App.core.vent.trigger('app:start');
     });
 
@@ -15432,13 +15437,18 @@ module.exports = layout = Marionette.Layout.extend({
         this.get_tracks();
 
         this.listenTo(App.core.vent, 'track:play', this.update_ui_for_player);
-        this.listenTo(App.core.vent, 'played:show', this.toggle_tray);
-        this.listenTo(App.core.vent, 'played:hide', this.toggle_tray);
+
+        if (App.data.window.width <= 700) {
+            this.listenTo(App.core.vent, 'played:show', this.toggle_tray);
+            this.listenTo(App.core.vent, 'played:hide', this.toggle_tray);
+        }
     },
 
     onRender: function() {
         this.$header = this.$el.children('header');
+
         this.init_played();
+        if (App.data.window.width > 700) this.get_played();
     },
 
     init_touch: function(e) {

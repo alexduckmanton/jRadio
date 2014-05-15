@@ -17,7 +17,7 @@
     z-index: 1;
 
     // hide
-    @include translateY(-$header_height);
+    @include translateY(-$header_height - 1em);
     @include single-transition(all);
 
     .track_info {

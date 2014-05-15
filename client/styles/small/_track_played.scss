@@ -1,0 +1,35 @@
+@include small {
+
+    .played {
+        position: absolute;
+        top: $header_height + 1em;
+        left: 66.6667%;
+        background: none;
+        width: calc(33.333% - .5em);
+        overflow: inherit;
+        height: inherit;
+
+        @include flex();
+        @include flex-direction(column-reverse);
+        @include flex-justify-end();
+
+        .track {
+            padding-top: .5em;
+            background: none;
+            border: none;
+
+            h3 {
+                color: #666;
+            }
+
+            h4 {
+                color: #aaa;
+            }
+
+            .time {
+                color: #ccc;
+            }
+        }
+    }
+
+}

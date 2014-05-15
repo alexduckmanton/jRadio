@@ -1644,6 +1644,10 @@ footer a {
   border: none;
 }
 /* line 23, ../client/styles/_track_played.scss */
+.played .track_info {
+  padding-right: 2.25em;
+}
+/* line 27, ../client/styles/_track_played.scss */
 .played .time {
   position: absolute;
   width: 3em;
@@ -1653,7 +1657,7 @@ footer a {
   top: calc(50% - 1.5em);
   right: .5em;
 }
-/* line 32, ../client/styles/_track_played.scss */
+/* line 36, ../client/styles/_track_played.scss */
 .played .time strong {
   display: block;
   font-size: 2.5em;
@@ -1768,11 +1772,11 @@ footer a {
   height: 3em;
   position: fixed;
   z-index: 1;
-  -webkit-transform: translateY(-3em);
-  -moz-transform: translateY(-3em);
-  -ms-transform: translateY(-3em);
-  -o-transform: translateY(-3em);
-  transform: translateY(-3em);
+  -webkit-transform: translateY(-4em);
+  -moz-transform: translateY(-4em);
+  -ms-transform: translateY(-4em);
+  -o-transform: translateY(-4em);
+  transform: translateY(-4em);
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -2904,14 +2908,15 @@ nav a {
     top: 0;
     height: 7.75em;
     z-index: 2;
+    box-shadow: #eee 0 -1em 0;
   }
-  /* line 27, ../client/styles/small/_header.scss */
+  /* line 28, ../client/styles/small/_header.scss */
   header h1,
   header .radio {
     width: 50%;
     height: 100%;
   }
-  /* line 32, ../client/styles/small/_header.scss */
+  /* line 33, ../client/styles/small/_header.scss */
   header .radio {
     margin: 0;
     border: none;
@@ -2919,28 +2924,28 @@ nav a {
     border-radius: 0;
     float: right;
   }
-  /* line 39, ../client/styles/small/_header.scss */
+  /* line 40, ../client/styles/small/_header.scss */
   header .radio:before {
     font-size: 2em;
     line-height: 3.875em;
   }
-  /* line 45, ../client/styles/small/_header.scss */
+  /* line 46, ../client/styles/small/_header.scss */
   header .toggle_played {
     display: none;
   }
-  /* line 49, ../client/styles/small/_header.scss */
+  /* line 50, ../client/styles/small/_header.scss */
   header h1 {
     float: left;
     color: transparent;
   }
-  /* line 53, ../client/styles/small/_header.scss */
+  /* line 54, ../client/styles/small/_header.scss */
   header h1:before {
     font-size: 3em;
     left: calc(50% - .5em);
     top: inherit;
     bottom: -0.15em;
   }
-  /* line 60, ../client/styles/small/_header.scss */
+  /* line 61, ../client/styles/small/_header.scss */
   header h1:after {
     position: absolute;
     font-size: 1.75em;
@@ -2960,6 +2965,53 @@ nav a {
   /* line 8, ../client/styles/small/_track_tracks.scss */
   .tracks .track:not(.featured) .play {
     top: -2.5em;
+  }
+}
+@media screen and (min-width: 700px) {
+  /* line 3, ../client/styles/small/_track_played.scss */
+  .played {
+    position: absolute;
+    top: 8.75em;
+    left: 66.6667%;
+    background: none;
+    width: calc(33.333% - .5em);
+    overflow: inherit;
+    height: inherit;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: column-reverse;
+    -webkit-box-direction: column-reverse;
+    -moz-box-orient: column-reverse;
+    -moz-box-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    -webkit-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    -webkit-box-pack: end;
+    -moz-box-pack: end;
+    -ms-flex-pack: end;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+  }
+  /* line 16, ../client/styles/small/_track_played.scss */
+  .played .track {
+    padding-top: .5em;
+    background: none;
+    border: none;
+  }
+  /* line 21, ../client/styles/small/_track_played.scss */
+  .played .track h3 {
+    color: #666;
+  }
+  /* line 25, ../client/styles/small/_track_played.scss */
+  .played .track h4 {
+    color: #aaa;
+  }
+  /* line 29, ../client/styles/small/_track_played.scss */
+  .played .track .time {
+    color: #ccc;
   }
 }
 /* line 40, ../client/styles/main.scss */
