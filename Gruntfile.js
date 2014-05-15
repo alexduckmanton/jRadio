@@ -213,7 +213,7 @@ module.exports = function(grunt) {
                 tasks: ['copy:webfont', 'webfont']
             },
             compass: {
-                files: ['client/styles/*.scss'],
+                files: ['client/styles/**/*.scss'],
                 tasks: ['compass:dev', 'copy:dev']
             }
         },
