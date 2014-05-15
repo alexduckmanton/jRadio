@@ -19,6 +19,9 @@ module.exports = PlayerModel = Backbone.Model.extend({
         // add event listener to remove loading class
         $(track).one('playing', function() { App.core.vent.trigger('track:loaded'); });
 
+        // add event listener to remove loading class
+        $(track).one('ended', function() { App.core.vent.trigger('tracks:stop'); });
+
         // don't update if it's the same track
         if ( track.getAttribute('src') === new_track.src ) return;
 
