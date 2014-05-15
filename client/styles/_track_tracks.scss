@@ -34,6 +34,7 @@
 
         .img_container {
             position: relative;
+            background-size: cover;
 
             &:before {
                 content: '';
@@ -43,6 +44,15 @@
                 width: 100%;
                 height: 100%;
                 opacity: 0.2;
+            }
+
+            // dummy element to control the image size as ratio to container size
+            &:after {
+                content: '';
+                display: block;
+
+                // height ratio
+                padding-top: 66.667%;
             }
         }
 

@@ -15768,9 +15768,7 @@ module.exports = TrackModel = Backbone.Model.extend({
             img = new Image();
 
         img.src = src;
-        $.when(
-			$(img).load()
-		).then(function() {
+		$(img).load(function() {
             self.set('img_loading', false);
 		});
     },
@@ -16161,9 +16159,9 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1;
-  buffer += "<div class=\"img_container\"><img src=\""
+  buffer += "<div class=\"img_container\" style=\"background-image: url("
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.image)),stack1 == null || stack1 === false ? stack1 : stack1.src)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" alt=\"image.alt\" /></div>";
+    + ")\"></div>";
   return buffer;
   }
 

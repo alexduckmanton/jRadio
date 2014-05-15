@@ -39,9 +39,7 @@ module.exports = TrackModel = Backbone.Model.extend({
             img = new Image();
 
         img.src = src;
-        $.when(
-			$(img).load()
-		).then(function() {
+		$(img).load(function() {
             self.set('img_loading', false);
 		});
     },
