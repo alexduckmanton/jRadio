@@ -20,6 +20,7 @@ var itemView = Marionette.ItemView.extend({
     initialize: function() {
         this.listenTo(this.model, 'change', this.toggle_classes);
         this.listenTo(this.model, 'change:is_playing', this.trigger_playing);
+        this.listenTo(this.model, 'change:image', this.render);
 
         this.$el.toggleClass('featured', this.model.get('featured'));
     },

@@ -15770,7 +15770,10 @@ module.exports = TrackModel = Backbone.Model.extend({
         img.src = src;
 		$(img).load(function() {
             self.set('img_loading', false);
-		});
+		}).error(function (){
+            self.set('img_loading', false);
+            self.set('image', {src: ''});
+        });
     },
 
     loaded: function() {
@@ -15927,6 +15930,7 @@ var itemView = Marionette.ItemView.extend({
     initialize: function() {
         this.listenTo(this.model, 'change', this.toggle_classes);
         this.listenTo(this.model, 'change:is_playing', this.trigger_playing);
+        this.listenTo(this.model, 'change:image', this.render);
 
         this.$el.toggleClass('featured', this.model.get('featured'));
     },
