@@ -15423,7 +15423,7 @@ module.exports = layout = Marionette.Layout.extend({
     template: require('../../templates/site.hbs'),
 
     events: {
-        'click .radio': 'play_radio',
+        'click .radio': 'toggle_radio',
         'click .toggle_played': 'toggle_played',
         'touchstart .tracks': 'init_touch'
     },
@@ -15621,8 +15621,17 @@ module.exports = layout = Marionette.Layout.extend({
         });
     },
 
-    play_radio: function() {
-        App.core.vent.trigger('track:play', this.model.attributes);
+    toggle_radio: function() {
+        var player = App.views.playerView.model,
+            player_src = player.get('track').src,
+            radio_src = this.model.get('src'),
+            is_playing = player.get('is_playing');
+
+        if (is_playing && player_src == radio_src) {
+            App.core.vent.trigger('tracks:stop');
+        } else {
+            App.core.vent.trigger('track:play', this.model.attributes);
+        }
     },
 
     update_ui_for_player: function(track) {

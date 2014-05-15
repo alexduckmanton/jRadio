@@ -50,7 +50,7 @@
     &.loading {
         a {
             border-style: dotted;
-            @include animation(spin, $count: infinite, $timing: linear, $duration: $default-transition-duration * 3);
+            @include animation(spin, $count: infinite, $timing: linear, $duration: $default-transition-duration * 5);
         }
     }
 }

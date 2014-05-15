@@ -1866,11 +1866,11 @@ footer a {
   -moz-animation-name: spin;
   -webkit-animation-name: spin;
   animation-name: spin;
-  -o-animation-duration: 0.9s;
-  -ms-animation-duration: 0.9s;
-  -moz-animation-duration: 0.9s;
-  -webkit-animation-duration: 0.9s;
-  animation-duration: 0.9s;
+  -o-animation-duration: 1.5s;
+  -ms-animation-duration: 1.5s;
+  -moz-animation-duration: 1.5s;
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
   -o-animation-timing-function: linear;
   -ms-animation-timing-function: linear;
   -moz-animation-timing-function: linear;
