@@ -15680,15 +15680,14 @@ module.exports = PlayerModel = Backbone.Model.extend({
         // add event listener to remove loading class
         $(track).one('playing', function() { App.core.vent.trigger('track:loaded'); });
 
-        // add event listener to remove loading class
-        $(track).one('ended', function() { App.core.vent.trigger('tracks:stop'); });
-
         // don't update if it's the same track
         if ( track.getAttribute('src') === new_track.src ) return;
 
+        // add event listener to remove loading class
+        $(track).one('ended', function() { App.core.vent.trigger('tracks:stop'); });
+
         // mp3 source for the track
         track.setAttribute('src', new_track.src);
-
     },
 
     update_info: function(track) {
@@ -15869,7 +15868,7 @@ module.exports = itemView = Marionette.ItemView.extend({
 
     initialize: function() {
         this.listenTo(this.model, 'change', this.update_content);
-        this.listenTo(this.model, 'change:is_playing', this.toggle_classes);
+        this.listenTo(this.model, 'change', this.toggle_classes);
         this.listenTo(App.core.vent, 'tracks:stop', this.on_stop);
         this.listenTo(App.core.vent, 'tracks:stop', this.loaded);
         this.listenTo(App.core.vent, 'track:loaded', this.loaded);

@@ -6,7 +6,7 @@ module.exports = itemView = Marionette.ItemView.extend({
 
     initialize: function() {
         this.listenTo(this.model, 'change', this.update_content);
-        this.listenTo(this.model, 'change:is_playing', this.toggle_classes);
+        this.listenTo(this.model, 'change', this.toggle_classes);
         this.listenTo(App.core.vent, 'tracks:stop', this.on_stop);
         this.listenTo(App.core.vent, 'tracks:stop', this.loaded);
         this.listenTo(App.core.vent, 'track:loaded', this.loaded);
