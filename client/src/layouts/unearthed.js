@@ -47,7 +47,7 @@ module.exports = layout = Marionette.Layout.extend({
             diff = init_touch - new_touch;
 
         // update the clock
-        if (scroll_pos <= 0 && new_touch > init_touch) self.rotate_clock(init_touch, new_touch)
+        if (scroll_pos <= 0 && new_touch > init_touch) self.rotate_clock(init_touch, new_touch);
         // if (diff < -100) $('.played').addClass('active');
 
         self.model.set('prev_touch', new_touch);
@@ -81,10 +81,10 @@ module.exports = layout = Marionette.Layout.extend({
             hour_r = 120,
             minute_r = 0,
             second_r = 225,
-            hour_m = .5,
+            hour_m = 0.5,
             minute_m = hour_m * 12,
             second_m = minute_m * 2,
-            clock_bg = Math.min( Math.abs(diff/100)/2 , .5 );
+            clock_bg = Math.min( Math.abs(diff/100)/2 , 0.5 );
 
         hour.css  ('-webkit-transform', 'rotate('+ (hour_r + diff) * hour_m +'deg)');
         minute.css('-webkit-transform', 'rotate('+ (minute_r + diff) * minute_m +'deg)');
@@ -101,7 +101,7 @@ module.exports = layout = Marionette.Layout.extend({
     repaint: function(element) {
         // weird hack to force a repaint in ios
         element.style.display='none';
-        element.offsetHeight; // no need to store this anywhere, the reference is enough
+        var temp = element.offsetHeight; // no need to store this anywhere, the reference is enough
         element.style.display='inline-block';
     },
 
