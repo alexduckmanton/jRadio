@@ -57,6 +57,7 @@ module.exports = Controller = Marionette.Controller.extend({
 
     unearthed: function() {
         App.views.unearthedLayout = new UnearthedLayout({ model: new SiteModel({
+            logo: 'unearthedlogo',
             page_title: 'Unearthed',
             radio_title: 'Triple J Unearthed',
             src: 'http://shoutmedia.abc.net.au:10464/;*.mp3'

@@ -3,11 +3,11 @@
 
 @font-face {
 	font-family:"icon";
-	src:url("./icon-4d6ea6dec15c9cfe4518cbe7c8ab3a9c.eot");
-	src:url("./icon-4d6ea6dec15c9cfe4518cbe7c8ab3a9c.eot?#iefix") format("embedded-opentype"),
-		url("./icon-4d6ea6dec15c9cfe4518cbe7c8ab3a9c.woff") format("woff"),
-		url("./icon-4d6ea6dec15c9cfe4518cbe7c8ab3a9c.ttf") format("truetype"),
-		url("./icon-4d6ea6dec15c9cfe4518cbe7c8ab3a9c.svg?#icon") format("svg");
+	src:url("./icon-82757518c3d3fe5eb97f92abf8381490.eot");
+	src:url("./icon-82757518c3d3fe5eb97f92abf8381490.eot?#iefix") format("embedded-opentype"),
+		url("./icon-82757518c3d3fe5eb97f92abf8381490.woff") format("woff"),
+		url("./icon-82757518c3d3fe5eb97f92abf8381490.ttf") format("truetype"),
+		url("./icon-82757518c3d3fe5eb97f92abf8381490.svg?#icon") format("svg");
 	font-weight:normal;
 	font-style:normal;
 }
@@ -35,43 +35,61 @@
 // Icons
 
 
-.icon-drum:before {
+.icon-doublejlogo:before {
 	content:"\e001";
 }
 
 
 
-.icon-drumming:before {
+.icon-drum:before {
 	content:"\e002";
 }
 
 
 
-.icon-drumstick:before {
+.icon-drumming:before {
 	content:"\e003";
 }
 
 
 
-.icon-featured:before {
+.icon-drumstick:before {
 	content:"\e004";
 }
 
 
 
-.icon-pause:before {
+.icon-featured:before {
 	content:"\e005";
 }
 
 
 
-.icon-play:before {
+.icon-pause:before {
 	content:"\e006";
 }
 
 
 
-.icon-radio:before {
+.icon-play:before {
 	content:"\e007";
+}
+
+
+
+.icon-radio:before {
+	content:"\e008";
+}
+
+
+
+.icon-triplejlogo:before {
+	content:"\e009";
+}
+
+
+
+.icon-unearthedlogo:before {
+	content:"\e00a";
 }
 

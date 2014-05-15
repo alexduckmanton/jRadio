@@ -15317,6 +15317,7 @@ module.exports = Controller = Marionette.Controller.extend({
 
     unearthed: function() {
         App.views.unearthedLayout = new UnearthedLayout({ model: new SiteModel({
+            logo: 'unearthedlogo',
             page_title: 'Unearthed',
             radio_title: 'Triple J Unearthed',
             src: 'http://shoutmedia.abc.net.au:10464/;*.mp3'
@@ -16129,7 +16130,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<header>\n    <a href=\"javascript:void(0)\" class=\"radio icon-radio\" title=\"Listen live\"></a>\n    <h1>";
+  buffer += "<header>\n    <a href=\"javascript:void(0)\" class=\"radio icon-radio\" title=\"Listen live\"></a>\n    <h1 class=\"icon-";
+  if (helper = helpers.logo) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.logo); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\">";
   if (helper = helpers.page_title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.page_title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
