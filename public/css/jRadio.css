@@ -459,8 +459,8 @@ th {
 
 @font-face {
   font-family: "icon";
-  src: url("./icon-97082feab62b4ca49209e5189cada8f7.eot");
-  src: url("./icon-97082feab62b4ca49209e5189cada8f7.eot?#iefix") format("embedded-opentype"), url("./icon-97082feab62b4ca49209e5189cada8f7.woff") format("woff"), url("./icon-97082feab62b4ca49209e5189cada8f7.ttf") format("truetype"), url("./icon-97082feab62b4ca49209e5189cada8f7.svg?#icon") format("svg");
+  src: url("./icon-16690adc59c3587b57a555cb6c7bfa78.eot");
+  src: url("./icon-16690adc59c3587b57a555cb6c7bfa78.eot?#iefix") format("embedded-opentype"), url("./icon-16690adc59c3587b57a555cb6c7bfa78.woff") format("woff"), url("./icon-16690adc59c3587b57a555cb6c7bfa78.ttf") format("truetype"), url("./icon-16690adc59c3587b57a555cb6c7bfa78.svg?#icon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -1896,305 +1896,405 @@ footer a {
 @-o-keyframes drumstick_middle {
   /* line 4, ../client/styles/_loading.scss */
   0%,33% {
-    -webkit-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    -moz-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    -ms-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    -o-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
+    -webkit-transform: rotateZ(115deg);
+    -moz-transform: rotateZ(115deg);
+    -ms-transform: rotateZ(115deg);
+    -o-transform: rotateZ(115deg);
+    transform: rotateZ(115deg);
   }
 
-  /* line 9, ../client/styles/_loading.scss */
+  /* line 8, ../client/styles/_loading.scss */
   67%, 100% {
-    -webkit-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    -moz-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    -ms-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    -o-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
+    -webkit-transform: rotateZ(160deg);
+    -moz-transform: rotateZ(160deg);
+    -ms-transform: rotateZ(160deg);
+    -o-transform: rotateZ(160deg);
+    transform: rotateZ(160deg);
   }
 }
 
 @-ms-keyframes drumstick_middle {
   /* line 4, ../client/styles/_loading.scss */
   0%,33% {
-    -webkit-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    -moz-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    -ms-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    -o-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
+    -webkit-transform: rotateZ(115deg);
+    -moz-transform: rotateZ(115deg);
+    -ms-transform: rotateZ(115deg);
+    -o-transform: rotateZ(115deg);
+    transform: rotateZ(115deg);
   }
 
-  /* line 9, ../client/styles/_loading.scss */
+  /* line 8, ../client/styles/_loading.scss */
   67%, 100% {
-    -webkit-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    -moz-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    -ms-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    -o-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
+    -webkit-transform: rotateZ(160deg);
+    -moz-transform: rotateZ(160deg);
+    -ms-transform: rotateZ(160deg);
+    -o-transform: rotateZ(160deg);
+    transform: rotateZ(160deg);
   }
 }
 
 @-moz-keyframes drumstick_middle {
   /* line 4, ../client/styles/_loading.scss */
   0%,33% {
-    -webkit-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    -moz-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    -ms-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    -o-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
+    -webkit-transform: rotateZ(115deg);
+    -moz-transform: rotateZ(115deg);
+    -ms-transform: rotateZ(115deg);
+    -o-transform: rotateZ(115deg);
+    transform: rotateZ(115deg);
   }
 
-  /* line 9, ../client/styles/_loading.scss */
+  /* line 8, ../client/styles/_loading.scss */
   67%, 100% {
-    -webkit-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    -moz-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    -ms-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    -o-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
+    -webkit-transform: rotateZ(160deg);
+    -moz-transform: rotateZ(160deg);
+    -ms-transform: rotateZ(160deg);
+    -o-transform: rotateZ(160deg);
+    transform: rotateZ(160deg);
   }
 }
 
 @-webkit-keyframes drumstick_middle {
   /* line 4, ../client/styles/_loading.scss */
   0%,33% {
-    -webkit-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    -moz-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    -ms-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    -o-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
+    -webkit-transform: rotateZ(115deg);
+    -moz-transform: rotateZ(115deg);
+    -ms-transform: rotateZ(115deg);
+    -o-transform: rotateZ(115deg);
+    transform: rotateZ(115deg);
   }
 
-  /* line 9, ../client/styles/_loading.scss */
+  /* line 8, ../client/styles/_loading.scss */
   67%, 100% {
-    -webkit-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    -moz-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    -ms-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    -o-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
+    -webkit-transform: rotateZ(160deg);
+    -moz-transform: rotateZ(160deg);
+    -ms-transform: rotateZ(160deg);
+    -o-transform: rotateZ(160deg);
+    transform: rotateZ(160deg);
   }
 }
 
 @keyframes drumstick_middle {
   /* line 4, ../client/styles/_loading.scss */
   0%,33% {
-    -webkit-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    -moz-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    -ms-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    -o-transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
-    transform: rotateZ(115deg) translate3d(-0.2em, -1.2em, 0);
+    -webkit-transform: rotateZ(115deg);
+    -moz-transform: rotateZ(115deg);
+    -ms-transform: rotateZ(115deg);
+    -o-transform: rotateZ(115deg);
+    transform: rotateZ(115deg);
   }
 
-  /* line 9, ../client/styles/_loading.scss */
+  /* line 8, ../client/styles/_loading.scss */
   67%, 100% {
-    -webkit-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    -moz-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    -ms-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    -o-transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
-    transform: rotateZ(160deg) translate3d(-0.8333em, -0.55em, 0);
+    -webkit-transform: rotateZ(160deg);
+    -moz-transform: rotateZ(160deg);
+    -ms-transform: rotateZ(160deg);
+    -o-transform: rotateZ(160deg);
+    transform: rotateZ(160deg);
   }
 }
 
 @-o-keyframes drumstick_left {
-  /* line 16, ../client/styles/_loading.scss */
+  /* line 14, ../client/styles/_loading.scss */
   0%,33% {
-    -webkit-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    -moz-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    -ms-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    -o-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
+    -webkit-transform: rotateZ(45deg);
+    -moz-transform: rotateZ(45deg);
+    -ms-transform: rotateZ(45deg);
+    -o-transform: rotateZ(45deg);
+    transform: rotateZ(45deg);
   }
 
-  /* line 21, ../client/styles/_loading.scss */
+  /* line 18, ../client/styles/_loading.scss */
   67%, 100% {
-    -webkit-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    -moz-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    -ms-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    -o-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
+    -webkit-transform: rotateZ(90deg);
+    -moz-transform: rotateZ(90deg);
+    -ms-transform: rotateZ(90deg);
+    -o-transform: rotateZ(90deg);
+    transform: rotateZ(90deg);
   }
 }
 
 @-ms-keyframes drumstick_left {
-  /* line 16, ../client/styles/_loading.scss */
+  /* line 14, ../client/styles/_loading.scss */
   0%,33% {
-    -webkit-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    -moz-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    -ms-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    -o-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
+    -webkit-transform: rotateZ(45deg);
+    -moz-transform: rotateZ(45deg);
+    -ms-transform: rotateZ(45deg);
+    -o-transform: rotateZ(45deg);
+    transform: rotateZ(45deg);
   }
 
-  /* line 21, ../client/styles/_loading.scss */
+  /* line 18, ../client/styles/_loading.scss */
   67%, 100% {
-    -webkit-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    -moz-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    -ms-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    -o-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
+    -webkit-transform: rotateZ(90deg);
+    -moz-transform: rotateZ(90deg);
+    -ms-transform: rotateZ(90deg);
+    -o-transform: rotateZ(90deg);
+    transform: rotateZ(90deg);
   }
 }
 
 @-moz-keyframes drumstick_left {
-  /* line 16, ../client/styles/_loading.scss */
+  /* line 14, ../client/styles/_loading.scss */
   0%,33% {
-    -webkit-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    -moz-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    -ms-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    -o-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
+    -webkit-transform: rotateZ(45deg);
+    -moz-transform: rotateZ(45deg);
+    -ms-transform: rotateZ(45deg);
+    -o-transform: rotateZ(45deg);
+    transform: rotateZ(45deg);
   }
 
-  /* line 21, ../client/styles/_loading.scss */
+  /* line 18, ../client/styles/_loading.scss */
   67%, 100% {
-    -webkit-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    -moz-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    -ms-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    -o-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
+    -webkit-transform: rotateZ(90deg);
+    -moz-transform: rotateZ(90deg);
+    -ms-transform: rotateZ(90deg);
+    -o-transform: rotateZ(90deg);
+    transform: rotateZ(90deg);
   }
 }
 
 @-webkit-keyframes drumstick_left {
-  /* line 16, ../client/styles/_loading.scss */
+  /* line 14, ../client/styles/_loading.scss */
   0%,33% {
-    -webkit-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    -moz-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    -ms-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    -o-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
+    -webkit-transform: rotateZ(45deg);
+    -moz-transform: rotateZ(45deg);
+    -ms-transform: rotateZ(45deg);
+    -o-transform: rotateZ(45deg);
+    transform: rotateZ(45deg);
   }
 
-  /* line 21, ../client/styles/_loading.scss */
+  /* line 18, ../client/styles/_loading.scss */
   67%, 100% {
-    -webkit-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    -moz-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    -ms-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    -o-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
+    -webkit-transform: rotateZ(90deg);
+    -moz-transform: rotateZ(90deg);
+    -ms-transform: rotateZ(90deg);
+    -o-transform: rotateZ(90deg);
+    transform: rotateZ(90deg);
   }
 }
 
 @keyframes drumstick_left {
-  /* line 16, ../client/styles/_loading.scss */
+  /* line 14, ../client/styles/_loading.scss */
   0%,33% {
-    -webkit-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    -moz-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    -ms-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    -o-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-    transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
+    -webkit-transform: rotateZ(45deg);
+    -moz-transform: rotateZ(45deg);
+    -ms-transform: rotateZ(45deg);
+    -o-transform: rotateZ(45deg);
+    transform: rotateZ(45deg);
   }
 
-  /* line 21, ../client/styles/_loading.scss */
+  /* line 18, ../client/styles/_loading.scss */
   67%, 100% {
-    -webkit-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    -moz-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    -ms-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    -o-transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
-    transform: rotateZ(90deg) translate3d(0.85em, -0.55em, 0);
+    -webkit-transform: rotateZ(90deg);
+    -moz-transform: rotateZ(90deg);
+    -ms-transform: rotateZ(90deg);
+    -o-transform: rotateZ(90deg);
+    transform: rotateZ(90deg);
   }
 }
 
 @-o-keyframes drumstick_right {
-  /* line 28, ../client/styles/_loading.scss */
+  /* line 24, ../client/styles/_loading.scss */
   0%,33% {
-    -webkit-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    -moz-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    -ms-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    -o-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
+    -webkit-transform: rotateZ(255deg);
+    -moz-transform: rotateZ(255deg);
+    -ms-transform: rotateZ(255deg);
+    -o-transform: rotateZ(255deg);
+    transform: rotateZ(255deg);
   }
 
-  /* line 33, ../client/styles/_loading.scss */
+  /* line 28, ../client/styles/_loading.scss */
   67%, 100% {
-    -webkit-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    -moz-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    -ms-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    -o-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
+    -webkit-transform: rotateZ(225deg);
+    -moz-transform: rotateZ(225deg);
+    -ms-transform: rotateZ(225deg);
+    -o-transform: rotateZ(225deg);
+    transform: rotateZ(225deg);
   }
 }
 
 @-ms-keyframes drumstick_right {
-  /* line 28, ../client/styles/_loading.scss */
+  /* line 24, ../client/styles/_loading.scss */
   0%,33% {
-    -webkit-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    -moz-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    -ms-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    -o-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
+    -webkit-transform: rotateZ(255deg);
+    -moz-transform: rotateZ(255deg);
+    -ms-transform: rotateZ(255deg);
+    -o-transform: rotateZ(255deg);
+    transform: rotateZ(255deg);
   }
 
-  /* line 33, ../client/styles/_loading.scss */
+  /* line 28, ../client/styles/_loading.scss */
   67%, 100% {
-    -webkit-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    -moz-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    -ms-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    -o-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
+    -webkit-transform: rotateZ(225deg);
+    -moz-transform: rotateZ(225deg);
+    -ms-transform: rotateZ(225deg);
+    -o-transform: rotateZ(225deg);
+    transform: rotateZ(225deg);
   }
 }
 
 @-moz-keyframes drumstick_right {
-  /* line 28, ../client/styles/_loading.scss */
+  /* line 24, ../client/styles/_loading.scss */
   0%,33% {
-    -webkit-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    -moz-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    -ms-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    -o-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
+    -webkit-transform: rotateZ(255deg);
+    -moz-transform: rotateZ(255deg);
+    -ms-transform: rotateZ(255deg);
+    -o-transform: rotateZ(255deg);
+    transform: rotateZ(255deg);
   }
 
-  /* line 33, ../client/styles/_loading.scss */
+  /* line 28, ../client/styles/_loading.scss */
   67%, 100% {
-    -webkit-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    -moz-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    -ms-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    -o-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
+    -webkit-transform: rotateZ(225deg);
+    -moz-transform: rotateZ(225deg);
+    -ms-transform: rotateZ(225deg);
+    -o-transform: rotateZ(225deg);
+    transform: rotateZ(225deg);
   }
 }
 
 @-webkit-keyframes drumstick_right {
-  /* line 28, ../client/styles/_loading.scss */
+  /* line 24, ../client/styles/_loading.scss */
   0%,33% {
-    -webkit-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    -moz-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    -ms-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    -o-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
+    -webkit-transform: rotateZ(255deg);
+    -moz-transform: rotateZ(255deg);
+    -ms-transform: rotateZ(255deg);
+    -o-transform: rotateZ(255deg);
+    transform: rotateZ(255deg);
   }
 
-  /* line 33, ../client/styles/_loading.scss */
+  /* line 28, ../client/styles/_loading.scss */
   67%, 100% {
-    -webkit-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    -moz-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    -ms-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    -o-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
+    -webkit-transform: rotateZ(225deg);
+    -moz-transform: rotateZ(225deg);
+    -ms-transform: rotateZ(225deg);
+    -o-transform: rotateZ(225deg);
+    transform: rotateZ(225deg);
   }
 }
 
 @keyframes drumstick_right {
-  /* line 28, ../client/styles/_loading.scss */
+  /* line 24, ../client/styles/_loading.scss */
   0%,33% {
-    -webkit-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    -moz-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    -ms-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    -o-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-    transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
+    -webkit-transform: rotateZ(255deg);
+    -moz-transform: rotateZ(255deg);
+    -ms-transform: rotateZ(255deg);
+    -o-transform: rotateZ(255deg);
+    transform: rotateZ(255deg);
   }
 
-  /* line 33, ../client/styles/_loading.scss */
+  /* line 28, ../client/styles/_loading.scss */
   67%, 100% {
-    -webkit-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    -moz-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    -ms-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    -o-transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
-    transform: rotateZ(225deg) translate3d(-1.5em, 0.92em, 0);
+    -webkit-transform: rotateZ(225deg);
+    -moz-transform: rotateZ(225deg);
+    -ms-transform: rotateZ(225deg);
+    -o-transform: rotateZ(225deg);
+    transform: rotateZ(225deg);
+  }
+}
+
+@-o-keyframes drumstick_mask {
+  /* line 34, ../client/styles/_loading.scss */
+  0%,33% {
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+
+  /* line 38, ../client/styles/_loading.scss */
+  67%, 100% {
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+
+@-ms-keyframes drumstick_mask {
+  /* line 34, ../client/styles/_loading.scss */
+  0%,33% {
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+
+  /* line 38, ../client/styles/_loading.scss */
+  67%, 100% {
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+
+@-moz-keyframes drumstick_mask {
+  /* line 34, ../client/styles/_loading.scss */
+  0%,33% {
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+
+  /* line 38, ../client/styles/_loading.scss */
+  67%, 100% {
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+
+@-webkit-keyframes drumstick_mask {
+  /* line 34, ../client/styles/_loading.scss */
+  0%,33% {
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+
+  /* line 38, ../client/styles/_loading.scss */
+  67%, 100% {
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+
+@keyframes drumstick_mask {
+  /* line 34, ../client/styles/_loading.scss */
+  0%,33% {
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+
+  /* line 38, ../client/styles/_loading.scss */
+  67%, 100% {
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    transform: scaleY(1);
   }
 }
 
 @-o-keyframes drum_exit {
-  /* line 40, ../client/styles/_loading.scss */
+  /* line 44, ../client/styles/_loading.scss */
   0% {
     -webkit-transform: scale3d(1, 1, 1);
     -moz-transform: scale3d(1, 1, 1);
@@ -2204,7 +2304,7 @@ footer a {
     opacity: 1;
   }
 
-  /* line 45, ../client/styles/_loading.scss */
+  /* line 49, ../client/styles/_loading.scss */
   100% {
     -webkit-transform: scale3d(0.9, 0.9, 1);
     -moz-transform: scale3d(0.9, 0.9, 1);
@@ -2216,7 +2316,7 @@ footer a {
 }
 
 @-ms-keyframes drum_exit {
-  /* line 40, ../client/styles/_loading.scss */
+  /* line 44, ../client/styles/_loading.scss */
   0% {
     -webkit-transform: scale3d(1, 1, 1);
     -moz-transform: scale3d(1, 1, 1);
@@ -2226,7 +2326,7 @@ footer a {
     opacity: 1;
   }
 
-  /* line 45, ../client/styles/_loading.scss */
+  /* line 49, ../client/styles/_loading.scss */
   100% {
     -webkit-transform: scale3d(0.9, 0.9, 1);
     -moz-transform: scale3d(0.9, 0.9, 1);
@@ -2238,7 +2338,7 @@ footer a {
 }
 
 @-moz-keyframes drum_exit {
-  /* line 40, ../client/styles/_loading.scss */
+  /* line 44, ../client/styles/_loading.scss */
   0% {
     -webkit-transform: scale3d(1, 1, 1);
     -moz-transform: scale3d(1, 1, 1);
@@ -2248,7 +2348,7 @@ footer a {
     opacity: 1;
   }
 
-  /* line 45, ../client/styles/_loading.scss */
+  /* line 49, ../client/styles/_loading.scss */
   100% {
     -webkit-transform: scale3d(0.9, 0.9, 1);
     -moz-transform: scale3d(0.9, 0.9, 1);
@@ -2260,7 +2360,7 @@ footer a {
 }
 
 @-webkit-keyframes drum_exit {
-  /* line 40, ../client/styles/_loading.scss */
+  /* line 44, ../client/styles/_loading.scss */
   0% {
     -webkit-transform: scale3d(1, 1, 1);
     -moz-transform: scale3d(1, 1, 1);
@@ -2270,7 +2370,7 @@ footer a {
     opacity: 1;
   }
 
-  /* line 45, ../client/styles/_loading.scss */
+  /* line 49, ../client/styles/_loading.scss */
   100% {
     -webkit-transform: scale3d(0.9, 0.9, 1);
     -moz-transform: scale3d(0.9, 0.9, 1);
@@ -2282,7 +2382,7 @@ footer a {
 }
 
 @keyframes drum_exit {
-  /* line 40, ../client/styles/_loading.scss */
+  /* line 44, ../client/styles/_loading.scss */
   0% {
     -webkit-transform: scale3d(1, 1, 1);
     -moz-transform: scale3d(1, 1, 1);
@@ -2292,7 +2392,7 @@ footer a {
     opacity: 1;
   }
 
-  /* line 45, ../client/styles/_loading.scss */
+  /* line 49, ../client/styles/_loading.scss */
   100% {
     -webkit-transform: scale3d(0.9, 0.9, 1);
     -moz-transform: scale3d(0.9, 0.9, 1);
@@ -2303,33 +2403,39 @@ footer a {
   }
 }
 
-/* line 51, ../client/styles/_loading.scss */
+/* line 55, ../client/styles/_loading.scss */
 .site_loading {
   margin-top: 35%;
   font-size: 5em;
   position: relative;
   display: inline-block;
 }
-/* line 61, ../client/styles/_loading.scss */
+/* line 65, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick {
-  font-size: .45em;
   position: absolute;
   top: 0;
   left: 0;
-  overflow: hidden;
+  width: 0;
+  height: 0;
 }
-/* line 68, ../client/styles/_loading.scss */
+/* line 73, ../client/styles/_loading.scss */
+.site_loading .icon-drumstick:before {
+  position: absolute;
+  left: -.5em;
+  bottom: -0.25em;
+}
+/* line 79, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick, .site_loading .icon-drumstick:after {
   -o-animation-name: drumstick_middle;
   -ms-animation-name: drumstick_middle;
   -moz-animation-name: drumstick_middle;
   -webkit-animation-name: drumstick_middle;
   animation-name: drumstick_middle;
-  -o-animation-duration: 0.06s;
-  -ms-animation-duration: 0.06s;
-  -moz-animation-duration: 0.06s;
-  -webkit-animation-duration: 0.06s;
-  animation-duration: 0.06s;
+  -o-animation-duration: 0.15s;
+  -ms-animation-duration: 0.15s;
+  -moz-animation-duration: 0.15s;
+  -webkit-animation-duration: 0.15s;
+  animation-duration: 0.15s;
   -o-animation-timing-function: ease-in;
   -ms-animation-timing-function: ease-in;
   -moz-animation-timing-function: ease-in;
@@ -2351,109 +2457,88 @@ footer a {
   -webkit-animation-direction: alternate;
   animation-direction: alternate;
 }
-/* line 72, ../client/styles/_loading.scss */
+/* line 83, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick:after {
   content: '';
   position: absolute;
-  border-radius: 100%;
-  width: 1em;
-  height: 1em;
+  width: .051em;
   background: #eee;
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -o-animation-name: drumstick_mask;
+  -ms-animation-name: drumstick_mask;
+  -moz-animation-name: drumstick_mask;
+  -webkit-animation-name: drumstick_mask;
+  animation-name: drumstick_mask;
+  -o-animation-timing-function: cubic-bezier(0.8, 0.2, 0.8, 0.2);
+  -ms-animation-timing-function: cubic-bezier(0.8, 0.2, 0.8, 0.2);
+  -moz-animation-timing-function: cubic-bezier(0.8, 0.2, 0.8, 0.2);
+  -webkit-animation-timing-function: cubic-bezier(0.8, 0.2, 0.8, 0.2);
+  animation-timing-function: cubic-bezier(0.8, 0.2, 0.8, 0.2);
 }
-/* line 81, ../client/styles/_loading.scss */
+/* line 93, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.middle {
-  -webkit-transform-origin: 0.333em 1em;
-  -moz-transform-origin: 0.333em 1em;
-  -ms-transform-origin: 0.333em 1em;
-  -o-transform-origin: 0.333em 1em;
-  transform-origin: 0.333em 1em;
-  top: -.6667em;
-  left: -.7778em;
+  top: 0.14em;
+  left: 0.35em;
 }
-/* line 87, ../client/styles/_loading.scss */
+/* line 97, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.middle:after {
-  top: -0.4em;
-  left: -1.2em;
-  height: .5em;
-  -o-animation-timing-function: cubic-bezier(0.9, 0.1, 0.9, 0.1);
-  -ms-animation-timing-function: cubic-bezier(0.9, 0.1, 0.9, 0.1);
-  -moz-animation-timing-function: cubic-bezier(0.9, 0.1, 0.9, 0.1);
-  -webkit-animation-timing-function: cubic-bezier(0.9, 0.1, 0.9, 0.1);
-  animation-timing-function: cubic-bezier(0.9, 0.1, 0.9, 0.1);
+  height: 0.15em;
+  top: -0.46em;
+  left: calc(50% - .025em);
 }
-/* line 95, ../client/styles/_loading.scss */
+/* line 104, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.left {
-  -webkit-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-  -moz-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-  -ms-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-  -o-transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-  transform: rotateZ(45deg) translate3d(0.6em, 0.1em, 0);
-}
-/* line 99, ../client/styles/_loading.scss */
-.site_loading .icon-drumstick.left, .site_loading .icon-drumstick.left:after {
-  -webkit-transform-origin: 0;
-  -moz-transform-origin: 0;
-  -ms-transform-origin: 0;
-  -o-transform-origin: 0;
-  transform-origin: 0;
+  top: 0.68em;
+  left: -0.01em;
   -o-animation-name: drumstick_left;
   -ms-animation-name: drumstick_left;
   -moz-animation-name: drumstick_left;
   -webkit-animation-name: drumstick_left;
   animation-name: drumstick_left;
-  -o-animation-delay: 0.03s;
-  -ms-animation-delay: 0.03s;
-  -moz-animation-delay: 0.03s;
-  -webkit-animation-delay: 0.03s;
-  animation-delay: 0.03s;
 }
-/* line 105, ../client/styles/_loading.scss */
+/* line 110, ../client/styles/_loading.scss */
+.site_loading .icon-drumstick.left, .site_loading .icon-drumstick.left:after {
+  -o-animation-delay: -0.075s;
+  -ms-animation-delay: -0.075s;
+  -moz-animation-delay: -0.075s;
+  -webkit-animation-delay: -0.075s;
+  animation-delay: -0.075s;
+}
+/* line 114, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.left:after {
-  top: -1.7778em;
-  left: -.5em;
-  -o-animation-timing-function: cubic-bezier(0.6, 0, 0.6, 0);
-  -ms-animation-timing-function: cubic-bezier(0.6, 0, 0.6, 0);
-  -moz-animation-timing-function: cubic-bezier(0.6, 0, 0.6, 0);
-  -webkit-animation-timing-function: cubic-bezier(0.6, 0, 0.6, 0);
-  animation-timing-function: cubic-bezier(0.6, 0, 0.6, 0);
+  height: 0.225em;
+  top: -0.46em;
+  left: calc(50% - .03em);
 }
-/* line 112, ../client/styles/_loading.scss */
+/* line 121, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.right {
-  -webkit-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-  -moz-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-  -ms-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-  -o-transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-  transform: rotateZ(250deg) translate3d(-0.6em, 1.4em, 0);
-}
-/* line 116, ../client/styles/_loading.scss */
-.site_loading .icon-drumstick.right, .site_loading .icon-drumstick.right:after {
+  top: 0.25em;
+  left: 1em;
   -o-animation-name: drumstick_right;
   -ms-animation-name: drumstick_right;
   -moz-animation-name: drumstick_right;
   -webkit-animation-name: drumstick_right;
   animation-name: drumstick_right;
-  -o-animation-delay: 0.06s;
-  -ms-animation-delay: 0.06s;
-  -moz-animation-delay: 0.06s;
-  -webkit-animation-delay: 0.06s;
-  animation-delay: 0.06s;
 }
-/* line 121, ../client/styles/_loading.scss */
+/* line 127, ../client/styles/_loading.scss */
+.site_loading .icon-drumstick.right, .site_loading .icon-drumstick.right:after {
+  -o-animation-delay: -0.15s;
+  -ms-animation-delay: -0.15s;
+  -moz-animation-delay: -0.15s;
+  -webkit-animation-delay: -0.15s;
+  animation-delay: -0.15s;
+}
+/* line 131, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.right:after {
-  top: -0.5em;
-  left: -1.4em;
-  -webkit-transform-origin: 0;
-  -moz-transform-origin: 0;
-  -ms-transform-origin: 0;
-  -o-transform-origin: 0;
-  transform-origin: 0;
-  -o-animation-timing-function: cubic-bezier(0.4, 0, 0.4, 0);
-  -ms-animation-timing-function: cubic-bezier(0.4, 0, 0.4, 0);
-  -moz-animation-timing-function: cubic-bezier(0.4, 0, 0.4, 0);
-  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.4, 0);
-  animation-timing-function: cubic-bezier(0.4, 0, 0.4, 0);
+  height: 0.2em;
+  top: -0.47em;
+  left: calc(50% - .025em);
 }
-/* line 130, ../client/styles/_loading.scss */
+/* line 139, ../client/styles/_loading.scss */
 .site_loading.loaded {
   -o-animation-name: drum_exit;
   -ms-animation-name: drum_exit;
@@ -2491,7 +2576,7 @@ footer a {
   -o-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
-/* line 137, ../client/styles/_loading.scss */
+/* line 146, ../client/styles/_loading.scss */
 .site_loading.loaded .icon-drumstick {
   display: none;
 }

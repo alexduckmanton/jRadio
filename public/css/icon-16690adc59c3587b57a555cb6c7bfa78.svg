@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg xmlns="http://www.w3.org/2000/svg">
 <metadata>
-Created by FontForge 20120731 at Thu May 15 21:20:02 2014
+Created by FontForge 20120731 at Thu May 15 21:24:36 2014
  By Alex Duckmanton
 Created by Alex Duckmanton with FontForge 2.0 (http://fontforge.sf.net)
 </metadata>
@@ -16,7 +16,7 @@ Created by Alex Duckmanton with FontForge 2.0 (http://fontforge.sf.net)
     panose-1="2 0 6 3 0 0 0 0 0 0"
     ascent="448"
     descent="-64"
-    bbox="0 -64.125 512 451.286"
+    bbox="0 -64 512 451.286"
     underline-thickness="25"
     underline-position="-52"
     unicode-range="U+E001-E00A"
@@ -43,9 +43,8 @@ M0 448v-512v512zM512 448v-512v512z" />
     <glyph glyph-name="uniE003" unicode="&#xe003;" 
 d="M464 202v0v2h-1h-1v0h-1h-1v-1l-1 -1v0l-37 -180q0 -3 -2 -3q-1 0 -2 1l-95 94h-3q-1 0 -1 -1l-36 -129q0 -2 -2 -2t-2 1l-123 138v0v0l-1 1h-1h-1v-1l-1 -1v-1v0q56 -130 58 -135q12 -29 53 -41.5t103 1.5q59 16 89.5 50t26.5 62l-18 146v0zM431 291q-11 9 -34 17
 q-55 18 -128 -2q-16 -4 -23 -7l-14 -6q-44 -18 -71 -44.5t-28 -53.5q0 -5 1 -10l2 -7q11 -32 62.5 -43.5t114.5 5.5q65 17 104.5 54t30.5 71q-5 15 -17 26v0zM0 448v-512v512zM512 448v-512v512z" />
-    <glyph glyph-name="uniE004" unicode="&#xe004;" horiz-adv-x="55" 
-d="M49 -57q-1 -2 -5 -4q-11 -5 -22 -2q-11 4 -13 16.5t-1 75.5q1 21 2 80t1 74q0 22 0.5 76.5t1.5 71.5q1 61 -6 68q-6 7 -6.5 21.5t5.5 20.5q5 5 17 7q19 2 28.5 -17t-3.5 -32q-8 -8 -7 -38q0 -9 1 -31t1.5 -46t1.5 -51q1 -11 2 -39.5t1 -38.5q0 -8 1 -23t1.5 -26t0.5 -17
-q0 -22 2 -60q2 -78 -4 -86z" />
+    <glyph glyph-name="uniE004" unicode="&#xe004;" 
+d="M249 279l-4 -188q0 -7 5 -10q10 -6 16 4q1 2 1 5l-5 189q7 3 7 12q0 13 -13 13q-5 0 -9.5 -4t-4.5 -9q0 -9 7 -12v0zM0 448v-512v512zM512 448v-512v512z" />
     <glyph glyph-name="uniE005" unicode="&#xe005;" horiz-adv-x="469" 
 d="M0 224q0 11 11 11q10 0 10 -11t-10 -11q-11 0 -11 11zM0 309q0 11 11 11q10 0 10 -11q0 -10 -10 -10q-11 0 -11 10zM85 395q0 10 11 10t11 -10q0 -11 -11 -11t-11 11zM128 416q0 11 11 11q10 0 10 -11t-10 -11q-11 0 -11 11zM128 224q0 11 11 11q10 0 10 -11t-10 -11
 q-11 0 -11 11zM213 437q0 11 11 11t11 -11q0 -10 -11 -10t-11 10zM213 224q0 11 11 11t11 -11t-11 -11t-11 11zM213 331q0 10 11 10t11 -10q0 -11 -11 -11t-11 11zM256 224q0 11 11 11q10 0 10 -11t-10 -11q-11 0 -11 11zM341 224q0 11 11 11t11 -11t-11 -11t-11 11z

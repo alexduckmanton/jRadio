@@ -1,38 +1,42 @@
-$loading_speed: $default-transition-duration / 5;
+$loading_speed: $default-transition-duration / 2;
 
 @include keyframes(drumstick_middle) {
     0%,33% {
-    // 0% {
-        @include transform3d( rotateZ(115deg) translate3d(-0.2em, -1.2em, 0) );
+        @include transform3d( rotateZ(115deg) );
     }
 
     67%, 100% {
-    // 100% {
-        @include transform3d( rotateZ(160deg) translate3d(-.8333em, -.55em, 0) );
+        @include transform3d( rotateZ(160deg) );
     }
 }
 
 @include keyframes(drumstick_left) {
     0%,33% {
-    // 0% {
-        @include transform3d( rotateZ(45deg) translate3d(.6em, .1em, 0) );
+        @include transform3d( rotateZ(45deg) );
     }
 
     67%, 100% {
-    // 100% {
-        @include transform3d( rotateZ(90deg) translate3d(.85em, -.55em, 0) );
+        @include transform3d( rotateZ(90deg) );
     }
 }
 
 @include keyframes(drumstick_right) {
     0%,33% {
-    // 0% {
-        @include transform3d( rotateZ(250deg) translate3d(-0.6em, 1.4em, 0) );
+        @include transform3d( rotateZ(255deg) );
     }
 
     67%, 100% {
-    // 100% {
-        @include transform3d( rotateZ(225deg) translate3d(-1.5em, .92em, 0) );
+        @include transform3d( rotateZ(225deg) );
+    }
+}
+
+@include keyframes(drumstick_mask) {
+    0%,33% {
+        @include scaleY(0);
+    }
+
+    67%, 100% {
+        @include scaleY(1);
     }
 }
 
@@ -59,11 +63,18 @@ $loading_speed: $default-transition-duration / 5;
     }
 
     .icon-drumstick {
-        font-size: .45em;
         position: absolute;
         top: 0;
         left: 0;
-        overflow: hidden;
+
+        width: 0;
+        height: 0;
+
+        &:before {
+            position: absolute;
+            left: -.5em;
+            bottom: -0.25em;
+        }
 
         &, &:after {
             @include animation(drumstick_middle, $count: infinite, $direction: alternate, $timing: ease-in, $duration: $loading_speed);
@@ -72,57 +83,55 @@ $loading_speed: $default-transition-duration / 5;
         &:after {
             content: '';
             position: absolute;
-            border-radius: 100%;
-            width: 1em;
-            height: 1em;
+            width: .051em;
             background: #eee;
+            @include apply-origin(0 0, false);
+            @include animationName(drumstick_mask);
+            @include animationTimingFunction( cubic-bezier(.8, .2, .8, .2) );
         }
 
         &.middle {
-
-            @include apply-origin(.333em 1em, true);
-            top: -.6667em;
-            left: -.7778em;
+            top: 0.14em;
+            left: 0.35em;
 
             &:after {
-                top: -0.4em;
-                left: -1.2em;
-                height: .5em;
-                @include animationTimingFunction(cubic-bezier(0.9, 0.1, 0.9, 0.1));
+                height: 0.15em;
+                top: -0.46em;
+                left: calc(50% - .025em);
             }
         }
 
         &.left {
-            //initial position
-            @include transform3d( rotateZ(45deg) translate3d(.6em, .1em, 0) );
+            top: 0.68em;
+            left: -0.01em;
+
+            @include animationName(drumstick_left);
 
             &, &:after {
-                @include apply-origin(0, true);
-                @include animationName(drumstick_left);
-                @include animationDelay($loading_speed/2);
+                @include animationDelay(-$loading_speed/2);
             }
 
             &:after {
-                top: -1.7778em;
-                left: -.5em;
-                @include animationTimingFunction(cubic-bezier(0.6, 0, 0.6, 0));
+                height: 0.225em;
+                top: -0.46em;
+                left: calc(50% - .03em);
             }
         }
 
         &.right {
-            // initial position
-            @include transform3d( rotateZ(250deg) translate3d(-0.6em, 1.4em, 0) );
+            top: 0.25em;
+            left: 1em;
+
+            @include animationName(drumstick_right);
 
             &, &:after {
-                @include animationName(drumstick_right);
-                @include animationDelay($loading_speed);
+                @include animationDelay(-$loading_speed);
             }
 
             &:after {
-                top: -0.5em;
-                left: -1.4em;
-                @include apply-origin(0, true);
-                @include animationTimingFunction(cubic-bezier(0.4, 0, 0.4, 0));
+                height: 0.2em;
+                top: -0.47em;
+                left: calc(50% - .025em);
             }
         }
     }
