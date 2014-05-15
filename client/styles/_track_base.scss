@@ -46,10 +46,13 @@
 
         // icon
         &:before {
+            opacity: 1;
             font-size: 1.25em;
             line-height: 1.75em;
             position: relative;
             left: calc(1em / 10);
+
+            @include single-transition(opacity);
         }
     }
 }
@@ -58,5 +61,11 @@
     a:before {
         @extend .icon-pause;
         left: 0;
+    }
+}
+
+.loading .track_info {
+    a:before {
+        opacity: 0;
     }
 }

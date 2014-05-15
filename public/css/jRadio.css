@@ -742,15 +742,25 @@ footer a {
 }
 /* line 48, ../client/styles/_track_base.scss */
 .track_info .play:before {
+  opacity: 1;
   font-size: 1.25em;
   line-height: 1.75em;
   position: relative;
   left: calc(1em / 10);
+  -webkit-transition: opacity 0.3s;
+  -moz-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
-/* line 58, ../client/styles/_track_base.scss */
+/* line 61, ../client/styles/_track_base.scss */
 .playing .track_info a:before {
   left: 0;
+}
+
+/* line 68, ../client/styles/_track_base.scss */
+.loading .track_info a:before {
+  opacity: 0;
 }
 
 @-o-keyframes track_intro {
@@ -1627,7 +1637,107 @@ footer a {
   margin-bottom: 0.2em;
 }
 
-/* line 1, ../client/styles/_player.scss */
+@-o-keyframes spin {
+  /* line 2, ../client/styles/_player.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 6, ../client/styles/_player.scss */
+  100% {
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@-ms-keyframes spin {
+  /* line 2, ../client/styles/_player.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 6, ../client/styles/_player.scss */
+  100% {
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@-moz-keyframes spin {
+  /* line 2, ../client/styles/_player.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 6, ../client/styles/_player.scss */
+  100% {
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  /* line 2, ../client/styles/_player.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 6, ../client/styles/_player.scss */
+  100% {
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes spin {
+  /* line 2, ../client/styles/_player.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 6, ../client/styles/_player.scss */
+  100% {
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+/* line 11, ../client/styles/_player.scss */
 .player {
   background: top left no-repeat;
   background-size: cover;
@@ -1645,17 +1755,29 @@ footer a {
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-/* line 13, ../client/styles/_player.scss */
+/* line 23, ../client/styles/_player.scss */
+.player a {
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+/* line 28, ../client/styles/_player.scss */
 .player .text {
   padding-top: .25em;
 }
-/* line 17, ../client/styles/_player.scss */
+/* line 32, ../client/styles/_player.scss */
 .player h3, .player h4 {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-/* line 23, ../client/styles/_player.scss */
+/* line 38, ../client/styles/_player.scss */
 .player.playing {
   -webkit-transform: translateY(0);
   -moz-transform: translateY(0);
@@ -1663,8 +1785,8 @@ footer a {
   -o-transform: translateY(0);
   transform: translateY(0);
 }
-/* line 26, ../client/styles/_player.scss */
-.player.playing a, .player.playing h3, .player.playing h4 {
+/* line 41, ../client/styles/_player.scss */
+.player.playing h3, .player.playing h4 {
   -o-animation-name: jiggle_down;
   -ms-animation-name: jiggle_down;
   -moz-animation-name: jiggle_down;
@@ -1696,7 +1818,7 @@ footer a {
   -webkit-animation-direction: normal;
   animation-direction: normal;
 }
-/* line 30, ../client/styles/_player.scss */
+/* line 45, ../client/styles/_player.scss */
 .player.playing h3 {
   -o-animation-duration: 0.27s;
   -ms-animation-duration: 0.27s;
@@ -1704,13 +1826,47 @@ footer a {
   -webkit-animation-duration: 0.27s;
   animation-duration: 0.27s;
 }
-/* line 31, ../client/styles/_player.scss */
+/* line 46, ../client/styles/_player.scss */
 .player.playing h4 {
   -o-animation-duration: 0.24s;
   -ms-animation-duration: 0.24s;
   -moz-animation-duration: 0.24s;
   -webkit-animation-duration: 0.24s;
   animation-duration: 0.24s;
+}
+/* line 50, ../client/styles/_player.scss */
+.player.loading a {
+  border-style: dotted;
+  -o-animation-name: spin;
+  -ms-animation-name: spin;
+  -moz-animation-name: spin;
+  -webkit-animation-name: spin;
+  animation-name: spin;
+  -o-animation-duration: 0.9s;
+  -ms-animation-duration: 0.9s;
+  -moz-animation-duration: 0.9s;
+  -webkit-animation-duration: 0.9s;
+  animation-duration: 0.9s;
+  -o-animation-timing-function: linear;
+  -ms-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -o-animation-delay: 0;
+  -ms-animation-delay: 0;
+  -moz-animation-delay: 0;
+  -webkit-animation-delay: 0;
+  animation-delay: 0;
+  -o-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -o-animation-direction: normal;
+  -ms-animation-direction: normal;
+  -moz-animation-direction: normal;
+  -webkit-animation-direction: normal;
+  animation-direction: normal;
 }
 
 @-o-keyframes drumstick_middle {

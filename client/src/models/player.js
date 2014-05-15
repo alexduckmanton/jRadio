@@ -13,12 +13,18 @@ module.exports = PlayerModel = Backbone.Model.extend({
         this.listenTo(App.core.vent, 'track:play', this.play);
     },
 
-    change_track: function(track) {
+    change_track: function(new_track) {
+        var track = this.get('track');
+
+        // add event listener to remove loading class
+        $(track).one('playing', function() { App.core.vent.trigger('track:loaded'); });
+
         // don't update if it's the same track
-        if ( this.get('track').getAttribute('src') === track.src ) return;
+        if ( track.getAttribute('src') === new_track.src ) return;
 
         // mp3 source for the track
-        this.get('track').setAttribute('src', track.src);
+        track.setAttribute('src', new_track.src);
+
     },
 
     update_info: function(track) {
