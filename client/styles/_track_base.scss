@@ -49,9 +49,9 @@
         &:before {
             opacity: 1;
             font-size: .5em;
-            position: relative;
-            left: calc(50% - .8em);
-            top: -.45em;
+            position: absolute;
+            left: calc(50% - .45em);
+            bottom: calc(50% - .5em);
 
             @include single-transition(opacity);
         }
@@ -61,7 +61,7 @@
 .playing .track_info {
     a:before {
         @extend .icon-pause;
-        left: 0;
+        left: calc(50% - .5em);
     }
 }
 

@@ -4,13 +4,17 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="120px"
 	 height="120px" viewBox="0 0 120 120" enable-background="new 0 0 120 120" xml:space="preserve">
 <g id="Layer_1">
-	<circle cx="23.395" cy="110" r="10"/>
-	<circle cx="23.395" cy="10" r="10"/>
-	<rect x="13" y="10" width="20" height="100"/>
-	<rect x="56.696" y="35" transform="matrix(-0.5 -0.866 0.866 -0.5 26.4315 185.2596)" width="20.001" height="100"/>
-	<circle cx="109.999" cy="60" r="10"/>
-	<rect x="56.697" y="-15" transform="matrix(-0.5 0.866 -0.866 -0.5 130.356 -5.2612)" width="20" height="100.001"/>
-	<polygon points="28,20 28,100 98,60 	"/>
+	<g>
+		<circle cx="23.395" cy="110" r="10"/>
+		<circle cx="23.395" cy="10" r="10"/>
+		<rect x="13.395" y="10" width="20" height="100"/>
+		<rect x="56.696" y="35" transform="matrix(-0.5 -0.866 0.866 -0.5 26.4315 185.2596)" width="20.001" height="100"/>
+		<circle cx="109.999" cy="60" r="10"/>
+		<rect x="56.697" y="-15" transform="matrix(-0.5 0.866 -0.866 -0.5 130.356 -5.2612)" width="20" height="100.001"/>
+		<polygon points="28,20 28,100 98,60 		"/>
+	</g>
+	<line fill="none" x1="0" y1="0" x2="0" y2="120"/>
+	<line fill="none" x1="120" y1="0" x2="120" y2="120"/>
 </g>
 <g id="Layer_2">
 </g>
