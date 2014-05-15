@@ -714,7 +714,7 @@ footer a {
 
 /* line 5, ../client/styles/_track_base.scss */
 .track_info {
-  padding: 0 .5em;
+  padding: .5em;
   position: relative;
   width: 100%;
   text-align: left;
@@ -723,27 +723,23 @@ footer a {
   box-sizing: border-box;
 }
 /* line 13, ../client/styles/_track_base.scss */
-.track_info .text {
-  padding: .25em 0;
-}
-/* line 17, ../client/styles/_track_base.scss */
 .track_info .play + .text {
   padding-left: 3em;
 }
-/* line 21, ../client/styles/_track_base.scss */
+/* line 17, ../client/styles/_track_base.scss */
 .track_info h3, .track_info h4 {
   margin: 0;
   font-weight: normal;
 }
-/* line 26, ../client/styles/_track_base.scss */
+/* line 22, ../client/styles/_track_base.scss */
 .track_info h3 {
   line-height: 1.15em;
 }
-/* line 30, ../client/styles/_track_base.scss */
+/* line 26, ../client/styles/_track_base.scss */
 .track_info h4 {
   line-height: 18px;
 }
-/* line 34, ../client/styles/_track_base.scss */
+/* line 30, ../client/styles/_track_base.scss */
 .track_info .play {
   border: 0.05em solid;
   border-radius: 100%;
@@ -762,25 +758,25 @@ footer a {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 49, ../client/styles/_track_base.scss */
+/* line 45, ../client/styles/_track_base.scss */
 .track_info .play:before {
   opacity: 1;
   font-size: .5em;
   position: absolute;
   left: calc(50% - .45em);
-  bottom: calc(50% - .5em);
+  top: 21%;
   -webkit-transition: opacity 0.3s;
   -moz-transition: opacity 0.3s;
   -o-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
 
-/* line 62, ../client/styles/_track_base.scss */
+/* line 58, ../client/styles/_track_base.scss */
 .playing .track_info a:before {
   left: calc(50% - .5em);
 }
 
-/* line 69, ../client/styles/_track_base.scss */
+/* line 65, ../client/styles/_track_base.scss */
 .loading .track_info a:before {
   opacity: 0;
 }
@@ -1641,14 +1637,13 @@ footer a {
 }
 /* line 15, ../client/styles/_track_played.scss */
 .played .track {
-  padding: .25em 0;
   border-bottom: 1px solid;
 }
-/* line 19, ../client/styles/_track_played.scss */
+/* line 18, ../client/styles/_track_played.scss */
 .played .track:last-child {
   border: none;
 }
-/* line 24, ../client/styles/_track_played.scss */
+/* line 23, ../client/styles/_track_played.scss */
 .played .time {
   position: absolute;
   width: 3em;
@@ -1658,7 +1653,7 @@ footer a {
   top: calc(50% - 1.5em);
   right: .5em;
 }
-/* line 33, ../client/styles/_track_played.scss */
+/* line 32, ../client/styles/_track_played.scss */
 .played .time strong {
   display: block;
   font-size: 2.5em;
@@ -1784,6 +1779,11 @@ footer a {
   transition: all 0.3s;
 }
 /* line 23, ../client/styles/_player.scss */
+.player .track_info {
+  padding-top: .333em;
+  height: 3em;
+}
+/* line 28, ../client/styles/_player.scss */
 .player a {
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -1795,17 +1795,13 @@ footer a {
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-/* line 28, ../client/styles/_player.scss */
-.player .text {
-  padding-top: .25em;
-}
-/* line 32, ../client/styles/_player.scss */
+/* line 33, ../client/styles/_player.scss */
 .player h3, .player h4 {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-/* line 38, ../client/styles/_player.scss */
+/* line 39, ../client/styles/_player.scss */
 .player.playing {
   -webkit-transform: translateY(0);
   -moz-transform: translateY(0);
@@ -1813,7 +1809,7 @@ footer a {
   -o-transform: translateY(0);
   transform: translateY(0);
 }
-/* line 41, ../client/styles/_player.scss */
+/* line 42, ../client/styles/_player.scss */
 .player.playing h3, .player.playing h4 {
   -o-animation-name: jiggle_down;
   -ms-animation-name: jiggle_down;
@@ -1846,7 +1842,7 @@ footer a {
   -webkit-animation-direction: normal;
   animation-direction: normal;
 }
-/* line 45, ../client/styles/_player.scss */
+/* line 46, ../client/styles/_player.scss */
 .player.playing h3 {
   -o-animation-duration: 0.27s;
   -ms-animation-duration: 0.27s;
@@ -1854,7 +1850,7 @@ footer a {
   -webkit-animation-duration: 0.27s;
   animation-duration: 0.27s;
 }
-/* line 46, ../client/styles/_player.scss */
+/* line 47, ../client/styles/_player.scss */
 .player.playing h4 {
   -o-animation-duration: 0.24s;
   -ms-animation-duration: 0.24s;
@@ -1862,7 +1858,7 @@ footer a {
   -webkit-animation-duration: 0.24s;
   animation-duration: 0.24s;
 }
-/* line 50, ../client/styles/_player.scss */
+/* line 51, ../client/styles/_player.scss */
 .player.loading a {
   border-style: dotted;
   -o-animation-name: spin;

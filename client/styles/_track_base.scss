@@ -3,16 +3,12 @@
 }
 
 .track_info {
-    padding: 0 .5em;
+    padding: .5em;
     position: relative;
     width: 100%;
     text-align: left;
 
     @include box-sizing(border-box);
-
-    .text {
-        padding: .25em 0;
-    }
 
     .play + .text {
         padding-left: 3em;
@@ -51,7 +47,7 @@
             font-size: .5em;
             position: absolute;
             left: calc(50% - .45em);
-            bottom: calc(50% - .5em);
+            top: 21%;
 
             @include single-transition(opacity);
         }

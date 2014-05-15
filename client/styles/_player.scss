@@ -20,13 +20,14 @@
     @include translateY(-$header_height);
     @include single-transition(all);
 
+    .track_info {
+        padding-top: .333em;
+        height: $header_height;
+    }
+
     a {
         @include rotate(0deg);
         @include single-transition(all);
-    }
-
-    .text {
-        padding-top: .25em;
     }
 
     h3, h4 {
