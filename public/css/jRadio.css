@@ -1800,8 +1800,17 @@ footer a {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  -webkit-transform: translateY(-3em);
+  -moz-transform: translateY(-3em);
+  -ms-transform: translateY(-3em);
+  -o-transform: translateY(-3em);
+  transform: translateY(-3em);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
-/* line 39, ../client/styles/_player.scss */
+/* line 42, ../client/styles/_player.scss */
 .player.playing {
   -webkit-transform: translateY(0);
   -moz-transform: translateY(0);
@@ -1809,56 +1818,29 @@ footer a {
   -o-transform: translateY(0);
   transform: translateY(0);
 }
-/* line 42, ../client/styles/_player.scss */
+/* line 45, ../client/styles/_player.scss */
 .player.playing h3, .player.playing h4 {
-  -o-animation-name: jiggle_down;
-  -ms-animation-name: jiggle_down;
-  -moz-animation-name: jiggle_down;
-  -webkit-animation-name: jiggle_down;
-  animation-name: jiggle_down;
-  -o-animation-duration: 0.3s;
-  -ms-animation-duration: 0.3s;
-  -moz-animation-duration: 0.3s;
-  -webkit-animation-duration: 0.3s;
-  animation-duration: 0.3s;
-  -o-animation-timing-function: false;
-  -ms-animation-timing-function: false;
-  -moz-animation-timing-function: false;
-  -webkit-animation-timing-function: false;
-  animation-timing-function: false;
-  -o-animation-delay: 0.15s;
-  -ms-animation-delay: 0.15s;
-  -moz-animation-delay: 0.15s;
-  -webkit-animation-delay: 0.15s;
-  animation-delay: 0.15s;
-  -o-animation-iteration-count: 1;
-  -ms-animation-iteration-count: 1;
-  -moz-animation-iteration-count: 1;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  -o-animation-direction: normal;
-  -ms-animation-direction: normal;
-  -moz-animation-direction: normal;
-  -webkit-animation-direction: normal;
-  animation-direction: normal;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
 }
-/* line 46, ../client/styles/_player.scss */
+/* line 49, ../client/styles/_player.scss */
 .player.playing h3 {
-  -o-animation-duration: 0.27s;
-  -ms-animation-duration: 0.27s;
-  -moz-animation-duration: 0.27s;
-  -webkit-animation-duration: 0.27s;
-  animation-duration: 0.27s;
+  -webkit-transition-duration: 0.36s;
+  -moz-transition-duration: 0.36s;
+  -o-transition-duration: 0.36s;
+  transition-duration: 0.36s;
 }
-/* line 47, ../client/styles/_player.scss */
+/* line 50, ../client/styles/_player.scss */
 .player.playing h4 {
-  -o-animation-duration: 0.24s;
-  -ms-animation-duration: 0.24s;
-  -moz-animation-duration: 0.24s;
-  -webkit-animation-duration: 0.24s;
-  animation-duration: 0.24s;
+  -webkit-transition-duration: 0.42s;
+  -moz-transition-duration: 0.42s;
+  -o-transition-duration: 0.42s;
+  transition-duration: 0.42s;
 }
-/* line 51, ../client/styles/_player.scss */
+/* line 54, ../client/styles/_player.scss */
 .player.loading a {
   border-style: dotted;
   -o-animation-name: spin;

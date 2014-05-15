@@ -34,17 +34,20 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+
+        @include translateY(-$header_height);
+        @include single-transition(all);
     }
 
     &.playing {
         @include translateY(0);
 
         h3, h4 {
-            @include jiggle(down);
+            @include translateY(0);
         }
 
-        h3 { @include animationDuration($default-transition-duration * .9) }
-        h4 { @include animationDuration($default-transition-duration * .8) }
+        h3 { @include transition-duration($default-transition-duration * 1.2) }
+        h4 { @include transition-duration($default-transition-duration * 1.4) }
     }
 
     &.loading {
