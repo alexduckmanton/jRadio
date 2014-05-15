@@ -32,25 +32,26 @@
     }
 
     .play {
-        border: 0.15em solid;
+        border: 0.05em solid;
         border-radius: 100%;
-
         position: absolute;
-        top: calc(50% - 2.55em/2);
-        left: .5em;
-        width: 2.25em;
-        height: 2.25em;
+        top: calc(50% - .5em);
+        left: 0.2em;
+        width: 1em;
+        height: 1em;
         text-align: center;
+        font-size: 2.5em;
 
         @include single-transition(background, $duration: $default-transition-duration/2);
+        @include box-sizing(border-box);
 
         // icon
         &:before {
             opacity: 1;
-            font-size: 1.25em;
-            line-height: 1.75em;
+            font-size: .5em;
             position: relative;
-            left: calc(1em / 10);
+            left: calc(50% - .8em);
+            top: -.45em;
 
             @include single-transition(opacity);
         }

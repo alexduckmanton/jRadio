@@ -4,6 +4,10 @@
         width: 66.6667%;
         float: left;
         @include box-sizing(border-box);
+
+        .track:not(.featured) .play {
+            top: -2.5em;
+        }
     }
 
 }
