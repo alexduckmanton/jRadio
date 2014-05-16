@@ -1,13 +1,16 @@
 @include small {
 
     .played {
+        font-size: .75em;
         position: absolute;
-        top: $header_height + 1em;
+        top: inherit;
         left: 66.6667%;
+        top: inherit;
+        bottom: -80%;
         background: none;
         width: calc(33.333% - .5em);
+        height: 100%;
         overflow: inherit;
-        height: inherit;
 
         @include flex();
         @include flex-direction(column-reverse);

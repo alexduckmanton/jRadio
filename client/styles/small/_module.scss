@@ -7,3 +7,9 @@
 // @import 'player';
 // @import 'loading';
 // @import 'clock';
+
+@include small {
+    html {
+        font-family: 'Open Sans', sans-serif;
+    }
+}

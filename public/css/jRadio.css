@@ -729,7 +729,7 @@ footer a {
 /* line 17, ../client/styles/_track_base.scss */
 .track_info h3, .track_info h4 {
   margin: 0;
-  font-weight: normal;
+  font-weight: 300;
 }
 /* line 22, ../client/styles/_track_base.scss */
 .track_info h3 {
@@ -1662,6 +1662,7 @@ footer a {
   display: block;
   font-size: 2.5em;
   margin-bottom: 0.2em;
+  font-weight: 300;
 }
 
 @-o-keyframes spin {
@@ -2970,13 +2971,16 @@ nav a {
 @media screen and (min-width: 700px) {
   /* line 3, ../client/styles/small/_track_played.scss */
   .played {
+    font-size: .75em;
     position: absolute;
-    top: 8.75em;
+    top: inherit;
     left: 66.6667%;
+    top: inherit;
+    bottom: -80%;
     background: none;
     width: calc(33.333% - .5em);
+    height: 100%;
     overflow: inherit;
-    height: inherit;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -2995,23 +2999,29 @@ nav a {
     -webkit-justify-content: flex-end;
     justify-content: flex-end;
   }
-  /* line 16, ../client/styles/small/_track_played.scss */
+  /* line 19, ../client/styles/small/_track_played.scss */
   .played .track {
     padding-top: .5em;
     background: none;
     border: none;
   }
-  /* line 21, ../client/styles/small/_track_played.scss */
+  /* line 24, ../client/styles/small/_track_played.scss */
   .played .track h3 {
     color: #666;
   }
-  /* line 25, ../client/styles/small/_track_played.scss */
+  /* line 28, ../client/styles/small/_track_played.scss */
   .played .track h4 {
     color: #aaa;
   }
-  /* line 29, ../client/styles/small/_track_played.scss */
+  /* line 32, ../client/styles/small/_track_played.scss */
   .played .track .time {
     color: #ccc;
+  }
+}
+@media screen and (min-width: 700px) {
+  /* line 12, ../client/styles/small/_module.scss */
+  html {
+    font-family: 'Open Sans', sans-serif;
   }
 }
 /* line 40, ../client/styles/main.scss */
