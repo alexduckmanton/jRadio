@@ -2880,9 +2880,10 @@ nav a {
 }
 
 @media screen and (min-width: 700px) {
-  /* line 3, ../client/styles/small/_site.scss */
+  /* line 5, ../client/styles/small/_site.scss */
   .site {
     margin-bottom: 3em;
+    width: 66.66667%;
     -webkit-transform: none;
     -moz-transform: none;
     -ms-transform: none;
@@ -2907,7 +2908,7 @@ nav a {
     margin: .5em;
     position: fixed;
     right: 0;
-    width: calc(33.333% - .5em);
+    width: calc(33.33333% - .5em);
   }
 
   /* line 12, ../client/styles/small/_header.scss */
@@ -2966,15 +2967,7 @@ nav a {
   }
 }
 @media screen and (min-width: 700px) {
-  /* line 3, ../client/styles/small/_track_tracks.scss */
-  .tracks {
-    width: 66.6667%;
-    float: left;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  /* line 8, ../client/styles/small/_track_tracks.scss */
+  /* line 4, ../client/styles/small/_track_tracks.scss */
   .tracks .track:not(.featured) .play {
     top: -2.5em;
   }
@@ -2985,11 +2978,11 @@ nav a {
     font-size: .75em;
     position: absolute;
     top: inherit;
-    left: 66.6667%;
-    top: inherit;
+    left: inherit;
     bottom: -49%;
+    right: .5em;
     background: none;
-    width: calc(33.333% - .5em);
+    width: calc(33.33333% - .5em);
     height: 100%;
     overflow: inherit;
     display: -webkit-box;
@@ -3037,7 +3030,7 @@ nav a {
     bottom: 51%;
     right: 0;
     background: #eee;
-    width: calc(33.333% - .5em);
+    width: calc(33.33333% - .5em);
     box-shadow: rgba(0, 0, 0, 0.1) 0 2px 0;
     text-align: left;
     font-size: 1.33333333em;
