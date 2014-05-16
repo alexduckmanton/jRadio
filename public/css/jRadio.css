@@ -2400,22 +2400,29 @@ footer a {
   font-size: 5em;
   position: relative;
   display: inline-block;
+  width: 1em;
+  height: 1.1625em;
 }
-/* line 65, ../client/styles/_loading.scss */
-.site_loading .icon-drumstick {
+/* line 63, ../client/styles/_loading.scss */
+.site_loading:after {
   position: absolute;
-  top: 0;
   left: 0;
+  bottom: 0;
+}
+/* line 70, ../client/styles/_loading.scss */
+.site_loading .icon-drumstick {
   width: 0;
   height: 0;
+  position: absolute;
+  z-index: 1;
 }
-/* line 73, ../client/styles/_loading.scss */
+/* line 77, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick:before {
   position: absolute;
   left: -.5em;
   bottom: -0.25em;
 }
-/* line 79, ../client/styles/_loading.scss */
+/* line 83, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick, .site_loading .icon-drumstick:after {
   -o-animation-name: drumstick_middle;
   -ms-animation-name: drumstick_middle;
@@ -2448,7 +2455,7 @@ footer a {
   -webkit-animation-direction: alternate;
   animation-direction: alternate;
 }
-/* line 83, ../client/styles/_loading.scss */
+/* line 87, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick:after {
   content: '';
   position: absolute;
@@ -2470,18 +2477,18 @@ footer a {
   -webkit-animation-timing-function: cubic-bezier(0.8, 0.2, 0.8, 0.2);
   animation-timing-function: cubic-bezier(0.8, 0.2, 0.8, 0.2);
 }
-/* line 93, ../client/styles/_loading.scss */
+/* line 97, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.middle {
   top: 0.14em;
   left: 0.35em;
 }
-/* line 97, ../client/styles/_loading.scss */
+/* line 101, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.middle:after {
   height: 0.15em;
   top: -0.46em;
   left: calc(50% - .025em);
 }
-/* line 104, ../client/styles/_loading.scss */
+/* line 108, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.left {
   top: 0.68em;
   left: -0.01em;
@@ -2491,7 +2498,7 @@ footer a {
   -webkit-animation-name: drumstick_left;
   animation-name: drumstick_left;
 }
-/* line 110, ../client/styles/_loading.scss */
+/* line 114, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.left, .site_loading .icon-drumstick.left:after {
   -o-animation-delay: -0.075s;
   -ms-animation-delay: -0.075s;
@@ -2499,13 +2506,13 @@ footer a {
   -webkit-animation-delay: -0.075s;
   animation-delay: -0.075s;
 }
-/* line 114, ../client/styles/_loading.scss */
+/* line 118, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.left:after {
   height: 0.225em;
   top: -0.46em;
   left: calc(50% - .03em);
 }
-/* line 121, ../client/styles/_loading.scss */
+/* line 125, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.right {
   top: 0.25em;
   left: 1em;
@@ -2515,7 +2522,7 @@ footer a {
   -webkit-animation-name: drumstick_right;
   animation-name: drumstick_right;
 }
-/* line 127, ../client/styles/_loading.scss */
+/* line 131, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.right, .site_loading .icon-drumstick.right:after {
   -o-animation-delay: -0.15s;
   -ms-animation-delay: -0.15s;
@@ -2523,13 +2530,13 @@ footer a {
   -webkit-animation-delay: -0.15s;
   animation-delay: -0.15s;
 }
-/* line 131, ../client/styles/_loading.scss */
+/* line 135, ../client/styles/_loading.scss */
 .site_loading .icon-drumstick.right:after {
   height: 0.2em;
   top: -0.47em;
   left: calc(50% - .025em);
 }
-/* line 139, ../client/styles/_loading.scss */
+/* line 143, ../client/styles/_loading.scss */
 .site_loading.loaded {
   -o-animation-name: drum_exit;
   -ms-animation-name: drum_exit;
@@ -2567,7 +2574,7 @@ footer a {
   -o-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
-/* line 146, ../client/styles/_loading.scss */
+/* line 150, ../client/styles/_loading.scss */
 .site_loading.loaded .icon-drumstick {
   display: none;
 }

@@ -57,18 +57,22 @@ $loading_speed: $default-transition-duration / 2;
     font-size: 5em;
     position: relative;
     display: inline-block;
+    width: 1em;
+    height: 1.1625em;
 
     &:after {
         @include icon(drumming);
+        position: absolute;
+        left: 0;
+        bottom: 0;
     }
 
     .icon-drumstick {
-        position: absolute;
-        top: 0;
-        left: 0;
-
         width: 0;
         height: 0;
+        position: absolute;
+        z-index: 1;
+
 
         &:before {
             position: absolute;
