@@ -3046,6 +3046,7 @@ nav a {
     width: 100%;
     z-index: 2;
     box-shadow: #eee 99em 99em 0 99em;
+    -webkit-transform: translateZ(0);
   }
 }
 @media screen and (min-width: 700px) {

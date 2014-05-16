@@ -61,6 +61,9 @@
             width: 100%;
             z-index: 2;
             box-shadow: #eee 99em 99em 0 99em;
+
+            // hack to force redraw during scrolling on ios
+            -webkit-transform: translateZ(0);
         }
     }
 
