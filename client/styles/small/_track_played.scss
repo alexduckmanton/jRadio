@@ -1,14 +1,14 @@
 @include small {
 
     // aligns with bottom of first featured track
-    $played_pos: -49%;
+    $played_pos: 39.75%;
 
     .played {
         font-size: .75em;
         position: absolute;
         top: inherit;
         left: inherit;
-        bottom: $played_pos;
+        bottom: -100% + $played_pos;
         right: .5em;
         background: none;
         width: calc(#{100% - $site_width} - .5em);
@@ -42,7 +42,7 @@
             padding: 100% 0 .5em .375em;
             display: block;
             position: fixed;
-            bottom: 100% + $played_pos;
+            bottom: $played_pos;
             right: 0;
             background: #eee;
             width: calc(#{100% - $site_width} - .5em);
@@ -60,7 +60,7 @@
             position: relative;
             width: 100%;
             z-index: 2;
-            box-shadow: #eee 99em 99em 0 99em;
+            box-shadow: #eee 90em 90em 0 90em;
 
             // hack to force redraw during scrolling on ios
             -webkit-transform: translateZ(0);

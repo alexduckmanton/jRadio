@@ -2979,7 +2979,7 @@ nav a {
     position: absolute;
     top: inherit;
     left: inherit;
-    bottom: -49%;
+    bottom: -60.25%;
     right: .5em;
     background: none;
     width: calc(33.33333% - .5em);
@@ -3027,7 +3027,7 @@ nav a {
     padding: 100% 0 .5em .375em;
     display: block;
     position: fixed;
-    bottom: 51%;
+    bottom: 39.75%;
     right: 0;
     background: #eee;
     width: calc(33.33333% - .5em);
@@ -3045,7 +3045,7 @@ nav a {
     position: relative;
     width: 100%;
     z-index: 2;
-    box-shadow: #eee 99em 99em 0 99em;
+    box-shadow: #eee 90em 90em 0 90em;
     -webkit-transform: translateZ(0);
   }
 }
