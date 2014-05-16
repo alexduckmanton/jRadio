@@ -1,12 +1,15 @@
 @include small {
 
+    // aligns with bottom of first featured track
+    $played_pos: -49%;
+
     .played {
         font-size: .75em;
         position: absolute;
         top: inherit;
         left: 66.6667%;
         top: inherit;
-        bottom: -80%;
+        bottom: $played_pos;
         background: none;
         width: calc(33.333% - .5em);
         height: 100%;
@@ -32,6 +35,32 @@
             .time {
                 color: #ccc;
             }
+        }
+
+        h1 {
+            margin: 0;
+            padding: 100% 0 .5em .25em;
+            display: block;
+            position: fixed;
+            bottom: 100% + $played_pos;
+            right: 0;
+            background: #eee;
+            width: 33.333%;
+            box-shadow: rgba(0,0,0,0.1) 0 2px 0;
+            text-align: left;
+            font-size: 1.5em;
+            z-index: 1;
+
+            @include box-sizing(border-box);
+        }
+
+        // cover up the heading when scrolled past the last recent track
+        &:before {
+            content: '';
+            position: relative;
+            width: 100%;
+            z-index: 2;
+            box-shadow: #eee 99em 99em 0 99em;
         }
     }
 

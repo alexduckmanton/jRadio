@@ -1664,6 +1664,10 @@ footer a {
   margin-bottom: 0.2em;
   font-weight: 300;
 }
+/* line 44, ../client/styles/_track_played.scss */
+.played h1 {
+  display: none;
+}
 
 @-o-keyframes spin {
   /* line 2, ../client/styles/_player.scss */
@@ -2969,14 +2973,14 @@ nav a {
   }
 }
 @media screen and (min-width: 700px) {
-  /* line 3, ../client/styles/small/_track_played.scss */
+  /* line 6, ../client/styles/small/_track_played.scss */
   .played {
     font-size: .75em;
     position: absolute;
     top: inherit;
     left: 66.6667%;
     top: inherit;
-    bottom: -80%;
+    bottom: -49%;
     background: none;
     width: calc(33.333% - .5em);
     height: 100%;
@@ -2999,23 +3003,49 @@ nav a {
     -webkit-justify-content: flex-end;
     justify-content: flex-end;
   }
-  /* line 19, ../client/styles/small/_track_played.scss */
+  /* line 22, ../client/styles/small/_track_played.scss */
   .played .track {
     padding-top: .5em;
     background: none;
     border: none;
   }
-  /* line 24, ../client/styles/small/_track_played.scss */
+  /* line 27, ../client/styles/small/_track_played.scss */
   .played .track h3 {
     color: #666;
   }
-  /* line 28, ../client/styles/small/_track_played.scss */
+  /* line 31, ../client/styles/small/_track_played.scss */
   .played .track h4 {
     color: #aaa;
   }
-  /* line 32, ../client/styles/small/_track_played.scss */
+  /* line 35, ../client/styles/small/_track_played.scss */
   .played .track .time {
     color: #ccc;
+  }
+  /* line 40, ../client/styles/small/_track_played.scss */
+  .played h1 {
+    margin: 0;
+    padding: 100% 0 .5em .25em;
+    display: block;
+    position: fixed;
+    bottom: 51%;
+    right: 0;
+    background: #eee;
+    width: 33.333%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 0;
+    text-align: left;
+    font-size: 1.5em;
+    z-index: 1;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 58, ../client/styles/small/_track_played.scss */
+  .played:before {
+    content: '';
+    position: relative;
+    width: 100%;
+    z-index: 2;
+    box-shadow: #eee 99em 99em 0 99em;
   }
 }
 @media screen and (min-width: 700px) {

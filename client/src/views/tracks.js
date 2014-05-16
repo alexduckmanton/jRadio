@@ -70,6 +70,8 @@ module.exports = CollectionView = Marionette.CollectionView.extend({
         if (this.className == 'played') {
             this.listenTo(App.core.vent, 'played:show', this.toggle_active);
             this.listenTo(App.core.vent, 'played:hide', this.toggle_active);
+
+            this.$el.prepend( require('../../templates/played_heading.hbs') );
         }
     },
 
