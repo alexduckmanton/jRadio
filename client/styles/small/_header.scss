@@ -16,7 +16,7 @@
     header {
         top: 0;
         height: $header_height;
-        z-index: 2;
+        z-index: 10;
         box-shadow: #eee 0 -1em 0;
 
         .radio,

@@ -14,7 +14,7 @@
     width: 100%;
     height: $header_height;
     position: fixed;
-    z-index: 1;
+    z-index: 9;
 
     // hide
     @include translateY(-$header_height - 1em);

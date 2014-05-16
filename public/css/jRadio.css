@@ -1776,7 +1776,7 @@ footer a {
   width: 100%;
   height: 3em;
   position: fixed;
-  z-index: 1;
+  z-index: 9;
   -webkit-transform: translateY(-4em);
   -moz-transform: translateY(-4em);
   -ms-transform: translateY(-4em);
@@ -2912,7 +2912,7 @@ nav a {
   header {
     top: 0;
     height: 7.75em;
-    z-index: 2;
+    z-index: 10;
     box-shadow: #eee 0 -1em 0;
   }
   /* line 28, ../client/styles/small/_header.scss */
