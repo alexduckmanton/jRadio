@@ -15230,7 +15230,7 @@ App.prototype.start = function(){
         App.data.window = {
             width: $(window).width(),
             height: $(window).height()
-        }
+        };
 
         App.core.vent.trigger('app:start');
     });
