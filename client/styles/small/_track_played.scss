@@ -38,17 +38,17 @@
         }
 
         h1 {
-            margin: 0;
-            padding: 100% 0 .5em .25em;
+            margin: 0 .5em 0 0;
+            padding: 100% 0 .5em .375em;
             display: block;
             position: fixed;
             bottom: 100% + $played_pos;
             right: 0;
             background: #eee;
-            width: 33.333%;
+            width: calc(33.333% - .5em);
             box-shadow: rgba(0,0,0,0.1) 0 2px 0;
             text-align: left;
-            font-size: 1.5em;
+            font-size: 1.33333333em;
             z-index: 1;
 
             @include box-sizing(border-box);
