@@ -15823,7 +15823,7 @@ module.exports = TrackModel = Backbone.Model.extend({
                     // if there isn't any track artwork, use the avatar
                     if (!artwork) artwork = found_artists[0].user.avatar_url;
 
-                } else if (found_tracks.length == 0 && found_artists.length > 0) {
+                } else if (found_tracks.length === 0 && found_artists.length > 0) {
                     artwork = found_artists[0].user.avatar_url;
                 }
 
