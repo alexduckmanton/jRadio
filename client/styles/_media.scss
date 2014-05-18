@@ -6,3 +6,4 @@
 
 @mixin base  { @include media(700px, $boundary: 'max') { @content; } }
 @mixin small { @include media(700px) { @content; } }
+@mixin medium { @include media(1000px) { @content; } }

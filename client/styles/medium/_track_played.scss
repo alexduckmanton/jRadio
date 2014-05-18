@@ -1,0 +1,20 @@
+@include medium {
+
+    // aligns with bottom of first featured track
+    // $played_pos: 39.75%;
+
+    .played {
+        // bottom: -100% + $played_pos;
+        width: calc(#{100% - $site_width} - .5em);
+
+        h1 {
+            width: calc(#{100% - $site_width} - .5em);
+        }
+
+        // cover up the heading when scrolled past the last recent track
+        &:before {
+            // box-shadow: #eee 90em 90em 0 90em;
+        }
+    }
+
+}

@@ -1,0 +1,9 @@
+$site_width: 100% / 4 * 3;
+
+@include medium {
+
+    .site {
+        width: $site_width;
+    }
+
+}

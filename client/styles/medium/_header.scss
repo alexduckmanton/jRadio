@@ -1,0 +1,8 @@
+@include medium {
+
+    header,
+    .player {
+        width: calc(#{100% - $site_width} - .5em);
+    }
+
+}

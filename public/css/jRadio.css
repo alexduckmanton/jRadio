@@ -3056,12 +3056,35 @@ nav a {
     font-family: 'Open Sans', sans-serif;
   }
 }
-/* line 40, ../client/styles/main.scss */
+@media screen and (min-width: 1000px) {
+  /* line 5, ../client/styles/medium/_site.scss */
+  .site {
+    width: 75%;
+  }
+}
+@media screen and (min-width: 1000px) {
+  /* line 4, ../client/styles/medium/_header.scss */
+  header,
+  .player {
+    width: calc(25% - .5em);
+  }
+}
+@media screen and (min-width: 1000px) {
+  /* line 6, ../client/styles/medium/_track_played.scss */
+  .played {
+    width: calc(25% - .5em);
+  }
+  /* line 10, ../client/styles/medium/_track_played.scss */
+  .played h1 {
+    width: calc(25% - .5em);
+  }
+}
+/* line 41, ../client/styles/main.scss */
 html {
   background: #eee;
 }
 
-/* line 44, ../client/styles/main.scss */
+/* line 45, ../client/styles/main.scss */
 a {
   text-decoration: none;
 }
