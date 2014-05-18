@@ -120,6 +120,12 @@
 	justify-content: flex-end;
 }
 
+@mixin flex-align-self() {
+	-ms-flex-item-align: start;
+	-webkit-align-self: flex-start;
+	align-self: flex-start;
+}
+
 @mixin icon($icon_name) {
 	@extend [class^="icon-"]:before;
 	@extend .icon-#{$icon_name}:before;

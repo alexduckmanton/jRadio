@@ -1,0 +1,38 @@
+@include medium {
+
+    .tracks {
+        .track {
+            width: 24.25%;
+
+            // make room for offset featured track vertical alignment
+            &:nth-child(5),
+            &:nth-child(6),
+            &:nth-child(7),
+            &:nth-child(8),
+            &:nth-child(13),
+            &:nth-child(14) {
+                @include flex-align-self();
+            }
+
+            &.featured {
+                width: 49.5%;
+
+                // scatter featured tracks among the new ones
+                @for $i from 17 through 20 {
+                    &:nth-child(#{$i}) { @include order( ($i - 16) * 4 ); }
+                }
+
+                &:nth-child(18),
+                &:nth-child(20) {
+                    margin-top: -17.5%;
+                }
+            }
+
+            // play button vertical alignment
+            &:not(.featured) .play {
+                top: -2em;
+            }
+        }
+    }
+
+}
