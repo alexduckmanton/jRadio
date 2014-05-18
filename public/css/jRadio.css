@@ -2914,13 +2914,13 @@ nav a {
 
   /* line 12, ../client/styles/small/_header.scss */
   .player {
-    top: 7.75em;
+    top: 7.65em;
   }
 
   /* line 16, ../client/styles/small/_header.scss */
   header {
     top: 0;
-    height: 7.75em;
+    height: 7.65em;
     z-index: 10;
     box-shadow: #eee 0 -1em 0;
   }
