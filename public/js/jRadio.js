@@ -15688,9 +15688,35 @@ module.exports = PlayerModel = Backbone.Model.extend({
     },
 
     initialize: function() {
+        // ios keeps streaming data in the background even after a pause and removing the src. need to completely kill audio element
+        this.hook_audio_pause();
+
         this.listenTo(App.core.vent, 'track:play', this.change_track);
         this.listenTo(App.core.vent, 'track:play', this.update_info);
         this.listenTo(App.core.vent, 'track:play', this.play);
+    },
+
+    hook_audio_pause: function() {
+        // var track = this.get('track');
+
+        $(this.get('track')).one('pause', '', {context: this}, this.destroy_audio);
+    },
+
+    destroy_audio: function(e) {
+        var self = e.data.context;
+
+        self.update_src();
+        self.unset('track');
+        self.set('track', new Audio());
+
+        self.hook_audio_pause();
+    },
+
+    update_src: function(src) {
+        if (!src) src = '/';
+
+        this.get('track').setAttribute('src', src);
+        this.get('track').load();
     },
 
     change_track: function(new_track) {
@@ -15706,7 +15732,7 @@ module.exports = PlayerModel = Backbone.Model.extend({
         $(track).one('ended', function() { App.core.vent.trigger('tracks:stop'); });
 
         // mp3 source for the track
-        track.setAttribute('src', new_track.src);
+        this.update_src(new_track.src);
     },
 
     update_info: function(track) {
