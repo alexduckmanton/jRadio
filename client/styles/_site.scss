@@ -34,23 +34,22 @@ $site_margin: (100% - $site_width) / 2;
         width: 100%;
         top: 0;
         left: 0;
+        opacity: 1;
 
-        @include shadow_cover(rgba(0,0,0,0.3), $flip: true);
+        @include single-transition(opacity);
     }
 
     &.active {
         @include site_position($site_margin);
 
         &:after {
-            display: none;
+            // display: none;
+            width: 0;
+            opacity: 0;
         }
     }
 
     &.active ~ & {
         @include site_position(100% + $site_margin);
-
-        &:after {
-            @include shadow_cover(rgba(0,0,0,0.3));
-        }
     }
 }

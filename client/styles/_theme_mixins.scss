@@ -92,6 +92,16 @@
     background: $bg;
 
     &.site {
+        $cover_color: rgba( saturate(darken($primary, 25%), 100%), .8 );
+
+        &:after {
+            @include shadow_cover($cover_color, $flip: true);
+        }
+
+        &.active + & {
+            @include shadow_cover($cover_color);
+        }
+
         .site_loading {
             color: darken($bg, 10%);
         }
@@ -148,7 +158,7 @@
             #fff59d
         );
     }
-    
+
     .player {
         background-image: url(/images/#{$header_img});
 
