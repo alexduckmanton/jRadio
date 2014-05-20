@@ -3150,6 +3150,10 @@ nav a {
   .played h1 {
     width: calc(25% - .5em);
   }
+  /* line 15, ../client/styles/medium/_track_played.scss */
+  .played:before {
+    box-shadow: #eee 15em 15em 0 15em;
+  }
 }
 /* line 41, ../client/styles/main.scss */
 html {
