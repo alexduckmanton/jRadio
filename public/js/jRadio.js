@@ -15388,7 +15388,8 @@ module.exports = layout = Marionette.Layout.extend({
     events: {
         'click .radio': 'toggle_radio',
         'click .toggle_played': 'toggle_played',
-        'touchstart .tracks': 'init_touch'
+        'touchstart .tracks': 'init_touch',
+        'click': 'navigate'
     },
 
     initialize: function() {
@@ -15411,6 +15412,12 @@ module.exports = layout = Marionette.Layout.extend({
 
         this.init_played();
         if (App.data.window.width > 700) this.get_played();
+    },
+
+    navigate: function() {
+        if (this.model.get('active')) return;
+
+        App.router.navigate(this.model.get('name'), {trigger: true, replace: true});
     },
 
     get_data: function() {

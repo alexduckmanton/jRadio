@@ -1,3 +1,6 @@
+$site_width: 90%;
+$site_margin: (100% - $site_width) / 2;
+
 @mixin site_position($x) {
     @include transform3d( translate3d($x,0,0) );
 
@@ -13,17 +16,17 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 90%;
 
     @include single-transition(all);
 
-    @include site_position(-100%);
+    @include site_position(-100% + $site_margin);
 
     &.active {
-        @include site_position(0);
+        @include site_position($site_margin);
     }
 
     &.active ~ & {
-        @include site_position(100%);
+        @include site_position(100% + $site_margin);
     }
 }
