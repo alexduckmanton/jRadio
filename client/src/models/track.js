@@ -47,6 +47,7 @@ module.exports = TrackModel = Backbone.Model.extend({
                 q: artist + ' ' + title,
                 limit: 5
             },
+            timeout: 500,
             success: function(tracks) {
                 var found_artists = {},
                     found_tracks = {},
