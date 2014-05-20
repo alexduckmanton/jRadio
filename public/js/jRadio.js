@@ -15308,6 +15308,13 @@ module.exports = Controller = Marionette.Controller.extend({
     },
 
     unearthed: function() {
+        if (App.views.unearthedLayout) {
+            console.log('cached');
+            return;
+        }
+
+        console.log('loading');
+
         App.views.unearthedLayout = new SiteLayout({ model: new SiteModel({
             name: 'unearthed',
             page_title: 'Unearthed',
@@ -15321,6 +15328,13 @@ module.exports = Controller = Marionette.Controller.extend({
     },
 
     triplej: function() {
+        if (App.views.triplejLayout) {
+            console.log('cached');
+            return;
+        }
+
+        console.log('loading');
+
         App.views.triplejLayout = new SiteLayout({ model: new SiteModel({
             name: 'triplej',
             page_title: 'Triple J',
@@ -15333,53 +15347,8 @@ module.exports = Controller = Marionette.Controller.extend({
         this.renderView( App.views.triplejLayout );
     },
 
-    unearthed_featured: function() {
-        this.load_view({
-            route: 'unearthed/featured',
-            collection: new TracksCollection(),
-            data_url: '/api/unearthed/featured',
-            view: window.App.views.featuredView,
-            ViewType: TracksView
-        }, function(data, view) {
-            window.App.data.featured = data;
-            window.App.views.featuredView = view;
-        });
-    },
-
-    load_view: function(options, callback) {
-        var self = this,
-            data = options.collection;
-
-        App.router.navigate(options.route);
-        // console.log(App.router);
-
-        // check if the view already exists. if so, render existing rather than loading again
-        if (options.view) {
-            console.log('cached');
-            this.renderView( options.view );
-
-        // view doesn't exist, so go get it with the supplied url
-        } else {
-            console.log('loading');
-            data.fetch({
-                url: options.data_url,
-                success: function() {
-                    // create the new view with fresh data
-                    console.log(data);
-                    var view = new options.ViewType({ collection: data });
-
-                    // update App data
-                    callback(data, view);
-
-                    // render the view
-                    self.renderView(view);
-                }
-            });
-        }
-    },
-
     renderView: function(view) {
-        this.destroyCurrentView(view);
+        // this.destroyCurrentView(view);
         $('#content').append(view.render().el);
     },
 
@@ -15435,9 +15404,11 @@ module.exports = layout = Marionette.Layout.extend({
     },
 
     initialize: function() {
-        this.get_tracks();
-
         this.listenTo(App.core.vent, 'track:play', this.update_ui_for_player);
+        this.listenTo(this.model, 'change:active', this.toggle_active);
+
+        this.toggle_active();
+        this.get_tracks();
 
         if (App.data.window.width <= 700) {
             this.listenTo(App.core.vent, 'played:show', this.toggle_tray);
@@ -15451,6 +15422,10 @@ module.exports = layout = Marionette.Layout.extend({
 
         this.init_played();
         if (App.data.window.width > 700) this.get_played();
+    },
+
+    toggle_active: function() {
+        this.$el.toggleClass('active', this.model.get('active'));
     },
 
     init_touch: function(e) {
@@ -15751,6 +15726,13 @@ module.exports = SiteModel = Backbone.Model.extend({
         this.set('artist', {
             text: this.get('radio_title')
         });
+
+        this.listenTo(App.core.vent, 'route', this.toggle_active);
+    },
+
+    toggle_active: function(route) {
+        if (route == this.get('name')) this.set('active', true);
+        else this.set('active', false);
     }
 
 });

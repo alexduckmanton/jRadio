@@ -536,23 +536,43 @@ th {
 .site {
   padding-bottom: 2em;
   text-align: center;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -moz-transform: translate3d(-100%, 0, 0);
+  -ms-transform: translate3d(-100%, 0, 0);
+  -o-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-/* line 8, ../client/styles/_site.scss */
+/* line 13, ../client/styles/_site.scss */
 .site.show_tray {
-  -webkit-transform: translateY(10em);
-  -moz-transform: translateY(10em);
-  -ms-transform: translateY(10em);
-  -o-transform: translateY(10em);
-  transform: translateY(10em);
+  -webkit-transform: translate3d(-100%, 10em, 0);
+  -moz-transform: translate3d(-100%, 10em, 0);
+  -ms-transform: translate3d(-100%, 10em, 0);
+  -o-transform: translate3d(-100%, 10em, 0);
+  transform: translate3d(-100%, 10em, 0);
+}
+/* line 17, ../client/styles/_site.scss */
+.site.active {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+/* line 20, ../client/styles/_site.scss */
+.site.active.show_tray {
+  -webkit-transform: translate3d(0, 10em, 0);
+  -moz-transform: translate3d(0, 10em, 0);
+  -ms-transform: translate3d(0, 10em, 0);
+  -o-transform: translate3d(0, 10em, 0);
+  transform: translate3d(0, 10em, 0);
 }
 
 /* line 6, ../client/styles/_header.scss */

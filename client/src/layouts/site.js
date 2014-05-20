@@ -14,9 +14,11 @@ module.exports = layout = Marionette.Layout.extend({
     },
 
     initialize: function() {
-        this.get_tracks();
-
         this.listenTo(App.core.vent, 'track:play', this.update_ui_for_player);
+        this.listenTo(this.model, 'change:active', this.toggle_active);
+
+        this.toggle_active();
+        this.get_tracks();
 
         if (App.data.window.width <= 700) {
             this.listenTo(App.core.vent, 'played:show', this.toggle_tray);
@@ -30,6 +32,10 @@ module.exports = layout = Marionette.Layout.extend({
 
         this.init_played();
         if (App.data.window.width > 700) this.get_played();
+    },
+
+    toggle_active: function() {
+        this.$el.toggleClass('active', this.model.get('active'));
     },
 
     init_touch: function(e) {
