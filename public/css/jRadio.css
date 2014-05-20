@@ -532,7 +532,7 @@ th {
   content: "\e00a";
 }
 
-/* line 1, ../client/styles/_site.scss */
+/* line 9, ../client/styles/_site.scss */
 .site {
   padding-bottom: 2em;
   text-align: center;
@@ -540,17 +540,17 @@ th {
   top: 0;
   left: 0;
   width: 100%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
   -webkit-transform: translate3d(-100%, 0, 0);
   -moz-transform: translate3d(-100%, 0, 0);
   -ms-transform: translate3d(-100%, 0, 0);
   -o-transform: translate3d(-100%, 0, 0);
   transform: translate3d(-100%, 0, 0);
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
 }
-/* line 13, ../client/styles/_site.scss */
+/* line 4, ../client/styles/_site.scss */
 .site.show_tray {
   -webkit-transform: translate3d(-100%, 10em, 0);
   -moz-transform: translate3d(-100%, 10em, 0);
@@ -558,7 +558,7 @@ th {
   -o-transform: translate3d(-100%, 10em, 0);
   transform: translate3d(-100%, 10em, 0);
 }
-/* line 17, ../client/styles/_site.scss */
+/* line 22, ../client/styles/_site.scss */
 .site.active {
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
@@ -566,13 +566,29 @@ th {
   -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-/* line 20, ../client/styles/_site.scss */
+/* line 4, ../client/styles/_site.scss */
 .site.active.show_tray {
   -webkit-transform: translate3d(0, 10em, 0);
   -moz-transform: translate3d(0, 10em, 0);
   -ms-transform: translate3d(0, 10em, 0);
   -o-transform: translate3d(0, 10em, 0);
   transform: translate3d(0, 10em, 0);
+}
+/* line 26, ../client/styles/_site.scss */
+.site.active ~ .site {
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  -ms-transform: translate3d(100%, 0, 0);
+  -o-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
+/* line 4, ../client/styles/_site.scss */
+.site.active ~ .site.show_tray {
+  -webkit-transform: translate3d(100%, 10em, 0);
+  -moz-transform: translate3d(100%, 10em, 0);
+  -ms-transform: translate3d(100%, 10em, 0);
+  -o-transform: translate3d(100%, 10em, 0);
+  transform: translate3d(100%, 10em, 0);
 }
 
 /* line 6, ../client/styles/_header.scss */
