@@ -5,12 +5,10 @@
             width: 24.25%;
 
             // make room for offset featured track vertical alignment
-            &:nth-child(5),
-            &:nth-child(6),
-            &:nth-child(7),
-            &:nth-child(8),
-            &:nth-child(13),
-            &:nth-child(14) {
+            &:nth-child(1),
+            &:nth-child(2),
+            &:nth-child(9),
+            &:nth-child(10) {
                 @include flex-align-self();
             }
 
@@ -19,7 +17,7 @@
 
                 // scatter featured tracks among the new ones
                 @for $i from 17 through 20 {
-                    &:nth-child(#{$i}) { @include order( ($i - 16) * 4 ); }
+                    &:nth-child(#{$i}) { @include order( ($i - 17) * 4 ); }
                 }
 
                 &:nth-child(18),
