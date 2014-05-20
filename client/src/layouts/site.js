@@ -114,6 +114,8 @@ module.exports = layout = Marionette.Layout.extend({
         var self = this,
             tracks = new TracksCollection();
 
+        tracks.site = this.model.get('name');
+
         tracks.fetch({
             url: this.model.get('tracks_api'),
             success: function() {

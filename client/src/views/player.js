@@ -16,9 +16,17 @@ module.exports = itemView = Marionette.ItemView.extend({
         'click': 'stop'
     },
 
+    onRender: function() {
+        this.$text = this.$el.find('.text');
+    },
+
     update_content: function(e) {
         var title = this.model.get('title'),
-            artist = this.model.get('artist').text;
+            artist = this.model.get('artist');
+
+        this.$text.toggleClass('empty_artist', !artist);
+
+        artist = artist ? artist.text : '';
 
         this.$el.find('.title').html(title);
         this.$el.find('.artist').html(artist);

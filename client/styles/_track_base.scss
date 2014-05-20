@@ -61,8 +61,13 @@
     }
 }
 
-.loading .track_info {
-    a:before {
-        opacity: 0;
+.track_loading .track_info {
+    a {
+        border-style: dotted;
+        @include animation(spin, $count: infinite, $timing: linear, $duration: $default-transition-duration * 5);
+
+        &:before {
+            opacity: 0;
+        }
     }
 }

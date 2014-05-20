@@ -39,6 +39,16 @@
         @include single-transition(all);
     }
 
+    .text.empty_artist {
+        h3 {
+            line-height: 2em;
+        }
+
+        h4 {
+            display: none;
+        }
+    }
+
     &.playing {
         @include translateY(0);
 

@@ -11,21 +11,30 @@ module.exports = TrackModel = Backbone.Model.extend({
     initialize: function() {
         if (!this.get('play')) return;
 
-        var id = this.parse_url(this.get('play').href);
-        this.get_track(id);
-
-        if (App.data.window.width > 700) this.get_high_res_img();
-        else this.load_img();
-
         this.listenTo(this, 'change:src', this.loaded);
+        this.set_track();
+
+        if (this.collection.site == 'unearthed' && App.data.window.width > 700) this.get_high_res_img();
+        else this.load_img();
     },
 
-    parse_url: function(url) {
+    set_track: function() {
+        var src = this.get('play').href,
+            is_mp3 = new RegExp('mp3', 'ig');
+
+        if (is_mp3.test(src)) this.set('src', src);
+        else {
+            var id = this.find_id(this.get('play').href);
+            this.fetch_track(id);
+        }
+    },
+
+    find_id: function(url) {
         var regex = /[0-9]+/;
         return regex.exec(url)[0];
     },
 
-    get_track: function(track_id) {
+    fetch_track: function(track_id) {
         var self = this,
             api = '/api/unearthed/track';
 

@@ -1,7 +1,7 @@
 var Marionette = require('backbone.marionette');
 
 var itemView = Marionette.ItemView.extend({
-    className: 'track loading',
+    className: 'track track_loading loading',
 
     events: {
         'click a': 'toggle_playing'
@@ -17,19 +17,24 @@ var itemView = Marionette.ItemView.extend({
         }
     },
 
-    initialize: function() {
+    initialize: function(options) {
+        // console.log(options);
         this.listenTo(this.model, 'change', this.toggle_classes);
         this.listenTo(this.model, 'change:is_playing', this.trigger_playing);
         this.listenTo(this.model, 'change:image', this.render);
 
         this.$el.toggleClass('featured', this.model.get('featured'));
 
-        if (this.model.collection.type) this.$el.removeClass('loading');
+        if (this.model.collection.type) {
+            this.$el.removeClass('loading');
+            this.$el.removeClass('track_loading');
+        }
     },
 
     toggle_classes: function() {
         this.$el.toggleClass('playing', this.model.get('is_playing'));
-        this.$el.toggleClass('loading', (this.model.get('track_loading') || this.model.get('img_loading')));
+        this.$el.toggleClass('loading', this.model.get('img_loading'));
+        this.$el.toggleClass('track_loading', this.model.get('track_loading'));
     },
 
     toggle_playing: function(e) {

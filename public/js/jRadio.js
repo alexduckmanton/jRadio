@@ -15267,7 +15267,7 @@ module.exports = Controller = Marionette.Controller.extend({
     initialize: function() {
         // add the player to the page. only needs to be done once on initialization
         App.views.playerView = new PlayerView({ model: new PlayerModel() });
-        $('#content').append( window.App.views.playerView.render().el );
+        $('#content').before( window.App.views.playerView.render().el );
 
         this.listenTo(App.core.vent, 'scroll:pos', this.scroll);
         this.listenTo(App.core.vent, 'scroll:elem', this.scroll_elem);
@@ -15303,7 +15303,7 @@ module.exports = Controller = Marionette.Controller.extend({
 
     unearthed: function() {
         App.views.unearthedLayout = new SiteLayout({ model: new SiteModel({
-            logo: 'unearthedlogo',
+            name: 'unearthed',
             page_title: 'Unearthed',
             radio_title: 'Triple J Unearthed',
             src: 'http://shoutmedia.abc.net.au:10464/;*.mp3',
@@ -15312,7 +15312,24 @@ module.exports = Controller = Marionette.Controller.extend({
         }) });
 
         App.router.navigate('unearthed');
-        $('#content').append( App.views.unearthedLayout.render().el );
+        // $('#content').append( App.views.unearthedLayout.render().el );
+        this.renderView( App.views.unearthedLayout );
+    },
+
+    triplej: function() {
+        App.views.triplejLayout = new SiteLayout({ model: new SiteModel({
+            name: 'triplej',
+            page_title: 'Triple J',
+            radio_title: 'Triple J',
+            src: 'http://shoutmedia.abc.net.au:10464/;*.mp3',
+            tracks_api: '/api/triplej',
+            played_api: '/api/triplej/recent'
+        }) });
+
+        App.router.navigate('triplej');
+        // $('#content').append( App.views.triplejLayout.render().el );
+
+        this.renderView( App.views.triplejLayout );
     },
 
     unearthed_featured: function() {
@@ -15516,6 +15533,8 @@ module.exports = layout = Marionette.Layout.extend({
     get_tracks: function() {
         var self = this,
             tracks = new TracksCollection();
+
+        tracks.site = this.model.get('name');
 
         tracks.fetch({
             url: this.model.get('tracks_api'),
@@ -15748,21 +15767,30 @@ module.exports = TrackModel = Backbone.Model.extend({
     initialize: function() {
         if (!this.get('play')) return;
 
-        var id = this.parse_url(this.get('play').href);
-        this.get_track(id);
-
-        if (App.data.window.width > 700) this.get_high_res_img();
-        else this.load_img();
-
         this.listenTo(this, 'change:src', this.loaded);
+        this.set_track();
+
+        if (this.collection.site == 'unearthed' && App.data.window.width > 700) this.get_high_res_img();
+        else this.load_img();
     },
 
-    parse_url: function(url) {
+    set_track: function() {
+        var src = this.get('play').href,
+            is_mp3 = new RegExp('mp3', 'ig');
+
+        if (is_mp3.test(src)) this.set('src', src);
+        else {
+            var id = this.find_id(this.get('play').href);
+            this.fetch_track(id);
+        }
+    },
+
+    find_id: function(url) {
         var regex = /[0-9]+/;
         return regex.exec(url)[0];
     },
 
-    get_track: function(track_id) {
+    fetch_track: function(track_id) {
         var self = this,
             api = '/api/unearthed/track';
 
@@ -15868,7 +15896,8 @@ var Marionette = require('backbone.marionette');
 module.exports = Router = Marionette.AppRouter.extend({
     appRoutes: {
         '': 'unearthed',
-        'unearthed': 'unearthed'
+        'unearthed': 'unearthed',
+        'triplej': 'triplej'
     },
 
     onRoute: function(name, path, options) {
@@ -15895,9 +15924,17 @@ module.exports = itemView = Marionette.ItemView.extend({
         'click': 'stop'
     },
 
+    onRender: function() {
+        this.$text = this.$el.find('.text');
+    },
+
     update_content: function(e) {
         var title = this.model.get('title'),
-            artist = this.model.get('artist').text;
+            artist = this.model.get('artist');
+
+        this.$text.toggleClass('empty_artist', !artist);
+
+        artist = artist ? artist.text : '';
 
         this.$el.find('.title').html(title);
         this.$el.find('.artist').html(artist);
@@ -15929,7 +15966,7 @@ module.exports = itemView = Marionette.ItemView.extend({
 var Marionette = require('backbone.marionette');
 
 var itemView = Marionette.ItemView.extend({
-    className: 'track loading',
+    className: 'track track_loading loading',
 
     events: {
         'click a': 'toggle_playing'
@@ -15945,19 +15982,24 @@ var itemView = Marionette.ItemView.extend({
         }
     },
 
-    initialize: function() {
+    initialize: function(options) {
+        // console.log(options);
         this.listenTo(this.model, 'change', this.toggle_classes);
         this.listenTo(this.model, 'change:is_playing', this.trigger_playing);
         this.listenTo(this.model, 'change:image', this.render);
 
         this.$el.toggleClass('featured', this.model.get('featured'));
 
-        if (this.model.collection.type) this.$el.removeClass('loading');
+        if (this.model.collection.type) {
+            this.$el.removeClass('loading');
+            this.$el.removeClass('track_loading');
+        }
     },
 
     toggle_classes: function() {
         this.$el.toggleClass('playing', this.model.get('is_playing'));
-        this.$el.toggleClass('loading', (this.model.get('track_loading') || this.model.get('img_loading')));
+        this.$el.toggleClass('loading', this.model.get('img_loading'));
+        this.$el.toggleClass('track_loading', this.model.get('track_loading'));
     },
 
     toggle_playing: function(e) {
@@ -16146,10 +16188,10 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 
 
   buffer += "<header>\n    <a href=\"javascript:void(0)\" class=\"radio icon-radio\" title=\"Listen live\"></a>\n    <h1 class=\"icon-";
-  if (helper = helpers.logo) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.logo); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\">";
+    + "logo\">";
   if (helper = helpers.page_title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.page_title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
