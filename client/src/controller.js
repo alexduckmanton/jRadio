@@ -55,7 +55,7 @@ module.exports = Controller = Marionette.Controller.extend({
         }) });
 
         App.router.navigate('unearthed');
-        // $('#content').append( App.views.unearthedLayout.render().el );
+        
         this.renderView( App.views.unearthedLayout );
     },
 
@@ -70,7 +70,6 @@ module.exports = Controller = Marionette.Controller.extend({
         }) });
 
         App.router.navigate('triplej');
-        // $('#content').append( App.views.triplejLayout.render().el );
 
         this.renderView( App.views.triplejLayout );
     },
