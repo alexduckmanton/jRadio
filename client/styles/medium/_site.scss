@@ -2,7 +2,8 @@ $site_width: 100% / 4 * 3;
 
 @include medium {
 
-    .site {
+    .site,
+    footer {
         width: $site_width;
     }
 

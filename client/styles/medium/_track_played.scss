@@ -10,11 +10,6 @@
         h1 {
             width: calc(#{100% - $site_width} - .5em);
         }
-
-        // cover up the heading when scrolled past the last recent track
-        &:before {
-            box-shadow: #eee 15em 15em 0 15em;
-        }
     }
 
 }

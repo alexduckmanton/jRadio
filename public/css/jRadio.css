@@ -2881,10 +2881,15 @@ nav a {
 }
 
 @media screen and (min-width: 700px) {
-  /* line 5, ../client/styles/small/_site.scss */
-  .site {
-    margin-bottom: 3em;
+  /* line 6, ../client/styles/small/_site.scss */
+  .site,
+  footer {
     width: 66.66667%;
+  }
+
+  /* line 10, ../client/styles/small/_site.scss */
+  .site {
+    margin-bottom: 2em;
     -webkit-transform: none;
     -moz-transform: none;
     -ms-transform: none;
@@ -2900,6 +2905,11 @@ nav a {
     clear: both;
     overflow: hidden;
     visibility: hidden;
+  }
+
+  /* line 17, ../client/styles/small/_site.scss */
+  footer {
+    background: none;
   }
 }
 @media screen and (min-width: 700px) {
@@ -3046,7 +3056,7 @@ nav a {
     position: relative;
     width: 100%;
     z-index: 2;
-    box-shadow: #eee 90em 90em 0 90em;
+    box-shadow: #eee 999em 999em 0 999em;
     -webkit-transform: translateZ(0);
   }
 }
@@ -3057,8 +3067,9 @@ nav a {
   }
 }
 @media screen and (min-width: 1000px) {
-  /* line 5, ../client/styles/medium/_site.scss */
-  .site {
+  /* line 6, ../client/styles/medium/_site.scss */
+  .site,
+  footer {
     width: 75%;
   }
 }
@@ -3149,10 +3160,6 @@ nav a {
   /* line 10, ../client/styles/medium/_track_played.scss */
   .played h1 {
     width: calc(25% - .5em);
-  }
-  /* line 15, ../client/styles/medium/_track_played.scss */
-  .played:before {
-    box-shadow: #eee 15em 15em 0 15em;
   }
 }
 /* line 41, ../client/styles/main.scss */
