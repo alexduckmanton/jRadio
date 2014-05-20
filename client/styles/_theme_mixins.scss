@@ -91,19 +91,64 @@
 
     background: $bg;
 
-    .site_loading {
-        color: darken($bg, 10%);
-    }
+    &.site {
+        .site_loading {
+            color: darken($bg, 10%);
+        }
 
-    header {
-        @include header_theme(
-            $header_text,
-            $header_bg,
-            $header_img,
-            $header_font
+        header {
+            @include header_theme(
+                $header_text,
+                $header_bg,
+                $header_img,
+                $header_font
+            );
+        }
+
+        @include base {
+            .played {
+                background-image: url(/images/#{$header_img});
+                background-color: $header_bg;
+
+                .track {
+                    border-bottom-color: lighten(active_button_bg($header_bg), 1%);
+                    background: active_button_bg($header_bg);
+
+                    @include track_theme(
+                        $header_text,
+                        $secondary
+                    );
+                }
+
+                & + header .toggle_played.active,
+                &.active + header .toggle_played {
+                    background: active_button_bg($header_bg);
+                }
+
+                .time {
+                    color: lighten($header_bg, 5%);
+                }
+            }
+        }
+
+        .tracks .track {
+            @include track_shadow;
+
+            @include track_theme(
+                $primary,
+                $secondary,
+                $track_bg
+            );
+        }
+
+        @include img_theme(
+            lighten($primary, 40%),
+            lighten($secondary, 10%),
+            #7fd1e5,
+            #fff59d
         );
     }
-
+    
     .player {
         background-image: url(/images/#{$header_img});
 
@@ -123,56 +168,5 @@
                 $track_bg
             );
         }
-    }
-
-    @include base {
-        .played {
-            background-image: url(/images/#{$header_img});
-            background-color: $header_bg;
-
-            .track {
-                border-bottom-color: lighten(active_button_bg($header_bg), 1%);
-                background: active_button_bg($header_bg);
-
-                @include track_theme(
-                    $header_text,
-                    $secondary
-                );
-            }
-
-            & + header .toggle_played.active,
-            &.active + header .toggle_played {
-                background: active_button_bg($header_bg);
-            }
-
-            .time {
-                color: lighten($header_bg, 5%);
-            }
-        }
-    }
-
-    .tracks .track {
-        @include track_shadow;
-
-        @include track_theme(
-            $primary,
-            $secondary,
-            $track_bg
-        );
-    }
-
-    @include img_theme(
-        lighten($primary, 40%),
-        lighten($secondary, 10%),
-        #7fd1e5,
-        #fff59d
-    );
-
-    nav {
-        @include nav(
-            $header_bg,
-            $header_img,
-            $header_text
-        );
     }
 }

@@ -34,14 +34,18 @@ $played_height: 10em;
 @import 'theme_mixins';
 @import 'themes';
 
-// layouts
-@import 'small/module';
-@import 'medium/module';
-
 html {
     background: #eee;
+}
+
+body {
+    overflow: hidden;
 }
 
 a {
     text-decoration: none;
 }
+
+// layouts
+@import 'small/module';
+@import 'medium/module';

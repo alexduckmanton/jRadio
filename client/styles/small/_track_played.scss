@@ -1,17 +1,15 @@
 @include small {
 
     // aligns with bottom of first featured track
-    $played_pos: 39.75%;
+    $played_pos: 47.2%;
 
     .played {
         font-size: .75em;
         position: absolute;
-        top: inherit;
-        left: inherit;
-        bottom: -100% + $played_pos;
-        right: .5em;
+        top: calc(#{100% - $played_pos} - 2em);
+        left: 100%;
         background: none;
-        width: calc(#{100% - $site_width} - .5em);
+        width: 50%;
         height: 100%;
         overflow: inherit;
 
@@ -39,10 +37,10 @@
 
         h1 {
             margin: 0 .5em 0 0;
-            padding: 100% 0 .5em .375em;
+            padding: $played_pos 0 .5em .375em;
             display: block;
             position: fixed;
-            bottom: $played_pos;
+            top: 0;
             right: 0;
             background: #eee;
             width: calc(#{100% - $site_width} - .5em);

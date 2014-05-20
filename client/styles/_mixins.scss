@@ -130,3 +130,10 @@
 	@extend [class^="icon-"]:before;
 	@extend .icon-#{$icon_name}:before;
 }
+
+@mixin shadow_cover($color, $length: 999em, $flip: false) {
+	$x: $length;
+	@if ($flip) { $x: $x * -1; }
+
+	box-shadow: $color $x $length 0 $length;
+}

@@ -17,16 +17,37 @@ $site_margin: (100% - $site_width) / 2;
     top: 0;
     left: 0;
     width: 90%;
+    height: 100%;
+    overflow: auto;
 
+    @include box-sizing(border-box);
     @include single-transition(all);
 
     @include site_position(-100% + $site_margin);
 
+    &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+
+        @include shadow_cover(rgba(0,0,0,0.3), $flip: true);
+    }
+
     &.active {
         @include site_position($site_margin);
+
+        &:after {
+            display: none;
+        }
     }
 
     &.active ~ & {
         @include site_position(100% + $site_margin);
+
+        &:after {
+            @include shadow_cover(rgba(0,0,0,0.3));
+        }
     }
 }

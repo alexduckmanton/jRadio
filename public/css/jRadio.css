@@ -540,6 +540,11 @@ th {
   top: 0;
   left: 0;
   width: 90%;
+  height: 100%;
+  overflow: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -558,7 +563,16 @@ th {
   -o-transform: translate3d(-95%, 10em, 0);
   transform: translate3d(-95%, 10em, 0);
 }
-/* line 25, ../client/styles/_site.scss */
+/* line 28, ../client/styles/_site.scss */
+.site:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  box-shadow: rgba(0, 0, 0, 0.3) -999em 999em 0 999em;
+}
+/* line 38, ../client/styles/_site.scss */
 .site.active {
   -webkit-transform: translate3d(5%, 0, 0);
   -moz-transform: translate3d(5%, 0, 0);
@@ -574,7 +588,11 @@ th {
   -o-transform: translate3d(5%, 10em, 0);
   transform: translate3d(5%, 10em, 0);
 }
-/* line 29, ../client/styles/_site.scss */
+/* line 41, ../client/styles/_site.scss */
+.site.active:after {
+  display: none;
+}
+/* line 46, ../client/styles/_site.scss */
 .site.active ~ .site {
   -webkit-transform: translate3d(105%, 0, 0);
   -moz-transform: translate3d(105%, 0, 0);
@@ -589,6 +607,10 @@ th {
   -ms-transform: translate3d(105%, 10em, 0);
   -o-transform: translate3d(105%, 10em, 0);
   transform: translate3d(105%, 10em, 0);
+}
+/* line 49, ../client/styles/_site.scss */
+.site.active ~ .site:after {
+  box-shadow: rgba(0, 0, 0, 0.3) 999em 999em 0 999em;
 }
 
 /* line 6, ../client/styles/_header.scss */
@@ -2772,30 +2794,116 @@ footer a {
 .unearthed {
   background: #eeeeee;
 }
-/* line 94, ../client/styles/_theme_mixins.scss */
-.unearthed .site_loading {
+/* line 95, ../client/styles/_theme_mixins.scss */
+.unearthed.site .site_loading {
   color: #d4d4d4;
 }
-/* line 98, ../client/styles/_theme_mixins.scss */
-.unearthed header {
+/* line 99, ../client/styles/_theme_mixins.scss */
+.unearthed.site header {
   color: white;
   background-color: #588d3f;
   background-image: url(/images/unearthed_bg.jpg);
 }
 /* line 51, ../client/styles/_theme_mixins.scss */
-.unearthed header h1 {
+.unearthed.site header h1 {
   font-family: "sans-serif";
 }
 /* line 55, ../client/styles/_theme_mixins.scss */
-.unearthed header h1:before, .unearthed header h1:after {
+.unearthed.site header h1:before, .unearthed.site header h1:after {
   color: white;
 }
 /* line 60, ../client/styles/_theme_mixins.scss */
-.unearthed header a {
+.unearthed.site header a {
   color: white;
   border-color: white;
 }
-/* line 107, ../client/styles/_theme_mixins.scss */
+@media screen and (max-width: 700px) {
+  /* line 109, ../client/styles/_theme_mixins.scss */
+  .unearthed.site .played {
+    background-image: url(/images/unearthed_bg.jpg);
+    background-color: #588d3f;
+  }
+  /* line 113, ../client/styles/_theme_mixins.scss */
+  .unearthed.site .played .track {
+    border-bottom-color: rgba(31, 69, 13, 0.8);
+    background: rgba(29, 64, 12, 0.8);
+    background: false;
+  }
+  /* line 15, ../client/styles/_theme_mixins.scss */
+  .unearthed.site .played .track h3 {
+    color: white;
+  }
+  /* line 19, ../client/styles/_theme_mixins.scss */
+  .unearthed.site .played .track h4 {
+    color: #ff8292;
+  }
+  /* line 23, ../client/styles/_theme_mixins.scss */
+  .unearthed.site .played .track .play {
+    border-color: white;
+    color: white;
+  }
+  /* line 29, ../client/styles/_theme_mixins.scss */
+  .unearthed.site .played .track.playing a {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  /* line 35, ../client/styles/_theme_mixins.scss */
+  .unearthed.site .played .track.featured:after {
+    background: #ff354f;
+    color: #ce001b;
+  }
+  /* line 124, ../client/styles/_theme_mixins.scss */
+  .unearthed.site .played + header .toggle_played.active, .unearthed.site .played.active + header .toggle_played {
+    background: rgba(29, 64, 12, 0.8);
+  }
+  /* line 128, ../client/styles/_theme_mixins.scss */
+  .unearthed.site .played .time {
+    color: #639f47;
+  }
+}
+/* line 134, ../client/styles/_theme_mixins.scss */
+.unearthed.site .tracks .track {
+  box-shadow: #e8e8e8 0 1px 0;
+  background: white;
+}
+/* line 15, ../client/styles/_theme_mixins.scss */
+.unearthed.site .tracks .track h3 {
+  color: #4ba119;
+}
+/* line 19, ../client/styles/_theme_mixins.scss */
+.unearthed.site .tracks .track h4 {
+  color: #ff8292;
+}
+/* line 23, ../client/styles/_theme_mixins.scss */
+.unearthed.site .tracks .track .play {
+  border-color: #4ba119;
+  color: #4ba119;
+}
+/* line 29, ../client/styles/_theme_mixins.scss */
+.unearthed.site .tracks .track.playing a {
+  background: rgba(75, 161, 25, 0.2);
+}
+/* line 35, ../client/styles/_theme_mixins.scss */
+.unearthed.site .tracks .track.featured:after {
+  background: #ff354f;
+  color: #ce001b;
+}
+/* line 6, ../client/styles/_theme_mixins.scss */
+.unearthed.site .track .img_container:before {
+  background-color: #b7ef97;
+}
+/* line 7, ../client/styles/_theme_mixins.scss */
+.unearthed.site .track:nth-child(2n) .img_container:before {
+  background-color: #ff687b;
+}
+/* line 8, ../client/styles/_theme_mixins.scss */
+.unearthed.site .track:nth-child(3n) .img_container:before {
+  background-color: #7fd1e5;
+}
+/* line 9, ../client/styles/_theme_mixins.scss */
+.unearthed.site .track:nth-child(4n) .img_container:before {
+  background-color: #fff59d;
+}
+/* line 152, ../client/styles/_theme_mixins.scss */
 .unearthed .player {
   background-image: url(/images/unearthed_bg.jpg);
   background: "unearthed_bg.jpg";
@@ -2823,7 +2931,7 @@ footer a {
   color: rgba(204, 204, 204, 0.75);
 }
 @media screen and (min-width: 700px) {
-  /* line 107, ../client/styles/_theme_mixins.scss */
+  /* line 152, ../client/styles/_theme_mixins.scss */
   .unearthed .player {
     box-shadow: #e8e8e8 0 1px 0;
     background: white;
@@ -2851,133 +2959,121 @@ footer a {
     color: #ce001b;
   }
 }
-@media screen and (max-width: 700px) {
-  /* line 129, ../client/styles/_theme_mixins.scss */
-  .unearthed .played {
-    background-image: url(/images/unearthed_bg.jpg);
-    background-color: #588d3f;
-  }
-  /* line 133, ../client/styles/_theme_mixins.scss */
-  .unearthed .played .track {
-    border-bottom-color: rgba(31, 69, 13, 0.8);
-    background: rgba(29, 64, 12, 0.8);
-    background: false;
-  }
-  /* line 15, ../client/styles/_theme_mixins.scss */
-  .unearthed .played .track h3 {
-    color: white;
-  }
-  /* line 19, ../client/styles/_theme_mixins.scss */
-  .unearthed .played .track h4 {
-    color: #ff8292;
-  }
-  /* line 23, ../client/styles/_theme_mixins.scss */
-  .unearthed .played .track .play {
-    border-color: white;
-    color: white;
-  }
-  /* line 29, ../client/styles/_theme_mixins.scss */
-  .unearthed .played .track.playing a {
-    background: rgba(255, 255, 255, 0.2);
-  }
-  /* line 35, ../client/styles/_theme_mixins.scss */
-  .unearthed .played .track.featured:after {
-    background: #ff354f;
-    color: #ce001b;
-  }
-  /* line 144, ../client/styles/_theme_mixins.scss */
-  .unearthed .played + header .toggle_played.active, .unearthed .played.active + header .toggle_played {
-    background: rgba(29, 64, 12, 0.8);
-  }
-  /* line 148, ../client/styles/_theme_mixins.scss */
-  .unearthed .played .time {
-    color: #639f47;
-  }
-}
-/* line 154, ../client/styles/_theme_mixins.scss */
-.unearthed .tracks .track {
-  box-shadow: #e8e8e8 0 1px 0;
-  background: white;
-}
-/* line 15, ../client/styles/_theme_mixins.scss */
-.unearthed .tracks .track h3 {
-  color: #4ba119;
-}
-/* line 19, ../client/styles/_theme_mixins.scss */
-.unearthed .tracks .track h4 {
-  color: #ff8292;
-}
-/* line 23, ../client/styles/_theme_mixins.scss */
-.unearthed .tracks .track .play {
-  border-color: #4ba119;
-  color: #4ba119;
-}
-/* line 29, ../client/styles/_theme_mixins.scss */
-.unearthed .tracks .track.playing a {
-  background: rgba(75, 161, 25, 0.2);
-}
-/* line 35, ../client/styles/_theme_mixins.scss */
-.unearthed .tracks .track.featured:after {
-  background: #ff354f;
-  color: #ce001b;
-}
-/* line 6, ../client/styles/_theme_mixins.scss */
-.unearthed .track .img_container:before {
-  background-color: #b7ef97;
-}
-/* line 7, ../client/styles/_theme_mixins.scss */
-.unearthed .track:nth-child(2n) .img_container:before {
-  background-color: #ff687b;
-}
-/* line 8, ../client/styles/_theme_mixins.scss */
-.unearthed .track:nth-child(3n) .img_container:before {
-  background-color: #7fd1e5;
-}
-/* line 9, ../client/styles/_theme_mixins.scss */
-.unearthed .track:nth-child(4n) .img_container:before {
-  background-color: #fff59d;
-}
-/* line 171, ../client/styles/_theme_mixins.scss */
-.unearthed nav {
-  background-color: #588d3f;
-}
-/* line 72, ../client/styles/_theme_mixins.scss */
-.unearthed nav li:after {
-  border-bottom-color: #588d3f;
-}
-/* line 76, ../client/styles/_theme_mixins.scss */
-.unearthed nav a {
-  color: white;
-}
 
 /* line 10, ../client/styles/_themes.scss */
 .triplej {
   background: #eeeeee;
 }
-/* line 94, ../client/styles/_theme_mixins.scss */
-.triplej .site_loading {
+/* line 95, ../client/styles/_theme_mixins.scss */
+.triplej.site .site_loading {
   color: #d4d4d4;
 }
-/* line 98, ../client/styles/_theme_mixins.scss */
-.triplej header {
+/* line 99, ../client/styles/_theme_mixins.scss */
+.triplej.site header {
   color: white;
   background-color: #ef4135;
   background-image: url(/images/);
 }
 /* line 51, ../client/styles/_theme_mixins.scss */
-.triplej header h1 {
+.triplej.site header h1 {
   font-family: "sans-serif";
 }
 /* line 55, ../client/styles/_theme_mixins.scss */
-.triplej header h1:before, .triplej header h1:after {
+.triplej.site header h1:before, .triplej.site header h1:after {
   color: white;
 }
 /* line 60, ../client/styles/_theme_mixins.scss */
-.triplej header a {
+.triplej.site header a {
   color: white;
   border-color: white;
 }
-/* line 107, ../client/styles/_theme_mixins.scss */
+@media screen and (max-width: 700px) {
+  /* line 109, ../client/styles/_theme_mixins.scss */
+  .triplej.site .played {
+    background-image: url(/images/);
+    background-color: #ef4135;
+  }
+  /* line 113, ../client/styles/_theme_mixins.scss */
+  .triplej.site .played .track {
+    border-bottom-color: rgba(170, 11, 0, 0.8);
+    background: rgba(164, 11, 0, 0.8);
+    background: false;
+  }
+  /* line 15, ../client/styles/_theme_mixins.scss */
+  .triplej.site .played .track h3 {
+    color: white;
+  }
+  /* line 19, ../client/styles/_theme_mixins.scss */
+  .triplej.site .played .track h4 {
+    color: #262626;
+  }
+  /* line 23, ../client/styles/_theme_mixins.scss */
+  .triplej.site .played .track .play {
+    border-color: white;
+    color: white;
+  }
+  /* line 29, ../client/styles/_theme_mixins.scss */
+  .triplej.site .played .track.playing a {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  /* line 35, ../client/styles/_theme_mixins.scss */
+  .triplej.site .played .track.featured:after {
+    background: black;
+    color: black;
+  }
+  /* line 124, ../client/styles/_theme_mixins.scss */
+  .triplej.site .played + header .toggle_played.active, .triplej.site .played.active + header .toggle_played {
+    background: rgba(164, 11, 0, 0.8);
+  }
+  /* line 128, ../client/styles/_theme_mixins.scss */
+  .triplej.site .played .time {
+    color: #f1574d;
+  }
+}
+/* line 134, ../client/styles/_theme_mixins.scss */
+.triplej.site .tracks .track {
+  box-shadow: #e8e8e8 0 1px 0;
+  background: white;
+}
+/* line 15, ../client/styles/_theme_mixins.scss */
+.triplej.site .tracks .track h3 {
+  color: #ef4135;
+}
+/* line 19, ../client/styles/_theme_mixins.scss */
+.triplej.site .tracks .track h4 {
+  color: #262626;
+}
+/* line 23, ../client/styles/_theme_mixins.scss */
+.triplej.site .tracks .track .play {
+  border-color: #ef4135;
+  color: #ef4135;
+}
+/* line 29, ../client/styles/_theme_mixins.scss */
+.triplej.site .tracks .track.playing a {
+  background: rgba(239, 65, 53, 0.2);
+}
+/* line 35, ../client/styles/_theme_mixins.scss */
+.triplej.site .tracks .track.featured:after {
+  background: black;
+  color: black;
+}
+/* line 6, ../client/styles/_theme_mixins.scss */
+.triplej.site .track .img_container:before {
+  background-color: #fef3f2;
+}
+/* line 7, ../client/styles/_theme_mixins.scss */
+.triplej.site .track:nth-child(2n) .img_container:before {
+  background-color: #1a1a1a;
+}
+/* line 8, ../client/styles/_theme_mixins.scss */
+.triplej.site .track:nth-child(3n) .img_container:before {
+  background-color: #7fd1e5;
+}
+/* line 9, ../client/styles/_theme_mixins.scss */
+.triplej.site .track:nth-child(4n) .img_container:before {
+  background-color: #fff59d;
+}
+/* line 152, ../client/styles/_theme_mixins.scss */
 .triplej .player {
   background-image: url(/images/);
   background: "";
@@ -3005,7 +3101,7 @@ footer a {
   color: rgba(204, 204, 204, 0.75);
 }
 @media screen and (min-width: 700px) {
-  /* line 107, ../client/styles/_theme_mixins.scss */
+  /* line 152, ../client/styles/_theme_mixins.scss */
   .triplej .player {
     box-shadow: #e8e8e8 0 1px 0;
     background: white;
@@ -3033,103 +3129,20 @@ footer a {
     color: black;
   }
 }
-@media screen and (max-width: 700px) {
-  /* line 129, ../client/styles/_theme_mixins.scss */
-  .triplej .played {
-    background-image: url(/images/);
-    background-color: #ef4135;
-  }
-  /* line 133, ../client/styles/_theme_mixins.scss */
-  .triplej .played .track {
-    border-bottom-color: rgba(170, 11, 0, 0.8);
-    background: rgba(164, 11, 0, 0.8);
-    background: false;
-  }
-  /* line 15, ../client/styles/_theme_mixins.scss */
-  .triplej .played .track h3 {
-    color: white;
-  }
-  /* line 19, ../client/styles/_theme_mixins.scss */
-  .triplej .played .track h4 {
-    color: #262626;
-  }
-  /* line 23, ../client/styles/_theme_mixins.scss */
-  .triplej .played .track .play {
-    border-color: white;
-    color: white;
-  }
-  /* line 29, ../client/styles/_theme_mixins.scss */
-  .triplej .played .track.playing a {
-    background: rgba(255, 255, 255, 0.2);
-  }
-  /* line 35, ../client/styles/_theme_mixins.scss */
-  .triplej .played .track.featured:after {
-    background: black;
-    color: black;
-  }
-  /* line 144, ../client/styles/_theme_mixins.scss */
-  .triplej .played + header .toggle_played.active, .triplej .played.active + header .toggle_played {
-    background: rgba(164, 11, 0, 0.8);
-  }
-  /* line 148, ../client/styles/_theme_mixins.scss */
-  .triplej .played .time {
-    color: #f1574d;
-  }
+
+/* line 37, ../client/styles/main.scss */
+html {
+  background: #eee;
 }
-/* line 154, ../client/styles/_theme_mixins.scss */
-.triplej .tracks .track {
-  box-shadow: #e8e8e8 0 1px 0;
-  background: white;
+
+/* line 41, ../client/styles/main.scss */
+body {
+  overflow: hidden;
 }
-/* line 15, ../client/styles/_theme_mixins.scss */
-.triplej .tracks .track h3 {
-  color: #ef4135;
-}
-/* line 19, ../client/styles/_theme_mixins.scss */
-.triplej .tracks .track h4 {
-  color: #262626;
-}
-/* line 23, ../client/styles/_theme_mixins.scss */
-.triplej .tracks .track .play {
-  border-color: #ef4135;
-  color: #ef4135;
-}
-/* line 29, ../client/styles/_theme_mixins.scss */
-.triplej .tracks .track.playing a {
-  background: rgba(239, 65, 53, 0.2);
-}
-/* line 35, ../client/styles/_theme_mixins.scss */
-.triplej .tracks .track.featured:after {
-  background: black;
-  color: black;
-}
-/* line 6, ../client/styles/_theme_mixins.scss */
-.triplej .track .img_container:before {
-  background-color: #fef3f2;
-}
-/* line 7, ../client/styles/_theme_mixins.scss */
-.triplej .track:nth-child(2n) .img_container:before {
-  background-color: #1a1a1a;
-}
-/* line 8, ../client/styles/_theme_mixins.scss */
-.triplej .track:nth-child(3n) .img_container:before {
-  background-color: #7fd1e5;
-}
-/* line 9, ../client/styles/_theme_mixins.scss */
-.triplej .track:nth-child(4n) .img_container:before {
-  background-color: #fff59d;
-}
-/* line 171, ../client/styles/_theme_mixins.scss */
-.triplej nav {
-  background-color: #ef4135;
-}
-/* line 72, ../client/styles/_theme_mixins.scss */
-.triplej nav li:after {
-  border-bottom-color: #ef4135;
-}
-/* line 76, ../client/styles/_theme_mixins.scss */
-.triplej nav a {
-  color: white;
+
+/* line 45, ../client/styles/main.scss */
+a {
+  text-decoration: none;
 }
 
 @media screen and (min-width: 700px) {
@@ -3142,12 +3155,18 @@ footer a {
   /* line 10, ../client/styles/small/_site.scss */
   .site {
     margin-bottom: 2em;
+    overflow: inherit;
+    display: none;
     -webkit-transform: none;
     -moz-transform: none;
     -ms-transform: none;
     -o-transform: none;
     transform: none;
     *zoom: 1;
+  }
+  /* line 16, ../client/styles/small/_site.scss */
+  .site.active {
+    display: block;
   }
   /* line 22, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
   .site:after {
@@ -3158,8 +3177,16 @@ footer a {
     overflow: hidden;
     visibility: hidden;
   }
+  /* line 23, ../client/styles/small/_site.scss */
+  .site, .site.active {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+  }
 
-  /* line 17, ../client/styles/small/_site.scss */
+  /* line 28, ../client/styles/small/_site.scss */
   footer {
     background: none;
   }
@@ -3240,12 +3267,10 @@ footer a {
   .played {
     font-size: .75em;
     position: absolute;
-    top: inherit;
-    left: inherit;
-    bottom: -60.25%;
-    right: .5em;
+    top: calc(52.8% - 2em);
+    left: 100%;
     background: none;
-    width: calc(33.33333% - .5em);
+    width: 50%;
     height: 100%;
     overflow: inherit;
     display: -webkit-box;
@@ -3266,31 +3291,31 @@ footer a {
     -webkit-justify-content: flex-end;
     justify-content: flex-end;
   }
-  /* line 22, ../client/styles/small/_track_played.scss */
+  /* line 20, ../client/styles/small/_track_played.scss */
   .played .track {
     padding-top: .5em;
     background: none;
     border: none;
   }
-  /* line 27, ../client/styles/small/_track_played.scss */
+  /* line 25, ../client/styles/small/_track_played.scss */
   .played .track h3 {
     color: #666;
   }
-  /* line 31, ../client/styles/small/_track_played.scss */
+  /* line 29, ../client/styles/small/_track_played.scss */
   .played .track h4 {
     color: #aaa;
   }
-  /* line 35, ../client/styles/small/_track_played.scss */
+  /* line 33, ../client/styles/small/_track_played.scss */
   .played .track .time {
     color: #ccc;
   }
-  /* line 40, ../client/styles/small/_track_played.scss */
+  /* line 38, ../client/styles/small/_track_played.scss */
   .played h1 {
     margin: 0 .5em 0 0;
-    padding: 100% 0 .5em .375em;
+    padding: 47.2% 0 0.5em 0.375em;
     display: block;
     position: fixed;
-    bottom: 39.75%;
+    top: 0;
     right: 0;
     background: #eee;
     width: calc(33.33333% - .5em);
@@ -3302,7 +3327,7 @@ footer a {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-  /* line 58, ../client/styles/small/_track_played.scss */
+  /* line 56, ../client/styles/small/_track_played.scss */
   .played:before {
     content: '';
     position: relative;
@@ -3316,6 +3341,11 @@ footer a {
   /* line 12, ../client/styles/small/_module.scss */
   html {
     font-family: 'Open Sans', sans-serif;
+  }
+
+  /* line 16, ../client/styles/small/_module.scss */
+  body {
+    overflow: inherit;
   }
 }
 @media screen and (min-width: 1000px) {
@@ -3413,13 +3443,4 @@ footer a {
   .played h1 {
     width: calc(25% - .5em);
   }
-}
-/* line 41, ../client/styles/main.scss */
-html {
-  background: #eee;
-}
-
-/* line 45, ../client/styles/main.scss */
-a {
-  text-decoration: none;
 }

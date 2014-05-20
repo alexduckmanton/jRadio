@@ -9,9 +9,20 @@ $site_width: 100% / 3 * 2;
 
     .site {
         margin-bottom: 2em;
+        overflow: inherit;
+
+        // hide non-active
+        display: none;
+        &.active {
+            display: block;
+        }
 
         @include transform(none);
         @include legacy-pie-clearfix;
+
+        &, &.active {
+            @include transform3d(none);
+        }
     }
 
     footer {
