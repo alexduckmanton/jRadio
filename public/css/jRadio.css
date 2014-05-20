@@ -1604,7 +1604,7 @@ footer a {
   order: 12;
 }
 /* line 98, ../client/styles/_track_tracks.scss */
-.tracks .track:not(.featured) .play {
+.tracks .track:not(.featured) .track_info .play {
   top: -1.75em;
   left: calc(50% - .5em);
   color: #fff;
@@ -1612,7 +1612,7 @@ footer a {
   opacity: 0.9;
 }
 /* line 106, ../client/styles/_track_tracks.scss */
-.tracks .track:not(.featured) .text {
+.tracks .track:not(.featured) .track_info .text {
   padding-left: 0;
   font-size: .75em;
 }
@@ -2732,193 +2732,367 @@ footer a {
   transform: rotate(-864000deg);
 }
 
-/* line 92, ../client/styles/_theme_mixins.scss */
-.site_loading {
-  color: #d4d4d4;
-}
-
-/* line 96, ../client/styles/_theme_mixins.scss */
-#content {
+/* line 1, ../client/styles/_themes.scss */
+.unearthed {
   background: #eeeeee;
 }
-
-/* line 100, ../client/styles/_theme_mixins.scss */
-header {
+/* line 94, ../client/styles/_theme_mixins.scss */
+.unearthed .site_loading {
+  color: #d4d4d4;
+}
+/* line 98, ../client/styles/_theme_mixins.scss */
+.unearthed header {
   color: white;
   background-color: #588d3f;
   background-image: url(/images/unearthed_bg.jpg);
 }
 /* line 51, ../client/styles/_theme_mixins.scss */
-header h1 {
+.unearthed header h1 {
   font-family: "sans-serif";
 }
 /* line 55, ../client/styles/_theme_mixins.scss */
-header h1:before, header h1:after {
+.unearthed header h1:before, .unearthed header h1:after {
   color: white;
 }
 /* line 60, ../client/styles/_theme_mixins.scss */
-header a {
+.unearthed header a {
   color: white;
   border-color: white;
 }
-
-/* line 109, ../client/styles/_theme_mixins.scss */
-.player {
+/* line 107, ../client/styles/_theme_mixins.scss */
+.unearthed .player {
   background-image: url(/images/unearthed_bg.jpg);
   background: "unearthed_bg.jpg";
 }
 /* line 15, ../client/styles/_theme_mixins.scss */
-.player h3 {
+.unearthed .player h3 {
   color: white;
 }
 /* line 19, ../client/styles/_theme_mixins.scss */
-.player h4 {
+.unearthed .player h4 {
   color: rgba(255, 255, 255, 0.75);
 }
 /* line 23, ../client/styles/_theme_mixins.scss */
-.player .play {
+.unearthed .player .play {
   border-color: white;
   color: white;
 }
 /* line 29, ../client/styles/_theme_mixins.scss */
-.player.playing a {
+.unearthed .player.playing a {
   background: rgba(29, 64, 12, 0.8);
 }
 /* line 35, ../client/styles/_theme_mixins.scss */
-.player.featured:after {
+.unearthed .player.featured:after {
   background: rgba(255, 255, 255, 0.75);
   color: rgba(204, 204, 204, 0.75);
 }
 @media screen and (min-width: 700px) {
-  /* line 109, ../client/styles/_theme_mixins.scss */
-  .player {
+  /* line 107, ../client/styles/_theme_mixins.scss */
+  .unearthed .player {
     box-shadow: #e8e8e8 0 1px 0;
     background: white;
   }
   /* line 15, ../client/styles/_theme_mixins.scss */
-  .player h3 {
+  .unearthed .player h3 {
     color: #4ba119;
   }
   /* line 19, ../client/styles/_theme_mixins.scss */
-  .player h4 {
+  .unearthed .player h4 {
     color: #ff8292;
   }
   /* line 23, ../client/styles/_theme_mixins.scss */
-  .player .play {
+  .unearthed .player .play {
     border-color: #4ba119;
     color: #4ba119;
   }
   /* line 29, ../client/styles/_theme_mixins.scss */
-  .player.playing a {
+  .unearthed .player.playing a {
     background: rgba(75, 161, 25, 0.2);
   }
   /* line 35, ../client/styles/_theme_mixins.scss */
-  .player.featured:after {
+  .unearthed .player.featured:after {
     background: #ff354f;
     color: #ce001b;
   }
 }
-
-/* line 130, ../client/styles/_theme_mixins.scss */
-.played {
-  background-image: url(/images/unearthed_bg.jpg);
-  background-color: #588d3f;
+@media screen and (max-width: 700px) {
+  /* line 129, ../client/styles/_theme_mixins.scss */
+  .unearthed .played {
+    background-image: url(/images/unearthed_bg.jpg);
+    background-color: #588d3f;
+  }
+  /* line 133, ../client/styles/_theme_mixins.scss */
+  .unearthed .played .track {
+    border-bottom-color: rgba(31, 69, 13, 0.8);
+    background: rgba(29, 64, 12, 0.8);
+    background: false;
+  }
+  /* line 15, ../client/styles/_theme_mixins.scss */
+  .unearthed .played .track h3 {
+    color: white;
+  }
+  /* line 19, ../client/styles/_theme_mixins.scss */
+  .unearthed .played .track h4 {
+    color: #ff8292;
+  }
+  /* line 23, ../client/styles/_theme_mixins.scss */
+  .unearthed .played .track .play {
+    border-color: white;
+    color: white;
+  }
+  /* line 29, ../client/styles/_theme_mixins.scss */
+  .unearthed .played .track.playing a {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  /* line 35, ../client/styles/_theme_mixins.scss */
+  .unearthed .played .track.featured:after {
+    background: #ff354f;
+    color: #ce001b;
+  }
+  /* line 144, ../client/styles/_theme_mixins.scss */
+  .unearthed .played + header .toggle_played.active, .unearthed .played.active + header .toggle_played {
+    background: rgba(29, 64, 12, 0.8);
+  }
+  /* line 148, ../client/styles/_theme_mixins.scss */
+  .unearthed .played .time {
+    color: #639f47;
+  }
 }
-/* line 134, ../client/styles/_theme_mixins.scss */
-.played .track {
-  border-bottom-color: rgba(31, 69, 13, 0.8);
-  background: rgba(29, 64, 12, 0.8);
-  background: false;
-}
-/* line 15, ../client/styles/_theme_mixins.scss */
-.played .track h3 {
-  color: white;
-}
-/* line 19, ../client/styles/_theme_mixins.scss */
-.played .track h4 {
-  color: #ff8292;
-}
-/* line 23, ../client/styles/_theme_mixins.scss */
-.played .track .play {
-  border-color: white;
-  color: white;
-}
-/* line 29, ../client/styles/_theme_mixins.scss */
-.played .track.playing a {
-  background: rgba(255, 255, 255, 0.2);
-}
-/* line 35, ../client/styles/_theme_mixins.scss */
-.played .track.featured:after {
-  background: #ff354f;
-  color: #ce001b;
-}
-/* line 145, ../client/styles/_theme_mixins.scss */
-.played + header .toggle_played.active, .played.active + header .toggle_played {
-  background: rgba(29, 64, 12, 0.8);
-}
-/* line 149, ../client/styles/_theme_mixins.scss */
-.played .time {
-  color: #639f47;
-}
-
 /* line 154, ../client/styles/_theme_mixins.scss */
-.tracks .track {
+.unearthed .tracks .track {
   box-shadow: #e8e8e8 0 1px 0;
   background: white;
 }
 /* line 15, ../client/styles/_theme_mixins.scss */
-.tracks .track h3 {
+.unearthed .tracks .track h3 {
   color: #4ba119;
 }
 /* line 19, ../client/styles/_theme_mixins.scss */
-.tracks .track h4 {
+.unearthed .tracks .track h4 {
   color: #ff8292;
 }
 /* line 23, ../client/styles/_theme_mixins.scss */
-.tracks .track .play {
+.unearthed .tracks .track .play {
   border-color: #4ba119;
   color: #4ba119;
 }
 /* line 29, ../client/styles/_theme_mixins.scss */
-.tracks .track.playing a {
+.unearthed .tracks .track.playing a {
   background: rgba(75, 161, 25, 0.2);
 }
 /* line 35, ../client/styles/_theme_mixins.scss */
-.tracks .track.featured:after {
+.unearthed .tracks .track.featured:after {
   background: #ff354f;
   color: #ce001b;
 }
-
 /* line 6, ../client/styles/_theme_mixins.scss */
-.track .img_container:before {
+.unearthed .track .img_container:before {
   background-color: #b7ef97;
 }
-
 /* line 7, ../client/styles/_theme_mixins.scss */
-.track:nth-child(2n) .img_container:before {
+.unearthed .track:nth-child(2n) .img_container:before {
   background-color: #ff687b;
 }
-
 /* line 8, ../client/styles/_theme_mixins.scss */
-.track:nth-child(3n) .img_container:before {
+.unearthed .track:nth-child(3n) .img_container:before {
   background-color: #7fd1e5;
 }
-
 /* line 9, ../client/styles/_theme_mixins.scss */
-.track:nth-child(4n) .img_container:before {
+.unearthed .track:nth-child(4n) .img_container:before {
   background-color: #fff59d;
 }
-
 /* line 171, ../client/styles/_theme_mixins.scss */
-nav {
+.unearthed nav {
   background-color: #588d3f;
 }
 /* line 72, ../client/styles/_theme_mixins.scss */
-nav li:after {
+.unearthed nav li:after {
   border-bottom-color: #588d3f;
 }
 /* line 76, ../client/styles/_theme_mixins.scss */
-nav a {
+.unearthed nav a {
+  color: white;
+}
+
+/* line 10, ../client/styles/_themes.scss */
+.triplej {
+  background: #eeeeee;
+}
+/* line 94, ../client/styles/_theme_mixins.scss */
+.triplej .site_loading {
+  color: #d4d4d4;
+}
+/* line 98, ../client/styles/_theme_mixins.scss */
+.triplej header {
+  color: white;
+  background-color: #ef4135;
+  background-image: url(/images/);
+}
+/* line 51, ../client/styles/_theme_mixins.scss */
+.triplej header h1 {
+  font-family: "sans-serif";
+}
+/* line 55, ../client/styles/_theme_mixins.scss */
+.triplej header h1:before, .triplej header h1:after {
+  color: white;
+}
+/* line 60, ../client/styles/_theme_mixins.scss */
+.triplej header a {
+  color: white;
+  border-color: white;
+}
+/* line 107, ../client/styles/_theme_mixins.scss */
+.triplej .player {
+  background-image: url(/images/);
+  background: "";
+}
+/* line 15, ../client/styles/_theme_mixins.scss */
+.triplej .player h3 {
+  color: white;
+}
+/* line 19, ../client/styles/_theme_mixins.scss */
+.triplej .player h4 {
+  color: rgba(255, 255, 255, 0.75);
+}
+/* line 23, ../client/styles/_theme_mixins.scss */
+.triplej .player .play {
+  border-color: white;
+  color: white;
+}
+/* line 29, ../client/styles/_theme_mixins.scss */
+.triplej .player.playing a {
+  background: rgba(164, 11, 0, 0.8);
+}
+/* line 35, ../client/styles/_theme_mixins.scss */
+.triplej .player.featured:after {
+  background: rgba(255, 255, 255, 0.75);
+  color: rgba(204, 204, 204, 0.75);
+}
+@media screen and (min-width: 700px) {
+  /* line 107, ../client/styles/_theme_mixins.scss */
+  .triplej .player {
+    box-shadow: #e8e8e8 0 1px 0;
+    background: white;
+  }
+  /* line 15, ../client/styles/_theme_mixins.scss */
+  .triplej .player h3 {
+    color: #ef4135;
+  }
+  /* line 19, ../client/styles/_theme_mixins.scss */
+  .triplej .player h4 {
+    color: #262626;
+  }
+  /* line 23, ../client/styles/_theme_mixins.scss */
+  .triplej .player .play {
+    border-color: #ef4135;
+    color: #ef4135;
+  }
+  /* line 29, ../client/styles/_theme_mixins.scss */
+  .triplej .player.playing a {
+    background: rgba(239, 65, 53, 0.2);
+  }
+  /* line 35, ../client/styles/_theme_mixins.scss */
+  .triplej .player.featured:after {
+    background: black;
+    color: black;
+  }
+}
+@media screen and (max-width: 700px) {
+  /* line 129, ../client/styles/_theme_mixins.scss */
+  .triplej .played {
+    background-image: url(/images/);
+    background-color: #ef4135;
+  }
+  /* line 133, ../client/styles/_theme_mixins.scss */
+  .triplej .played .track {
+    border-bottom-color: rgba(170, 11, 0, 0.8);
+    background: rgba(164, 11, 0, 0.8);
+    background: false;
+  }
+  /* line 15, ../client/styles/_theme_mixins.scss */
+  .triplej .played .track h3 {
+    color: white;
+  }
+  /* line 19, ../client/styles/_theme_mixins.scss */
+  .triplej .played .track h4 {
+    color: #262626;
+  }
+  /* line 23, ../client/styles/_theme_mixins.scss */
+  .triplej .played .track .play {
+    border-color: white;
+    color: white;
+  }
+  /* line 29, ../client/styles/_theme_mixins.scss */
+  .triplej .played .track.playing a {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  /* line 35, ../client/styles/_theme_mixins.scss */
+  .triplej .played .track.featured:after {
+    background: black;
+    color: black;
+  }
+  /* line 144, ../client/styles/_theme_mixins.scss */
+  .triplej .played + header .toggle_played.active, .triplej .played.active + header .toggle_played {
+    background: rgba(164, 11, 0, 0.8);
+  }
+  /* line 148, ../client/styles/_theme_mixins.scss */
+  .triplej .played .time {
+    color: #f1574d;
+  }
+}
+/* line 154, ../client/styles/_theme_mixins.scss */
+.triplej .tracks .track {
+  box-shadow: #e8e8e8 0 1px 0;
+  background: white;
+}
+/* line 15, ../client/styles/_theme_mixins.scss */
+.triplej .tracks .track h3 {
+  color: #ef4135;
+}
+/* line 19, ../client/styles/_theme_mixins.scss */
+.triplej .tracks .track h4 {
+  color: #262626;
+}
+/* line 23, ../client/styles/_theme_mixins.scss */
+.triplej .tracks .track .play {
+  border-color: #ef4135;
+  color: #ef4135;
+}
+/* line 29, ../client/styles/_theme_mixins.scss */
+.triplej .tracks .track.playing a {
+  background: rgba(239, 65, 53, 0.2);
+}
+/* line 35, ../client/styles/_theme_mixins.scss */
+.triplej .tracks .track.featured:after {
+  background: black;
+  color: black;
+}
+/* line 6, ../client/styles/_theme_mixins.scss */
+.triplej .track .img_container:before {
+  background-color: #fef3f2;
+}
+/* line 7, ../client/styles/_theme_mixins.scss */
+.triplej .track:nth-child(2n) .img_container:before {
+  background-color: #1a1a1a;
+}
+/* line 8, ../client/styles/_theme_mixins.scss */
+.triplej .track:nth-child(3n) .img_container:before {
+  background-color: #7fd1e5;
+}
+/* line 9, ../client/styles/_theme_mixins.scss */
+.triplej .track:nth-child(4n) .img_container:before {
+  background-color: #fff59d;
+}
+/* line 171, ../client/styles/_theme_mixins.scss */
+.triplej nav {
+  background-color: #ef4135;
+}
+/* line 72, ../client/styles/_theme_mixins.scss */
+.triplej nav li:after {
+  border-bottom-color: #ef4135;
+}
+/* line 76, ../client/styles/_theme_mixins.scss */
+.triplej nav a {
   color: white;
 }
 

@@ -25,6 +25,7 @@ module.exports = layout = Marionette.Layout.extend({
     },
 
     onRender: function() {
+        this.$el.addClass(this.model.get('name'));
         this.$header = this.$el.children('header');
 
         this.init_played();

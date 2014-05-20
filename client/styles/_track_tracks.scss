@@ -94,7 +94,7 @@
             }
         }
 
-        &:not(.featured) {
+        &:not(.featured) .track_info {
             .play {
                 top: -1.75em;
                 left: calc(50% - .5em);

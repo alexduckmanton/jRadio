@@ -15267,10 +15267,16 @@ module.exports = Controller = Marionette.Controller.extend({
     initialize: function() {
         // add the player to the page. only needs to be done once on initialization
         App.views.playerView = new PlayerView({ model: new PlayerModel() });
-        $('#content').before( window.App.views.playerView.render().el );
+        $('#content').prepend( window.App.views.playerView.render().el );
 
         this.listenTo(App.core.vent, 'scroll:pos', this.scroll);
         this.listenTo(App.core.vent, 'scroll:elem', this.scroll_elem);
+        this.listenTo(App.core.vent, 'route', this.on_route);
+    },
+
+    on_route: function(path) {
+        App.router.navigate(path);
+        $('body').removeClass().addClass(path);
     },
 
     scroll: function(options) {
@@ -15311,8 +15317,6 @@ module.exports = Controller = Marionette.Controller.extend({
             played_api: '/api/unearthed/recent'
         }) });
 
-        App.router.navigate('unearthed');
-        
         this.renderView( App.views.unearthedLayout );
     },
 
@@ -15325,8 +15329,6 @@ module.exports = Controller = Marionette.Controller.extend({
             tracks_api: '/api/triplej',
             played_api: '/api/triplej/recent'
         }) });
-
-        App.router.navigate('triplej');
 
         this.renderView( App.views.triplejLayout );
     },
@@ -15378,7 +15380,7 @@ module.exports = Controller = Marionette.Controller.extend({
 
     renderView: function(view) {
         this.destroyCurrentView(view);
-        $('#content').html(view.render().el);
+        $('#content').append(view.render().el);
     },
 
     destroyCurrentView: function(view) {
@@ -15444,6 +15446,7 @@ module.exports = layout = Marionette.Layout.extend({
     },
 
     onRender: function() {
+        this.$el.addClass(this.model.get('name'));
         this.$header = this.$el.children('header');
 
         this.init_played();
