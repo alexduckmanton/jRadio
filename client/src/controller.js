@@ -17,7 +17,8 @@ module.exports = Controller = Marionette.Controller.extend({
         $('#content').prepend( window.App.views.playerView.render().el );
 
         // create site views, to be populated when navigated to
-        App.views.unearthedLayout = new SiteLayout({ model: new SiteModel({
+        App.views.unearthed = {};
+        App.views.unearthed.layout = new SiteLayout({ model: new SiteModel({
             name: 'unearthed',
             page_title: 'Unearthed',
             radio_title: 'Triple J Unearthed',
@@ -25,8 +26,10 @@ module.exports = Controller = Marionette.Controller.extend({
             tracks_api: '/api/unearthed',
             played_api: '/api/unearthed/recent'
         }) });
+        this.renderView( App.views.unearthed.layout );
 
-        App.views.triplejLayout = new SiteLayout({ model: new SiteModel({
+        App.views.triplej = {};
+        App.views.triplej.layout = new SiteLayout({ model: new SiteModel({
             name: 'triplej',
             page_title: 'Triple J',
             radio_title: 'Triple J',
@@ -34,9 +37,7 @@ module.exports = Controller = Marionette.Controller.extend({
             tracks_api: '/api/triplej',
             played_api: '/api/triplej/recent'
         }) });
-
-        this.renderView( App.views.unearthedLayout );
-        this.renderView( App.views.triplejLayout );
+        this.renderView( App.views.triplej.layout );
     },
 
     on_route: function(path) {

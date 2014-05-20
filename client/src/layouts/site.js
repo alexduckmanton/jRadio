@@ -52,11 +52,12 @@ module.exports = layout = Marionette.Layout.extend({
     },
 
     init_touch: function(e) {
-        var scroll_pos = $(window).scrollTop(),
+        var name = this.model.get('name'),
+            scroll_pos = $(window).scrollTop(),
             touch_pos = e.originalEvent.pageY,
             tracks = this.$el.find('.tracks');
 
-        if (!App.views.playedView.collection.active && !App.views.playerView.model.get('is_playing')) {
+        if (!App.views[name].playedView.collection.active && !App.views.playerView.model.get('is_playing')) {
             // do clock and get played tracks
             this.model.set('init_touch', touch_pos);
             tracks.on('touchmove', '', {context:this}, this.drag);
@@ -132,6 +133,7 @@ module.exports = layout = Marionette.Layout.extend({
 
     get_tracks: function() {
         var self = this,
+            name = this.model.get('name'),
             tracks = new TracksCollection();
 
         tracks.site = this.model.get('name');
@@ -141,7 +143,7 @@ module.exports = layout = Marionette.Layout.extend({
             success: function() {
                 // create the new view with fresh data
                 App.data.tracks = tracks;
-                App.views.tracksView = new TracksView({ collection: tracks });
+                App.views[name].tracksView = new TracksView({ collection: tracks });
 
                 // render
                 self.show_tracks();
@@ -151,7 +153,8 @@ module.exports = layout = Marionette.Layout.extend({
 
     show_tracks: function() {
         var self = this,
-            tracks = App.views.tracksView.render().el,
+            name = this.model.get('name'),
+            tracks = App.views[name].tracksView.render().el,
             loader = this.$el.find('.site_loading');
 
         loader.addClass('loaded');
@@ -163,16 +166,19 @@ module.exports = layout = Marionette.Layout.extend({
     },
 
     init_played: function() {
-        App.views.playedView = new TracksView({
+        var name = this.model.get('name');
+
+        App.views[name].playedView = new TracksView({
             collection: new TracksCollection(),
             className: 'played'
         });
-        this.$el.prepend(App.views.playedView.render().el);
+        this.$el.prepend(App.views[name].playedView.render().el);
     },
 
     get_played: function() {
         var self = this,
-            played = App.views.playedView.collection;
+            name = this.model.get('name'),
+            played = App.views[name].playedView.collection;
 
         this.toggle_played_loading();
 
@@ -184,11 +190,11 @@ module.exports = layout = Marionette.Layout.extend({
 
                 // store data and views in the app
                 App.data.played = played;
-                App.views.playedView.collection = App.data.played;
+                App.views[name].playedView.collection = App.data.played;
 
                 // render
                 self.toggle_played_loading();
-                App.views.playedView.render();
+                App.views[name].playedView.render();
                 self.bind_played_events();
                 App.core.vent.trigger('played:show');
             }
@@ -196,7 +202,8 @@ module.exports = layout = Marionette.Layout.extend({
     },
 
     toggle_played: function() {
-        var played = App.views.playedView;
+        var name = this.model.get('name'),
+            played = App.views[name].playedView;
 
         if (!played.collection.active) {
             this.$el.find('.toggle_played').addClass('active');
@@ -247,7 +254,9 @@ module.exports = layout = Marionette.Layout.extend({
     },
 
     update_ui_for_player: function(track) {
-        if (App.views.playedView.collection.active) this.toggle_played();
+        var name = this.model.get('name');
+
+        if (App.views[name].playedView.collection.active) this.toggle_played();
     }
 
 });
