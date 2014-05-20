@@ -14,5 +14,6 @@ module.exports.initialize = function(app) {
     app.get('/api/unearthed/recent', unearthed.recent);
 
     // triple j
+    app.get('/api/triplej', triplej.tracks);
     app.get('/api/triplej/recent', triplej.recent);
 };
