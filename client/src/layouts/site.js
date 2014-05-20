@@ -18,7 +18,7 @@ module.exports = layout = Marionette.Layout.extend({
         this.listenTo(this.model, 'change:active', this.toggle_active);
 
         this.toggle_active();
-        this.get_tracks();
+        this.listenToOnce(this.model, 'change:active', this.get_data);
 
         if (App.data.window.width <= 700) {
             this.listenTo(App.core.vent, 'played:show', this.toggle_tray);
@@ -29,9 +29,15 @@ module.exports = layout = Marionette.Layout.extend({
     onRender: function() {
         this.$el.addClass(this.model.get('name'));
         this.$header = this.$el.children('header');
+        // this.get_data();
 
         this.init_played();
         if (App.data.window.width > 700) this.get_played();
+    },
+
+    get_data: function() {
+        this.$header.after( require('../../templates/loading.hbs') );
+        this.get_tracks();
     },
 
     toggle_active: function() {

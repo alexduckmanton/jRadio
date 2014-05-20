@@ -2,7 +2,7 @@ var Backbone = require('backbone');
 
 module.exports = SiteModel = Backbone.Model.extend({
     defaults: {
-        active: true,
+        active: false,
         title: 'Live Radio',
         src: ''
     },

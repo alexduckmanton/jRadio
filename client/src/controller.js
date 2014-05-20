@@ -8,13 +8,35 @@ var Marionette = require('backbone.marionette'),
 
 module.exports = Controller = Marionette.Controller.extend({
     initialize: function() {
+        this.listenTo(App.core.vent, 'scroll:pos', this.scroll);
+        this.listenTo(App.core.vent, 'scroll:elem', this.scroll_elem);
+        this.listenTo(App.core.vent, 'route', this.on_route);
+
         // add the player to the page. only needs to be done once on initialization
         App.views.playerView = new PlayerView({ model: new PlayerModel() });
         $('#content').prepend( window.App.views.playerView.render().el );
 
-        this.listenTo(App.core.vent, 'scroll:pos', this.scroll);
-        this.listenTo(App.core.vent, 'scroll:elem', this.scroll_elem);
-        this.listenTo(App.core.vent, 'route', this.on_route);
+        // create site views, to be populated when navigated to
+        App.views.unearthedLayout = new SiteLayout({ model: new SiteModel({
+            name: 'unearthed',
+            page_title: 'Unearthed',
+            radio_title: 'Triple J Unearthed',
+            src: 'http://shoutmedia.abc.net.au:10464/;*.mp3',
+            tracks_api: '/api/unearthed',
+            played_api: '/api/unearthed/recent'
+        }) });
+
+        App.views.triplejLayout = new SiteLayout({ model: new SiteModel({
+            name: 'triplej',
+            page_title: 'Triple J',
+            radio_title: 'Triple J',
+            src: 'http://shoutmedia.abc.net.au:10426/;*.mp3',
+            tracks_api: '/api/triplej',
+            played_api: '/api/triplej/recent'
+        }) });
+
+        this.renderView( App.views.unearthedLayout );
+        this.renderView( App.views.triplejLayout );
     },
 
     on_route: function(path) {
@@ -51,43 +73,9 @@ module.exports = Controller = Marionette.Controller.extend({
     },
 
     unearthed: function() {
-        if (App.views.unearthedLayout) {
-            console.log('cached');
-            return;
-        }
-
-        console.log('loading');
-
-        App.views.unearthedLayout = new SiteLayout({ model: new SiteModel({
-            name: 'unearthed',
-            page_title: 'Unearthed',
-            radio_title: 'Triple J Unearthed',
-            src: 'http://shoutmedia.abc.net.au:10464/;*.mp3',
-            tracks_api: '/api/unearthed',
-            played_api: '/api/unearthed/recent'
-        }) });
-
-        this.renderView( App.views.unearthedLayout );
     },
 
     triplej: function() {
-        if (App.views.triplejLayout) {
-            console.log('cached');
-            return;
-        }
-
-        console.log('loading');
-
-        App.views.triplejLayout = new SiteLayout({ model: new SiteModel({
-            name: 'triplej',
-            page_title: 'Triple J',
-            radio_title: 'Triple J',
-            src: 'http://shoutmedia.abc.net.au:10426/;*.mp3',
-            tracks_api: '/api/triplej',
-            played_api: '/api/triplej/recent'
-        }) });
-
-        this.renderView( App.views.triplejLayout );
     },
 
     renderView: function(view) {

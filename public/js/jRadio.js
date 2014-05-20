@@ -15265,13 +15265,35 @@ var Marionette = require('backbone.marionette'),
 
 module.exports = Controller = Marionette.Controller.extend({
     initialize: function() {
+        this.listenTo(App.core.vent, 'scroll:pos', this.scroll);
+        this.listenTo(App.core.vent, 'scroll:elem', this.scroll_elem);
+        this.listenTo(App.core.vent, 'route', this.on_route);
+
         // add the player to the page. only needs to be done once on initialization
         App.views.playerView = new PlayerView({ model: new PlayerModel() });
         $('#content').prepend( window.App.views.playerView.render().el );
 
-        this.listenTo(App.core.vent, 'scroll:pos', this.scroll);
-        this.listenTo(App.core.vent, 'scroll:elem', this.scroll_elem);
-        this.listenTo(App.core.vent, 'route', this.on_route);
+        // create site views, to be populated when navigated to
+        App.views.unearthedLayout = new SiteLayout({ model: new SiteModel({
+            name: 'unearthed',
+            page_title: 'Unearthed',
+            radio_title: 'Triple J Unearthed',
+            src: 'http://shoutmedia.abc.net.au:10464/;*.mp3',
+            tracks_api: '/api/unearthed',
+            played_api: '/api/unearthed/recent'
+        }) });
+
+        App.views.triplejLayout = new SiteLayout({ model: new SiteModel({
+            name: 'triplej',
+            page_title: 'Triple J',
+            radio_title: 'Triple J',
+            src: 'http://shoutmedia.abc.net.au:10426/;*.mp3',
+            tracks_api: '/api/triplej',
+            played_api: '/api/triplej/recent'
+        }) });
+
+        this.renderView( App.views.unearthedLayout );
+        this.renderView( App.views.triplejLayout );
     },
 
     on_route: function(path) {
@@ -15308,43 +15330,9 @@ module.exports = Controller = Marionette.Controller.extend({
     },
 
     unearthed: function() {
-        if (App.views.unearthedLayout) {
-            console.log('cached');
-            return;
-        }
-
-        console.log('loading');
-
-        App.views.unearthedLayout = new SiteLayout({ model: new SiteModel({
-            name: 'unearthed',
-            page_title: 'Unearthed',
-            radio_title: 'Triple J Unearthed',
-            src: 'http://shoutmedia.abc.net.au:10464/;*.mp3',
-            tracks_api: '/api/unearthed',
-            played_api: '/api/unearthed/recent'
-        }) });
-
-        this.renderView( App.views.unearthedLayout );
     },
 
     triplej: function() {
-        if (App.views.triplejLayout) {
-            console.log('cached');
-            return;
-        }
-
-        console.log('loading');
-
-        App.views.triplejLayout = new SiteLayout({ model: new SiteModel({
-            name: 'triplej',
-            page_title: 'Triple J',
-            radio_title: 'Triple J',
-            src: 'http://shoutmedia.abc.net.au:10426/;*.mp3',
-            tracks_api: '/api/triplej',
-            played_api: '/api/triplej/recent'
-        }) });
-
-        this.renderView( App.views.triplejLayout );
     },
 
     renderView: function(view) {
@@ -15408,7 +15396,7 @@ module.exports = layout = Marionette.Layout.extend({
         this.listenTo(this.model, 'change:active', this.toggle_active);
 
         this.toggle_active();
-        this.get_tracks();
+        this.listenToOnce(this.model, 'change:active', this.get_data);
 
         if (App.data.window.width <= 700) {
             this.listenTo(App.core.vent, 'played:show', this.toggle_tray);
@@ -15419,9 +15407,15 @@ module.exports = layout = Marionette.Layout.extend({
     onRender: function() {
         this.$el.addClass(this.model.get('name'));
         this.$header = this.$el.children('header');
+        // this.get_data();
 
         this.init_played();
         if (App.data.window.width > 700) this.get_played();
+    },
+
+    get_data: function() {
+        this.$header.after( require('../../templates/loading.hbs') );
+        this.get_tracks();
     },
 
     toggle_active: function() {
@@ -15629,7 +15623,7 @@ module.exports = layout = Marionette.Layout.extend({
 
 });
 
-},{"../../templates/site.hbs":19,"../collections/tracks":2,"../views/tracks":12}],6:[function(require,module,exports){
+},{"../../templates/loading.hbs":15,"../../templates/site.hbs":19,"../collections/tracks":2,"../views/tracks":12}],6:[function(require,module,exports){
 var App = require('./app');
 var jr = new App();
 jr.start();
@@ -15716,7 +15710,7 @@ var Backbone = require('backbone');
 
 module.exports = SiteModel = Backbone.Model.extend({
     defaults: {
-        active: true,
+        active: false,
         title: 'Live Radio',
         src: ''
     },
@@ -16183,11 +16177,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.clock) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.clock); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</a>\n</header>\n\n";
-  if (helper = helpers.loading) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.loading); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n\n<footer><p>Made by @<a href=\"https://twitter.com/alexduckmanton\" target=\"_blank\">alexduckmanton</a></p></footer>\n";
+  buffer += "</a>\n</header>\n\n<footer><p>Made by @<a href=\"https://twitter.com/alexduckmanton\" target=\"_blank\">alexduckmanton</a></p></footer>\n";
   return buffer;
   });
 
