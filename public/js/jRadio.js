@@ -15325,7 +15325,7 @@ module.exports = Controller = Marionette.Controller.extend({
             name: 'triplej',
             page_title: 'Triple J',
             radio_title: 'Triple J',
-            src: 'http://shoutmedia.abc.net.au:10464/;*.mp3',
+            src: 'http://shoutmedia.abc.net.au:10426/;*.mp3',
             tracks_api: '/api/triplej',
             played_api: '/api/triplej/recent'
         }) });
