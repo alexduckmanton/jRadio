@@ -3,9 +3,6 @@ var Marionette = require('backbone.marionette'),
     TracksCollection = require('./collections/tracks'),
     PlayerModel = require('./models/player'),
     PlayerView = require('./views/player'),
-    NavModel = require('./models/nav'),
-    NavView = require('./views/nav'),
-    NavCollection = require('./collections/nav'),
     UnearthedLayout = require('./layouts/unearthed'),
     SiteModel = require('./models/site');
 
@@ -17,14 +14,6 @@ module.exports = Controller = Marionette.Controller.extend({
 
         this.listenTo(App.core.vent, 'scroll:pos', this.scroll);
         this.listenTo(App.core.vent, 'scroll:elem', this.scroll_elem);
-
-        // add footer navigation
-        // var nav_collection = new NavCollection([
-        //     new NavModel({ link: 'unearthed/new', label: 'new' }),
-        //     new NavModel({ link: 'unearthed/featured', label: 'featured' })
-        // ]);
-        // window.App.views.navView = new NavView({ collection: nav_collection });
-        // $('nav').append( window.App.views.navView.render().el );
     },
 
     scroll: function(options) {
