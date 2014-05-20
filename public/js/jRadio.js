@@ -15260,7 +15260,7 @@ var Marionette = require('backbone.marionette'),
     TracksCollection = require('./collections/tracks'),
     PlayerModel = require('./models/player'),
     PlayerView = require('./views/player'),
-    UnearthedLayout = require('./layouts/unearthed'),
+    SiteLayout = require('./layouts/site'),
     SiteModel = require('./models/site');
 
 module.exports = Controller = Marionette.Controller.extend({
@@ -15302,11 +15302,13 @@ module.exports = Controller = Marionette.Controller.extend({
     },
 
     unearthed: function() {
-        App.views.unearthedLayout = new UnearthedLayout({ model: new SiteModel({
+        App.views.unearthedLayout = new SiteLayout({ model: new SiteModel({
             logo: 'unearthedlogo',
             page_title: 'Unearthed',
             radio_title: 'Triple J Unearthed',
-            src: 'http://shoutmedia.abc.net.au:10464/;*.mp3'
+            src: 'http://shoutmedia.abc.net.au:10464/;*.mp3',
+            tracks_api: '/api/unearthed',
+            played_api: '/api/unearthed/recent'
         }) });
 
         App.router.navigate('unearthed');
@@ -15371,7 +15373,7 @@ module.exports = Controller = Marionette.Controller.extend({
     }
 });
 
-},{"./collections/tracks":2,"./layouts/unearthed":5,"./models/player":7,"./models/site":8,"./views/player":11,"./views/tracks":12}],4:[function(require,module,exports){
+},{"./collections/tracks":2,"./layouts/site":5,"./models/player":7,"./models/site":8,"./views/player":11,"./views/tracks":12}],4:[function(require,module,exports){
 var Handlebars = require('hbsfy/runtime');
 
 module.exports = Helpers = function Helpers() {
@@ -15516,7 +15518,7 @@ module.exports = layout = Marionette.Layout.extend({
             tracks = new TracksCollection();
 
         tracks.fetch({
-            url: '/api/unearthed',
+            url: this.model.get('tracks_api'),
             success: function() {
                 // create the new view with fresh data
                 App.data.tracks = tracks;
@@ -15556,7 +15558,7 @@ module.exports = layout = Marionette.Layout.extend({
         this.toggle_played_loading();
 
         played.fetch({
-            url: '/api/unearthed/recent',
+            url: this.model.get('played_api'),
             success: function() {
                 played.type = 'played';
                 played.models.reverse();
@@ -15866,12 +15868,7 @@ var Marionette = require('backbone.marionette');
 module.exports = Router = Marionette.AppRouter.extend({
     appRoutes: {
         '': 'unearthed',
-        'unearthed': 'unearthed',
-        // 'unearthed/': 'unearthed_new',
-        // 'unearthed/new': 'unearthed_new',
-        // 'unearthed/new/': 'unearthed_new',
-        // 'unearthed/featured': 'unearthed_featured'
-        // 'unearthed/featured/': 'unearthed_featured'
+        'unearthed': 'unearthed'
     },
 
     onRoute: function(name, path, options) {

@@ -115,7 +115,7 @@ module.exports = layout = Marionette.Layout.extend({
             tracks = new TracksCollection();
 
         tracks.fetch({
-            url: '/api/unearthed',
+            url: this.model.get('tracks_api'),
             success: function() {
                 // create the new view with fresh data
                 App.data.tracks = tracks;
@@ -155,7 +155,7 @@ module.exports = layout = Marionette.Layout.extend({
         this.toggle_played_loading();
 
         played.fetch({
-            url: '/api/unearthed/recent',
+            url: this.model.get('played_api'),
             success: function() {
                 played.type = 'played';
                 played.models.reverse();

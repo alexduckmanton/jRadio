@@ -3,7 +3,7 @@ var Marionette = require('backbone.marionette'),
     TracksCollection = require('./collections/tracks'),
     PlayerModel = require('./models/player'),
     PlayerView = require('./views/player'),
-    UnearthedLayout = require('./layouts/unearthed'),
+    SiteLayout = require('./layouts/site'),
     SiteModel = require('./models/site');
 
 module.exports = Controller = Marionette.Controller.extend({
@@ -45,11 +45,13 @@ module.exports = Controller = Marionette.Controller.extend({
     },
 
     unearthed: function() {
-        App.views.unearthedLayout = new UnearthedLayout({ model: new SiteModel({
+        App.views.unearthedLayout = new SiteLayout({ model: new SiteModel({
             logo: 'unearthedlogo',
             page_title: 'Unearthed',
             radio_title: 'Triple J Unearthed',
-            src: 'http://shoutmedia.abc.net.au:10464/;*.mp3'
+            src: 'http://shoutmedia.abc.net.au:10464/;*.mp3',
+            tracks_api: '/api/unearthed',
+            played_api: '/api/unearthed/recent'
         }) });
 
         App.router.navigate('unearthed');

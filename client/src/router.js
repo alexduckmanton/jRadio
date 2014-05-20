@@ -3,12 +3,7 @@ var Marionette = require('backbone.marionette');
 module.exports = Router = Marionette.AppRouter.extend({
     appRoutes: {
         '': 'unearthed',
-        'unearthed': 'unearthed',
-        // 'unearthed/': 'unearthed_new',
-        // 'unearthed/new': 'unearthed_new',
-        // 'unearthed/new/': 'unearthed_new',
-        // 'unearthed/featured': 'unearthed_featured'
-        // 'unearthed/featured/': 'unearthed_featured'
+        'unearthed': 'unearthed'
     },
 
     onRoute: function(name, path, options) {
