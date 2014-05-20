@@ -542,6 +542,7 @@ th {
   width: 90%;
   height: 100%;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -563,7 +564,7 @@ th {
   -o-transform: translate3d(-95%, 10em, 0);
   transform: translate3d(-95%, 10em, 0);
 }
-/* line 28, ../client/styles/_site.scss */
+/* line 31, ../client/styles/_site.scss */
 .site:after {
   content: '';
   position: absolute;
@@ -572,7 +573,7 @@ th {
   left: 0;
   box-shadow: rgba(0, 0, 0, 0.3) -999em 999em 0 999em;
 }
-/* line 38, ../client/styles/_site.scss */
+/* line 41, ../client/styles/_site.scss */
 .site.active {
   -webkit-transform: translate3d(5%, 0, 0);
   -moz-transform: translate3d(5%, 0, 0);
@@ -588,11 +589,11 @@ th {
   -o-transform: translate3d(5%, 10em, 0);
   transform: translate3d(5%, 10em, 0);
 }
-/* line 41, ../client/styles/_site.scss */
+/* line 44, ../client/styles/_site.scss */
 .site.active:after {
   display: none;
 }
-/* line 46, ../client/styles/_site.scss */
+/* line 49, ../client/styles/_site.scss */
 .site.active ~ .site {
   -webkit-transform: translate3d(105%, 0, 0);
   -moz-transform: translate3d(105%, 0, 0);
@@ -608,7 +609,7 @@ th {
   -o-transform: translate3d(105%, 10em, 0);
   transform: translate3d(105%, 10em, 0);
 }
-/* line 49, ../client/styles/_site.scss */
+/* line 52, ../client/styles/_site.scss */
 .site.active ~ .site:after {
   box-shadow: rgba(0, 0, 0, 0.3) 999em 999em 0 999em;
 }

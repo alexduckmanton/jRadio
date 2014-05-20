@@ -20,6 +20,9 @@ $site_margin: (100% - $site_width) / 2;
     height: 100%;
     overflow: auto;
 
+    // enable inertial scrolling for ios and android
+    -webkit-overflow-scrolling: touch;
+
     @include box-sizing(border-box);
     @include single-transition(all);
 
