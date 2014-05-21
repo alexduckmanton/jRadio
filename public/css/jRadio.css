@@ -2910,7 +2910,7 @@ footer a {
     color: #ff8292;
   }
   /* line 23, ../client/styles/_theme_mixins.scss */
-  .unearthed.site .played .track .play {
+  .unearthed.site .played .track a {
     border-color: white;
     color: white;
   }
@@ -2946,7 +2946,7 @@ footer a {
   color: #ff8292;
 }
 /* line 23, ../client/styles/_theme_mixins.scss */
-.unearthed.site .tracks .track .play {
+.unearthed.site .tracks .track a {
   border-color: #4ba119;
   color: #4ba119;
 }
@@ -2990,7 +2990,7 @@ footer a {
   color: rgba(255, 255, 255, 0.75);
 }
 /* line 23, ../client/styles/_theme_mixins.scss */
-.unearthed .player .play {
+.unearthed .player a {
   border-color: white;
   color: white;
 }
@@ -3018,7 +3018,7 @@ footer a {
     color: #ff8292;
   }
   /* line 23, ../client/styles/_theme_mixins.scss */
-  .unearthed .player .play {
+  .unearthed .player a {
     border-color: #4ba119;
     color: #4ba119;
   }
@@ -3089,7 +3089,7 @@ footer a {
     color: #262626;
   }
   /* line 23, ../client/styles/_theme_mixins.scss */
-  .triplej.site .played .track .play {
+  .triplej.site .played .track a {
     border-color: white;
     color: white;
   }
@@ -3125,7 +3125,7 @@ footer a {
   color: #262626;
 }
 /* line 23, ../client/styles/_theme_mixins.scss */
-.triplej.site .tracks .track .play {
+.triplej.site .tracks .track a {
   border-color: #ef4135;
   color: #ef4135;
 }
@@ -3168,7 +3168,7 @@ footer a {
   color: rgba(255, 255, 255, 0.75);
 }
 /* line 23, ../client/styles/_theme_mixins.scss */
-.triplej .player .play {
+.triplej .player a {
   border-color: white;
   color: white;
 }
@@ -3196,7 +3196,7 @@ footer a {
     color: #262626;
   }
   /* line 23, ../client/styles/_theme_mixins.scss */
-  .triplej .player .play {
+  .triplej .player a {
     border-color: #ef4135;
     color: #ef4135;
   }
