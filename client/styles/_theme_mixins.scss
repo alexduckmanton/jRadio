@@ -175,7 +175,7 @@
     }
 
     .site {
-        $cover_color: rgba( saturate(darken($primary, 25%), 100%), .8 );
+        $cover_color: $header_bg;
 
         &.#{$site}:after {
             background: $cover_color;

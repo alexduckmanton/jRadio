@@ -572,7 +572,7 @@ th {
   height: 100%;
   top: 0;
   left: 0;
-  opacity: 1;
+  opacity: .8;
   -webkit-transition: opacity 0.3s;
   -moz-transition: opacity 0.3s;
   -o-transition: opacity 0.3s;
@@ -2968,11 +2968,11 @@ footer a {
 
 /* line 180, ../client/styles/_theme_mixins.scss */
 .site.unearthed:after {
-  background: rgba(22, 58, 0, 0.8);
+  background: #588d3f;
 }
 /* line 184, ../client/styles/_theme_mixins.scss */
 .site.active + .site.unearthed:after {
-  background: rgba(22, 58, 0, 0.8);
+  background: #588d3f;
 }
 
 /* line 93, ../client/styles/_theme_mixins.scss */
@@ -3147,11 +3147,11 @@ footer a {
 
 /* line 180, ../client/styles/_theme_mixins.scss */
 .site.triplej:after {
-  background: rgba(164, 11, 0, 0.8);
+  background: #ef4135;
 }
 /* line 184, ../client/styles/_theme_mixins.scss */
 .site.active + .site.triplej:after {
-  background: rgba(164, 11, 0, 0.8);
+  background: #ef4135;
 }
 
 /* line 37, ../client/styles/main.scss */
