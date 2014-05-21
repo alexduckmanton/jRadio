@@ -46,7 +46,7 @@
 @mixin header_theme($color, $bg, $img, $font) {
     color: $color;
     background-color: $bg;
-    background-image: url(/images/#{$img});
+    @if ($img != '') { background-image: url(/images/#{$img}); }
 
     h1 {
         font-family: $font;
@@ -110,7 +110,7 @@
 
             @include base {
                 .played {
-                    background-image: url(/images/#{$header_img});
+                    @if ($header_img != '') { background-image: url(/images/#{$header_img}); }
                     background-color: $header_bg;
 
                     .track {
@@ -153,7 +153,8 @@
         }
 
         .player {
-            background-image: url(/images/#{$header_img});
+            @if ($header_img != '') { background-image: url(/images/#{$header_img}); }
+            background-color: $header_bg;
 
             @include track_theme(
                 $header_text,
