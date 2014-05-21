@@ -4,6 +4,8 @@ var home = require('../controllers/home'),
 
 module.exports.initialize = function(app) {
     app.get('/', home.index);
+    app.get('/triplej', home.index);
+    app.get('/unearthed', home.index);
 
     // unearthed
     app.get('/api/unearthed', unearthed.tracks);

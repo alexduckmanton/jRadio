@@ -15409,7 +15409,6 @@ module.exports = layout = Marionette.Layout.extend({
     onRender: function() {
         this.$el.addClass(this.model.get('name'));
         this.$header = this.$el.children('header');
-        // this.get_data();
 
         this.init_played();
         if (App.data.window.width > 700) this.get_played();
