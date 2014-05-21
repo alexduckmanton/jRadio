@@ -9,7 +9,7 @@
     .track:nth-child(4n) .img_container:before { background-color: $color4 }
 }
 
-@mixin track_theme($primary, $secondary, $bg: false, $bg_color: false) {
+@mixin track_theme($primary, $secondary, $bg: none, $bg_color: '') {
     background: $bg;
 
     h3 {
@@ -27,7 +27,7 @@
 
     &.playing {
         a {
-            @if ($bg_color) { background: active_button_bg($bg_color); }
+            @if ($bg_color != '') { background: active_button_bg($bg_color); }
             @else { background: rgba($primary, 0.2); }
         }
     }
@@ -39,8 +39,8 @@
 }
 
 @function active_button_bg($container_bg) {
-    $button_bg: saturate(darken($container_bg, 25%), 30%);
-    @return rgba($button_bg, .8);
+    $button_bg: saturate(darken($container_bg, 20%), 20%);
+    @return $button_bg;
 }
 
 @mixin header_theme($color, $bg, $img, $font) {
@@ -115,12 +115,10 @@
 
             @include base {
                 .played {
-                    @if ($header_img != '') { background-image: url(/images/#{$header_img}); }
-                    background-color: $header_bg;
+                    background-color: active_button_bg($header_bg);
 
                     .track {
-                        border-bottom-color: lighten(active_button_bg($header_bg), 1%);
-                        background: active_button_bg($header_bg);
+                        border-bottom-color: darken(active_button_bg($header_bg), 2%);
 
                         @include track_theme(
                             $header_text,
