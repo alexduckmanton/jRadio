@@ -541,6 +541,7 @@ th {
   right: 0;
   width: 90%;
   height: 100%;
+  min-height: 100%;
   z-index: 1;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -563,7 +564,7 @@ th {
   -o-transform: translate3d(0, 10em, 0);
   transform: translate3d(0, 10em, 0);
 }
-/* line 32, ../client/styles/_site.scss */
+/* line 33, ../client/styles/_site.scss */
 .site:after {
   content: '';
   position: fixed;
@@ -577,7 +578,7 @@ th {
   -o-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
-/* line 44, ../client/styles/_site.scss */
+/* line 45, ../client/styles/_site.scss */
 .site.active {
   z-index: 2;
   height: inherit;
@@ -596,12 +597,12 @@ th {
   -o-transform: translate3d(-6%, 10em, 0);
   transform: translate3d(-6%, 10em, 0);
 }
-/* line 50, ../client/styles/_site.scss */
+/* line 51, ../client/styles/_site.scss */
 .site.active:after {
   width: 0;
   opacity: 0;
 }
-/* line 57, ../client/styles/_site.scss */
+/* line 58, ../client/styles/_site.scss */
 .site.active ~ .site {
   -webkit-transform: translate3d(-12%, 0, 0);
   -moz-transform: translate3d(-12%, 0, 0);
