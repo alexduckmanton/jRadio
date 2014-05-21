@@ -5,10 +5,11 @@
 
     .played {
         // bottom: -100% + $played_pos;
-        width: calc(#{100% - $site_width} - .5em);
+        width: calc(#{100% - $tracks_width} - .5em);
+        left: $tracks_width;
 
         h1 {
-            width: calc(#{100% - $site_width} - .5em);
+            width: calc(#{100% - $tracks_width} - .5em);
         }
     }
 

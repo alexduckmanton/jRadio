@@ -3448,13 +3448,6 @@ a {
   }
 }
 @media screen and (min-width: 1000px) {
-  /* line 6, ../client/styles/medium/_site.scss */
-  .site,
-  footer {
-    width: 75%;
-  }
-}
-@media screen and (min-width: 1000px) {
   /* line 4, ../client/styles/medium/_header.scss */
   header,
   .player {
@@ -3462,21 +3455,25 @@ a {
   }
 }
 @media screen and (min-width: 1000px) {
-  /* line 4, ../client/styles/medium/_track_tracks.scss */
+  /* line 3, ../client/styles/medium/_track_tracks.scss */
+  .tracks {
+    width: 75%;
+  }
+  /* line 6, ../client/styles/medium/_track_tracks.scss */
   .tracks .track {
     width: 24.25%;
   }
-  /* line 11, ../client/styles/medium/_track_tracks.scss */
+  /* line 13, ../client/styles/medium/_track_tracks.scss */
   .tracks .track:nth-child(1), .tracks .track:nth-child(2), .tracks .track:nth-child(9), .tracks .track:nth-child(10) {
     -ms-flex-item-align: start;
     -webkit-align-self: flex-start;
     align-self: flex-start;
   }
-  /* line 15, ../client/styles/medium/_track_tracks.scss */
+  /* line 17, ../client/styles/medium/_track_tracks.scss */
   .tracks .track.featured {
     width: 49.5%;
   }
-  /* line 20, ../client/styles/medium/_track_tracks.scss */
+  /* line 22, ../client/styles/medium/_track_tracks.scss */
   .tracks .track.featured:nth-child(17) {
     -webkit-box-ordinal-group: 0;
     /* OLD - iOS 6-, Safari 3.1-6 */
@@ -3488,7 +3485,7 @@ a {
     /* NEW - Chrome */
     order: 0;
   }
-  /* line 20, ../client/styles/medium/_track_tracks.scss */
+  /* line 22, ../client/styles/medium/_track_tracks.scss */
   .tracks .track.featured:nth-child(18) {
     -webkit-box-ordinal-group: 4;
     /* OLD - iOS 6-, Safari 3.1-6 */
@@ -3500,7 +3497,7 @@ a {
     /* NEW - Chrome */
     order: 4;
   }
-  /* line 20, ../client/styles/medium/_track_tracks.scss */
+  /* line 22, ../client/styles/medium/_track_tracks.scss */
   .tracks .track.featured:nth-child(19) {
     -webkit-box-ordinal-group: 8;
     /* OLD - iOS 6-, Safari 3.1-6 */
@@ -3512,7 +3509,7 @@ a {
     /* NEW - Chrome */
     order: 8;
   }
-  /* line 20, ../client/styles/medium/_track_tracks.scss */
+  /* line 22, ../client/styles/medium/_track_tracks.scss */
   .tracks .track.featured:nth-child(20) {
     -webkit-box-ordinal-group: 12;
     /* OLD - iOS 6-, Safari 3.1-6 */
@@ -3524,11 +3521,11 @@ a {
     /* NEW - Chrome */
     order: 12;
   }
-  /* line 24, ../client/styles/medium/_track_tracks.scss */
+  /* line 26, ../client/styles/medium/_track_tracks.scss */
   .tracks .track.featured:nth-child(18), .tracks .track.featured:nth-child(20) {
     margin-top: -17.5%;
   }
-  /* line 30, ../client/styles/medium/_track_tracks.scss */
+  /* line 32, ../client/styles/medium/_track_tracks.scss */
   .tracks .track:not(.featured) .play {
     top: -2em;
   }
@@ -3537,8 +3534,9 @@ a {
   /* line 6, ../client/styles/medium/_track_played.scss */
   .played {
     width: calc(25% - .5em);
+    left: 75%;
   }
-  /* line 10, ../client/styles/medium/_track_played.scss */
+  /* line 11, ../client/styles/medium/_track_played.scss */
   .played h1 {
     width: calc(25% - .5em);
   }

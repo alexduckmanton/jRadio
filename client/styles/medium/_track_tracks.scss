@@ -1,6 +1,8 @@
 @include medium {
 
     .tracks {
+        width: $tracks_width;
+
         .track {
             width: 24.25%;
 
