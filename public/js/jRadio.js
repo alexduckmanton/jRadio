@@ -15403,8 +15403,9 @@ module.exports = layout = Marionette.Layout.extend({
         this.listenToOnce(this.model, 'change:active', this.get_data);
 
         if (App.data.window.width <= 700) {
-            this.listenTo(App.core.vent, 'played:show', this.toggle_tray);
-            this.listenTo(App.core.vent, 'played:hide', this.toggle_tray);
+            var name = this.model.get('name');
+            this.listenTo(App.core.vent, name+':played:show', this.toggle_tray);
+            this.listenTo(App.core.vent, name+':played:hide', this.toggle_tray);
         }
     },
 
@@ -15550,7 +15551,8 @@ module.exports = layout = Marionette.Layout.extend({
 
         App.views[name].playedView = new TracksView({
             collection: new TracksCollection(),
-            className: 'played'
+            className: 'played',
+            parent_name: name
         });
         this.$el.prepend(App.views[name].playedView.render().el);
     },
@@ -15576,7 +15578,7 @@ module.exports = layout = Marionette.Layout.extend({
                 self.toggle_played_loading();
                 App.views[name].playedView.render();
                 self.bind_played_events();
-                App.core.vent.trigger('played:show');
+                App.core.vent.trigger(name+':played:show');
             }
         });
     },
@@ -15589,7 +15591,7 @@ module.exports = layout = Marionette.Layout.extend({
             this.$el.find('.toggle_played').addClass('active');
             this.get_played();
         } else {
-            App.core.vent.trigger('played:hide');
+            App.core.vent.trigger(name+':played:hide');
         }
     },
 
@@ -15603,7 +15605,7 @@ module.exports = layout = Marionette.Layout.extend({
     },
 
     bind_played_events: function() {
-        this.listenTo(App.core.vent, 'played:show', this.scroll_played);
+        this.listenTo(App.core.vent, this.model.get('name')+':played:show', this.scroll_played);
     },
 
     scroll_played: function() {
@@ -16034,8 +16036,8 @@ module.exports = CollectionView = Marionette.CollectionView.extend({
         this.listenTo(App.core.vent, 'tracks:stop', this.stop);
 
         if (this.className == 'played') {
-            this.listenTo(App.core.vent, 'played:show', this.toggle_active);
-            this.listenTo(App.core.vent, 'played:hide', this.toggle_active);
+            this.listenTo(App.core.vent, this.options.parent_name+':played:show', this.toggle_active);
+            this.listenTo(App.core.vent, this.options.parent_name+':played:hide', this.toggle_active);
 
             this.$el.prepend( require('../../templates/played_heading.hbs') );
         }
