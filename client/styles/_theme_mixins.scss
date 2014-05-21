@@ -93,6 +93,11 @@
     .#{$site} {
 
         background: $bg;
+        box-shadow: $bg 0 10em 0 0,
+                    $bg 0 20em 0 0,
+                    $bg 0 30em 0 0,
+                    $bg 0 40em 0 0,
+                    $bg 0 50em 0 0;
 
         &.site {
             .site_loading {
