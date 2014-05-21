@@ -15389,8 +15389,10 @@ module.exports = layout = Marionette.Layout.extend({
     events: {
         'click .radio': 'toggle_radio',
         'click .toggle_played': 'toggle_played',
-        'touchstart .tracks': 'init_touch',
+        // 'touchstart .tracks': 'init_touch',
         'click': 'navigate'
+        // 'touchleave': 'navigate'
+        // 'touchmove': 'navigate'
     },
 
     initialize: function() {

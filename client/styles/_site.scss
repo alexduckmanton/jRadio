@@ -1,5 +1,5 @@
-$site_width: 90%;
-$site_margin: 6%;
+$site_width: 85%;
+$site_margin: 9%;
 $site_speed: $default-transition-duration * 2;
 
 @mixin site_position($x) {
@@ -17,7 +17,7 @@ $site_speed: $default-transition-duration * 2;
     position: fixed;
     top: 0;
     right: 0;
-    width: 90%;
+    width: $site_width;
     height: 9999px;
 
     @include box-sizing(border-box);

@@ -539,7 +539,7 @@ th {
   position: fixed;
   top: 0;
   right: 0;
-  width: 90%;
+  width: 85%;
   height: 9999px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -592,19 +592,19 @@ th {
 .site.active {
   height: inherit;
   position: absolute;
-  -webkit-transform: translate3d(-6%, 0, 0);
-  -moz-transform: translate3d(-6%, 0, 0);
-  -ms-transform: translate3d(-6%, 0, 0);
-  -o-transform: translate3d(-6%, 0, 0);
-  transform: translate3d(-6%, 0, 0);
+  -webkit-transform: translate3d(-9%, 0, 0);
+  -moz-transform: translate3d(-9%, 0, 0);
+  -ms-transform: translate3d(-9%, 0, 0);
+  -o-transform: translate3d(-9%, 0, 0);
+  transform: translate3d(-9%, 0, 0);
 }
 /* line 8, ../client/styles/_site.scss */
 .site.active.show_tray {
-  -webkit-transform: translate3d(-6%, 10em, 0);
-  -moz-transform: translate3d(-6%, 10em, 0);
-  -ms-transform: translate3d(-6%, 10em, 0);
-  -o-transform: translate3d(-6%, 10em, 0);
-  transform: translate3d(-6%, 10em, 0);
+  -webkit-transform: translate3d(-9%, 10em, 0);
+  -moz-transform: translate3d(-9%, 10em, 0);
+  -ms-transform: translate3d(-9%, 10em, 0);
+  -o-transform: translate3d(-9%, 10em, 0);
+  transform: translate3d(-9%, 10em, 0);
 }
 /* line 48, ../client/styles/_site.scss */
 .site.active:after {
@@ -617,19 +617,19 @@ th {
 }
 /* line 56, ../client/styles/_site.scss */
 .site.active ~ .site {
-  -webkit-transform: translate3d(-106%, 0, 0);
-  -moz-transform: translate3d(-106%, 0, 0);
-  -ms-transform: translate3d(-106%, 0, 0);
-  -o-transform: translate3d(-106%, 0, 0);
-  transform: translate3d(-106%, 0, 0);
+  -webkit-transform: translate3d(-109%, 0, 0);
+  -moz-transform: translate3d(-109%, 0, 0);
+  -ms-transform: translate3d(-109%, 0, 0);
+  -o-transform: translate3d(-109%, 0, 0);
+  transform: translate3d(-109%, 0, 0);
 }
 /* line 8, ../client/styles/_site.scss */
 .site.active ~ .site.show_tray {
-  -webkit-transform: translate3d(-106%, 10em, 0);
-  -moz-transform: translate3d(-106%, 10em, 0);
-  -ms-transform: translate3d(-106%, 10em, 0);
-  -o-transform: translate3d(-106%, 10em, 0);
-  transform: translate3d(-106%, 10em, 0);
+  -webkit-transform: translate3d(-109%, 10em, 0);
+  -moz-transform: translate3d(-109%, 10em, 0);
+  -ms-transform: translate3d(-109%, 10em, 0);
+  -o-transform: translate3d(-109%, 10em, 0);
+  transform: translate3d(-109%, 10em, 0);
 }
 
 /* line 6, ../client/styles/_header.scss */
