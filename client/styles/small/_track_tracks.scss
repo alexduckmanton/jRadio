@@ -2,6 +2,8 @@
 
     .tracks {
         width: $tracks_width;
+        position: relative;
+        z-index: 1;
         @include box-sizing(border-box);
 
         .track:not(.featured) .play {

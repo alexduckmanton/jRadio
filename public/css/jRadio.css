@@ -817,21 +817,20 @@ footer {
   bottom: 0;
   width: 100%;
   text-align: center;
-  z-index: -1;
   background: #fff;
   font-size: .75em;
 }
-/* line 10, ../client/styles/_footer.scss */
+/* line 9, ../client/styles/_footer.scss */
 footer p {
   color: #666;
 }
-/* line 14, ../client/styles/_footer.scss */
+/* line 13, ../client/styles/_footer.scss */
 footer a {
   color: #222;
   border-bottom: 1px dotted #aaa;
 }
 
-/* line 20, ../client/styles/_footer.scss */
+/* line 19, ../client/styles/_footer.scss */
 .site_loading + footer {
   display: none;
 }
@@ -2931,6 +2930,10 @@ footer a {
   }
 }
 /* line 140, ../client/styles/_theme_mixins.scss */
+.unearthed.site .tracks {
+  background: #eeeeee;
+}
+/* line 143, ../client/styles/_theme_mixins.scss */
 .unearthed.site .tracks .track {
   box-shadow: #e8e8e8 0 1px 0;
   background: white;
@@ -2973,7 +2976,7 @@ footer a {
 .unearthed.site .track:nth-child(4n) .img_container:before {
   background-color: #fff59d;
 }
-/* line 158, ../client/styles/_theme_mixins.scss */
+/* line 162, ../client/styles/_theme_mixins.scss */
 .unearthed .player {
   background-image: url(/images/unearthed_bg.jpg);
   background-color: #588d3f;
@@ -3002,7 +3005,7 @@ footer a {
   color: rgba(204, 204, 204, 0.75);
 }
 @media screen and (min-width: 700px) {
-  /* line 158, ../client/styles/_theme_mixins.scss */
+  /* line 162, ../client/styles/_theme_mixins.scss */
   .unearthed .player {
     box-shadow: #e8e8e8 0 1px 0;
     background: white;
@@ -3031,11 +3034,11 @@ footer a {
   }
 }
 
-/* line 184, ../client/styles/_theme_mixins.scss */
+/* line 188, ../client/styles/_theme_mixins.scss */
 .site.unearthed:after {
   background: #588d3f;
 }
-/* line 188, ../client/styles/_theme_mixins.scss */
+/* line 192, ../client/styles/_theme_mixins.scss */
 .site.active + .site.unearthed:after {
   background: #588d3f;
 }
@@ -3109,6 +3112,10 @@ footer a {
   }
 }
 /* line 140, ../client/styles/_theme_mixins.scss */
+.triplej.site .tracks {
+  background: #eeeeee;
+}
+/* line 143, ../client/styles/_theme_mixins.scss */
 .triplej.site .tracks .track {
   box-shadow: #e8e8e8 0 1px 0;
   background: white;
@@ -3151,7 +3158,7 @@ footer a {
 .triplej.site .track:nth-child(4n) .img_container:before {
   background-color: #fff59d;
 }
-/* line 158, ../client/styles/_theme_mixins.scss */
+/* line 162, ../client/styles/_theme_mixins.scss */
 .triplej .player {
   background-color: #ef4135;
   background: "";
@@ -3179,7 +3186,7 @@ footer a {
   color: rgba(204, 204, 204, 0.75);
 }
 @media screen and (min-width: 700px) {
-  /* line 158, ../client/styles/_theme_mixins.scss */
+  /* line 162, ../client/styles/_theme_mixins.scss */
   .triplej .player {
     box-shadow: #e8e8e8 0 1px 0;
     background: white;
@@ -3208,11 +3215,11 @@ footer a {
   }
 }
 
-/* line 184, ../client/styles/_theme_mixins.scss */
+/* line 188, ../client/styles/_theme_mixins.scss */
 .site.triplej:after {
   background: #ef4135;
 }
-/* line 188, ../client/styles/_theme_mixins.scss */
+/* line 192, ../client/styles/_theme_mixins.scss */
 .site.active + .site.triplej:after {
   background: #ef4135;
 }
@@ -3343,11 +3350,13 @@ a {
   /* line 3, ../client/styles/small/_track_tracks.scss */
   .tracks {
     width: 66.66667%;
+    position: relative;
+    z-index: 1;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-  /* line 7, ../client/styles/small/_track_tracks.scss */
+  /* line 9, ../client/styles/small/_track_tracks.scss */
   .tracks .track:not(.featured) .play {
     top: -2.5em;
   }

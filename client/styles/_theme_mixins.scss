@@ -137,14 +137,18 @@
                 }
             }
 
-            .tracks .track {
-                @include track_shadow;
+            .tracks {
+                background: $bg;
+                
+                .track {
+                    @include track_shadow;
 
-                @include track_theme(
-                    $primary,
-                    $secondary,
-                    $track_bg
-                );
+                    @include track_theme(
+                        $primary,
+                        $secondary,
+                        $track_bg
+                    );
+                }
             }
 
             @include img_theme(
