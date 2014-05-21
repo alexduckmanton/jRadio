@@ -1,15 +1,12 @@
 $site_width: 90%;
 $site_margin: 6%;
+$site_speed: $default-transition-duration * 2;
 
 @mixin site_position($x) {
     @include transform3d( translate3d($x,0,0) );
-    // left: $x;
-    // top: 0;
 
     &.show_tray {
         @include transform3d( translate3d($x,$played_height,0) );
-        // left: $x;
-        // top: $played_height;
     }
 }
 
@@ -23,10 +20,11 @@ $site_margin: 6%;
     width: 90%;
     height: 100%;
     min-height: 100%;
-    z-index: 1;
 
     @include box-sizing(border-box);
-    @include single-transition(-webkit-transform);
+    @include single-transition(transform);
+    @include transition-property(-webkit-transform, -moz-transform, -ms-transform, -o-transform, transform);
+    @include transition-duration($site_speed);
 
     @include site_position(0);
 
@@ -39,11 +37,11 @@ $site_margin: 6%;
         left: 0;
         opacity: .8;
 
-        @include single-transition(opacity);
+        @include transition-property(opacity, width);
+        @include transition-duration($site_speed, 0s);
     }
 
     &.active {
-        z-index: 2;
         height: inherit;
         position: absolute;
         @include site_position(-$site_margin);
@@ -52,10 +50,11 @@ $site_margin: 6%;
             // display: none;
             width: 0;
             opacity: 0;
+            @include transition-delay(0, $site_speed);
         }
     }
 
     &.active ~ & {
-        @include site_position(-$site_margin*2);
+        @include site_position(-100% - $site_margin);
     }
 }
