@@ -532,43 +532,44 @@ th {
   content: "\e00a";
 }
 
-/* line 12, ../client/styles/_site.scss */
+/* line 16, ../client/styles/_site.scss */
 .site {
   padding-bottom: 2em;
   text-align: center;
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   width: 90%;
   height: 100%;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
+  z-index: 1;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-transform: translate3d(-95%, 0, 0);
-  -moz-transform: translate3d(-95%, 0, 0);
-  -ms-transform: translate3d(-95%, 0, 0);
-  -o-transform: translate3d(-95%, 0, 0);
-  transform: translate3d(-95%, 0, 0);
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -webkit-transform 0.3s;
+  -o-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
-/* line 7, ../client/styles/_site.scss */
+/* line 9, ../client/styles/_site.scss */
 .site.show_tray {
-  -webkit-transform: translate3d(-95%, 10em, 0);
-  -moz-transform: translate3d(-95%, 10em, 0);
-  -ms-transform: translate3d(-95%, 10em, 0);
-  -o-transform: translate3d(-95%, 10em, 0);
-  transform: translate3d(-95%, 10em, 0);
+  -webkit-transform: translate3d(0, 10em, 0);
+  -moz-transform: translate3d(0, 10em, 0);
+  -ms-transform: translate3d(0, 10em, 0);
+  -o-transform: translate3d(0, 10em, 0);
+  transform: translate3d(0, 10em, 0);
 }
-/* line 31, ../client/styles/_site.scss */
+/* line 33, ../client/styles/_site.scss */
 .site:after {
   content: '';
-  position: absolute;
+  position: fixed;
   width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   opacity: 1;
@@ -577,42 +578,44 @@ th {
   -o-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
-/* line 42, ../client/styles/_site.scss */
-.site.active {
-  -webkit-transform: translate3d(5%, 0, 0);
-  -moz-transform: translate3d(5%, 0, 0);
-  -ms-transform: translate3d(5%, 0, 0);
-  -o-transform: translate3d(5%, 0, 0);
-  transform: translate3d(5%, 0, 0);
-}
-/* line 7, ../client/styles/_site.scss */
-.site.active.show_tray {
-  -webkit-transform: translate3d(5%, 10em, 0);
-  -moz-transform: translate3d(5%, 10em, 0);
-  -ms-transform: translate3d(5%, 10em, 0);
-  -o-transform: translate3d(5%, 10em, 0);
-  transform: translate3d(5%, 10em, 0);
-}
 /* line 45, ../client/styles/_site.scss */
+.site.active {
+  z-index: 2;
+  height: inherit;
+  -webkit-transform: translate3d(-6%, 0, 0);
+  -moz-transform: translate3d(-6%, 0, 0);
+  -ms-transform: translate3d(-6%, 0, 0);
+  -o-transform: translate3d(-6%, 0, 0);
+  transform: translate3d(-6%, 0, 0);
+}
+/* line 9, ../client/styles/_site.scss */
+.site.active.show_tray {
+  -webkit-transform: translate3d(-6%, 10em, 0);
+  -moz-transform: translate3d(-6%, 10em, 0);
+  -ms-transform: translate3d(-6%, 10em, 0);
+  -o-transform: translate3d(-6%, 10em, 0);
+  transform: translate3d(-6%, 10em, 0);
+}
+/* line 50, ../client/styles/_site.scss */
 .site.active:after {
   width: 0;
   opacity: 0;
 }
-/* line 52, ../client/styles/_site.scss */
+/* line 57, ../client/styles/_site.scss */
 .site.active ~ .site {
-  -webkit-transform: translate3d(105%, 0, 0);
-  -moz-transform: translate3d(105%, 0, 0);
-  -ms-transform: translate3d(105%, 0, 0);
-  -o-transform: translate3d(105%, 0, 0);
-  transform: translate3d(105%, 0, 0);
+  -webkit-transform: translate3d(-12%, 0, 0);
+  -moz-transform: translate3d(-12%, 0, 0);
+  -ms-transform: translate3d(-12%, 0, 0);
+  -o-transform: translate3d(-12%, 0, 0);
+  transform: translate3d(-12%, 0, 0);
 }
-/* line 7, ../client/styles/_site.scss */
+/* line 9, ../client/styles/_site.scss */
 .site.active ~ .site.show_tray {
-  -webkit-transform: translate3d(105%, 10em, 0);
-  -moz-transform: translate3d(105%, 10em, 0);
-  -ms-transform: translate3d(105%, 10em, 0);
-  -o-transform: translate3d(105%, 10em, 0);
-  transform: translate3d(105%, 10em, 0);
+  -webkit-transform: translate3d(-12%, 10em, 0);
+  -moz-transform: translate3d(-12%, 10em, 0);
+  -ms-transform: translate3d(-12%, 10em, 0);
+  -o-transform: translate3d(-12%, 10em, 0);
+  transform: translate3d(-12%, 10em, 0);
 }
 
 /* line 6, ../client/styles/_header.scss */
@@ -2792,23 +2795,15 @@ footer a {
   transform: rotate(-864000deg);
 }
 
-/* line 1, ../client/styles/_themes.scss */
+/* line 93, ../client/styles/_theme_mixins.scss */
 .unearthed {
   background: #eeeeee;
 }
-/* line 97, ../client/styles/_theme_mixins.scss */
-.unearthed.site:after {
-  box-shadow: rgba(22, 58, 0, 0.8) -999em 999em 0 999em;
-}
-/* line 101, ../client/styles/_theme_mixins.scss */
-.unearthed.site.active + .unearthed.site {
-  box-shadow: rgba(22, 58, 0, 0.8) 999em 999em 0 999em;
-}
-/* line 105, ../client/styles/_theme_mixins.scss */
+/* line 98, ../client/styles/_theme_mixins.scss */
 .unearthed.site .site_loading {
   color: #d4d4d4;
 }
-/* line 109, ../client/styles/_theme_mixins.scss */
+/* line 102, ../client/styles/_theme_mixins.scss */
 .unearthed.site header {
   color: white;
   background-color: #588d3f;
@@ -2828,12 +2823,12 @@ footer a {
   border-color: white;
 }
 @media screen and (max-width: 700px) {
-  /* line 119, ../client/styles/_theme_mixins.scss */
+  /* line 112, ../client/styles/_theme_mixins.scss */
   .unearthed.site .played {
     background-image: url(/images/unearthed_bg.jpg);
     background-color: #588d3f;
   }
-  /* line 123, ../client/styles/_theme_mixins.scss */
+  /* line 116, ../client/styles/_theme_mixins.scss */
   .unearthed.site .played .track {
     border-bottom-color: rgba(31, 69, 13, 0.8);
     background: rgba(29, 64, 12, 0.8);
@@ -2861,16 +2856,16 @@ footer a {
     background: #ff354f;
     color: #ce001b;
   }
-  /* line 134, ../client/styles/_theme_mixins.scss */
+  /* line 127, ../client/styles/_theme_mixins.scss */
   .unearthed.site .played + header .toggle_played.active, .unearthed.site .played.active + header .toggle_played {
     background: rgba(29, 64, 12, 0.8);
   }
-  /* line 138, ../client/styles/_theme_mixins.scss */
+  /* line 131, ../client/styles/_theme_mixins.scss */
   .unearthed.site .played .time {
     color: #639f47;
   }
 }
-/* line 144, ../client/styles/_theme_mixins.scss */
+/* line 137, ../client/styles/_theme_mixins.scss */
 .unearthed.site .tracks .track {
   box-shadow: #e8e8e8 0 1px 0;
   background: white;
@@ -2913,7 +2908,7 @@ footer a {
 .unearthed.site .track:nth-child(4n) .img_container:before {
   background-color: #fff59d;
 }
-/* line 162, ../client/styles/_theme_mixins.scss */
+/* line 155, ../client/styles/_theme_mixins.scss */
 .unearthed .player {
   background-image: url(/images/unearthed_bg.jpg);
   background: "unearthed_bg.jpg";
@@ -2941,7 +2936,7 @@ footer a {
   color: rgba(204, 204, 204, 0.75);
 }
 @media screen and (min-width: 700px) {
-  /* line 162, ../client/styles/_theme_mixins.scss */
+  /* line 155, ../client/styles/_theme_mixins.scss */
   .unearthed .player {
     box-shadow: #e8e8e8 0 1px 0;
     background: white;
@@ -2970,23 +2965,24 @@ footer a {
   }
 }
 
-/* line 10, ../client/styles/_themes.scss */
+/* line 180, ../client/styles/_theme_mixins.scss */
+.site.unearthed:after {
+  background: rgba(22, 58, 0, 0.8);
+}
+/* line 184, ../client/styles/_theme_mixins.scss */
+.site.active + .site.unearthed:after {
+  background: rgba(22, 58, 0, 0.8);
+}
+
+/* line 93, ../client/styles/_theme_mixins.scss */
 .triplej {
   background: #eeeeee;
 }
-/* line 97, ../client/styles/_theme_mixins.scss */
-.triplej.site:after {
-  box-shadow: rgba(164, 11, 0, 0.8) -999em 999em 0 999em;
-}
-/* line 101, ../client/styles/_theme_mixins.scss */
-.triplej.site.active + .triplej.site {
-  box-shadow: rgba(164, 11, 0, 0.8) 999em 999em 0 999em;
-}
-/* line 105, ../client/styles/_theme_mixins.scss */
+/* line 98, ../client/styles/_theme_mixins.scss */
 .triplej.site .site_loading {
   color: #d4d4d4;
 }
-/* line 109, ../client/styles/_theme_mixins.scss */
+/* line 102, ../client/styles/_theme_mixins.scss */
 .triplej.site header {
   color: white;
   background-color: #ef4135;
@@ -3006,12 +3002,12 @@ footer a {
   border-color: white;
 }
 @media screen and (max-width: 700px) {
-  /* line 119, ../client/styles/_theme_mixins.scss */
+  /* line 112, ../client/styles/_theme_mixins.scss */
   .triplej.site .played {
     background-image: url(/images/);
     background-color: #ef4135;
   }
-  /* line 123, ../client/styles/_theme_mixins.scss */
+  /* line 116, ../client/styles/_theme_mixins.scss */
   .triplej.site .played .track {
     border-bottom-color: rgba(170, 11, 0, 0.8);
     background: rgba(164, 11, 0, 0.8);
@@ -3039,16 +3035,16 @@ footer a {
     background: black;
     color: black;
   }
-  /* line 134, ../client/styles/_theme_mixins.scss */
+  /* line 127, ../client/styles/_theme_mixins.scss */
   .triplej.site .played + header .toggle_played.active, .triplej.site .played.active + header .toggle_played {
     background: rgba(164, 11, 0, 0.8);
   }
-  /* line 138, ../client/styles/_theme_mixins.scss */
+  /* line 131, ../client/styles/_theme_mixins.scss */
   .triplej.site .played .time {
     color: #f1574d;
   }
 }
-/* line 144, ../client/styles/_theme_mixins.scss */
+/* line 137, ../client/styles/_theme_mixins.scss */
 .triplej.site .tracks .track {
   box-shadow: #e8e8e8 0 1px 0;
   background: white;
@@ -3091,7 +3087,7 @@ footer a {
 .triplej.site .track:nth-child(4n) .img_container:before {
   background-color: #fff59d;
 }
-/* line 162, ../client/styles/_theme_mixins.scss */
+/* line 155, ../client/styles/_theme_mixins.scss */
 .triplej .player {
   background-image: url(/images/);
   background: "";
@@ -3119,7 +3115,7 @@ footer a {
   color: rgba(204, 204, 204, 0.75);
 }
 @media screen and (min-width: 700px) {
-  /* line 162, ../client/styles/_theme_mixins.scss */
+  /* line 155, ../client/styles/_theme_mixins.scss */
   .triplej .player {
     box-shadow: #e8e8e8 0 1px 0;
     background: white;
@@ -3148,17 +3144,21 @@ footer a {
   }
 }
 
+/* line 180, ../client/styles/_theme_mixins.scss */
+.site.triplej:after {
+  background: rgba(164, 11, 0, 0.8);
+}
+/* line 184, ../client/styles/_theme_mixins.scss */
+.site.active + .site.triplej:after {
+  background: rgba(164, 11, 0, 0.8);
+}
+
 /* line 37, ../client/styles/main.scss */
 html {
   background: #eee;
 }
 
 /* line 41, ../client/styles/main.scss */
-body {
-  overflow: hidden;
-}
-
-/* line 45, ../client/styles/main.scss */
 a {
   text-decoration: none;
 }

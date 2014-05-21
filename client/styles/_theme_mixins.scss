@@ -79,6 +79,7 @@
 }
 
 @mixin theme(
+        $site,
         $header_text: #fff,
         $header_bg: #000,
         $header_img: '',
@@ -89,94 +90,99 @@
         $bg: #eee
     ) {
 
-    background: $bg;
+    .#{$site} {
 
-    &.site {
-        $cover_color: rgba( saturate(darken($primary, 25%), 100%), .8 );
+        background: $bg;
 
-        &:after {
-            @include shadow_cover($cover_color, $flip: true);
-        }
+        &.site {
+            .site_loading {
+                color: darken($bg, 10%);
+            }
 
-        &.active + & {
-            @include shadow_cover($cover_color);
-        }
+            header {
+                @include header_theme(
+                    $header_text,
+                    $header_bg,
+                    $header_img,
+                    $header_font
+                );
+            }
 
-        .site_loading {
-            color: darken($bg, 10%);
-        }
+            @include base {
+                .played {
+                    background-image: url(/images/#{$header_img});
+                    background-color: $header_bg;
 
-        header {
-            @include header_theme(
-                $header_text,
-                $header_bg,
-                $header_img,
-                $header_font
-            );
-        }
+                    .track {
+                        border-bottom-color: lighten(active_button_bg($header_bg), 1%);
+                        background: active_button_bg($header_bg);
 
-        @include base {
-            .played {
-                background-image: url(/images/#{$header_img});
-                background-color: $header_bg;
+                        @include track_theme(
+                            $header_text,
+                            $secondary
+                        );
+                    }
 
-                .track {
-                    border-bottom-color: lighten(active_button_bg($header_bg), 1%);
-                    background: active_button_bg($header_bg);
+                    & + header .toggle_played.active,
+                    &.active + header .toggle_played {
+                        background: active_button_bg($header_bg);
+                    }
 
-                    @include track_theme(
-                        $header_text,
-                        $secondary
-                    );
-                }
-
-                & + header .toggle_played.active,
-                &.active + header .toggle_played {
-                    background: active_button_bg($header_bg);
-                }
-
-                .time {
-                    color: lighten($header_bg, 5%);
+                    .time {
+                        color: lighten($header_bg, 5%);
+                    }
                 }
             }
-        }
 
-        .tracks .track {
-            @include track_shadow;
+            .tracks .track {
+                @include track_shadow;
 
-            @include track_theme(
-                $primary,
-                $secondary,
-                $track_bg
+                @include track_theme(
+                    $primary,
+                    $secondary,
+                    $track_bg
+                );
+            }
+
+            @include img_theme(
+                lighten($primary, 40%),
+                lighten($secondary, 10%),
+                #7fd1e5,
+                #fff59d
             );
         }
 
-        @include img_theme(
-            lighten($primary, 40%),
-            lighten($secondary, 10%),
-            #7fd1e5,
-            #fff59d
-        );
+        .player {
+            background-image: url(/images/#{$header_img});
+
+            @include track_theme(
+                $header_text,
+                rgba($header_text, .75),
+                $header_img,
+                $header_bg
+            );
+
+            @include small {
+                @include track_shadow;
+
+                @include track_theme(
+                    $primary,
+                    $secondary,
+                    $track_bg
+                );
+            }
+        }
     }
 
-    .player {
-        background-image: url(/images/#{$header_img});
+    .site {
+        $cover_color: rgba( saturate(darken($primary, 25%), 100%), .8 );
 
-        @include track_theme(
-            $header_text,
-            rgba($header_text, .75),
-            $header_img,
-            $header_bg
-        );
+        &.#{$site}:after {
+            background: $cover_color;
+        }
 
-        @include small {
-            @include track_shadow;
-
-            @include track_theme(
-                $primary,
-                $secondary,
-                $track_bg
-            );
+        &.active + &.#{$site}:after {
+            background: $cover_color;
         }
     }
 }

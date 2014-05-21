@@ -1,16 +1,14 @@
-.unearthed {
-    @include theme(
-        $header_img: 'unearthed_bg.jpg',
-        $header_bg: #588d3f,
-        $primary: #4ba119,
-        $secondary: #ff354f
-    );
-}
+@include theme(
+    'unearthed',
+    $header_img: 'unearthed_bg.jpg',
+    $header_bg: #588d3f,
+    $primary: #4ba119,
+    $secondary: #ff354f
+);
 
-.triplej {
-    @include theme(
-        $header_bg: #ef4135,
-        $primary: #ef4135,
-        $secondary: #000
-    );
-}
+@include theme(
+    'triplej',
+    $header_bg: #ef4135,
+    $primary: #ef4135,
+    $secondary: #000
+);
