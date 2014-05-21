@@ -1,5 +1,7 @@
 $site_width: 85%;
-$site_margin: 9%;
+$site_margin: ((100% - $site_width)/2) / $site_width;
+$site_end_width: $site_width + $site_width * $site_margin;
+$site_margin: $site_margin * 100%;
 $site_speed: $default-transition-duration * 2;
 
 @mixin site_position($x) {
@@ -55,5 +57,22 @@ $site_speed: $default-transition-duration * 2;
 
     &.active ~ & {
         @include site_position(-100% - $site_margin);
+    }
+
+    &.active ~ &:last-child {
+        width: $site_end_width;
+        @include site_position(-100%);
+    }
+
+    &.active:last-child {
+        width: $site_end_width;
+        @include site_position(-$site_margin + .75%);
+    }
+}
+
+.player {
+    & + .site {
+        width: $site_end_width;
+        @include site_position(0);
     }
 }

@@ -532,7 +532,7 @@ th {
   content: "\e00a";
 }
 
-/* line 13, ../client/styles/_site.scss */
+/* line 15, ../client/styles/_site.scss */
 .site {
   padding-bottom: 2em;
   text-align: center;
@@ -562,7 +562,7 @@ th {
   -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-/* line 8, ../client/styles/_site.scss */
+/* line 10, ../client/styles/_site.scss */
 .site.show_tray {
   -webkit-transform: translate3d(0, 10em, 0);
   -moz-transform: translate3d(0, 10em, 0);
@@ -570,7 +570,7 @@ th {
   -o-transform: translate3d(0, 10em, 0);
   transform: translate3d(0, 10em, 0);
 }
-/* line 30, ../client/styles/_site.scss */
+/* line 32, ../client/styles/_site.scss */
 .site:after {
   content: '';
   position: fixed;
@@ -588,25 +588,25 @@ th {
   -o-transition-duration: 0.6s, 0s;
   transition-duration: 0.6s, 0s;
 }
-/* line 43, ../client/styles/_site.scss */
+/* line 45, ../client/styles/_site.scss */
 .site.active {
   height: inherit;
   position: absolute;
-  -webkit-transform: translate3d(-9%, 0, 0);
-  -moz-transform: translate3d(-9%, 0, 0);
-  -ms-transform: translate3d(-9%, 0, 0);
-  -o-transform: translate3d(-9%, 0, 0);
-  transform: translate3d(-9%, 0, 0);
+  -webkit-transform: translate3d(-8.82353%, 0, 0);
+  -moz-transform: translate3d(-8.82353%, 0, 0);
+  -ms-transform: translate3d(-8.82353%, 0, 0);
+  -o-transform: translate3d(-8.82353%, 0, 0);
+  transform: translate3d(-8.82353%, 0, 0);
 }
-/* line 8, ../client/styles/_site.scss */
+/* line 10, ../client/styles/_site.scss */
 .site.active.show_tray {
-  -webkit-transform: translate3d(-9%, 10em, 0);
-  -moz-transform: translate3d(-9%, 10em, 0);
-  -ms-transform: translate3d(-9%, 10em, 0);
-  -o-transform: translate3d(-9%, 10em, 0);
-  transform: translate3d(-9%, 10em, 0);
+  -webkit-transform: translate3d(-8.82353%, 10em, 0);
+  -moz-transform: translate3d(-8.82353%, 10em, 0);
+  -ms-transform: translate3d(-8.82353%, 10em, 0);
+  -o-transform: translate3d(-8.82353%, 10em, 0);
+  transform: translate3d(-8.82353%, 10em, 0);
 }
-/* line 48, ../client/styles/_site.scss */
+/* line 50, ../client/styles/_site.scss */
 .site.active:after {
   width: 0;
   opacity: 0;
@@ -615,21 +615,73 @@ th {
   -o-transition-delay: 0, 0.6s;
   transition-delay: 0, 0.6s;
 }
-/* line 56, ../client/styles/_site.scss */
+/* line 58, ../client/styles/_site.scss */
 .site.active ~ .site {
-  -webkit-transform: translate3d(-109%, 0, 0);
-  -moz-transform: translate3d(-109%, 0, 0);
-  -ms-transform: translate3d(-109%, 0, 0);
-  -o-transform: translate3d(-109%, 0, 0);
-  transform: translate3d(-109%, 0, 0);
+  -webkit-transform: translate3d(-108.82353%, 0, 0);
+  -moz-transform: translate3d(-108.82353%, 0, 0);
+  -ms-transform: translate3d(-108.82353%, 0, 0);
+  -o-transform: translate3d(-108.82353%, 0, 0);
+  transform: translate3d(-108.82353%, 0, 0);
 }
-/* line 8, ../client/styles/_site.scss */
+/* line 10, ../client/styles/_site.scss */
 .site.active ~ .site.show_tray {
-  -webkit-transform: translate3d(-109%, 10em, 0);
-  -moz-transform: translate3d(-109%, 10em, 0);
-  -ms-transform: translate3d(-109%, 10em, 0);
-  -o-transform: translate3d(-109%, 10em, 0);
-  transform: translate3d(-109%, 10em, 0);
+  -webkit-transform: translate3d(-108.82353%, 10em, 0);
+  -moz-transform: translate3d(-108.82353%, 10em, 0);
+  -ms-transform: translate3d(-108.82353%, 10em, 0);
+  -o-transform: translate3d(-108.82353%, 10em, 0);
+  transform: translate3d(-108.82353%, 10em, 0);
+}
+/* line 62, ../client/styles/_site.scss */
+.site.active ~ .site:last-child {
+  width: 92.5%;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -moz-transform: translate3d(-100%, 0, 0);
+  -ms-transform: translate3d(-100%, 0, 0);
+  -o-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+/* line 10, ../client/styles/_site.scss */
+.site.active ~ .site:last-child.show_tray {
+  -webkit-transform: translate3d(-100%, 10em, 0);
+  -moz-transform: translate3d(-100%, 10em, 0);
+  -ms-transform: translate3d(-100%, 10em, 0);
+  -o-transform: translate3d(-100%, 10em, 0);
+  transform: translate3d(-100%, 10em, 0);
+}
+/* line 67, ../client/styles/_site.scss */
+.site.active:last-child {
+  width: 92.5%;
+  -webkit-transform: translate3d(-8.07353%, 0, 0);
+  -moz-transform: translate3d(-8.07353%, 0, 0);
+  -ms-transform: translate3d(-8.07353%, 0, 0);
+  -o-transform: translate3d(-8.07353%, 0, 0);
+  transform: translate3d(-8.07353%, 0, 0);
+}
+/* line 10, ../client/styles/_site.scss */
+.site.active:last-child.show_tray {
+  -webkit-transform: translate3d(-8.07353%, 10em, 0);
+  -moz-transform: translate3d(-8.07353%, 10em, 0);
+  -ms-transform: translate3d(-8.07353%, 10em, 0);
+  -o-transform: translate3d(-8.07353%, 10em, 0);
+  transform: translate3d(-8.07353%, 10em, 0);
+}
+
+/* line 74, ../client/styles/_site.scss */
+.player + .site {
+  width: 92.5%;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+/* line 10, ../client/styles/_site.scss */
+.player + .site.show_tray {
+  -webkit-transform: translate3d(0, 10em, 0);
+  -moz-transform: translate3d(0, 10em, 0);
+  -ms-transform: translate3d(0, 10em, 0);
+  -o-transform: translate3d(0, 10em, 0);
+  transform: translate3d(0, 10em, 0);
 }
 
 /* line 6, ../client/styles/_header.scss */
