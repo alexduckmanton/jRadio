@@ -1,16 +1,16 @@
 @include small {
 
     // aligns with bottom of first featured track
-    $played_pos: 47.2%;
+    $played_pos: 22.65em;
 
     .played {
         font-size: .75em;
         position: absolute;
-        top: calc(#{100% - $played_pos} - 2em);
-        left: 100%;
+        top: $played_pos + 10em;
+        left: $tracks_width;
+        width: $played_width;
+        height: inherit;
         background: none;
-        width: 50%;
-        height: 100%;
         overflow: inherit;
 
         @include flex();
@@ -43,7 +43,7 @@
             top: 0;
             right: 0;
             background: #eee;
-            width: calc(#{100% - $site_width} - .5em);
+            width: calc(#{100% - $tracks_width} - .5em);
             box-shadow: rgba(0,0,0,0.1) 0 2px 0;
             text-align: left;
             font-size: 1.33333333em;

@@ -1,6 +1,9 @@
 @include small {
 
     .tracks {
+        width: $tracks_width;
+        @include box-sizing(border-box);
+
         .track:not(.featured) .play {
             top: -2.5em;
         }

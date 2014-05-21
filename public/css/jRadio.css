@@ -3228,13 +3228,14 @@ a {
 }
 
 @media screen and (min-width: 700px) {
-  /* line 6, ../client/styles/small/_site.scss */
+  /* line 9, ../client/styles/small/_site.scss */
   .site,
+  .player + .site,
   footer {
-    width: 66.66667%;
+    width: 100%;
   }
 
-  /* line 10, ../client/styles/small/_site.scss */
+  /* line 13, ../client/styles/small/_site.scss */
   .site {
     margin-bottom: 2em;
     overflow: inherit;
@@ -3246,7 +3247,7 @@ a {
     transform: none;
     *zoom: 1;
   }
-  /* line 16, ../client/styles/small/_site.scss */
+  /* line 19, ../client/styles/small/_site.scss */
   .site.active {
     display: block;
   }
@@ -3259,7 +3260,7 @@ a {
     overflow: hidden;
     visibility: hidden;
   }
-  /* line 23, ../client/styles/small/_site.scss */
+  /* line 26, ../client/styles/small/_site.scss */
   .site, .site.active {
     -webkit-transform: none;
     -moz-transform: none;
@@ -3268,7 +3269,7 @@ a {
     transform: none;
   }
 
-  /* line 28, ../client/styles/small/_site.scss */
+  /* line 31, ../client/styles/small/_site.scss */
   footer {
     background: none;
   }
@@ -3339,7 +3340,14 @@ a {
   }
 }
 @media screen and (min-width: 700px) {
-  /* line 4, ../client/styles/small/_track_tracks.scss */
+  /* line 3, ../client/styles/small/_track_tracks.scss */
+  .tracks {
+    width: 66.66667%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 7, ../client/styles/small/_track_tracks.scss */
   .tracks .track:not(.featured) .play {
     top: -2.5em;
   }
@@ -3349,11 +3357,11 @@ a {
   .played {
     font-size: .75em;
     position: absolute;
-    top: calc(52.8% - 2em);
-    left: 100%;
+    top: 32.65em;
+    left: 66.66667%;
+    width: 33.33333%;
+    height: inherit;
     background: none;
-    width: 50%;
-    height: 100%;
     overflow: inherit;
     display: -webkit-box;
     display: -moz-box;
@@ -3394,7 +3402,7 @@ a {
   /* line 38, ../client/styles/small/_track_played.scss */
   .played h1 {
     margin: 0 .5em 0 0;
-    padding: 47.2% 0 0.5em 0.375em;
+    padding: 22.65em 0 0.5em 0.375em;
     display: block;
     position: fixed;
     top: 0;
