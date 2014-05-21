@@ -15239,7 +15239,7 @@ App.prototype.start = function(){
         if (Backbone.history) {
             App.controller = new Controller();
             App.router = new Router({ controller: App.controller });
-            Backbone.history.start();
+            Backbone.history.start({pushState: true});
         }
     });
 
