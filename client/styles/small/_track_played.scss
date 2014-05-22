@@ -43,11 +43,12 @@
         }
 
         h1 {
-            margin: 0 .5em 0 0;
+            margin: 0;
             padding: $played_pos 0 .5em .375em;
             display: block;
             position: fixed;
             top: 0;
+            right: 10%;
             background: #eee;
             width: calc(#{100% - $tracks_width} - .75em);
             box-shadow: rgba(0,0,0,0.1) 0 2px 0;

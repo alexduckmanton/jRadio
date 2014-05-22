@@ -15805,8 +15805,8 @@ module.exports = TrackModel = Backbone.Model.extend({
 
     get_high_res_img: function() {
         var self = this,
-            artist = this.get('artist').text,
-            title = this.get('title');
+            artist = this.get('artist').text.replace(/\.|\(|\)/g,''), // remove any periods or parens which break regex later
+            title = this.get('title').replace(/\.|\(|\)/g,'');
 
         $.ajax({
             url: 'http://api.soundcloud.com/tracks.json',

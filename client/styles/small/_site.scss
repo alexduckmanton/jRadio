@@ -1,27 +1,26 @@
+$site_width: 80%;
+$site_end_width: $site_width;
+$site_margin: (100% - $site_width) / 4;
+
 $tracks_width: 100% / 3 * 2;
 $played_width: 100% - $tracks_width;
-
-@mixin site_position($x) {
-    // @include transform3d( translate3d($x,0,0) );
-    @include transform( none );
-    top: 0;
-    right: $x;
-
-    &.show_tray {
-        // @include transform3d( translate3d($x,$played_height,0) );
-        @include transform( none );
-        top: $played_height;
-        right: $x;
-    }
-}
 
 @include small {
 
     .site {
-        margin-bottom: 2em;
-        float: right;
+        // margin-bottom: 2em;
+        // float: right;
         overflow: inherit;
         height: inherit;
+
+        top: 0;
+        right: inherit;
+        left: $site_margin * 2;
+        margin: 0 auto;
+        float: none;
+
+        background: none;
+        box-shadow: none;
 
         @include flex();
         @include transition-property(top, right);
@@ -31,13 +30,8 @@ $played_width: 100% - $tracks_width;
             position: absolute;
         }
 
-        &.active {
-            // z-index: active
-        }
-
         .tracks:after {
             position: absolute;
-            left: 55%;
             height: 110%;
         }
     }
@@ -47,9 +41,46 @@ $played_width: 100% - $tracks_width;
         width: 100%;
     }
 
-    @include site_layout(
-        $last_active_pos: 100% - $site_end_width,
-        $last_site_pos: $site_end_width
+    @include site_width(
+        $site_width: $site_width
     );
 
+    @include site_layout(
+        '.tracks',
+        $active_pos: 0,
+        $first_active_pos: 0,
+        $last_active_pos: 0,
+        $first_site_pos: $site_width * 2 + $site_margin * 3,
+        $last_site_pos: -110%
+    );
+
+    @include site_layout(
+        '.played h1, .played .track, .played h1, header',
+        $active_pos: 0,
+        $first_active_pos: 0,
+        $last_active_pos: 0,
+        $first_site_pos: $site_width * 2 + $site_margin * 3,
+        $last_site_pos: -270%
+    );
+
+}
+
+@mixin site_position($x) {
+    // @include transform3d( translate3d($x,0,0) );
+    @include transform( none );
+    // top: 0;
+    // right: $x;
+
+    &.show_tray {
+        // @include transform3d( translate3d($x,$played_height,0) );
+        @include transform( none );
+        // top: $played_height;
+        // right: $x;
+    }
+}
+
+@include small {
+    @include site_layout(
+        '&'
+    );
 }

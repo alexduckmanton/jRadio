@@ -4,13 +4,14 @@
     header,
     .player {
         margin: .5em;
+        margin-right: 0;
         position: fixed;
+        right: 10%;
         width: calc(#{100% - $tracks_width} - .75em);
     }
 
     .player {
         top: $header_height;
-        right: 0;
     }
 
     .site.active header {
@@ -19,7 +20,6 @@
 
     header {
         top: 0;
-        right: inherit;
         height: $header_height;
         z-index: -1;
         box-shadow: #eee 0 -1em 0;
