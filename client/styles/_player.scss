@@ -14,7 +14,7 @@
     width: 100%;
     height: $header_height;
     position: fixed;
-    z-index: 9;
+    z-index: $player_z;
 
     // hide
     @include translateY(-$header_height - 1em);

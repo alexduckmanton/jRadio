@@ -139,7 +139,7 @@
 
             .tracks {
                 background: $bg;
-                
+
                 .track {
                     @include track_shadow;
 
@@ -185,11 +185,11 @@
     .site {
         $cover_color: $header_bg;
 
-        &.#{$site}:after {
+        &.#{$site} .tracks:after {
             background: $cover_color;
         }
 
-        &.active + &.#{$site}:after {
+        &.active + &.#{$site} .tracks:after {
             background: $cover_color;
         }
     }

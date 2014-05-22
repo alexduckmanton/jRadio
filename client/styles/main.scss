@@ -3,6 +3,14 @@ $default-transition-timing: ease-in-out;
 $header_height: 3em;
 $played_height: 10em;
 
+// stacking
+$active_site_z: 10;
+$header_z: $active_site_z - 1;
+$tracks_z: $header_z + 1;
+$player_z: $header_z - 1;
+$played_h1_cover_z: $player_z - 1;
+$played_h1_z: $played_h1_cover_z - 1;
+
 // third party util
 @import "normalize";
 

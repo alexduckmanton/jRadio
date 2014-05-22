@@ -126,6 +126,17 @@
 	align-self: flex-start;
 }
 
+@mixin flex-align-self-stretch() {
+	-ms-flex-item-align: stretch;
+	-webkit-align-self: stretch;
+	align-self: stretch;
+}
+
+@mixin flex-shrink($i) {
+	-webkit-flex-shrink: $i;
+	flex-shrink: $i;
+}
+
 @mixin icon($icon_name) {
 	@extend [class^="icon-"]:before;
 	@extend .icon-#{$icon_name}:before;

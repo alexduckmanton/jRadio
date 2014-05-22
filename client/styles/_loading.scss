@@ -55,10 +55,12 @@ $loading_speed: $default-transition-duration / 2;
 .site_loading {
     margin-top: 35%;
     font-size: 5em;
-    position: relative;
+    position: absolute;
+    left: 30%;
     display: inline-block;
     width: 1em;
     height: 1.1625em;
+    z-index: $active_site_z + 1;
 
     &:after {
         @include icon(drumming);

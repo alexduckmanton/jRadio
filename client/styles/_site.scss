@@ -4,14 +4,6 @@ $site_end_width: $site_width + $site_width * $site_margin;
 $site_margin: $site_margin * 100%;
 $site_speed: $default-transition-duration * 2;
 
-@mixin site_position($x) {
-    @include transform3d( translate3d($x,0,0) );
-
-    &.show_tray {
-        @include transform3d( translate3d($x,$played_height,0) );
-    }
-}
-
 .site {
     padding-bottom: 2em;
     text-align: center;
@@ -19,24 +11,23 @@ $site_speed: $default-transition-duration * 2;
     position: fixed;
     top: 0;
     right: 0;
-    width: $site_width;
     height: 9999px;
+    min-height: 100%;
 
     @include box-sizing(border-box);
     @include single-transition(transform);
     @include transition-property(-webkit-transform, -moz-transform, -ms-transform, -o-transform, transform);
     @include transition-duration($site_speed);
 
-    @include site_position(0);
-
-    &:after {
+    .tracks:after {
         content: '';
         position: fixed;
         width: 100%;
-        height: 9999px;
+        height: 100%;
         top: 0;
-        left: 0;
+        right: 0;
         opacity: .8;
+        z-index: 100;
 
         @include transition-property(opacity, width);
         @include transition-duration($site_speed, 0s);
@@ -45,34 +36,55 @@ $site_speed: $default-transition-duration * 2;
     &.active {
         height: inherit;
         position: absolute;
-        @include site_position(-$site_margin);
 
-        &:after {
-            // display: none;
+        .tracks:after {
             width: 0;
             opacity: 0;
             @include transition-delay(0, $site_speed);
         }
     }
+}
 
-    &.active ~ & {
-        @include site_position(-100% - $site_margin);
-    }
+// site width and layout
+// mixins re-used in larger layouts
+@mixin site_position($x) {
+    @include transform3d( translate3d($x,0,0) );
 
-    &.active ~ &:last-child {
-        width: $site_end_width;
-        @include site_position(-100%);
-    }
-
-    &.active:last-child {
-        width: $site_end_width;
-        @include site_position(-$site_margin + .75%);
+    &.show_tray {
+        @include transform3d( translate3d($x,$played_height,0) );
     }
 }
 
-.player {
-    & + .site {
-        width: $site_end_width;
+@mixin site_layout($site_width: 85%, $last_site_pos: -100%, $last_active_pos: -$site_margin + .75%) {
+    .site {
+        width: $site_width;
         @include site_position(0);
+
+        &.active {
+            @include site_position(-$site_margin);
+        }
+
+        &.active ~ & {
+            @include site_position(-100% - $site_margin);
+        }
+
+        &.active ~ &:last-child {
+            width: $site_end_width;
+            @include site_position($last_site_pos);
+        }
+
+        &.active:last-child {
+            width: $site_end_width;
+            @include site_position($last_active_pos);
+        }
+    }
+
+    .player {
+        & + .site {
+            width: $site_end_width;
+            @include site_position(0);
+        }
     }
 }
+
+@include site_layout($site_width);

@@ -23,7 +23,6 @@
 .tracks {
     padding: .5em;
     @include flex();
-    // @include flex-direction(column);
     @include flex-wrap(wrap);
     @include flex-justify-space-between();
 
@@ -122,10 +121,11 @@
         &:nth-child(2) { @include animationDuration($default-transition-duration * 1.2); }
         &:nth-child(3) { @include animationDuration($default-transition-duration * .9); }
         &:nth-child(4) { @include animationDuration($default-transition-duration * .8); }
-
-        &.loading {
-            opacity: 0;
-            @include animation(none);
-        }
     }
+}
+
+.tracks .track.loading ,
+.site_loading + .tracks .track {
+    opacity: 0;
+    @include animation(none);
 }

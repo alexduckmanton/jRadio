@@ -15400,7 +15400,7 @@ module.exports = layout = Marionette.Layout.extend({
         this.listenTo(this.model, 'change:active', this.toggle_active);
 
         this.toggle_active();
-        this.listenToOnce(this.model, 'change:active', this.get_data);
+        this.listenToOnce(this.model, 'change:active', this.get_tracks);
 
         if (App.data.window.width <= 700) {
             var name = this.model.get('name');
@@ -15411,9 +15411,14 @@ module.exports = layout = Marionette.Layout.extend({
 
     onRender: function() {
         this.$el.addClass(this.model.get('name'));
-        this.$header = this.$el.children('header');
 
         this.init_played();
+        this.init_tracks();
+
+        this.$header = this.$el.children('header');
+        this.$tracks = this.$el.children('.tracks');
+        this.$played = this.$el.children('.played');
+
         if (App.data.window.width > 700) this.get_played();
     },
 
@@ -15421,11 +15426,6 @@ module.exports = layout = Marionette.Layout.extend({
         if (this.model.get('active')) return;
 
         App.router.navigate(this.model.get('name'), {trigger: true});
-    },
-
-    get_data: function() {
-        this.$header.after( require('../../templates/loading.hbs') );
-        this.get_tracks();
     },
 
     toggle_active: function() {
@@ -15512,36 +15512,41 @@ module.exports = layout = Marionette.Layout.extend({
         element.style.display='inline-block';
     },
 
+    init_tracks: function() {
+        var name = this.model.get('name'),
+            tracks = new TracksCollection();
+
+        tracks.site = name;
+
+        App.views[name].tracksView = new TracksView({
+            collection: tracks
+        });
+        this.$el.children('header').after(App.views[name].tracksView.render().el);
+    },
+
     get_tracks: function() {
         var self = this,
             name = this.model.get('name'),
-            tracks = new TracksCollection();
+            tracks = App.views[name].tracksView.collection;
 
-        tracks.site = this.model.get('name');
-
+        this.$tracks.before( require('../../templates/loading.hbs') );
+        
         tracks.fetch({
             url: this.model.get('tracks_api'),
             success: function() {
-                // create the new view with fresh data
                 App.data.tracks = tracks;
-                App.views[name].tracksView = new TracksView({ collection: tracks });
-
-                // render
-                self.show_tracks();
+                self.remove_loader();
             }
         });
     },
 
-    show_tracks: function() {
+    remove_loader: function() {
         var self = this,
-            name = this.model.get('name'),
-            tracks = App.views[name].tracksView.render().el,
             loader = this.$el.find('.site_loading');
 
         loader.addClass('loaded');
 
         loader.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() {
-            self.$el.children('header').after(tracks);
             self.$el.find('.site_loading').remove();
         });
     },
@@ -16154,7 +16159,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<h1>Recently on Unearthed</h1>\n";
+  return "<h1>Recent tracks</h1>\n";
   });
 
 },{"hbsfy/runtime":28}],18:[function(require,module,exports){

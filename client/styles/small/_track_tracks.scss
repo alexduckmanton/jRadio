@@ -1,9 +1,13 @@
 @include small {
 
     .tracks {
-        width: $tracks_width;
+        // width: $tracks_width;
         position: relative;
-        z-index: 1;
+        z-index: $tracks_z;
+
+        // position: inherit;
+        width: inherit;
+
         @include box-sizing(border-box);
 
         .track:not(.featured) .play {

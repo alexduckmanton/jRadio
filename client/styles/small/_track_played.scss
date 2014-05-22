@@ -1,17 +1,24 @@
 @include small {
 
     // aligns with bottom of first featured track
-    $played_pos: 22.65em;
+    $played_pos: 20.35em;
 
     .played {
+        padding-top: $played_pos + 9.65em;
         font-size: .75em;
-        position: absolute;
-        top: $played_pos + 10em;
-        left: $tracks_width;
-        width: $played_width;
-        height: inherit;
+        top: inherit;
         background: none;
-        overflow: inherit;
+
+        width: inherit;
+        position: relative;
+        left: 0;
+
+        overflow: hidden;
+        @include flex-align-self-stretch();
+        height: inherit;
+
+        @include flex-shrink(2);
+        @include order(2);
 
         @include flex();
         @include flex-direction(column-reverse);
@@ -41,13 +48,12 @@
             display: block;
             position: fixed;
             top: 0;
-            right: 0;
             background: #eee;
-            width: calc(#{100% - $tracks_width} - .5em);
+            width: calc(#{100% - $tracks_width} - .75em);
             box-shadow: rgba(0,0,0,0.1) 0 2px 0;
             text-align: left;
             font-size: 1.33333333em;
-            z-index: 1;
+            z-index: -1;
 
             @include box-sizing(border-box);
         }
@@ -57,12 +63,16 @@
             content: '';
             position: relative;
             width: 100%;
-            z-index: 2;
+            z-index: $played_h1_cover_z;
             box-shadow: #eee 999em 999em 0 999em;
 
             // hack to force redraw during scrolling on ios
             -webkit-transform: translateZ(0);
         }
+    }
+
+    .site.active .played h1 {
+        z-index: $played_h1_z;
     }
 
 }

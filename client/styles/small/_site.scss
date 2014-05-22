@@ -1,35 +1,55 @@
-$site_width: 100%;
 $tracks_width: 100% / 3 * 2;
 $played_width: 100% - $tracks_width;
 
-@include small {
+@mixin site_position($x) {
+    // @include transform3d( translate3d($x,0,0) );
+    @include transform( none );
+    top: 0;
+    right: $x;
 
-    .site,
-    .player + .site,
-    footer {
-        width: $site_width;
+    &.show_tray {
+        // @include transform3d( translate3d($x,$played_height,0) );
+        @include transform( none );
+        top: $played_height;
+        right: $x;
     }
+}
+
+@include small {
 
     .site {
         margin-bottom: 2em;
+        float: right;
         overflow: inherit;
+        height: inherit;
 
-        // hide non-active
-        display: none;
-        &.active {
-            display: block;
+        @include flex();
+        @include transition-property(top, right);
+
+        &:after {
+            // display: none;
+            position: absolute;
         }
 
-        @include transform(none);
-        @include legacy-pie-clearfix;
+        &.active {
+            // z-index: active
+        }
 
-        &, &.active {
-            @include transform3d(none);
+        .tracks:after {
+            position: absolute;
+            left: 55%;
+            height: 110%;
         }
     }
 
     footer {
         background: none;
+        width: 100%;
     }
+
+    @include site_layout(
+        $last_active_pos: 100% - $site_end_width,
+        $last_site_pos: $site_end_width
+    );
 
 }
