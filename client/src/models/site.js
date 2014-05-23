@@ -9,9 +9,7 @@ module.exports = SiteModel = Backbone.Model.extend({
 
     initialize: function() {
         // match model for tracks so player can interpret
-        this.set('artist', {
-            text: this.get('radio_title')
-        });
+        this.set('artist', this.get('radio_title'));
 
         this.listenTo(App.core.vent, 'route', this.toggle_active);
     },

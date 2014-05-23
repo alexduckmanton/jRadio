@@ -50,7 +50,7 @@ module.exports = itemView = Marionette.ItemView.extend({
 
         this.$text.toggleClass('empty_artist', !artist);
 
-        artist = artist ? artist.text : '';
+        artist = artist ? artist : '';
 
         this.$el.find('.title').html(title);
         this.$el.find('.artist').html(artist);

@@ -15743,9 +15743,7 @@ module.exports = SiteModel = Backbone.Model.extend({
 
     initialize: function() {
         // match model for tracks so player can interpret
-        this.set('artist', {
-            text: this.get('radio_title')
-        });
+        this.set('artist', this.get('radio_title'));
 
         this.listenTo(App.core.vent, 'route', this.toggle_active);
     },
@@ -15771,11 +15769,33 @@ module.exports = TrackModel = Backbone.Model.extend({
     initialize: function() {
         if (!this.get('play')) return;
 
+        this.set_title();
+
         this.listenTo(this, 'change:src', this.loaded);
         this.set_track();
 
         if (this.collection.site == 'unearthed' && App.data.window.width > 700) this.get_high_res_img();
         else this.load_img();
+    },
+
+    set_title: function() {
+        var artist = this.get('artist'),
+            title = this.get('title'),
+            info;
+
+        if (artist) this.set('artist', artist.text);
+        else {
+            info = title.split(/( - )|( for )/g);
+            if (info.length != 4) return;
+
+            if (info[1]) {
+                this.set('artist', info[0]);
+                this.set('title', info[3]);
+            } else if (info[2]) {
+                this.set('title', info[0]);
+                this.set('artist', info[3]);
+            }
+        }
     },
 
     set_track: function() {
@@ -15806,7 +15826,7 @@ module.exports = TrackModel = Backbone.Model.extend({
 
     get_high_res_img: function() {
         var self = this,
-            artist = this.get('artist').text.replace(/\.|\(|\)/g,''), // remove any periods or parens which break regex later
+            artist = this.get('artist').replace(/\.|\(|\)/g,''), // remove any periods or parens which break regex later
             title = this.get('title').replace(/\.|\(|\)/g,'');
 
         $.ajax({
@@ -15962,7 +15982,7 @@ module.exports = itemView = Marionette.ItemView.extend({
 
         this.$text.toggleClass('empty_artist', !artist);
 
-        artist = artist ? artist.text : '';
+        artist = artist ? artist : '';
 
         this.$el.find('.title').html(title);
         this.$el.find('.artist').html(artist);
@@ -16201,7 +16221,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 
   stack1 = (helper = helpers.track_info || (depth0 && depth0.track_info),options={hash:{
     'title': ((depth0 && depth0.title)),
-    'artist': (((stack1 = (depth0 && depth0.artist)),stack1 == null || stack1 === false ? stack1 : stack1.text)),
+    'artist': ((depth0 && depth0.artist)),
     'play': (true)
   },data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "track_info", options));
   if(stack1 || stack1 === 0) { buffer += stack1; }
@@ -16256,7 +16276,7 @@ function program1(depth0,data) {
   buffer += "\n";
   stack1 = (helper = helpers.track_info || (depth0 && depth0.track_info),options={hash:{
     'title': ((depth0 && depth0.title)),
-    'artist': (((stack1 = (depth0 && depth0.artist)),stack1 == null || stack1 === false ? stack1 : stack1.text)),
+    'artist': ((depth0 && depth0.artist)),
     'play': ((depth0 && depth0.play))
   },data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "track_info", options));
   if(stack1 || stack1 === 0) { buffer += stack1; }

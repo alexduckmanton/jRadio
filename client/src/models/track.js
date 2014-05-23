@@ -11,11 +11,33 @@ module.exports = TrackModel = Backbone.Model.extend({
     initialize: function() {
         if (!this.get('play')) return;
 
+        this.set_title();
+
         this.listenTo(this, 'change:src', this.loaded);
         this.set_track();
 
         if (this.collection.site == 'unearthed' && App.data.window.width > 700) this.get_high_res_img();
         else this.load_img();
+    },
+
+    set_title: function() {
+        var artist = this.get('artist'),
+            title = this.get('title'),
+            info;
+
+        if (artist) this.set('artist', artist.text);
+        else {
+            info = title.split(/( - )|( for )/g);
+            if (info.length != 4) return;
+
+            if (info[1]) {
+                this.set('artist', info[0]);
+                this.set('title', info[3]);
+            } else if (info[2]) {
+                this.set('title', info[0]);
+                this.set('artist', info[3]);
+            }
+        }
     },
 
     set_track: function() {
@@ -46,7 +68,7 @@ module.exports = TrackModel = Backbone.Model.extend({
 
     get_high_res_img: function() {
         var self = this,
-            artist = this.get('artist').text.replace(/\.|\(|\)/g,''), // remove any periods or parens which break regex later
+            artist = this.get('artist').replace(/\.|\(|\)/g,''), // remove any periods or parens which break regex later
             title = this.get('title').replace(/\.|\(|\)/g,'');
 
         $.ajax({
