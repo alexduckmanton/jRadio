@@ -15921,6 +15921,14 @@ module.exports = itemView = Marionette.ItemView.extend({
         this.listenTo(App.core.vent, 'tracks:stop', this.on_stop);
         this.listenTo(App.core.vent, 'tracks:stop', this.loaded);
         this.listenTo(App.core.vent, 'track:loaded', this.loaded);
+
+
+        if (App.data.window.width > 700) {
+            var self = this;
+            window.setTimeout(function() {
+                self.listenTo(App.core.vent, 'route', self.hide);
+            }, 100);
+        }
     },
 
     events: {
@@ -15929,6 +15937,22 @@ module.exports = itemView = Marionette.ItemView.extend({
 
     onRender: function() {
         this.$text = this.$el.find('.text');
+    },
+
+    hide: function() {
+        if (this.model.get('is_playing')) return;
+
+        this.$el.addClass('hide');
+
+        var self = this,
+            active = $('.site.active .tracks');
+        active.one('webkitTransitionEnd oTransitionEnd msTransitionEnd transitionend', function() {
+            self.show();
+        });
+    },
+
+    show: function() {
+        this.$el.removeClass('hide');
     },
 
     update_content: function(e) {

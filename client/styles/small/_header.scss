@@ -12,6 +12,10 @@
 
     .player {
         top: $header_height;
+
+        &.hide {
+            display: none;
+        }
     }
 
     .site.active header {
