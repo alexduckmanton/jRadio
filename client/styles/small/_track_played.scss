@@ -30,7 +30,7 @@
             border: none;
 
             h3 {
-                color: #666;
+                color: #444;
             }
 
             h4 {
@@ -38,7 +38,7 @@
             }
 
             .time {
-                color: #ccc;
+                color: #aaa;
             }
         }
 
@@ -60,7 +60,7 @@
         }
 
         // cover up the heading when scrolled past the last recent track
-        &:before {
+        &.active:before {
             content: '';
             position: relative;
             width: 100%;
