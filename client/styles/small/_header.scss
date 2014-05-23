@@ -27,6 +27,7 @@
         height: $header_height;
         z-index: -1;
         box-shadow: #eee 0 -1em 0;
+        overflow: inherit;
 
         .radio,
         .toggle_played {
