@@ -15359,12 +15359,12 @@ module.exports = Helpers = function Helpers() {
 
     Handlebars.registerHelper('time', function(options) {
         var current = new Date(),
-            track = new Date(options.hash.timestamp),
+            site = options.hash.site,
+            local = new Date(options.hash.local),
+            utc = new Date(options.hash.utc),
+            track = site == 'unearthed' ? local : utc,
             diff = current.getTime() - track.getTime(),
             text = 'mins ago';
-
-        // time returned by jjj is in a bizarre timezone, and then assumed as local by js
-        diff -= 10*60*60*1000;
 
         // get whole minutes
         diff = Math.floor( diff / 1000 / 60 );
@@ -16010,14 +16010,13 @@ var itemView = Marionette.ItemView.extend({
     },
 
     initialize: function(options) {
-        // console.log(options);
         this.listenTo(this.model, 'change', this.toggle_classes);
         this.listenTo(this.model, 'change:is_playing', this.trigger_playing);
         this.listenTo(this.model, 'change:image', this.render);
 
         this.$el.toggleClass('featured', this.model.get('featured'));
 
-        if (this.model.collection.type) {
+        if (this.model.collection.type == 'played') {
             this.$el.removeClass('loading');
             this.$el.removeClass('track_loading');
         }
@@ -16065,6 +16064,7 @@ module.exports = CollectionView = Marionette.CollectionView.extend({
         this.listenTo(App.core.vent, 'tracks:stop', this.stop);
 
         if (this.className == 'played') {
+            console.log(this);
             this.listenTo(App.core.vent, this.options.parent_name+':played:show', this.toggle_active);
             this.listenTo(App.core.vent, this.options.parent_name+':played:hide', this.toggle_active);
 
@@ -16123,7 +16123,9 @@ function program3(depth0,data) {
   var buffer = "", stack1, helper, options;
   buffer += "<span class=\"time\">"
     + escapeExpression((helper = helpers.time || (depth0 && depth0.time),options={hash:{
-    'timestamp': (((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.time))
+    'site': (((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.site)),
+    'local': (((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.local)),
+    'utc': (((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.utc))
   },data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "time", options)))
     + "</span>";
   return buffer;
@@ -16133,7 +16135,7 @@ function program3(depth0,data) {
   stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.play), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n    ";
-  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.time), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
+  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.utc), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n    <div class=\"text\">\n        <h3 class=\"title\">"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.title)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
@@ -16167,7 +16169,9 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   stack1 = (helper = helpers.track_info || (depth0 && depth0.track_info),options={hash:{
     'title': ((depth0 && depth0.title)),
     'artist': ((depth0 && depth0.artistname)),
-    'time': ((depth0 && depth0.playedtime))
+    'local': ((depth0 && depth0.playedtime_local)),
+    'utc': ((depth0 && depth0.playedtime_utc)),
+    'site': ((depth0 && depth0.channel_id))
   },data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "track_info", options));
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n";

@@ -18,14 +18,13 @@ var itemView = Marionette.ItemView.extend({
     },
 
     initialize: function(options) {
-        // console.log(options);
         this.listenTo(this.model, 'change', this.toggle_classes);
         this.listenTo(this.model, 'change:is_playing', this.trigger_playing);
         this.listenTo(this.model, 'change:image', this.render);
 
         this.$el.toggleClass('featured', this.model.get('featured'));
 
-        if (this.model.collection.type) {
+        if (this.model.collection.type == 'played') {
             this.$el.removeClass('loading');
             this.$el.removeClass('track_loading');
         }
@@ -73,6 +72,7 @@ module.exports = CollectionView = Marionette.CollectionView.extend({
         this.listenTo(App.core.vent, 'tracks:stop', this.stop);
 
         if (this.className == 'played') {
+            console.log(this);
             this.listenTo(App.core.vent, this.options.parent_name+':played:show', this.toggle_active);
             this.listenTo(App.core.vent, this.options.parent_name+':played:hide', this.toggle_active);
 

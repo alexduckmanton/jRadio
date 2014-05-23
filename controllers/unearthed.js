@@ -58,10 +58,8 @@ module.exports = {
         });
     },
     recent: function(req, res) {
-        var count = req.query.count || 10;
         request({
-            uri: "https://triplejgizmo.abc.net.au/unearthed/pav-proxy/unearthed-tracks.php",
-            qs: { 'count': count }
+            uri: "http://triplejgizmo.abc.net.au/pav/plays/unearthed.php"
         }, function(err, response, body) {
             res.json(JSON.parse(body));
         });

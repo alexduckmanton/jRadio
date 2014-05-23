@@ -7,12 +7,12 @@ module.exports = Helpers = function Helpers() {
 
     Handlebars.registerHelper('time', function(options) {
         var current = new Date(),
-            track = new Date(options.hash.timestamp),
+            site = options.hash.site,
+            local = new Date(options.hash.local),
+            utc = new Date(options.hash.utc),
+            track = site == 'unearthed' ? local : utc,
             diff = current.getTime() - track.getTime(),
             text = 'mins ago';
-
-        // time returned by jjj is in a bizarre timezone, and then assumed as local by js
-        diff -= 10*60*60*1000;
 
         // get whole minutes
         diff = Math.floor( diff / 1000 / 60 );
