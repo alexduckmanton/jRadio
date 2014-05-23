@@ -3700,20 +3700,21 @@ a {
     padding-top: .5em;
     background: none;
     border: none;
+    z-index: 1;
   }
-  /* line 32, ../client/styles/small/_track_played.scss */
+  /* line 33, ../client/styles/small/_track_played.scss */
   .played .track h3 {
     color: #444;
   }
-  /* line 36, ../client/styles/small/_track_played.scss */
+  /* line 37, ../client/styles/small/_track_played.scss */
   .played .track h4 {
     color: #aaa;
   }
-  /* line 40, ../client/styles/small/_track_played.scss */
+  /* line 41, ../client/styles/small/_track_played.scss */
   .played .track .time {
     color: #aaa;
   }
-  /* line 45, ../client/styles/small/_track_played.scss */
+  /* line 46, ../client/styles/small/_track_played.scss */
   .played h1 {
     margin: 0;
     padding: 20.35em 0 0.5em 0.375em;
@@ -3731,8 +3732,8 @@ a {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-  /* line 63, ../client/styles/small/_track_played.scss */
-  .played.active:before {
+  /* line 64, ../client/styles/small/_track_played.scss */
+  .played:before {
     content: '';
     position: relative;
     width: 100%;
@@ -3741,7 +3742,7 @@ a {
     -webkit-transform: translateZ(0);
   }
 
-  /* line 75, ../client/styles/small/_track_played.scss */
+  /* line 76, ../client/styles/small/_track_played.scss */
   .site.active .played h1 {
     z-index: 6;
   }
