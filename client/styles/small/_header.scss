@@ -12,6 +12,15 @@
 
     .player {
         top: $header_height;
+        height: inherit;
+
+        .track_info {
+            height: inherit;
+        }
+
+        h3, h4 {
+            line-height: 1.25em;
+        }
 
         &.hide {
             display: none;

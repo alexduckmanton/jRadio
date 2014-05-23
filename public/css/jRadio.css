@@ -3565,18 +3565,27 @@ a {
   /* line 13, ../client/styles/small/_header.scss */
   .player {
     top: 7.65em;
+    height: inherit;
   }
-  /* line 16, ../client/styles/small/_header.scss */
+  /* line 17, ../client/styles/small/_header.scss */
+  .player .track_info {
+    height: inherit;
+  }
+  /* line 21, ../client/styles/small/_header.scss */
+  .player h3, .player h4 {
+    line-height: 1.25em;
+  }
+  /* line 25, ../client/styles/small/_header.scss */
   .player.hide {
     display: none;
   }
 
-  /* line 21, ../client/styles/small/_header.scss */
+  /* line 30, ../client/styles/small/_header.scss */
   .site.active header {
     z-index: 9;
   }
 
-  /* line 25, ../client/styles/small/_header.scss */
+  /* line 34, ../client/styles/small/_header.scss */
   header {
     top: 0;
     height: 7.65em;
@@ -3584,13 +3593,13 @@ a {
     box-shadow: #eee 0 -1em 0;
     overflow: inherit;
   }
-  /* line 38, ../client/styles/small/_header.scss */
+  /* line 47, ../client/styles/small/_header.scss */
   header h1,
   header .radio {
     width: 50%;
     height: 100%;
   }
-  /* line 43, ../client/styles/small/_header.scss */
+  /* line 52, ../client/styles/small/_header.scss */
   header .radio {
     margin: 0;
     border: none;
@@ -3598,28 +3607,28 @@ a {
     border-radius: 0;
     float: right;
   }
-  /* line 50, ../client/styles/small/_header.scss */
+  /* line 59, ../client/styles/small/_header.scss */
   header .radio:before {
     font-size: 2em;
     line-height: 3.875em;
   }
-  /* line 56, ../client/styles/small/_header.scss */
+  /* line 65, ../client/styles/small/_header.scss */
   header .toggle_played {
     display: none;
   }
-  /* line 60, ../client/styles/small/_header.scss */
+  /* line 69, ../client/styles/small/_header.scss */
   header h1 {
     float: left;
     color: transparent;
   }
-  /* line 64, ../client/styles/small/_header.scss */
+  /* line 73, ../client/styles/small/_header.scss */
   header h1:before {
     font-size: 3em;
     left: calc(50% - .5em);
     top: inherit;
     bottom: -0.15em;
   }
-  /* line 71, ../client/styles/small/_header.scss */
+  /* line 80, ../client/styles/small/_header.scss */
   header h1:after {
     position: absolute;
     font-size: 1.75em;
