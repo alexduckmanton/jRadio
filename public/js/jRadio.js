@@ -15948,7 +15948,7 @@ module.exports = itemView = Marionette.ItemView.extend({
         var self = this,
             active = $('.site.active .tracks');
         active.one('webkitTransitionEnd oTransitionEnd msTransitionEnd transitionend', function() {
-            self.show();
+            window.setTimeout(function() { self.show(); }, 200);
         });
     },
 
