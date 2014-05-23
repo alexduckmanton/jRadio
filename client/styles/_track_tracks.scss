@@ -108,22 +108,12 @@
             }
         }
 
-        // temp for demo
+        // animate track into and stagger across the bunch
         @include animation(track_intro);
-
-        // intro animations
-        // @for $i from 1 through 4 {
-        //     &:nth-child(#{$i}) { @include animation(track_intro); }
-        // }
-        //
-        // @for $i from 17 through 18 {
-        //     &.featured:nth-child(#{$i}) { @include animation(track_intro); }
-        // }
-
-        // &:nth-child(1) { @include animationDuration($default-transition-duration * 1.1); }
-        &:nth-child(2n) { @include animationDuration($default-transition-duration * 1.2); }
-        &:nth-child(3n) { @include animationDuration($default-transition-duration * .9); }
-        &:nth-child(4n) { @include animationDuration($default-transition-duration * .8); }
+        &:nth-child(2n) { @include animationDuration($default-transition-duration * 1.1); }
+        &:nth-child(3n) { @include animationDuration($default-transition-duration * 1.2); }
+        &:nth-child(4n) { @include animationDuration($default-transition-duration * .9); }
+        &:nth-child(5n) { @include animationDuration($default-transition-duration * .8); }
     }
 }
 

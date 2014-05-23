@@ -1816,24 +1816,32 @@ footer a {
   padding-left: 0;
   font-size: .75em;
 }
-/* line 124, ../client/styles/_track_tracks.scss */
+/* line 113, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(2n) {
+  -o-animation-duration: 0.33s;
+  -ms-animation-duration: 0.33s;
+  -moz-animation-duration: 0.33s;
+  -webkit-animation-duration: 0.33s;
+  animation-duration: 0.33s;
+}
+/* line 114, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(3n) {
   -o-animation-duration: 0.36s;
   -ms-animation-duration: 0.36s;
   -moz-animation-duration: 0.36s;
   -webkit-animation-duration: 0.36s;
   animation-duration: 0.36s;
 }
-/* line 125, ../client/styles/_track_tracks.scss */
-.tracks .track:nth-child(3n) {
+/* line 115, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(4n) {
   -o-animation-duration: 0.27s;
   -ms-animation-duration: 0.27s;
   -moz-animation-duration: 0.27s;
   -webkit-animation-duration: 0.27s;
   animation-duration: 0.27s;
 }
-/* line 126, ../client/styles/_track_tracks.scss */
-.tracks .track:nth-child(4n) {
+/* line 116, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(5n) {
   -o-animation-duration: 0.24s;
   -ms-animation-duration: 0.24s;
   -moz-animation-duration: 0.24s;
@@ -1841,7 +1849,7 @@ footer a {
   animation-duration: 0.24s;
 }
 
-/* line 131, ../client/styles/_track_tracks.scss */
+/* line 121, ../client/styles/_track_tracks.scss */
 .tracks .track.loading,
 .site_loading + .tracks .track {
   opacity: 0;
