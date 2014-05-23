@@ -95,7 +95,8 @@
 
         &:not(.featured) .track_info {
             .play {
-                top: -1.75em;
+                margin-top: -47.5%;
+                top: 0;
                 left: calc(50% - .5em);
                 color: #fff;
                 border-color: #fff;

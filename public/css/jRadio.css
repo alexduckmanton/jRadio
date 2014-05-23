@@ -1805,18 +1805,19 @@ footer a {
 }
 /* line 97, ../client/styles/_track_tracks.scss */
 .tracks .track:not(.featured) .track_info .play {
-  top: -1.75em;
+  margin-top: -47.5%;
+  top: 0;
   left: calc(50% - .5em);
   color: #fff;
   border-color: #fff;
   opacity: 0.9;
 }
-/* line 105, ../client/styles/_track_tracks.scss */
+/* line 106, ../client/styles/_track_tracks.scss */
 .tracks .track:not(.featured) .track_info .text {
   padding-left: 0;
   font-size: .75em;
 }
-/* line 113, ../client/styles/_track_tracks.scss */
+/* line 114, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(2n) {
   -o-animation-duration: 0.33s;
   -ms-animation-duration: 0.33s;
@@ -1824,7 +1825,7 @@ footer a {
   -webkit-animation-duration: 0.33s;
   animation-duration: 0.33s;
 }
-/* line 114, ../client/styles/_track_tracks.scss */
+/* line 115, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(3n) {
   -o-animation-duration: 0.36s;
   -ms-animation-duration: 0.36s;
@@ -1832,7 +1833,7 @@ footer a {
   -webkit-animation-duration: 0.36s;
   animation-duration: 0.36s;
 }
-/* line 115, ../client/styles/_track_tracks.scss */
+/* line 116, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(4n) {
   -o-animation-duration: 0.27s;
   -ms-animation-duration: 0.27s;
@@ -1840,7 +1841,7 @@ footer a {
   -webkit-animation-duration: 0.27s;
   animation-duration: 0.27s;
 }
-/* line 116, ../client/styles/_track_tracks.scss */
+/* line 117, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(5n) {
   -o-animation-duration: 0.24s;
   -ms-animation-duration: 0.24s;
@@ -1849,7 +1850,7 @@ footer a {
   animation-duration: 0.24s;
 }
 
-/* line 121, ../client/styles/_track_tracks.scss */
+/* line 122, ../client/styles/_track_tracks.scss */
 .tracks .track.loading,
 .site_loading + .tracks .track {
   opacity: 0;
@@ -3745,5 +3746,11 @@ a {
   /* line 16, ../client/styles/small/_module.scss */
   body {
     overflow: inherit;
+  }
+}
+@media screen and (min-width: 1000px) {
+  /* line 32, ../client/styles/medium/_track_tracks.scss */
+  .tracks .track:not(.featured) .track_info .play {
+    margin-top: -40%;
   }
 }

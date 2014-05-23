@@ -1,36 +1,36 @@
 @include medium {
 
     .tracks {
-        width: $tracks_width;
-
+        // width: $tracks_width;
+        //
         .track {
-            width: 24.25%;
-
-            // make room for offset featured track vertical alignment
-            &:nth-child(1),
-            &:nth-child(2),
-            &:nth-child(9),
-            &:nth-child(10) {
-                @include flex-align-self();
-            }
-
-            &.featured {
-                width: 49.5%;
-
-                // scatter featured tracks among the new ones
-                @for $i from 17 through 20 {
-                    &:nth-child(#{$i}) { @include order( ($i - 17) * 4 ); }
-                }
-
-                &:nth-child(18),
-                &:nth-child(20) {
-                    margin-top: -17.5%;
-                }
-            }
+        //     width: 24.25%;
+        //
+        //     // make room for offset featured track vertical alignment
+        //     &:nth-child(1),
+        //     &:nth-child(2),
+        //     &:nth-child(9),
+        //     &:nth-child(10) {
+        //         @include flex-align-self();
+        //     }
+        //
+        //     &.featured {
+        //         width: 49.5%;
+        //
+        //         // scatter featured tracks among the new ones
+        //         @for $i from 17 through 20 {
+        //             &:nth-child(#{$i}) { @include order( ($i - 17) * 4 ); }
+        //         }
+        //
+        //         &:nth-child(18),
+        //         &:nth-child(20) {
+        //             margin-top: -17.5%;
+        //         }
+        //     }
 
             // play button vertical alignment
-            &:not(.featured) .play {
-                top: -2em;
+            &:not(.featured) .track_info .play {
+                margin-top: -40%;
             }
         }
     }
