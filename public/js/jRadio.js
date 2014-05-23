@@ -15402,11 +15402,11 @@ module.exports = layout = Marionette.Layout.extend({
         this.toggle_active();
         this.listenToOnce(this.model, 'change:active', this.get_tracks);
 
-        if (App.data.window.width <= 700) {
+        // if (App.data.window.width <= 700) {
             var name = this.model.get('name');
             this.listenTo(App.core.vent, name+':played:show', this.toggle_tray);
             this.listenTo(App.core.vent, name+':played:hide', this.toggle_tray);
-        }
+        // }
     },
 
     onRender: function() {
@@ -15530,7 +15530,7 @@ module.exports = layout = Marionette.Layout.extend({
             tracks = App.views[name].tracksView.collection;
 
         this.$tracks.before( require('../../templates/loading.hbs') );
-        
+
         tracks.fetch({
             url: this.model.get('tracks_api'),
             success: function() {
