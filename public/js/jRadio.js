@@ -15419,7 +15419,8 @@ module.exports = layout = Marionette.Layout.extend({
         this.$tracks = this.$el.children('.tracks');
         this.$played = this.$el.children('.played');
 
-        if (App.data.window.width > 700) this.get_played();
+        if (App.data.window.width > 700)
+            this.listenToOnce(this.model, 'change:active', this.get_played);
     },
 
     navigate: function() {
@@ -16064,7 +16065,6 @@ module.exports = CollectionView = Marionette.CollectionView.extend({
         this.listenTo(App.core.vent, 'tracks:stop', this.stop);
 
         if (this.className == 'played') {
-            console.log(this);
             this.listenTo(App.core.vent, this.options.parent_name+':played:show', this.toggle_active);
             this.listenTo(App.core.vent, this.options.parent_name+':played:hide', this.toggle_active);
 

@@ -72,7 +72,6 @@ module.exports = CollectionView = Marionette.CollectionView.extend({
         this.listenTo(App.core.vent, 'tracks:stop', this.stop);
 
         if (this.className == 'played') {
-            console.log(this);
             this.listenTo(App.core.vent, this.options.parent_name+':played:show', this.toggle_active);
             this.listenTo(App.core.vent, this.options.parent_name+':played:hide', this.toggle_active);
 
