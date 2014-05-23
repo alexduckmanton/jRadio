@@ -3,7 +3,7 @@ $site_end_width: $site_width;
 $site_margin: (100% - $site_width) / 4;
 
 $tracks_width: 100% / 3 * 2;
-$played_width: 100% - $tracks_width;
+$played_width: 100% - $tracks_width - 1.5%;
 
 @include small {
 

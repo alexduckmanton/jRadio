@@ -3726,7 +3726,7 @@ a {
     margin-right: 0;
     position: fixed;
     right: 10%;
-    width: calc(33.33333% - .75em);
+    width: 31.83333%;
   }
 
   /* line 13, ../client/styles/small/_header.scss */

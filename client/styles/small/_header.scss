@@ -7,7 +7,7 @@
         margin-right: 0;
         position: fixed;
         right: 10%;
-        width: calc(#{100% - $tracks_width} - .75em);
+        width: $played_width;
     }
 
     .player {
