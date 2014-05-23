@@ -50,7 +50,7 @@
             top: 0;
             right: 10%;
             background: #eee;
-            width: calc(#{100% - $tracks_width} - .75em);
+            width: 100% - $tracks_width - 1.5%;
             box-shadow: rgba(0,0,0,0.1) 0 2px 0;
             text-align: left;
             font-size: 1.33333333em;
