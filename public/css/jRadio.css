@@ -1439,6 +1439,36 @@ footer a {
 .tracks .track {
   margin-bottom: .5em;
   width: 48.85%;
+  -o-animation-name: track_intro;
+  -ms-animation-name: track_intro;
+  -moz-animation-name: track_intro;
+  -webkit-animation-name: track_intro;
+  animation-name: track_intro;
+  -o-animation-duration: 0.3s;
+  -ms-animation-duration: 0.3s;
+  -moz-animation-duration: 0.3s;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -o-animation-timing-function: false;
+  -ms-animation-timing-function: false;
+  -moz-animation-timing-function: false;
+  -webkit-animation-timing-function: false;
+  animation-timing-function: false;
+  -o-animation-delay: 0;
+  -ms-animation-delay: 0;
+  -moz-animation-delay: 0;
+  -webkit-animation-delay: 0;
+  animation-delay: 0;
+  -o-animation-iteration-count: 1;
+  -ms-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -o-animation-direction: normal;
+  -ms-animation-direction: normal;
+  -moz-animation-direction: normal;
+  -webkit-animation-direction: normal;
+  animation-direction: normal;
 }
 /* line 34, ../client/styles/_track_tracks.scss */
 .tracks .track .img_container {
@@ -1786,230 +1816,24 @@ footer a {
   padding-left: 0;
   font-size: .75em;
 }
-/* line 113, ../client/styles/_track_tracks.scss */
-.tracks .track:nth-child(1) {
-  -o-animation-name: track_intro;
-  -ms-animation-name: track_intro;
-  -moz-animation-name: track_intro;
-  -webkit-animation-name: track_intro;
-  animation-name: track_intro;
-  -o-animation-duration: 0.3s;
-  -ms-animation-duration: 0.3s;
-  -moz-animation-duration: 0.3s;
-  -webkit-animation-duration: 0.3s;
-  animation-duration: 0.3s;
-  -o-animation-timing-function: false;
-  -ms-animation-timing-function: false;
-  -moz-animation-timing-function: false;
-  -webkit-animation-timing-function: false;
-  animation-timing-function: false;
-  -o-animation-delay: 0;
-  -ms-animation-delay: 0;
-  -moz-animation-delay: 0;
-  -webkit-animation-delay: 0;
-  animation-delay: 0;
-  -o-animation-iteration-count: 1;
-  -ms-animation-iteration-count: 1;
-  -moz-animation-iteration-count: 1;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  -o-animation-direction: normal;
-  -ms-animation-direction: normal;
-  -moz-animation-direction: normal;
-  -webkit-animation-direction: normal;
-  animation-direction: normal;
-}
-/* line 113, ../client/styles/_track_tracks.scss */
-.tracks .track:nth-child(2) {
-  -o-animation-name: track_intro;
-  -ms-animation-name: track_intro;
-  -moz-animation-name: track_intro;
-  -webkit-animation-name: track_intro;
-  animation-name: track_intro;
-  -o-animation-duration: 0.3s;
-  -ms-animation-duration: 0.3s;
-  -moz-animation-duration: 0.3s;
-  -webkit-animation-duration: 0.3s;
-  animation-duration: 0.3s;
-  -o-animation-timing-function: false;
-  -ms-animation-timing-function: false;
-  -moz-animation-timing-function: false;
-  -webkit-animation-timing-function: false;
-  animation-timing-function: false;
-  -o-animation-delay: 0;
-  -ms-animation-delay: 0;
-  -moz-animation-delay: 0;
-  -webkit-animation-delay: 0;
-  animation-delay: 0;
-  -o-animation-iteration-count: 1;
-  -ms-animation-iteration-count: 1;
-  -moz-animation-iteration-count: 1;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  -o-animation-direction: normal;
-  -ms-animation-direction: normal;
-  -moz-animation-direction: normal;
-  -webkit-animation-direction: normal;
-  animation-direction: normal;
-}
-/* line 113, ../client/styles/_track_tracks.scss */
-.tracks .track:nth-child(3) {
-  -o-animation-name: track_intro;
-  -ms-animation-name: track_intro;
-  -moz-animation-name: track_intro;
-  -webkit-animation-name: track_intro;
-  animation-name: track_intro;
-  -o-animation-duration: 0.3s;
-  -ms-animation-duration: 0.3s;
-  -moz-animation-duration: 0.3s;
-  -webkit-animation-duration: 0.3s;
-  animation-duration: 0.3s;
-  -o-animation-timing-function: false;
-  -ms-animation-timing-function: false;
-  -moz-animation-timing-function: false;
-  -webkit-animation-timing-function: false;
-  animation-timing-function: false;
-  -o-animation-delay: 0;
-  -ms-animation-delay: 0;
-  -moz-animation-delay: 0;
-  -webkit-animation-delay: 0;
-  animation-delay: 0;
-  -o-animation-iteration-count: 1;
-  -ms-animation-iteration-count: 1;
-  -moz-animation-iteration-count: 1;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  -o-animation-direction: normal;
-  -ms-animation-direction: normal;
-  -moz-animation-direction: normal;
-  -webkit-animation-direction: normal;
-  animation-direction: normal;
-}
-/* line 113, ../client/styles/_track_tracks.scss */
-.tracks .track:nth-child(4) {
-  -o-animation-name: track_intro;
-  -ms-animation-name: track_intro;
-  -moz-animation-name: track_intro;
-  -webkit-animation-name: track_intro;
-  animation-name: track_intro;
-  -o-animation-duration: 0.3s;
-  -ms-animation-duration: 0.3s;
-  -moz-animation-duration: 0.3s;
-  -webkit-animation-duration: 0.3s;
-  animation-duration: 0.3s;
-  -o-animation-timing-function: false;
-  -ms-animation-timing-function: false;
-  -moz-animation-timing-function: false;
-  -webkit-animation-timing-function: false;
-  animation-timing-function: false;
-  -o-animation-delay: 0;
-  -ms-animation-delay: 0;
-  -moz-animation-delay: 0;
-  -webkit-animation-delay: 0;
-  animation-delay: 0;
-  -o-animation-iteration-count: 1;
-  -ms-animation-iteration-count: 1;
-  -moz-animation-iteration-count: 1;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  -o-animation-direction: normal;
-  -ms-animation-direction: normal;
-  -moz-animation-direction: normal;
-  -webkit-animation-direction: normal;
-  animation-direction: normal;
-}
-/* line 117, ../client/styles/_track_tracks.scss */
-.tracks .track.featured:nth-child(17) {
-  -o-animation-name: track_intro;
-  -ms-animation-name: track_intro;
-  -moz-animation-name: track_intro;
-  -webkit-animation-name: track_intro;
-  animation-name: track_intro;
-  -o-animation-duration: 0.3s;
-  -ms-animation-duration: 0.3s;
-  -moz-animation-duration: 0.3s;
-  -webkit-animation-duration: 0.3s;
-  animation-duration: 0.3s;
-  -o-animation-timing-function: false;
-  -ms-animation-timing-function: false;
-  -moz-animation-timing-function: false;
-  -webkit-animation-timing-function: false;
-  animation-timing-function: false;
-  -o-animation-delay: 0;
-  -ms-animation-delay: 0;
-  -moz-animation-delay: 0;
-  -webkit-animation-delay: 0;
-  animation-delay: 0;
-  -o-animation-iteration-count: 1;
-  -ms-animation-iteration-count: 1;
-  -moz-animation-iteration-count: 1;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  -o-animation-direction: normal;
-  -ms-animation-direction: normal;
-  -moz-animation-direction: normal;
-  -webkit-animation-direction: normal;
-  animation-direction: normal;
-}
-/* line 117, ../client/styles/_track_tracks.scss */
-.tracks .track.featured:nth-child(18) {
-  -o-animation-name: track_intro;
-  -ms-animation-name: track_intro;
-  -moz-animation-name: track_intro;
-  -webkit-animation-name: track_intro;
-  animation-name: track_intro;
-  -o-animation-duration: 0.3s;
-  -ms-animation-duration: 0.3s;
-  -moz-animation-duration: 0.3s;
-  -webkit-animation-duration: 0.3s;
-  animation-duration: 0.3s;
-  -o-animation-timing-function: false;
-  -ms-animation-timing-function: false;
-  -moz-animation-timing-function: false;
-  -webkit-animation-timing-function: false;
-  animation-timing-function: false;
-  -o-animation-delay: 0;
-  -ms-animation-delay: 0;
-  -moz-animation-delay: 0;
-  -webkit-animation-delay: 0;
-  animation-delay: 0;
-  -o-animation-iteration-count: 1;
-  -ms-animation-iteration-count: 1;
-  -moz-animation-iteration-count: 1;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  -o-animation-direction: normal;
-  -ms-animation-direction: normal;
-  -moz-animation-direction: normal;
-  -webkit-animation-direction: normal;
-  animation-direction: normal;
-}
-/* line 120, ../client/styles/_track_tracks.scss */
-.tracks .track:nth-child(1) {
-  -o-animation-duration: 0.33s;
-  -ms-animation-duration: 0.33s;
-  -moz-animation-duration: 0.33s;
-  -webkit-animation-duration: 0.33s;
-  animation-duration: 0.33s;
-}
-/* line 121, ../client/styles/_track_tracks.scss */
-.tracks .track:nth-child(2) {
+/* line 124, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(2n) {
   -o-animation-duration: 0.36s;
   -ms-animation-duration: 0.36s;
   -moz-animation-duration: 0.36s;
   -webkit-animation-duration: 0.36s;
   animation-duration: 0.36s;
 }
-/* line 122, ../client/styles/_track_tracks.scss */
-.tracks .track:nth-child(3) {
+/* line 125, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(3n) {
   -o-animation-duration: 0.27s;
   -ms-animation-duration: 0.27s;
   -moz-animation-duration: 0.27s;
   -webkit-animation-duration: 0.27s;
   animation-duration: 0.27s;
 }
-/* line 123, ../client/styles/_track_tracks.scss */
-.tracks .track:nth-child(4) {
+/* line 126, ../client/styles/_track_tracks.scss */
+.tracks .track:nth-child(4n) {
   -o-animation-duration: 0.24s;
   -ms-animation-duration: 0.24s;
   -moz-animation-duration: 0.24s;
@@ -2017,7 +1841,7 @@ footer a {
   animation-duration: 0.24s;
 }
 
-/* line 128, ../client/styles/_track_tracks.scss */
+/* line 131, ../client/styles/_track_tracks.scss */
 .tracks .track.loading,
 .site_loading + .tracks .track {
   opacity: 0;
