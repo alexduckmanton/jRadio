@@ -4,7 +4,8 @@ module.exports = Router = Marionette.AppRouter.extend({
     appRoutes: {
         '': 'unearthed',
         'unearthed': 'unearthed',
-        'triplej': 'triplej'
+        'triplej': 'triplej',
+        'doublej': 'doublej'
     },
 
     onRoute: function(name, path, options) {

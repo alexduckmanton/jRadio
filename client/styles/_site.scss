@@ -100,12 +100,16 @@ $site_speed: $default-transition-duration * 2;
             #{$elem} { @include site_position($active_pos); }
         }
 
-        &.active ~ & {
-            #{$elem} { @include site_position(-100% - $site_margin); }
+        &.active + &:last-child {
+            #{$elem} { @include site_position($last_site_pos); }
         }
 
-        &.active ~ &:last-child {
-            #{$elem} { @include site_position($last_site_pos); }
+        &.active ~ & {
+            #{$elem} { @include site_position(-100% - $site_margin*2); }
+        }
+
+        &.active + & {
+            #{$elem} { @include site_position(-100% - $site_margin); }
         }
 
         &.active:last-child {

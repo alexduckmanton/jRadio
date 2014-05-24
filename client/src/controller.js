@@ -38,6 +38,17 @@ module.exports = Controller = Marionette.Controller.extend({
             played_api: '/api/triplej/recent'
         }) });
         this.renderView( App.views.triplej.layout );
+
+        App.views.doublej = {};
+        App.views.doublej.layout = new SiteLayout({ model: new SiteModel({
+            name: 'doublej',
+            page_title: 'Double J',
+            radio_title: 'Double J',
+            src: 'http://shoutmedia.abc.net.au:10428/;*.mp3',
+            tracks_api: '/api/triplej',
+            played_api: '/api/triplej/recent'
+        }) });
+        this.renderView( App.views.doublej.layout );
     },
 
     on_route: function(path) {
@@ -77,6 +88,9 @@ module.exports = Controller = Marionette.Controller.extend({
     },
 
     triplej: function() {
+    },
+
+    doublej: function() {
     },
 
     renderView: function(view) {

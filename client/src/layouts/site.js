@@ -47,7 +47,7 @@ module.exports = layout = Marionette.Layout.extend({
 
     navigate: function() {
         if (this.model.get('active')) return;
-
+        
         App.router.navigate(this.model.get('name'), {trigger: true});
     },
 

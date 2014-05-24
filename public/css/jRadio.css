@@ -676,23 +676,7 @@ th {
   transform: translate3d(-8.82353%, 10em, 0);
 }
 /* line 104, ../client/styles/_site.scss */
-.site.active ~ .site {
-  -webkit-transform: translate3d(-108.82353%, 0, 0);
-  -moz-transform: translate3d(-108.82353%, 0, 0);
-  -ms-transform: translate3d(-108.82353%, 0, 0);
-  -o-transform: translate3d(-108.82353%, 0, 0);
-  transform: translate3d(-108.82353%, 0, 0);
-}
-/* line 50, ../client/styles/_site.scss */
-.site.active ~ .site.show_tray {
-  -webkit-transform: translate3d(-108.82353%, 10em, 0);
-  -moz-transform: translate3d(-108.82353%, 10em, 0);
-  -ms-transform: translate3d(-108.82353%, 10em, 0);
-  -o-transform: translate3d(-108.82353%, 10em, 0);
-  transform: translate3d(-108.82353%, 10em, 0);
-}
-/* line 108, ../client/styles/_site.scss */
-.site.active ~ .site:last-child {
+.site.active + .site:last-child {
   -webkit-transform: translate3d(-100%, 0, 0);
   -moz-transform: translate3d(-100%, 0, 0);
   -ms-transform: translate3d(-100%, 0, 0);
@@ -700,14 +684,46 @@ th {
   transform: translate3d(-100%, 0, 0);
 }
 /* line 50, ../client/styles/_site.scss */
-.site.active ~ .site:last-child.show_tray {
+.site.active + .site:last-child.show_tray {
   -webkit-transform: translate3d(-100%, 10em, 0);
   -moz-transform: translate3d(-100%, 10em, 0);
   -ms-transform: translate3d(-100%, 10em, 0);
   -o-transform: translate3d(-100%, 10em, 0);
   transform: translate3d(-100%, 10em, 0);
 }
+/* line 108, ../client/styles/_site.scss */
+.site.active ~ .site {
+  -webkit-transform: translate3d(-117.64706%, 0, 0);
+  -moz-transform: translate3d(-117.64706%, 0, 0);
+  -ms-transform: translate3d(-117.64706%, 0, 0);
+  -o-transform: translate3d(-117.64706%, 0, 0);
+  transform: translate3d(-117.64706%, 0, 0);
+}
+/* line 50, ../client/styles/_site.scss */
+.site.active ~ .site.show_tray {
+  -webkit-transform: translate3d(-117.64706%, 10em, 0);
+  -moz-transform: translate3d(-117.64706%, 10em, 0);
+  -ms-transform: translate3d(-117.64706%, 10em, 0);
+  -o-transform: translate3d(-117.64706%, 10em, 0);
+  transform: translate3d(-117.64706%, 10em, 0);
+}
 /* line 112, ../client/styles/_site.scss */
+.site.active + .site {
+  -webkit-transform: translate3d(-108.82353%, 0, 0);
+  -moz-transform: translate3d(-108.82353%, 0, 0);
+  -ms-transform: translate3d(-108.82353%, 0, 0);
+  -o-transform: translate3d(-108.82353%, 0, 0);
+  transform: translate3d(-108.82353%, 0, 0);
+}
+/* line 50, ../client/styles/_site.scss */
+.site.active + .site.show_tray {
+  -webkit-transform: translate3d(-108.82353%, 10em, 0);
+  -moz-transform: translate3d(-108.82353%, 10em, 0);
+  -ms-transform: translate3d(-108.82353%, 10em, 0);
+  -o-transform: translate3d(-108.82353%, 10em, 0);
+  transform: translate3d(-108.82353%, 10em, 0);
+}
+/* line 116, ../client/styles/_site.scss */
 .site.active:last-child {
   -webkit-transform: translate3d(-8.07353%, 0, 0);
   -moz-transform: translate3d(-8.07353%, 0, 0);
@@ -3103,6 +3119,187 @@ footer a {
   background: #ef4135;
 }
 
+/* line 93, ../client/styles/_theme_mixins.scss */
+.doublej {
+  background: #eeeeee;
+  box-shadow: #eeeeee 0 10em 0 0, #eeeeee 0 20em 0 0, #eeeeee 0 30em 0 0, #eeeeee 0 40em 0 0, #eeeeee 0 50em 0 0;
+}
+/* line 103, ../client/styles/_theme_mixins.scss */
+.doublej.site .site_loading {
+  color: #d4d4d4;
+}
+/* line 107, ../client/styles/_theme_mixins.scss */
+.doublej.site header {
+  color: white;
+  background-color: black;
+}
+/* line 51, ../client/styles/_theme_mixins.scss */
+.doublej.site header h1 {
+  font-family: "sans-serif";
+}
+/* line 55, ../client/styles/_theme_mixins.scss */
+.doublej.site header h1:before, .doublej.site header h1:after {
+  color: white;
+}
+/* line 60, ../client/styles/_theme_mixins.scss */
+.doublej.site header a {
+  color: white;
+  border-color: white;
+}
+@media screen and (max-width: 700px) {
+  /* line 117, ../client/styles/_theme_mixins.scss */
+  .doublej.site .played {
+    background-color: black;
+  }
+  /* line 120, ../client/styles/_theme_mixins.scss */
+  .doublej.site .played .track {
+    border-bottom-color: black;
+    background: none;
+  }
+  /* line 15, ../client/styles/_theme_mixins.scss */
+  .doublej.site .played .track h3 {
+    color: white;
+  }
+  /* line 19, ../client/styles/_theme_mixins.scss */
+  .doublej.site .played .track h4 {
+    color: #333333;
+  }
+  /* line 23, ../client/styles/_theme_mixins.scss */
+  .doublej.site .played .track a {
+    border-color: white;
+    color: white;
+  }
+  /* line 29, ../client/styles/_theme_mixins.scss */
+  .doublej.site .played .track.playing a {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  /* line 35, ../client/styles/_theme_mixins.scss */
+  .doublej.site .played .track.featured:after {
+    background: #0d0d0d;
+    color: black;
+  }
+  /* line 130, ../client/styles/_theme_mixins.scss */
+  .doublej.site .played + header .toggle_played.active, .doublej.site .played.active + header .toggle_played {
+    background: black;
+  }
+  /* line 134, ../client/styles/_theme_mixins.scss */
+  .doublej.site .played .time {
+    color: #0d0d0d;
+  }
+}
+/* line 140, ../client/styles/_theme_mixins.scss */
+.doublej.site .tracks {
+  background: #eeeeee;
+}
+/* line 143, ../client/styles/_theme_mixins.scss */
+.doublej.site .tracks .track {
+  box-shadow: #e8e8e8 0 1px 0;
+  background: white;
+}
+/* line 15, ../client/styles/_theme_mixins.scss */
+.doublej.site .tracks .track h3 {
+  color: black;
+}
+/* line 19, ../client/styles/_theme_mixins.scss */
+.doublej.site .tracks .track h4 {
+  color: #8c8c8c;
+}
+/* line 23, ../client/styles/_theme_mixins.scss */
+.doublej.site .tracks .track a {
+  border-color: black;
+  color: black;
+}
+/* line 29, ../client/styles/_theme_mixins.scss */
+.doublej.site .tracks .track.playing a {
+  background: rgba(0, 0, 0, 0.2);
+}
+/* line 35, ../client/styles/_theme_mixins.scss */
+.doublej.site .tracks .track.featured:after {
+  background: #666666;
+  color: #333333;
+}
+/* line 6, ../client/styles/_theme_mixins.scss */
+.doublej.site .track .img_container:before {
+  background-color: #666666;
+}
+/* line 7, ../client/styles/_theme_mixins.scss */
+.doublej.site .track:nth-child(2n) .img_container:before {
+  background-color: gray;
+}
+/* line 8, ../client/styles/_theme_mixins.scss */
+.doublej.site .track:nth-child(3n) .img_container:before {
+  background-color: #7fd1e5;
+}
+/* line 9, ../client/styles/_theme_mixins.scss */
+.doublej.site .track:nth-child(4n) .img_container:before {
+  background-color: #fff59d;
+}
+/* line 162, ../client/styles/_theme_mixins.scss */
+.doublej .player {
+  background-color: black;
+  background: "";
+}
+/* line 15, ../client/styles/_theme_mixins.scss */
+.doublej .player h3 {
+  color: white;
+}
+/* line 19, ../client/styles/_theme_mixins.scss */
+.doublej .player h4 {
+  color: rgba(255, 255, 255, 0.75);
+}
+/* line 23, ../client/styles/_theme_mixins.scss */
+.doublej .player a {
+  border-color: white;
+  color: white;
+}
+/* line 29, ../client/styles/_theme_mixins.scss */
+.doublej .player.playing a {
+  background: black;
+}
+/* line 35, ../client/styles/_theme_mixins.scss */
+.doublej .player.featured:after {
+  background: rgba(255, 255, 255, 0.75);
+  color: rgba(204, 204, 204, 0.75);
+}
+@media screen and (min-width: 700px) {
+  /* line 162, ../client/styles/_theme_mixins.scss */
+  .doublej .player {
+    box-shadow: #e8e8e8 0 1px 0;
+    background: white;
+  }
+  /* line 15, ../client/styles/_theme_mixins.scss */
+  .doublej .player h3 {
+    color: black;
+  }
+  /* line 19, ../client/styles/_theme_mixins.scss */
+  .doublej .player h4 {
+    color: #8c8c8c;
+  }
+  /* line 23, ../client/styles/_theme_mixins.scss */
+  .doublej .player a {
+    border-color: black;
+    color: black;
+  }
+  /* line 29, ../client/styles/_theme_mixins.scss */
+  .doublej .player.playing a {
+    background: rgba(0, 0, 0, 0.2);
+  }
+  /* line 35, ../client/styles/_theme_mixins.scss */
+  .doublej .player.featured:after {
+    background: #666666;
+    color: #333333;
+  }
+}
+
+/* line 188, ../client/styles/_theme_mixins.scss */
+.site.doublej .tracks:after {
+  background: black;
+}
+/* line 192, ../client/styles/_theme_mixins.scss */
+.site.active + .site.doublej .tracks:after {
+  background: black;
+}
+
 /* line 45, ../client/styles/main.scss */
 html {
   background: #eee;
@@ -3248,23 +3445,7 @@ a {
     transform: translate3d(0, 10em, 0);
   }
   /* line 104, ../client/styles/_site.scss */
-  .site.active ~ .site .tracks {
-    -webkit-transform: translate3d(-105%, 0, 0);
-    -moz-transform: translate3d(-105%, 0, 0);
-    -ms-transform: translate3d(-105%, 0, 0);
-    -o-transform: translate3d(-105%, 0, 0);
-    transform: translate3d(-105%, 0, 0);
-  }
-  /* line 50, ../client/styles/_site.scss */
-  .site.active ~ .site .tracks.show_tray {
-    -webkit-transform: translate3d(-105%, 10em, 0);
-    -moz-transform: translate3d(-105%, 10em, 0);
-    -ms-transform: translate3d(-105%, 10em, 0);
-    -o-transform: translate3d(-105%, 10em, 0);
-    transform: translate3d(-105%, 10em, 0);
-  }
-  /* line 108, ../client/styles/_site.scss */
-  .site.active ~ .site:last-child .tracks {
+  .site.active + .site:last-child .tracks {
     -webkit-transform: translate3d(-110%, 0, 0);
     -moz-transform: translate3d(-110%, 0, 0);
     -ms-transform: translate3d(-110%, 0, 0);
@@ -3272,7 +3453,23 @@ a {
     transform: translate3d(-110%, 0, 0);
   }
   /* line 50, ../client/styles/_site.scss */
-  .site.active ~ .site:last-child .tracks.show_tray {
+  .site.active + .site:last-child .tracks.show_tray {
+    -webkit-transform: translate3d(-110%, 10em, 0);
+    -moz-transform: translate3d(-110%, 10em, 0);
+    -ms-transform: translate3d(-110%, 10em, 0);
+    -o-transform: translate3d(-110%, 10em, 0);
+    transform: translate3d(-110%, 10em, 0);
+  }
+  /* line 108, ../client/styles/_site.scss */
+  .site.active ~ .site .tracks {
+    -webkit-transform: translate3d(-110%, 0, 0);
+    -moz-transform: translate3d(-110%, 0, 0);
+    -ms-transform: translate3d(-110%, 0, 0);
+    -o-transform: translate3d(-110%, 0, 0);
+    transform: translate3d(-110%, 0, 0);
+  }
+  /* line 50, ../client/styles/_site.scss */
+  .site.active ~ .site .tracks.show_tray {
     -webkit-transform: translate3d(-110%, 10em, 0);
     -moz-transform: translate3d(-110%, 10em, 0);
     -ms-transform: translate3d(-110%, 10em, 0);
@@ -3280,6 +3477,22 @@ a {
     transform: translate3d(-110%, 10em, 0);
   }
   /* line 112, ../client/styles/_site.scss */
+  .site.active + .site .tracks {
+    -webkit-transform: translate3d(-105%, 0, 0);
+    -moz-transform: translate3d(-105%, 0, 0);
+    -ms-transform: translate3d(-105%, 0, 0);
+    -o-transform: translate3d(-105%, 0, 0);
+    transform: translate3d(-105%, 0, 0);
+  }
+  /* line 50, ../client/styles/_site.scss */
+  .site.active + .site .tracks.show_tray {
+    -webkit-transform: translate3d(-105%, 10em, 0);
+    -moz-transform: translate3d(-105%, 10em, 0);
+    -ms-transform: translate3d(-105%, 10em, 0);
+    -o-transform: translate3d(-105%, 10em, 0);
+    transform: translate3d(-105%, 10em, 0);
+  }
+  /* line 116, ../client/styles/_site.scss */
   .site.active:last-child .tracks {
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
@@ -3375,23 +3588,7 @@ a {
     transform: translate3d(0, 10em, 0);
   }
   /* line 104, ../client/styles/_site.scss */
-  .site.active ~ .site .played h1, .site.active ~ .site .played .track, .site.active ~ .site .played h1, .site.active ~ .site header {
-    -webkit-transform: translate3d(-105%, 0, 0);
-    -moz-transform: translate3d(-105%, 0, 0);
-    -ms-transform: translate3d(-105%, 0, 0);
-    -o-transform: translate3d(-105%, 0, 0);
-    transform: translate3d(-105%, 0, 0);
-  }
-  /* line 50, ../client/styles/_site.scss */
-  .site.active ~ .site .played h1.show_tray, .site.active ~ .site .played .track.show_tray, .site.active ~ .site .played h1.show_tray, .site.active ~ .site header.show_tray {
-    -webkit-transform: translate3d(-105%, 10em, 0);
-    -moz-transform: translate3d(-105%, 10em, 0);
-    -ms-transform: translate3d(-105%, 10em, 0);
-    -o-transform: translate3d(-105%, 10em, 0);
-    transform: translate3d(-105%, 10em, 0);
-  }
-  /* line 108, ../client/styles/_site.scss */
-  .site.active ~ .site:last-child .played h1, .site.active ~ .site:last-child .played .track, .site.active ~ .site:last-child .played h1, .site.active ~ .site:last-child header {
+  .site.active + .site:last-child .played h1, .site.active + .site:last-child .played .track, .site.active + .site:last-child .played h1, .site.active + .site:last-child header {
     -webkit-transform: translate3d(-270%, 0, 0);
     -moz-transform: translate3d(-270%, 0, 0);
     -ms-transform: translate3d(-270%, 0, 0);
@@ -3399,14 +3596,46 @@ a {
     transform: translate3d(-270%, 0, 0);
   }
   /* line 50, ../client/styles/_site.scss */
-  .site.active ~ .site:last-child .played h1.show_tray, .site.active ~ .site:last-child .played .track.show_tray, .site.active ~ .site:last-child .played h1.show_tray, .site.active ~ .site:last-child header.show_tray {
+  .site.active + .site:last-child .played h1.show_tray, .site.active + .site:last-child .played .track.show_tray, .site.active + .site:last-child .played h1.show_tray, .site.active + .site:last-child header.show_tray {
     -webkit-transform: translate3d(-270%, 10em, 0);
     -moz-transform: translate3d(-270%, 10em, 0);
     -ms-transform: translate3d(-270%, 10em, 0);
     -o-transform: translate3d(-270%, 10em, 0);
     transform: translate3d(-270%, 10em, 0);
   }
+  /* line 108, ../client/styles/_site.scss */
+  .site.active ~ .site .played h1, .site.active ~ .site .played .track, .site.active ~ .site .played h1, .site.active ~ .site header {
+    -webkit-transform: translate3d(-110%, 0, 0);
+    -moz-transform: translate3d(-110%, 0, 0);
+    -ms-transform: translate3d(-110%, 0, 0);
+    -o-transform: translate3d(-110%, 0, 0);
+    transform: translate3d(-110%, 0, 0);
+  }
+  /* line 50, ../client/styles/_site.scss */
+  .site.active ~ .site .played h1.show_tray, .site.active ~ .site .played .track.show_tray, .site.active ~ .site .played h1.show_tray, .site.active ~ .site header.show_tray {
+    -webkit-transform: translate3d(-110%, 10em, 0);
+    -moz-transform: translate3d(-110%, 10em, 0);
+    -ms-transform: translate3d(-110%, 10em, 0);
+    -o-transform: translate3d(-110%, 10em, 0);
+    transform: translate3d(-110%, 10em, 0);
+  }
   /* line 112, ../client/styles/_site.scss */
+  .site.active + .site .played h1, .site.active + .site .played .track, .site.active + .site .played h1, .site.active + .site header {
+    -webkit-transform: translate3d(-105%, 0, 0);
+    -moz-transform: translate3d(-105%, 0, 0);
+    -ms-transform: translate3d(-105%, 0, 0);
+    -o-transform: translate3d(-105%, 0, 0);
+    transform: translate3d(-105%, 0, 0);
+  }
+  /* line 50, ../client/styles/_site.scss */
+  .site.active + .site .played h1.show_tray, .site.active + .site .played .track.show_tray, .site.active + .site .played h1.show_tray, .site.active + .site header.show_tray {
+    -webkit-transform: translate3d(-105%, 10em, 0);
+    -moz-transform: translate3d(-105%, 10em, 0);
+    -ms-transform: translate3d(-105%, 10em, 0);
+    -o-transform: translate3d(-105%, 10em, 0);
+    transform: translate3d(-105%, 10em, 0);
+  }
+  /* line 116, ../client/styles/_site.scss */
   .site.active:last-child .played h1, .site.active:last-child .played .track, .site.active:last-child .played h1, .site.active:last-child header {
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
@@ -3503,6 +3732,22 @@ a {
     transform: none;
   }
   /* line 104, ../client/styles/_site.scss */
+  .site.active + .site:last-child {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+  }
+  /* line 74, ../client/styles/small/_site.scss */
+  .site.active + .site:last-child.show_tray {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+  }
+  /* line 108, ../client/styles/_site.scss */
   .site.active ~ .site {
     -webkit-transform: none;
     -moz-transform: none;
@@ -3518,8 +3763,8 @@ a {
     -o-transform: none;
     transform: none;
   }
-  /* line 108, ../client/styles/_site.scss */
-  .site.active ~ .site:last-child {
+  /* line 112, ../client/styles/_site.scss */
+  .site.active + .site {
     -webkit-transform: none;
     -moz-transform: none;
     -ms-transform: none;
@@ -3527,14 +3772,14 @@ a {
     transform: none;
   }
   /* line 74, ../client/styles/small/_site.scss */
-  .site.active ~ .site:last-child.show_tray {
+  .site.active + .site.show_tray {
     -webkit-transform: none;
     -moz-transform: none;
     -ms-transform: none;
     -o-transform: none;
     transform: none;
   }
-  /* line 112, ../client/styles/_site.scss */
+  /* line 116, ../client/styles/_site.scss */
   .site.active:last-child {
     -webkit-transform: none;
     -moz-transform: none;

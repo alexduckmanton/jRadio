@@ -12,3 +12,10 @@
     $primary: #ef4135,
     $secondary: #000
 );
+
+@include theme(
+    'doublej',
+    $header_bg: #000,
+    $primary: #000,
+    $secondary: #666
+);
