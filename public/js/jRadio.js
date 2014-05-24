@@ -15934,7 +15934,7 @@ var Marionette = require('backbone.marionette');
 
 module.exports = Router = Marionette.AppRouter.extend({
     appRoutes: {
-        '': 'unearthed',
+        '': 'triplej',
         'unearthed': 'unearthed',
         'triplej': 'triplej',
         'doublej': 'doublej'
