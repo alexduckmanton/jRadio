@@ -24,6 +24,11 @@ module.exports = {
                 });
 
                 combined = new_tracks.concat(featured_tracks);
+                for (var track in combined) {
+                    combined[track].play.api = '/api/unearthed/track';
+                    combined[track].play.href = /[0-9]+/.exec(combined[track].play.href)[0];
+                }
+
                 res.json(combined);
             });
         });
@@ -49,7 +54,7 @@ module.exports = {
             uri: "https://www.triplejunearthed.com/api/jukebox/rest/views/jukebox_track",
             qs: { 'args': id }
         }, function(err, response, body) {
-            res.json(JSON.parse(body));
+            res.json(JSON.parse(body)[0]);
         });
     },
     featured: function(req, res) {

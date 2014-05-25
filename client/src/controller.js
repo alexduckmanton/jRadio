@@ -45,8 +45,8 @@ module.exports = Controller = Marionette.Controller.extend({
             page_title: 'Double J',
             radio_title: 'Double J',
             src: 'http://shoutmedia.abc.net.au:10428/;*.mp3',
-            tracks_api: '/api/triplej',
-            played_api: '/api/triplej/recent'
+            tracks_api: '/api/doublej',
+            played_api: '/api/doublej/recent'
         }) });
         this.renderView( App.views.doublej.layout );
     },

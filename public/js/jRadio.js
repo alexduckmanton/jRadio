@@ -15302,8 +15302,8 @@ module.exports = Controller = Marionette.Controller.extend({
             page_title: 'Double J',
             radio_title: 'Double J',
             src: 'http://shoutmedia.abc.net.au:10428/;*.mp3',
-            tracks_api: '/api/triplej',
-            played_api: '/api/triplej/recent'
+            tracks_api: '/api/doublej',
+            played_api: '/api/doublej/recent'
         }) });
         this.renderView( App.views.doublej.layout );
     },
@@ -15818,24 +15818,16 @@ module.exports = TrackModel = Backbone.Model.extend({
             is_mp3 = new RegExp('mp3', 'ig');
 
         if (is_mp3.test(src)) this.set('src', src);
-        else {
-            var id = this.find_id(this.get('play').href);
-            this.fetch_track(id);
-        }
-    },
-
-    find_id: function(url) {
-        var regex = /[0-9]+/;
-        return regex.exec(url)[0];
+        else this.fetch_track(this.get('play').href);
     },
 
     fetch_track: function(track_id) {
         var self = this,
-            api = '/api/unearthed/track';
+            api = this.get('play').api;
 
         $.getJSON(api, {'id': track_id}, function(data) {
-            if (!data.length) return;
-            self.set('src', data[0].track_url);
+            if (!data) return;
+            self.set('src', data.track_url);
         });
     },
 

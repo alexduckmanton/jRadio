@@ -1,6 +1,7 @@
 var home = require('../controllers/home'),
     unearthed = require('../controllers/unearthed'),
-    triplej = require('../controllers/triplej');
+    triplej = require('../controllers/triplej'),
+    doublej = require('../controllers/doublej');
 
 module.exports.initialize = function(app) {
     app.get('/', home.index);
@@ -19,4 +20,9 @@ module.exports.initialize = function(app) {
     // triple j
     app.get('/api/triplej', triplej.tracks);
     app.get('/api/triplej/recent', triplej.recent);
+
+    // double j
+    app.get('/api/doublej', doublej.tracks);
+    app.get('/api/doublej/track', doublej.track);
+    // app.get('/api/triplej/recent', triplej.recent);
 };
