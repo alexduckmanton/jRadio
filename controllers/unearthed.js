@@ -72,6 +72,7 @@ module.exports = {
         }, function(err, response, body) {
             var tracks = JSON.parse(body).items;
             for (var i = 0; i < tracks.length; i++) {
+                tracks[i].type = 'played';
                 tracks[i].artist = tracks[i].recording.artists[0].name;
                 tracks[i].title = tracks[i].recording.title;
             }

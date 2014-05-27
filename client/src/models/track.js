@@ -9,15 +9,20 @@ module.exports = TrackModel = Backbone.Model.extend({
     },
 
     initialize: function() {
-        if (!this.get('play')) return;
+        var type = this.get('type');
+        if (type == 'played') return;
 
         this.set_title();
 
-        this.listenTo(this, 'change:src', this.loaded);
-        this.set_track();
-
         if (this.collection.site == 'unearthed' && App.data.window.width > 700) this.get_high_res_img();
         else this.load_img();
+
+        if (type == 'article') {
+            this.set('track_loading', false);
+        } else {
+            this.listenTo(this, 'change:src', this.loaded);
+            this.set_track();
+        }
     },
 
     set_title: function() {
