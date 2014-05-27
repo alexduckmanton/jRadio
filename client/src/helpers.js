@@ -7,10 +7,9 @@ module.exports = Helpers = function Helpers() {
 
     Handlebars.registerHelper('time', function(options) {
         var current = new Date(),
-            site = options.hash.site,
-            local = new Date(options.hash.local),
-            utc = new Date(options.hash.utc),
-            track = site == 'unearthed' ? local : utc,
+            track = options.hash.time.split(/[- :T+]/), // needs to be split for ios
+            track = new Date(track[0], track[1]-1, track[2], track[3], track[4], track[5]),
+            track = new Date(track.getTime() - track.getTimezoneOffset()*60*1000),
             diff = current.getTime() - track.getTime(),
             text = 'mins ago';
 

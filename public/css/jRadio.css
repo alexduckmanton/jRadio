@@ -2799,7 +2799,7 @@ footer a {
   }
   /* line 19, ../client/styles/_theme_mixins.scss */
   .unearthed.site .played .track h4 {
-    color: #8bc072;
+    color: #a8d095;
   }
   /* line 23, ../client/styles/_theme_mixins.scss */
   .unearthed.site .played .track a {
@@ -2812,8 +2812,8 @@ footer a {
   }
   /* line 35, ../client/styles/_theme_mixins.scss */
   .unearthed.site .played .track.featured:after {
-    background: #639f47;
-    color: #375827;
+    background: #a8d095;
+    color: #6eb04f;
   }
   /* line 130, ../client/styles/_theme_mixins.scss */
   .unearthed.site .played + header .toggle_played.active, .unearthed.site .played.active + header .toggle_played {
@@ -2821,7 +2821,7 @@ footer a {
   }
   /* line 134, ../client/styles/_theme_mixins.scss */
   .unearthed.site .played .time {
-    color: #639f47;
+    color: #a8d095;
   }
 }
 /* line 140, ../client/styles/_theme_mixins.scss */
@@ -2839,7 +2839,7 @@ footer a {
 }
 /* line 19, ../client/styles/_theme_mixins.scss */
 .unearthed.site .tracks .track h4 {
-  color: #ff8292;
+  color: #ff354f;
 }
 /* line 23, ../client/styles/_theme_mixins.scss */
 .unearthed.site .tracks .track a {
@@ -2911,7 +2911,7 @@ footer a {
   }
   /* line 19, ../client/styles/_theme_mixins.scss */
   .unearthed .player h4 {
-    color: #ff8292;
+    color: #ff354f;
   }
   /* line 23, ../client/styles/_theme_mixins.scss */
   .unearthed .player a {
@@ -2981,7 +2981,7 @@ footer a {
   }
   /* line 19, ../client/styles/_theme_mixins.scss */
   .triplej.site .played .track h4 {
-    color: #f69a94;
+    color: #fac6c3;
   }
   /* line 23, ../client/styles/_theme_mixins.scss */
   .triplej.site .played .track a {
@@ -2994,8 +2994,8 @@ footer a {
   }
   /* line 35, ../client/styles/_theme_mixins.scss */
   .triplej.site .played .track.featured:after {
-    background: #f1574d;
-    color: #c81c10;
+    background: #fac6c3;
+    color: #f36d64;
   }
   /* line 130, ../client/styles/_theme_mixins.scss */
   .triplej.site .played + header .toggle_played.active, .triplej.site .played.active + header .toggle_played {
@@ -3003,7 +3003,7 @@ footer a {
   }
   /* line 134, ../client/styles/_theme_mixins.scss */
   .triplej.site .played .time {
-    color: #f1574d;
+    color: #fac6c3;
   }
 }
 /* line 140, ../client/styles/_theme_mixins.scss */
@@ -3021,7 +3021,7 @@ footer a {
 }
 /* line 19, ../client/styles/_theme_mixins.scss */
 .triplej.site .tracks .track h4 {
-  color: #262626;
+  color: black;
 }
 /* line 23, ../client/styles/_theme_mixins.scss */
 .triplej.site .tracks .track a {
@@ -3092,7 +3092,7 @@ footer a {
   }
   /* line 19, ../client/styles/_theme_mixins.scss */
   .triplej .player h4 {
-    color: #262626;
+    color: black;
   }
   /* line 23, ../client/styles/_theme_mixins.scss */
   .triplej .player a {
@@ -3162,7 +3162,7 @@ footer a {
   }
   /* line 19, ../client/styles/_theme_mixins.scss */
   .doublej.site .played .track h4 {
-    color: #333333;
+    color: #4d4d4d;
   }
   /* line 23, ../client/styles/_theme_mixins.scss */
   .doublej.site .played .track a {
@@ -3175,8 +3175,8 @@ footer a {
   }
   /* line 35, ../client/styles/_theme_mixins.scss */
   .doublej.site .played .track.featured:after {
-    background: #0d0d0d;
-    color: black;
+    background: #4d4d4d;
+    color: #1a1a1a;
   }
   /* line 130, ../client/styles/_theme_mixins.scss */
   .doublej.site .played + header .toggle_played.active, .doublej.site .played.active + header .toggle_played {
@@ -3184,7 +3184,7 @@ footer a {
   }
   /* line 134, ../client/styles/_theme_mixins.scss */
   .doublej.site .played .time {
-    color: #0d0d0d;
+    color: #4d4d4d;
   }
 }
 /* line 140, ../client/styles/_theme_mixins.scss */
@@ -3202,7 +3202,7 @@ footer a {
 }
 /* line 19, ../client/styles/_theme_mixins.scss */
 .doublej.site .tracks .track h4 {
-  color: #8c8c8c;
+  color: #666666;
 }
 /* line 23, ../client/styles/_theme_mixins.scss */
 .doublej.site .tracks .track a {
@@ -3273,7 +3273,7 @@ footer a {
   }
   /* line 19, ../client/styles/_theme_mixins.scss */
   .doublej .player h4 {
-    color: #8c8c8c;
+    color: #666666;
   }
   /* line 23, ../client/styles/_theme_mixins.scss */
   .doublej .player a {

@@ -17,7 +17,7 @@
     }
 
     h4 {
-        color: lighten($secondary, 15%);
+        color: $secondary;
     }
 
     a {
@@ -122,7 +122,7 @@
 
                         @include track_theme(
                             $header_text,
-                            lighten($header_bg, 5%)
+                            lighten($header_bg, 30%)
                         );
                     }
 
@@ -132,7 +132,7 @@
                     }
 
                     .time {
-                        color: lighten($header_bg, 5%);
+                        color: lighten($header_bg, 30%);
                     }
                 }
             }

@@ -24,5 +24,5 @@ module.exports.initialize = function(app) {
     // double j
     app.get('/api/doublej', doublej.tracks);
     app.get('/api/doublej/track', doublej.track);
-    // app.get('/api/triplej/recent', triplej.recent);
+    app.get('/api/doublej/recent', doublej.recent);
 };

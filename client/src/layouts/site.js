@@ -154,7 +154,7 @@ module.exports = layout = Marionette.Layout.extend({
 
         // should do this by checking track src, but that happens after loading the track into the page to prevent blocking
         // removing it after the fact looks weird, so best to do it here for any browser that doesn't support m3u8/hls
-        if (name == 'doublej' && document.createElement('video').canPlayType('application/vnd.apple.mpegURL') == '') return;
+        if (name == 'doublej' && document.createElement('video').canPlayType('application/vnd.apple.mpegURL') === '') return;
 
         this.$tracks.before( require('../../templates/loading.hbs') );
 

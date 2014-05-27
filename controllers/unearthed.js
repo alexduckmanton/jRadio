@@ -64,9 +64,19 @@ module.exports = {
     },
     recent: function(req, res) {
         request({
-            uri: "http://triplejgizmo.abc.net.au/pav/plays/unearthed.php"
+            uri: "http://music.abcradio.net.au/api/v1/plays/search.json",
+            qs: {
+                limit: 10,
+                station: 'unearthed'
+            }
         }, function(err, response, body) {
-            res.json(JSON.parse(body));
+            var tracks = JSON.parse(body).items;
+            for (var i = 0; i < tracks.length; i++) {
+                tracks[i].artist = tracks[i].recording.artists[0].name;
+                tracks[i].title = tracks[i].recording.title;
+            }
+
+            res.json(tracks);
         });
-    },
+    }
 }
