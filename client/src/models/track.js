@@ -53,8 +53,7 @@ module.exports = TrackModel = Backbone.Model.extend({
             api = this.get('play').api;
 
         $.getJSON(api, {'id': track_id}, function(data) {
-            if (!data) return;
-            self.set('src', data.track_url);
+            if (data) self.set('src', data.track_url);
         });
     },
 

@@ -47,7 +47,7 @@ module.exports = layout = Marionette.Layout.extend({
 
     navigate: function() {
         if (this.model.get('active')) return;
-        
+
         App.router.navigate(this.model.get('name'), {trigger: true});
     },
 
@@ -151,6 +151,10 @@ module.exports = layout = Marionette.Layout.extend({
         var self = this,
             name = this.model.get('name'),
             tracks = App.views[name].tracksView.collection;
+
+        // should do this by checking track src, but that happens after loading the track into the page to prevent blocking
+        // removing it after the fact looks weird, so best to do it here for any browser that doesn't support m3u8/hls
+        if (name == 'doublej' && document.createElement('video').canPlayType('application/vnd.apple.mpegURL') == '') return;
 
         this.$tracks.before( require('../../templates/loading.hbs') );
 
