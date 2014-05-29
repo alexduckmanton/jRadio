@@ -64,9 +64,43 @@ var parse_articles = function(news) {
         news[i].type = 'article';
         news[i].author = news[i].dj_author.title;
         news[i].image = get_image(news[i]);
+
+        // parse url to get api
+        news[i].url = news[i].url.replace(/(http:\/\/doublej\.net\.au\/)/ig, '');
+        news[i].url = news[i].url.replace(/\//ig, ':');
     }
 
     return news;
+}
+
+var get_article_content = function(req, res, articles, tracks) {
+    var article_api = 'http://doublej.net.au/api/v1/lookup/',
+        urls = [];
+
+    for (var i = 0; i < articles.length; i++) {
+        urls.push(article_api + articles[i].url);
+    }
+
+    __request(urls, function(response) {
+        for (var i = 0; i < articles.length; i++) {
+            var article = JSON.parse( response[urls[i]].body );
+            articles[i].content = '';
+
+            if (article.dj_body.value) articles[i].content = article.dj_body.value;
+
+            if (article.article_list_items) {
+                for (var j = 0; j < article.article_list_items.length; j++) {
+                    articles[i].content += article.article_list_items[j].dj_body.value;
+                }
+            }
+        }
+
+        var response = tracks;
+        if (response) response = response.concat(articles);
+        else response = articles;
+
+        res.json(response);
+    });
 }
 
 module.exports = {
@@ -91,7 +125,8 @@ module.exports = {
 
     tracks: function(req, res) {
         var include_tracks = req.query.include_tracks,
-            urls = [];
+            urls = [],
+            tracks = false;
 
         urls.push('http://doublej.net.au/api/v1/search.json?limit=3&page=0&section=16,11,1,6');
         if (include_tracks == 'true') urls.push('http://doublej.net.au/api/v1/search.json?broadcast_type=2&limit=12&ondemand=true&page=0&sort=ondemand&type=broadcast');
@@ -99,11 +134,11 @@ module.exports = {
         __request(urls, function(response) {
             var articles = parse_articles( response[urls[0]].body );
             if (include_tracks == 'true') {
-                var tracks = parse_tracks( response[urls[1]].body );
-                response = tracks.concat(articles);
-            } else response = articles;
+                tracks = parse_tracks( response[urls[1]].body );
+            }
 
-            res.json(response);
+            // res.json(response);
+            get_article_content(req, res, articles, tracks);
         });
     },
 
@@ -118,5 +153,5 @@ module.exports = {
 
             res.json(track);
         });
-    },
+    }
 }

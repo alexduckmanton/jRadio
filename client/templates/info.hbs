@@ -3,6 +3,7 @@
     {{#if hash.time}}<span class="time">{{ time time=hash.time }}</span>{{/if}}
     <div class="text">
         <h3 class="title">{{hash.title}}</h3>
-        <h4 class="artist">{{hash.artist}}</h4>
+        {{#if hash.artist}}<h4 class="artist">{{hash.artist}}</h4>{{/if}}
+        {{#if hash.content}}<div class="content">{{{hash.content}}}</div>{{/if}}
     </div>
 </div>

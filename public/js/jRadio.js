@@ -15391,7 +15391,7 @@ module.exports = Helpers = function Helpers() {
     });
 };
 
-},{"../templates/clock.hbs":13,"../templates/info.hbs":14,"../templates/loading.hbs":15,"hbsfy/runtime":28}],5:[function(require,module,exports){
+},{"../templates/clock.hbs":14,"../templates/info.hbs":15,"../templates/loading.hbs":16,"hbsfy/runtime":29}],5:[function(require,module,exports){
 var Marionette = require('backbone.marionette'),
     TracksView = require('../views/tracks'),
     TracksCollection = require('../collections/tracks');
@@ -15671,7 +15671,7 @@ module.exports = layout = Marionette.Layout.extend({
 
 });
 
-},{"../../templates/loading.hbs":15,"../../templates/site.hbs":19,"../collections/tracks":2,"../views/tracks":12}],6:[function(require,module,exports){
+},{"../../templates/loading.hbs":16,"../../templates/site.hbs":20,"../collections/tracks":2,"../views/tracks":12}],6:[function(require,module,exports){
 var App = require('./app');
 var jr = new App();
 jr.start();
@@ -15791,6 +15791,8 @@ module.exports = TrackModel = Backbone.Model.extend({
     initialize: function() {
         var type = this.get('type');
         if (type == 'played') return;
+
+        if (type == 'article') console.log(this);
 
         this.set_title();
 
@@ -16029,7 +16031,7 @@ module.exports = itemView = Marionette.ItemView.extend({
     }
 });
 
-},{"../../templates/player.hbs":18}],12:[function(require,module,exports){
+},{"../../templates/player.hbs":19}],12:[function(require,module,exports){
 var Marionette = require('backbone.marionette');
 
 var itemView = Marionette.ItemView.extend({
@@ -16040,10 +16042,12 @@ var itemView = Marionette.ItemView.extend({
     },
 
     getTemplate: function() {
-        var type = this.model.collection.type;
+        var type = this.model.get('type') ? this.model.get('type') : this.model.collection.type;
 
         if (type == 'played') {
             return require('../../templates/played.hbs');
+        } else if (type == 'article') {
+            return require('../../templates/article.hbs');
         } else {
             return require('../../templates/track.hbs');
         }
@@ -16133,7 +16137,37 @@ module.exports = CollectionView = Marionette.CollectionView.extend({
     }
 });
 
-},{"../../templates/played.hbs":16,"../../templates/played_heading.hbs":17,"../../templates/track.hbs":20}],13:[function(require,module,exports){
+},{"../../templates/article.hbs":13,"../../templates/played.hbs":17,"../../templates/played_heading.hbs":18,"../../templates/track.hbs":21}],13:[function(require,module,exports){
+// hbsfy compiled Handlebars template
+var Handlebars = require('hbsfy/runtime');
+module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, options, functionType="function", escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
+
+function program1(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "<div class=\"img_container\" style=\"background-image: url("
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.image)),stack1 == null || stack1 === false ? stack1 : stack1.src)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + ")\"></div>";
+  return buffer;
+  }
+
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.image), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n";
+  stack1 = (helper = helpers.track_info || (depth0 && depth0.track_info),options={hash:{
+    'title': ((depth0 && depth0.title)),
+    'artist': ((depth0 && depth0.artist)),
+    'content': ((depth0 && depth0.content))
+  },data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "track_info", options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n";
+  return buffer;
+  });
+
+},{"hbsfy/runtime":29}],14:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -16145,13 +16179,13 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   return "<span class=\"hour\"></span>\n<span class=\"minute\"></span>\n<span class=\"second\"></span>\n";
   });
 
-},{"hbsfy/runtime":28}],14:[function(require,module,exports){
+},{"hbsfy/runtime":29}],15:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this, functionType="function";
+  var buffer = "", stack1, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, functionType="function", self=this;
 
 function program1(depth0,data) {
   
@@ -16170,6 +16204,25 @@ function program3(depth0,data) {
   return buffer;
   }
 
+function program5(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "<h4 class=\"artist\">"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.artist)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</h4>";
+  return buffer;
+  }
+
+function program7(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "<div class=\"content\">";
+  stack1 = ((stack1 = ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.content)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1);
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "</div>";
+  return buffer;
+  }
+
   buffer += "<div class=\"track_info\">\n    ";
   stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.play), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
@@ -16178,13 +16231,17 @@ function program3(depth0,data) {
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n    <div class=\"text\">\n        <h3 class=\"title\">"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.title)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</h3>\n        <h4 class=\"artist\">"
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.artist)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</h4>\n    </div>\n</div>\n";
+    + "</h3>\n        ";
+  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.artist), {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n        ";
+  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.content), {hash:{},inverse:self.noop,fn:self.program(7, program7, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    </div>\n</div>\n";
   return buffer;
   });
 
-},{"hbsfy/runtime":28}],15:[function(require,module,exports){
+},{"hbsfy/runtime":29}],16:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -16196,7 +16253,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   return "<div class=\"site_loading\">\n    <span class=\"icon-drumstick left\"></span>\n    <span class=\"icon-drumstick middle\"></span>\n    <span class=\"icon-drumstick right\"></span>\n</div>\n";
   });
 
-},{"hbsfy/runtime":28}],16:[function(require,module,exports){
+},{"hbsfy/runtime":29}],17:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -16215,7 +16272,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   return buffer;
   });
 
-},{"hbsfy/runtime":28}],17:[function(require,module,exports){
+},{"hbsfy/runtime":29}],18:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -16227,7 +16284,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   return "<h1>Recent tracks</h1>\n";
   });
 
-},{"hbsfy/runtime":28}],18:[function(require,module,exports){
+},{"hbsfy/runtime":29}],19:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -16246,7 +16303,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   return buffer;
   });
 
-},{"hbsfy/runtime":28}],19:[function(require,module,exports){
+},{"hbsfy/runtime":29}],20:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -16271,7 +16328,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   return buffer;
   });
 
-},{"hbsfy/runtime":28}],20:[function(require,module,exports){
+},{"hbsfy/runtime":29}],21:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -16301,7 +16358,7 @@ function program1(depth0,data) {
   return buffer;
   });
 
-},{"hbsfy/runtime":28}],21:[function(require,module,exports){
+},{"hbsfy/runtime":29}],22:[function(require,module,exports){
 "use strict";
 /*globals Handlebars: true */
 var base = require("./handlebars/base");
@@ -16334,7 +16391,7 @@ var Handlebars = create();
 Handlebars.create = create;
 
 exports["default"] = Handlebars;
-},{"./handlebars/base":22,"./handlebars/exception":23,"./handlebars/runtime":24,"./handlebars/safe-string":25,"./handlebars/utils":26}],22:[function(require,module,exports){
+},{"./handlebars/base":23,"./handlebars/exception":24,"./handlebars/runtime":25,"./handlebars/safe-string":26,"./handlebars/utils":27}],23:[function(require,module,exports){
 "use strict";
 var Utils = require("./utils");
 var Exception = require("./exception")["default"];
@@ -16515,7 +16572,7 @@ exports.log = log;var createFrame = function(object) {
   return obj;
 };
 exports.createFrame = createFrame;
-},{"./exception":23,"./utils":26}],23:[function(require,module,exports){
+},{"./exception":24,"./utils":27}],24:[function(require,module,exports){
 "use strict";
 
 var errorProps = ['description', 'fileName', 'lineNumber', 'message', 'name', 'number', 'stack'];
@@ -16544,7 +16601,7 @@ function Exception(message, node) {
 Exception.prototype = new Error();
 
 exports["default"] = Exception;
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 "use strict";
 var Utils = require("./utils");
 var Exception = require("./exception")["default"];
@@ -16682,7 +16739,7 @@ exports.program = program;function invokePartial(partial, name, context, helpers
 exports.invokePartial = invokePartial;function noop() { return ""; }
 
 exports.noop = noop;
-},{"./base":22,"./exception":23,"./utils":26}],25:[function(require,module,exports){
+},{"./base":23,"./exception":24,"./utils":27}],26:[function(require,module,exports){
 "use strict";
 // Build out our basic SafeString type
 function SafeString(string) {
@@ -16694,7 +16751,7 @@ SafeString.prototype.toString = function() {
 };
 
 exports["default"] = SafeString;
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 "use strict";
 /*jshint -W004 */
 var SafeString = require("./safe-string")["default"];
@@ -16771,13 +16828,13 @@ exports.escapeExpression = escapeExpression;function isEmpty(value) {
 }
 
 exports.isEmpty = isEmpty;
-},{"./safe-string":25}],27:[function(require,module,exports){
+},{"./safe-string":26}],28:[function(require,module,exports){
 // Create a simple path alias to allow browserify to resolve
 // the runtime on a supported path.
 module.exports = require('./dist/cjs/handlebars.runtime');
 
-},{"./dist/cjs/handlebars.runtime":21}],28:[function(require,module,exports){
+},{"./dist/cjs/handlebars.runtime":22}],29:[function(require,module,exports){
 module.exports = require("handlebars/runtime")["default"];
 
-},{"handlebars/runtime":27}]},{},[6])
+},{"handlebars/runtime":28}]},{},[6])
 ;

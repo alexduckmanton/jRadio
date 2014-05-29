@@ -8,10 +8,12 @@ var itemView = Marionette.ItemView.extend({
     },
 
     getTemplate: function() {
-        var type = this.model.collection.type;
+        var type = this.model.get('type') ? this.model.get('type') : this.model.collection.type;
 
         if (type == 'played') {
             return require('../../templates/played.hbs');
+        } else if (type == 'article') {
+            return require('../../templates/article.hbs');
         } else {
             return require('../../templates/track.hbs');
         }

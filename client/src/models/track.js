@@ -12,6 +12,8 @@ module.exports = TrackModel = Backbone.Model.extend({
         var type = this.get('type');
         if (type == 'played') return;
 
+        if (type == 'article') console.log(this);
+
         this.set_title();
 
         if (this.collection.site == 'unearthed' && App.data.window.width > 700) this.get_high_res_img();
