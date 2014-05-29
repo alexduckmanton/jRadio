@@ -11,6 +11,10 @@ header {
     @include header_bg();
     @include box-sizing(border-box);
 
+    // for showing tray
+    @include translateY(0);
+    @include single-transition(all);
+
     h1 {
         margin: 0;
         padding: 0;
@@ -90,4 +94,8 @@ header {
         &:nth-child(2) { @include transition-delay($default-transition-duration * .15); }
         &:nth-child(3) { @include transition-delay($default-transition-duration * .1); }
     }
+}
+
+.show_tray header {
+    @include translateY($played_height);
 }

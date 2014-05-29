@@ -5,14 +5,15 @@ $site_margin: $site_margin * 100%;
 $site_speed: $default-transition-duration * 2;
 
 .site {
-    padding-bottom: 2em;
     text-align: center;
 
     position: absolute;
     top: 0;
     right: 0;
-    // height: 9999px;
-    min-height: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: visible;
+    -webkit-overflow-scrolling: touch;
 
     @include box-sizing(border-box);
 
@@ -31,9 +32,6 @@ $site_speed: $default-transition-duration * 2;
     }
 
     &.active {
-        // height: inherit;
-        // position: absolute;
-
         .tracks:after {
             width: 0;
             opacity: 0;
@@ -48,7 +46,7 @@ $site_speed: $default-transition-duration * 2;
     @include transform3d( translate3d($x,0,0) );
 
     &.show_tray {
-        @include transform3d( translate3d($x,$played_height,0) );
+        // @include transform3d( translate3d($x,$played_height,0) );
     }
 }
 

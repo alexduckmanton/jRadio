@@ -22,9 +22,14 @@
 
 .tracks {
     padding: .5em;
+    min-height: $played_height;
     @include flex();
     @include flex-wrap(wrap);
     @include flex-justify-space-between();
+
+    // for showing tray
+    @include translateY(0);
+    @include single-transition(all);
 
     .track {
         margin-bottom: .5em;
@@ -173,4 +178,8 @@
 .site_loading + .tracks .track {
     opacity: 0;
     @include animation(none);
+}
+
+.show_tray .tracks {
+    @include translateY($played_height);
 }
