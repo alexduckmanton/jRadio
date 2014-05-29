@@ -15789,7 +15789,6 @@ module.exports = TrackModel = Backbone.Model.extend({
     },
 
     initialize: function() {
-        console.log(this);
         var type = this.get('type');
         if (type == 'played') return;
 
@@ -16065,7 +16064,7 @@ var itemView = Marionette.ItemView.extend({
             this.$el.removeClass('track_loading');
         }
 
-        if (this.model.get('type')) this.$el.addClass( this.model.get('type') );
+        if (this.model.get('type') == 'article') this.$el.addClass( this.model.get('type') );
     },
 
     onRender: function() {
@@ -16086,7 +16085,7 @@ var itemView = Marionette.ItemView.extend({
         if (this.model.get('type') == 'article') {
             this.$el.toggleClass('active');
         } else {
-            this.toggle_playing(e);
+            if ( $(e.target).hasClass('play') ) this.toggle_playing(e);
         }
     },
 

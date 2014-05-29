@@ -9,7 +9,6 @@ module.exports = TrackModel = Backbone.Model.extend({
     },
 
     initialize: function() {
-        console.log(this);
         var type = this.get('type');
         if (type == 'played') return;
 
