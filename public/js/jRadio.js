@@ -16068,6 +16068,14 @@ var itemView = Marionette.ItemView.extend({
         if (this.model.get('type')) this.$el.addClass( this.model.get('type') );
     },
 
+    onRender: function() {
+        // don't load iframes and remove inline styling
+        if (this.model.get('type') == 'article') {
+            this.$el.find('').attr('style', '');
+            this.$el.find('iframe').attr('src', '');
+        }
+    },
+
     toggle_classes: function() {
         this.$el.toggleClass('playing', this.model.get('is_playing'));
         this.$el.toggleClass('loading', this.model.get('img_loading'));
