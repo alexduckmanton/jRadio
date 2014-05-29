@@ -30,6 +30,7 @@
     // for showing tray
     @include translateY(0);
     @include single-transition(all);
+    @include transition-duration($site_speed);
 
     .track {
         margin-bottom: .5em;

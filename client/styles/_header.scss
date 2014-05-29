@@ -12,8 +12,9 @@ header {
     @include box-sizing(border-box);
 
     // for showing tray
-    @include translateY(0);
+    @include translate3d(17%,0,0);
     @include single-transition(all);
+    @include transition-duration($site_speed);
 
     h1 {
         margin: 0;
@@ -97,5 +98,21 @@ header {
 }
 
 .show_tray header {
-    @include translateY($played_height);
+    @include translate3d(17%, $played_height, 0);
+}
+
+.active ~ .site header {
+    @include translate3d(75%,0,0);
+}
+
+.active ~ .site.show_tray header {
+    @include translate3d(75%, $played_height, 0);
+}
+
+.active header {
+    @include translate3d(0, 0, 0);
+}
+
+.active.show_tray header {
+    @include translate3d(0, $played_height, 0);
 }
