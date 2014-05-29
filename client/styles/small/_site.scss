@@ -47,20 +47,23 @@ $played_width: 100% - $tracks_width - 1.5%;
 
     @include site_layout(
         '.tracks',
-        $active_pos: 0,
-        $first_active_pos: 0,
-        $last_active_pos: 0,
-        $first_site_pos: $site_width * 2 + $site_margin * 3,
-        $last_site_pos: -110%
+        $active: 0,
+        $hidden: 175%,
+        $first: $site_width * 2 + $site_margin * 3,
+        $last: -110%,
+        $last_active: 0,
+        $last_hidden: -125%,
+        $active_sibling: -110%
     );
 
     @include site_layout(
         '.played h1, .played .track, .played h1, header',
-        $active_pos: 0,
-        $first_active_pos: 0,
-        $last_active_pos: 0,
-        $first_site_pos: $site_width * 2 + $site_margin * 3,
-        $last_site_pos: -270%
+        $active: 0,
+        $hidden: 175%,
+        $first: $site_width * 2 + $site_margin * 3,
+        $last: -270%,
+        $last_active: 0,
+        $last_hidden: -270%
     );
 
 }

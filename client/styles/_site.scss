@@ -71,47 +71,50 @@ $site_speed: $default-transition-duration * 2;
 }
 
 @mixin site_layout( $elem,
-                    $active_pos: -$site_margin,
-                    $first_site_pos: 0,
-                    $first_active_pos: 0,
-                    $last_site_pos: -100%,
-                    $last_active_pos: -$site_margin + .75%
+                    $active: -$site_margin,
+                    $hidden: 0,
+                    $first: 0,
+                    $first_active: 0,
+                    $last: -100%,
+                    $last_active: -$site_margin + .75%,
+                    $last_hidden: -100% - $site_margin*2,
+                    $active_sibling: $last - $site_margin
     ) {
 
     .player + .site {
-        #{$elem} { @include site_position($first_site_pos); }
+        #{$elem} { @include site_position($first); }
     }
 
     .player + .site.active {
-        #{$elem} { @include site_position($first_active_pos); }
+        #{$elem} { @include site_position($first_active); }
     }
 
     .site {
         #{$elem} {
             @include single-transition(transform);
             @include transition-property(-webkit-transform, -moz-transform, -ms-transform, -o-transform, transform);
-            @include site_position(0);
+            @include site_position($hidden);
             @include transition-duration($site_speed);
         }
 
         &.active {
-            #{$elem} { @include site_position($active_pos); }
+            #{$elem} { @include site_position($active); }
         }
 
         &.active + &:last-child {
-            #{$elem} { @include site_position($last_site_pos); }
+            #{$elem} { @include site_position($last); }
         }
 
         &.active ~ & {
-            #{$elem} { @include site_position(-100% - $site_margin*2); }
+            #{$elem} { @include site_position($last_hidden); }
         }
 
         &.active + & {
-            #{$elem} { @include site_position(-100% - $site_margin); }
+            #{$elem} { @include site_position($active_sibling); }
         }
 
         &.active:last-child {
-            #{$elem} { @include site_position($last_active_pos); }
+            #{$elem} { @include site_position($last_active); }
         }
     }
 }
