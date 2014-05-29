@@ -66,10 +66,18 @@
             &:nth-child(#{$i}) { @include order($i); }
         }
 
+        &.featured,
+        &.article {
+            width: 100%;
+
+            // scatter articles and featured tracks among the new ones
+            @for $i from 13 through 15 {
+                &:nth-child(#{$i}) { @include order( ($i - 13) * 4 ); }
+            }
+        }
+
         &.featured {
             position: relative;
-
-            width: 100%;
 
             // icon
             &:after {
@@ -85,11 +93,6 @@
                 line-height: 1.05em;
                 padding: calc(1em / 16);
                 text-align: center;
-            }
-
-            // scatter featured tracks among the new ones
-            @for $i from 17 through 20 {
-                &:nth-child(#{$i}) { @include order( ($i - 17) * 4 ); }
             }
         }
 

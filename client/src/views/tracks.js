@@ -28,6 +28,8 @@ var itemView = Marionette.ItemView.extend({
             this.$el.removeClass('loading');
             this.$el.removeClass('track_loading');
         }
+
+        if (this.model.get('type')) this.$el.addClass( this.model.get('type') );
     },
 
     toggle_classes: function() {

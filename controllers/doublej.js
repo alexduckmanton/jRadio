@@ -93,8 +93,8 @@ module.exports = {
         var include_tracks = req.query.include_tracks,
             urls = [];
 
-        urls.push('http://doublej.net.au/api/v1/search.json?limit=9&page=0&section=16,11,1,6');
-        if (include_tracks == 'true') urls.push('http://doublej.net.au/api/v1/search.json?broadcast_type=2&limit=9&ondemand=true&page=0&sort=ondemand&type=broadcast');
+        urls.push('http://doublej.net.au/api/v1/search.json?limit=3&page=0&section=16,11,1,6');
+        if (include_tracks == 'true') urls.push('http://doublej.net.au/api/v1/search.json?broadcast_type=2&limit=12&ondemand=true&page=0&sort=ondemand&type=broadcast');
 
         __request(urls, function(response) {
             var articles = parse_articles( response[urls[0]].body );

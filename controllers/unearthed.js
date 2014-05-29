@@ -7,8 +7,8 @@ module.exports = {
         var new_tracks,
             featured_tracks,
             combined,
-            num_new = 16,
-            num_featured = 4;
+            num_new = 12,
+            num_featured = 3;
 
         // get new
         request("http://www.kimonolabs.com/api/4i2op28c?apikey=01269db6385d23351cd7f152819e9550", function(err, response, body) {
