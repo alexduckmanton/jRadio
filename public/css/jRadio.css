@@ -1793,54 +1793,11 @@ footer a {
   /* NEW - Chrome */
   order: 8;
 }
-/* line 80, ../client/styles/_track_tracks.scss */
-.tracks .track.article h3 {
-  font-size: 1.5em;
-}
-/* line 84, ../client/styles/_track_tracks.scss */
-.tracks .track.article .content {
-  position: relative;
-  max-height: 3.6em;
-  overflow: hidden;
-  -webkit-transition: max-height 0.3s;
-  -moz-transition: max-height 0.3s;
-  -o-transition: max-height 0.3s;
-  transition: max-height 0.3s;
-  -webkit-transition-duration: 0.9s;
-  -moz-transition-duration: 0.9s;
-  -o-transition-duration: 0.9s;
-  transition-duration: 0.9s;
-}
-/* line 91, ../client/styles/_track_tracks.scss */
-.tracks .track.article .content:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(255, 255, 255, 0), #ffffff);
-}
-/* line 103, ../client/styles/_track_tracks.scss */
-.tracks .track.article p {
-  font-size: 1.2em;
-  font-weight: 300;
-  line-height: 1.25em;
-}
-/* line 109, ../client/styles/_track_tracks.scss */
-.tracks .track.article img {
-  height: inherit;
-}
-/* line 114, ../client/styles/_track_tracks.scss */
-.tracks .track.article .type-video,
-.tracks .track.article iframe {
-  display: none;
-}
-/* line 119, ../client/styles/_track_tracks.scss */
+/* line 79, ../client/styles/_track_tracks.scss */
 .tracks .track.featured {
   position: relative;
 }
-/* line 123, ../client/styles/_track_tracks.scss */
+/* line 83, ../client/styles/_track_tracks.scss */
 .tracks .track.featured:after {
   position: absolute;
   width: 1em;
@@ -1853,7 +1810,7 @@ footer a {
   padding: calc(1em / 16);
   text-align: center;
 }
-/* line 140, ../client/styles/_track_tracks.scss */
+/* line 100, ../client/styles/_track_tracks.scss */
 .tracks .track:not(.featured) .track_info .play {
   margin-top: -47.5%;
   top: 0;
@@ -1862,12 +1819,55 @@ footer a {
   border-color: #fff;
   opacity: 0.9;
 }
-/* line 149, ../client/styles/_track_tracks.scss */
+/* line 109, ../client/styles/_track_tracks.scss */
 .tracks .track:not(.featured) .track_info .text {
   padding-left: 0;
   font-size: .75em;
 }
-/* line 157, ../client/styles/_track_tracks.scss */
+/* line 116, ../client/styles/_track_tracks.scss */
+.tracks .track.article .track_info .text {
+  font-size: 1em;
+  line-height: 1.5em;
+  font-weight: 300;
+}
+/* line 122, ../client/styles/_track_tracks.scss */
+.tracks .track.article h3 {
+  font-size: 1.5em;
+}
+/* line 126, ../client/styles/_track_tracks.scss */
+.tracks .track.article .content {
+  position: relative;
+  max-height: 3.6em;
+  overflow: hidden;
+}
+/* line 131, ../client/styles/_track_tracks.scss */
+.tracks .track.article .content:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(255, 255, 255, 0), #ffffff);
+}
+/* line 143, ../client/styles/_track_tracks.scss */
+.tracks .track.article img {
+  height: inherit;
+}
+/* line 148, ../client/styles/_track_tracks.scss */
+.tracks .track.article .type-video,
+.tracks .track.article iframe {
+  display: none;
+}
+/* line 153, ../client/styles/_track_tracks.scss */
+.tracks .track.article.active .content {
+  max-height: 999em;
+}
+/* line 156, ../client/styles/_track_tracks.scss */
+.tracks .track.article.active .content:after {
+  display: none;
+}
+/* line 165, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(2n) {
   -o-animation-duration: 0.33s;
   -ms-animation-duration: 0.33s;
@@ -1875,7 +1875,7 @@ footer a {
   -webkit-animation-duration: 0.33s;
   animation-duration: 0.33s;
 }
-/* line 158, ../client/styles/_track_tracks.scss */
+/* line 166, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(3n) {
   -o-animation-duration: 0.36s;
   -ms-animation-duration: 0.36s;
@@ -1883,7 +1883,7 @@ footer a {
   -webkit-animation-duration: 0.36s;
   animation-duration: 0.36s;
 }
-/* line 159, ../client/styles/_track_tracks.scss */
+/* line 167, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(4n) {
   -o-animation-duration: 0.27s;
   -ms-animation-duration: 0.27s;
@@ -1891,7 +1891,7 @@ footer a {
   -webkit-animation-duration: 0.27s;
   animation-duration: 0.27s;
 }
-/* line 160, ../client/styles/_track_tracks.scss */
+/* line 168, ../client/styles/_track_tracks.scss */
 .tracks .track:nth-child(5n) {
   -o-animation-duration: 0.24s;
   -ms-animation-duration: 0.24s;
@@ -1900,7 +1900,7 @@ footer a {
   animation-duration: 0.24s;
 }
 
-/* line 165, ../client/styles/_track_tracks.scss */
+/* line 173, ../client/styles/_track_tracks.scss */
 .tracks .track.loading,
 .site_loading + .tracks .track {
   opacity: 0;

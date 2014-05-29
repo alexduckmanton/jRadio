@@ -15789,10 +15789,9 @@ module.exports = TrackModel = Backbone.Model.extend({
     },
 
     initialize: function() {
+        console.log(this);
         var type = this.get('type');
         if (type == 'played') return;
-
-        if (type == 'article') console.log(this);
 
         this.set_title();
 
@@ -15800,7 +15799,8 @@ module.exports = TrackModel = Backbone.Model.extend({
         else this.load_img();
 
         if (type == 'article') {
-            this.set('track_loading', false);
+            var self = this;
+            _.defer(function() { self.set('track_loading', false); });
         } else {
             this.listenTo(this, 'change:src', this.loaded);
             this.set_track();
@@ -16038,7 +16038,7 @@ var itemView = Marionette.ItemView.extend({
     className: 'track track_loading loading',
 
     events: {
-        'click a': 'toggle_playing'
+        'click': 'toggle_active'
     },
 
     getTemplate: function() {
@@ -16071,7 +16071,7 @@ var itemView = Marionette.ItemView.extend({
     onRender: function() {
         // don't load iframes and remove inline styling
         if (this.model.get('type') == 'article') {
-            this.$el.find('').attr('style', '');
+            this.$el.find('.content p, .content span').attr('style', '');
             this.$el.find('iframe').attr('src', '');
         }
     },
@@ -16080,6 +16080,14 @@ var itemView = Marionette.ItemView.extend({
         this.$el.toggleClass('playing', this.model.get('is_playing'));
         this.$el.toggleClass('loading', this.model.get('img_loading'));
         this.$el.toggleClass('track_loading', this.model.get('track_loading'));
+    },
+
+    toggle_active: function(e) {
+        if (this.model.get('type') == 'article') {
+            this.$el.toggleClass('active');
+        } else {
+            this.toggle_playing(e);
+        }
     },
 
     toggle_playing: function(e) {
@@ -16215,15 +16223,6 @@ function program3(depth0,data) {
 function program5(depth0,data) {
   
   var buffer = "", stack1;
-  buffer += "<h4 class=\"artist\">"
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.artist)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</h4>";
-  return buffer;
-  }
-
-function program7(depth0,data) {
-  
-  var buffer = "", stack1;
   buffer += "<div class=\"content\">";
   stack1 = ((stack1 = ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.content)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1);
   if(stack1 || stack1 === 0) { buffer += stack1; }
@@ -16239,11 +16238,10 @@ function program7(depth0,data) {
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n    <div class=\"text\">\n        <h3 class=\"title\">"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.title)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</h3>\n        ";
-  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.artist), {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n        ";
-  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.content), {hash:{},inverse:self.noop,fn:self.program(7, program7, data),data:data});
+    + "</h3>\n        <h4 class=\"artist\">"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.artist)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</h4>\n        ";
+  stack1 = helpers['if'].call(depth0, ((stack1 = (depth0 && depth0.hash)),stack1 == null || stack1 === false ? stack1 : stack1.content), {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n    </div>\n</div>\n";
   return buffer;

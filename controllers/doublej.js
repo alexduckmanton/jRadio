@@ -62,7 +62,7 @@ var parse_articles = function(news) {
 
     for (var i = 0; i < news.length; i++) {
         news[i].type = 'article';
-        news[i].author = news[i].dj_author.title;
+        news[i].author = news[i].dj_author ? news[i].dj_author.title : '';
         news[i].image = get_image(news[i]);
 
         // parse url to get api

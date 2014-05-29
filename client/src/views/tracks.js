@@ -4,7 +4,7 @@ var itemView = Marionette.ItemView.extend({
     className: 'track track_loading loading',
 
     events: {
-        'click a': 'toggle_playing'
+        'click': 'toggle_active'
     },
 
     getTemplate: function() {
@@ -37,7 +37,7 @@ var itemView = Marionette.ItemView.extend({
     onRender: function() {
         // don't load iframes and remove inline styling
         if (this.model.get('type') == 'article') {
-            this.$el.find('').attr('style', '');
+            this.$el.find('.content p, .content span').attr('style', '');
             this.$el.find('iframe').attr('src', '');
         }
     },
@@ -46,6 +46,14 @@ var itemView = Marionette.ItemView.extend({
         this.$el.toggleClass('playing', this.model.get('is_playing'));
         this.$el.toggleClass('loading', this.model.get('img_loading'));
         this.$el.toggleClass('track_loading', this.model.get('track_loading'));
+    },
+
+    toggle_active: function(e) {
+        if (this.model.get('type') == 'article') {
+            this.$el.toggleClass('active');
+        } else {
+            this.toggle_playing(e);
+        }
     },
 
     toggle_playing: function(e) {
